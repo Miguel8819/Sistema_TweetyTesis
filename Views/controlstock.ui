@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>controlstock</class>
+ <widget class="QWidget" name="controlstock">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1324</width>
+    <height>683</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Control de Stock</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(56, 213, 203);</string>
+  </property>
+  <widget class="QPushButton" name="btn_volver">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>630</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>140</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);</string>
+   </property>
+   <property name="text">
+    <string>Volver al Menú</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="table_product">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>190</y>
+     <width>1281</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>740</width>
+     <height>350</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(172, 242, 255);</string>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   </property>
+   <property name="rowCount">
+    <number>20</number>
+   </property>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>103</number>
+   </attribute>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>30</number>
+   </attribute>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <column>
+    <property name="text">
+     <string>CodProducto</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Código de Barras</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Producto</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Categoría</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Subcategoría</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Marca</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tipo Unidad</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Unidad de Medida</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Cant. en Stock</string>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Punto de Pedido</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Costo de Compra</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Precio Venta</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>30</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Control de Stock</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_actualizar">
+   <property name="geometry">
+    <rect>
+     <x>445</x>
+     <y>571</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);</string>
+   </property>
+   <property name="text">
+    <string>Actualizar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_create">
+   <property name="geometry">
+    <rect>
+     <x>625</x>
+     <y>571</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);</string>
+   </property>
+   <property name="text">
+    <string>Crear</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_delete">
+   <property name="geometry">
+    <rect>
+     <x>805</x>
+     <y>571</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);</string>
+   </property>
+   <property name="text">
+    <string>Eliminar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="input_codigo">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>120</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>95</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Codigo de Barras</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>100</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Producto</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="input_prod">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>120</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_buscar">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>120</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(212, 212, 212);</string>
+   </property>
+   <property name="text">
+    <string>Buscar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
