@@ -51,3 +51,9 @@ class menuprincipalController():
      self.menuprincipal.Form.show()
      Form.show()  
   
+   def openListaClientes(self, Ui_lista_clientes, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_lista_clientes()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 

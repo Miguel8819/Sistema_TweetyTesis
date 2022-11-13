@@ -391,7 +391,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          </font>
         </property>
         <property name="text">
-         <string>Proveedores</string>
+         <string>ABM Proveedores</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_8">
@@ -428,8 +428,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_genOrdenCompra">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>182</y>
+          <x>130</x>
+          <y>250</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -449,6 +449,32 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         </property>
         <property name="text">
          <string>Generar Orden de Compra</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_listaproveedores">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>180</y>
+          <width>290</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Lista de Proveedores</string>
         </property>
        </widget>
       </widget>
@@ -590,7 +616,33 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          </font>
         </property>
         <property name="text">
-         <string>Clientes</string>
+         <string>ABM Clientes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_listaClientes">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>340</y>
+          <width>290</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Lista de Clientes</string>
         </property>
        </widget>
       </widget>

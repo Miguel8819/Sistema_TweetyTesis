@@ -29,6 +29,20 @@ class controlstockController():
     
       
     def updateProducs(self):
+        table = self.controlstock.table_product
+        products = []
+        fila = []
+        for row_number in range(table.rowCount()):
+            for column_number in range(table.columnCount()):
+                if table.item(row_number,column_number) != None:
+                    fila.append(table.item(row_number,column_number).text())
+            if len(fila)>0:
+                products.append(fila)
+            fila = []
+        
+        if len(products)>0:
+            for prod in products:
+                self.product.updateProduct(prod[0],prod[1],prod[2],prod[3],prod[4],prod[5],prod[6],prod[7],prod[8],prod[9],prod[10],prod[11])
         
         
         self.listProducts()
@@ -36,10 +50,10 @@ class controlstockController():
     def deleteProduct(self):
         table = self.controlstock.table_product
         if table.currentItem() != None:
-            cod = table.currentItem().text()
-            product = self.product.getProduct(cod)
+            CodigoDeBarras = table.currentItem().text()
+            product = self.product.getProduct(CodigoDeBarras)
             if product:
-                self.product.deleteProduct(cod)
+                self.product.deleteProduct(CodigoDeBarras)
         self.listProducts()
         
     

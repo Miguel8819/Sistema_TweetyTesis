@@ -36,16 +36,16 @@ class Product():
             if result:
                 return result
     
-    def updateProduct(self,CodigoDeBarras, cod,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def updateProduct(self,cod,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         with self.conn.cursor() as cursor:
             sql = """UPDATE product SET CodigoDeBarras = %s  producto = %s,categoria = %s,subCategoria = %s,marca = %s,tipoUnidad = %s,UnidadDeMedida = %s,cant_min_stock = %s,PuntoDePedido = %s,CostoDeCompra = %s,PrecioDeVenta = %s WHERE codProducto = %s """
             cursor.execute(sql,(cod,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,CodigoDeBarras))
             self.conn.commit()
 
-    def deleteProduct(self,cod):
+    def deleteProduct(self,CodigoDeBarras):
         with self.conn.cursor() as cursor:
             sql = """DELETE FROM product WHERE CodigoDeBarras = %s"""
-            cursor.execute(sql, cod)
+            cursor.execute(sql, CodigoDeBarras)
             self.conn.commit()
     
     def insertProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):

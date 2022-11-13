@@ -1,13 +1,13 @@
-class Cliente():
+class BajaCliente():
     def __init__(self,conn):
         self.conn = conn
         with self.conn.cursor() as cursor:
-            sql = """CREATE TABLE IF NOT EXISTS cliente
+            sql = """CREATE TABLE IF NOT EXISTS bajaCliente
                         (
-                        codCliente INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        codBajaCliente INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                         nombreCliente VARCHAR(45) NOT NULL,
                         nroDni INT(10) NOT NULL,
-                        fechaAlta VARCHAR(45) NOT NULL,
+                        fechaBaja VARCHAR(45) NOT NULL,
                         calle VARCHAR (20) NOT NULL, 
                         
                         nroCalle INT(10) NOT NULL,
@@ -21,20 +21,20 @@ class Cliente():
 
     def insertCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO cliente (nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad, codPostal, tel,email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            sql = """INSERT INTO bajaCliente (nombreCliente,nroDni,fechaBaja,calle,nroCalle,ciudad, codPostal, tel,email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             cursor.execute(sql, (nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email))
             self.conn.commit()
 
     def getClientes(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente"""
+            sql = """SELECT * FROM bajaCliente"""
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
     
     def getCliente(self, nroDni):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente WHERE nroDni = %s"""
+            sql = """SELECT * FROM bajaCliente WHERE nroDni = %s"""
             cursor.execute(sql,nroDni)
             result = cursor.fetchone()
             if result:
@@ -42,12 +42,12 @@ class Cliente():
     
     def updateCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE cliente SET nombreCliente =%s, numDni = %s,fechaAlta = %s, calle = %s,nroCalle = %s,ciudad = %s, cosPostal = %s, tel = %s, email= %s WHERE codCliente = %s """
+            sql = """UPDATE bajaCliente SET nombreCliente =%s, numDni = %s,fechaAlta = %s, calle = %s,nroCalle = %s,ciudad = %s, cosPostal = %s, tel = %s, email= %s WHERE codCliente = %s """
             cursor.execute(sql,(nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email))
             self.conn.commit()
 
     def deleteCliente(self,nroDni):
         with self.conn.cursor() as cursor:
-            sql = """DELETE FROM cliente WHERE nroDni = %s"""
+            sql = """DELETE FROM bajaCliente WHERE nroDni = %s"""
             cursor.execute(sql, nroDni)
             self.conn.commit()

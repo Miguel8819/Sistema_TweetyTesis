@@ -2051,7 +2051,7 @@ class Ui_clientes(object):
 
         self.a = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text(), self.show_nameCliente_2.text(), self.show_Dni_2.text(),self.show_fechaAlta_2.text(),self.show_calle_2.text(),self.show_numCalle_2.text(), self.show_ciudad_2.currentText(), self.show_codPostal_2.text(),self.show_tel_2.text(),self.show_email_2.text()))
 
-        self.z = self.BotonEliminar.clicked.connect(lambda: self.clientecontroller.eliminarCliente(self.cliente, self.input_searchDni_2.text()))
+        self.z = self.BotonEliminar.clicked.connect(lambda: self.clientecontroller.eliminarCliente(self.cliente,self.show_nameCliente_2.text(), self.show_Dni_2.text(),self.show_fechaAlta_2.text(),self.show_calle_2.text(),self.show_numCalle_2.text(), self.show_ciudad_2.currentText(), self.show_codPostal_2.text(),self.show_tel_2.text(),self.show_email_2.text()))
 
         self.b = self.BotonCancelar.clicked.connect(lambda: self.clientecontroller.cancelar(clientes))
 #--------------------End Events--------------------------------------------------------------
