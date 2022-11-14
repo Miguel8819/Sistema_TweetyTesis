@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QV
 from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
 from Models.cliente import Cliente
-from Models.bajaCliente import BajaCliente
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Database.Connection import connection
 
@@ -20,8 +20,7 @@ class Ui_lista_clientes(object):
     def __init__(self):
         self.listarclientecontroller = listarClienteController(self)
         self.cliente = Cliente(connection())
-        self.bajaCliente = BajaCliente (connection())
-      
+       
     
     def setupUi(self, lista_clientes):
         lista_clientes.setObjectName("lista_clientes")

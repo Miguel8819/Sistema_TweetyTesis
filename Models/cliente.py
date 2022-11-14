@@ -21,8 +21,9 @@ class Cliente():
 
     def insertCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO cliente (nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad, codPostal, tel,email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email))
+            activo = 1
+            sql = """INSERT INTO cliente (nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad, codPostal, tel,email,activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email, activo))
             self.conn.commit()
 
     def getClientes(self):
@@ -34,7 +35,7 @@ class Cliente():
     
     def getCliente(self, nroDni):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente WHERE nroDni = %s"""
+            sql = """SELECT * FROM cliente WHERE nroDni = %s AND activo = '1'"""
             cursor.execute(sql,nroDni)
             result = cursor.fetchone()
             if result:
@@ -51,3 +52,23 @@ class Cliente():
             sql = """DELETE FROM cliente WHERE nroDni = %s"""
             cursor.execute(sql, nroDni)
             self.conn.commit()
+
+    def bajaCliente(self,nroDni):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE cliente SET activo = "0" WHERE nroDni = %s"""
+            cursor.execute(sql, nroDni)
+            self.conn.commit()
+
+    def getClientesActivos(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM cliente WHERE activo = '1' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def getClientesBaja(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM cliente WHERE activo = '0' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result

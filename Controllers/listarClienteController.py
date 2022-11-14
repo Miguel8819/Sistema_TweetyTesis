@@ -10,17 +10,17 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from PyQt5.QtWidgets import QMessageBox
-from Models.bajaCliente import BajaCliente
+
 
 class listarClienteController():
     def __init__(self, listar_cliente):
         self.cliente = Cliente(connection())
         self.listar_cliente = listar_cliente
-        self.bajaCliente = BajaCliente(connection())
+       
 
     def listarClientesActivos(self):
         table = self.listar_cliente.tableWidget
-        clientes = self.cliente.getClientes()
+        clientes = self.cliente.getClientesActivos()
         table.setRowCount(0)
         for row_number, row_data in enumerate(clientes):
             table.insertRow(row_number)
@@ -29,7 +29,7 @@ class listarClienteController():
 
     def listarBajaClientes(self):
         table = self.listar_cliente.tableWidget_2
-        clientes = self.bajaCliente.getClientes()
+        clientes = self.cliente.getClientesBaja()
         table.setRowCount(0)
         for row_number, row_data in enumerate(clientes):
             table.insertRow(row_number)

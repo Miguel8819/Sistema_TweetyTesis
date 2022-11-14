@@ -10,13 +10,13 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from PyQt5.QtWidgets import QMessageBox
-from Models.bajaCliente import BajaCliente
+
 
 class ClienteController():
     def __init__(self, create_cliente):
         self.cliente = Cliente(connection())
         self.create_cliente = create_cliente
-        self.bajaCliente = BajaCliente(connection())
+        
         
 
     def exito(self, Ui_Dialog, Form):
@@ -167,9 +167,9 @@ class ClienteController():
             
                 
                 if cliente :
-                        self.bajaCliente.insertCliente(nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email)
+                        
 
-                        self.cliente.deleteCliente(nroDni)
+                        self.cliente.bajaCliente(nroDni)
 
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
