@@ -180,13 +180,13 @@ class ClienteController():
                 msg.setInformativeText("")
                 x = msg.exec_() 
 
-                self.create_cliente.show_nameCliente_2.clear()
-                self.create_cliente.show_Dni_2.clear()
-                self.create_cliente.show_calle_2.clear()
-                self.create_cliente.show_numCalle_2.clear()
-                self.create_cliente.show_codPostal_2.clear()
-                self.create_cliente.show_tel_2.clear()
-                self.create_cliente.show_email_2.clear()
+            self.create_cliente.show_nameCliente_2.clear()
+            self.create_cliente.show_Dni_2.clear()
+            self.create_cliente.show_calle_2.clear()
+            self.create_cliente.show_numCalle_2.clear()
+            self.create_cliente.show_codPostal_2.clear()
+            self.create_cliente.show_tel_2.clear()
+            self.create_cliente.show_email_2.clear()
 
           
 

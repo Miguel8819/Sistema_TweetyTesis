@@ -17,7 +17,9 @@ class Product():
                         cant_min_stock VARCHAR(45) NOT NULL,
                         PuntoDePedido VARCHAR(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,
-                        PrecioDeVenta VARCHAR(45) NOT NULL)"""
+                        PrecioDeVenta VARCHAR(45) NOT NULL
+                        
+                        )"""
             cursor.execute(sql)
             self.conn.commit()
     
@@ -30,7 +32,7 @@ class Product():
     
     def getProduct(self, CodigoDeBarras):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM product WHERE CodigoDeBarras = %s"""
+            sql = """SELECT * FROM product WHERE CodigoDeBarras = %s AND activo = '1'"""
             cursor.execute(sql,CodigoDeBarras)
             result = cursor.fetchone()
             if result:
@@ -50,12 +52,27 @@ class Product():
     
     def insertProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO product (CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta))
+            activo = 1
+            sql = """INSERT INTO product (CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta, activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,activo))
             self.conn.commit()
             
-    # def modificarProduct (self,CodigoDeBarras,cod,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
-    #     with self.conn.cursor() as cursor:
-    #         sql = """UPDATE product SET codProducto =%s, producto = %s,categoria = %s,subCategoria = %s,marca = %s,tipoUnidad = %s,UnidadDeMedida = %s,cant_min_stock = %s,PuntoDePedido = %s,CostoDeCompra = %s,PrecioDeVenta = %s WHERE CodigoDeBarras = %s """
-    #         cursor.execute(sql,(CodigoDeBarras,cod,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta))
-    #         self.conn.commit()
+    def bajaProducto(self,CodigoDeBarras):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE Product SET activo = "0" WHERE CodigoDeBarras = %s"""
+            cursor.execute(sql, CodigoDeBarras)
+            self.conn.commit()
+
+    def getProductosActivos(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '1' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def getProductosBaja(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '0' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
