@@ -155,7 +155,7 @@ class CreateProductController():
 
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
-                msg.setText("Cliente eliminado de la lista")
+                msg.setText("Producto dado de baja de la lista")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)

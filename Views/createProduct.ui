@@ -4374,7 +4374,7 @@ QLabel{background-color:none}</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="Boton_Eliminar">
+     <widget class="QPushButton" name="Boton_DarDeBaja">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -4818,7 +4818,7 @@ QLabel{background-color:none}</string>
        </font>
       </property>
       <property name="text">
-       <string>Eliminar</string>
+       <string>Dar de Baja</string>
       </property>
       <property name="iconSize">
        <size>
@@ -5365,6 +5365,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QComboBox" name="box_subCat_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -5448,6 +5451,9 @@ QLabel{background-color:none}</string>
        </item>
       </widget>
       <widget class="QLineEdit" name="input_prod_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -5475,6 +5481,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QComboBox" name="box_cat_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>40</x>
@@ -5598,6 +5607,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QComboBox" name="box_marca_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>380</x>
@@ -5735,6 +5747,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QComboBox" name="box_uniMedi_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>9</pointsize>
@@ -5778,6 +5793,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QComboBox" name="box_tipoUnid_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>9</pointsize>
@@ -5821,6 +5839,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QLineEdit" name="input_puntoPedido_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -5865,6 +5886,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QLineEdit" name="input_cantMinStock_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -5948,6 +5972,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QLineEdit" name="input_precVenta_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -5992,6 +6019,9 @@ QLabel{background-color:none}</string>
         </item>
         <item>
          <widget class="QLineEdit" name="input_costCompra_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="font">
            <font>
             <pointsize>12</pointsize>
