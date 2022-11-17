@@ -2176,6 +2176,8 @@ class Ui_CreateProduct(object):
         self.z = self.Botonbuscar_2.clicked.connect(lambda: self.create_product_controller.showProduct_2(self.input_searchcod_2.text(),self.input_prod_3.text(), self.box_cat_3.currentText(),self.box_subCat_3.currentText(),self.box_marca_3.currentText(),self.box_tipoUnid_3.currentText(),self.box_uniMedi_3.currentText(),self.input_cantMinStock_3.text(),self.input_puntoPedido_3.text(),self.input_costCompra_3.text(),self.input_precVenta_3.text()))
 
         self.b = self.Boton_Eliminar.clicked.connect(lambda: self.create_product_controller.darBajaProducto(self.product,self.input_searchcod_2.text(),self.input_prod_3.text(), self.box_cat_3.currentText(),self.box_subCat_3.currentText(),self.box_marca_3.currentText(),self.box_tipoUnid_3.currentText(),self.box_uniMedi_3.currentText(),self.input_cantMinStock_3.text(),self.input_puntoPedido_3.text(),self.input_costCompra_3.text(),self.input_precVenta_3.text()))
+
+        self.m = self.BotonGuardarCambios.clicked.connect(lambda: self.create_product_controller.modificarProducto(self.input_searchcod.text(),self.input_prod_2.text(), self.box_cat_2.currentText(),self.box_subCat_2.currentText(),self.box_marca_2.currentText(),self.box_tipoUnid_2.currentText(),self.box_uniMedi_2.currentText(),self.input_cantMinStock_2.text(),self.input_puntoPedido_2.text(),self.input_costCompra_2.text(),self.input_precVenta_2.text()))
         
         self.e = self.BotonCancelar.clicked.connect(lambda:self.create_product_controller.salir(CreateProduct))
         #--------------------End Events---------------------------------
