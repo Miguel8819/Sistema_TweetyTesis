@@ -534,7 +534,7 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../.designer/Imagenes/buscar.png</normaloff>../../../.designer/Imagenes/buscar.png</iconset>
+     <normaloff>../..Imagenes/buscar.png</normaloff>../../../.designer/Imagenes/buscar.png</iconset>
    </property>
    <property name="iconSize">
     <size>

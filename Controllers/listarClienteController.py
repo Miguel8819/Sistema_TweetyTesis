@@ -36,6 +36,17 @@ class listarClienteController():
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
-    def SalirA(self,listar_cliente):
+    def darAltaCliente(self):
+       table = self.listar_cliente.tableWidget_2
+       if table.currentItem() != None:
+            nroDni = table.currentItem().text()
+            print(nroDni)
+            product = self.cliente.getCliente(nroDni)
+            if product:
+                self.cliente.altaCliente(nroDni)
+                print(product)
+            
         
-        listar_cliente.close()
+
+    def SalirA(self,listar_cliente):
+         listar_cliente.close()

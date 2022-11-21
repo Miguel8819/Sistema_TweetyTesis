@@ -20,8 +20,6 @@ class Ui_lista_clientes(object):
     def __init__(self):
         self.listarclientecontroller = listarClienteController(self)
         self.cliente = Cliente(connection())
-       
-    
     def setupUi(self, lista_clientes):
         lista_clientes.setObjectName("lista_clientes")
         lista_clientes.resize(1107, 489)
@@ -218,8 +216,8 @@ class Ui_lista_clientes(object):
         self.a = self.boton_actualizar.clicked.connect(lambda:self.listarclientecontroller.listarClientesActivos())
         self.b = self.boton_actualizar2.clicked.connect(lambda:self.listarclientecontroller.listarBajaClientes())
         self.c = self.boton_salir.clicked.connect(lambda:self.listarclientecontroller.SalirA(lista_clientes))
-        self.c = self.boton_salir_2.clicked.connect(lambda:self.listarclientecontroller.SalirA(lista_clientes))
-        
+        self.s = self.boton_salir_2.clicked.connect(lambda:self.listarclientecontroller.SalirA(lista_clientes))
+        self.r = self.boton_darAlta.clicked.connect(lambda:self.listarclientecontroller.darAltaCliente())
 
     def retranslateUi(self, lista_clientes):
         _translate = QtCore.QCoreApplication.translate

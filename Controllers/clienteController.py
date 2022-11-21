@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from PyQt5.QtWidgets import QMessageBox
+from datetime import datetime
 
 
 class ClienteController():
@@ -26,9 +27,10 @@ class ClienteController():
         self.create_cliente.Form.show()
         Form.show()
         
-    def createCliente(self, nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email, Form):
+    def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email,Form):
      if nroDni:
-            
+
+        fechaAlta= datetime.now()    
         result = self.cliente.getCliente(nroDni)
         
         if result:
@@ -85,14 +87,14 @@ class ClienteController():
                     
 
 
-    def showCliente(self,nroDni, nameCliente, dni, fechaAlta, calle, numCalle, ciudad, codPostal, tel, email):
+    def showCliente(self,nroDni, nameCliente, dni, calle, numCalle, ciudad, codPostal, tel, email):
         if nroDni:
             
                 result = self.cliente.getCliente(nroDni)
                 if result:
-                    self.create_cliente.show_nameCliente.setText(str(result[1]))
-                    self.create_cliente.show_Dni.setText(str(result[2]))
-                    self.create_cliente.show_fechaAlta.setDate(QDate.fromString(result[3]))
+                    self.create_cliente.show_nameCliente.setText(str(result[2]))
+                    self.create_cliente.show_Dni.setText(str(result[1]))
+                    
                     self.create_cliente.show_calle.setText(str(result[4]))
                     self.create_cliente.show_numCalle.setText(str(result[5]))
                     self.create_cliente.show_ciudad.setCurrentText(str(result[6]))
@@ -120,13 +122,13 @@ class ClienteController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-    def showCliente_2(self,nroDni, nameCliente, dni, fechaAlta, calle, numCalle, ciudad, codPostal, tel, email):
+    def showCliente_2(self,nroDni, nameCliente, dni, calle, numCalle, ciudad, codPostal, tel, email):
         if nroDni:
             result = self.cliente.getCliente(nroDni)
             if result:
-                self.create_cliente.show_nameCliente_2.setText(str(result[1]))
-                self.create_cliente.show_Dni_2.setText(str(result[2]))
-                self.create_cliente.show_fechaAlta_2.setDate(QDate.fromString(result[3]))
+                self.create_cliente.show_nameCliente_2.setText(str(result[2]))
+                self.create_cliente.show_Dni_2.setText(str(result[1]))
+                
                 self.create_cliente.show_calle_2.setText(str(result[4]))
                 self.create_cliente.show_numCalle_2.setText(str(result[5]))
                 self.create_cliente.show_ciudad_2.setCurrentText(str(result[6]))
@@ -155,7 +157,7 @@ class ClienteController():
                 x = msg.exec_() 
             
 
-    def eliminarCliente(self,cliente, nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad,codPostal,tel,email):
+    def bajaCliente(self,cliente,nroDni):
         if nroDni:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
@@ -173,7 +175,7 @@ class ClienteController():
 
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
-                msg.setText("Cliente eliminado de la lista")
+                msg.setText("Cliente dado de baja de la lista")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
@@ -201,6 +203,44 @@ class ClienteController():
                 x = msg.exec_() 
 
                 
+    def modificarCliente(self, CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta ):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea guardar los cambios del producto? ")
+        msgBox.setWindowTitle("")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+                    if producto != "" and cant_min_stock !="" and PuntoDePedido !="" and CostoDeCompra != "" and PrecioDeVenta !="":
+                        self.product.UpdateProduct(CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta)
+
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Confirmado")
+                        msg.setText("Cambios guardados")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        msg.setInformativeText("")
+                        x = msg.exec_() 
+
+                        
+                        self.create_product.input_prod_2.clear()
+                        self.create_product.input_searchcod.clear()
+                        self.create_product.input_cantMinStock_2.clear()
+                        self.create_product.input_puntoPedido_2.clear()
+                        self.create_product.input_costCompra_2.clear()
+                        self.create_product.input_precVenta_2.clear()
+
+                    else: 
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Error")
+                        msg.setText("Hay campos vacios")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        msg.setInformativeText("Vuelva a intentarlo")
+                        x = msg.exec_() 
+
 
     def cancelar(self, Ui_cliente):
 

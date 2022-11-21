@@ -380,7 +380,7 @@ QPushButton{background-color:none}</string>
        <x>20</x>
        <y>40</y>
        <width>421</width>
-       <height>221</height>
+       <height>191</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -509,56 +509,6 @@ QPushButton{background-color:none}</string>
       </property>
       <property name="placeholderText">
        <string>Nro DNI</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_fechaAlta">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>151</y>
-        <width>105</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-       </font>
-      </property>
-      <property name="text">
-       <string>Fecha de Alta:</string>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="input_fechaAlta">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>175</y>
-        <width>120</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>25</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
       </property>
      </widget>
     </widget>
@@ -2988,7 +2938,7 @@ QLabel{background-color:none}</string>
         <x>10</x>
         <y>80</y>
         <width>421</width>
-        <height>221</height>
+        <height>191</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -3111,56 +3061,6 @@ QLabel{background-color:none}</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_fechaAlta_3">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>151</y>
-         <width>105</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-        </font>
-       </property>
-       <property name="text">
-        <string>Fecha de Alta:</string>
-       </property>
-      </widget>
-      <widget class="QDateEdit" name="show_fechaAlta">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>175</y>
-         <width>120</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
        </property>
       </widget>
      </widget>
@@ -3679,7 +3579,7 @@ QLabel{background-color:none}</string>
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
-     <string>Eliminar</string>
+     <string>Dar de baja</string>
     </attribute>
     <widget class="QFrame" name="frame_eliminar">
      <property name="geometry">
@@ -3759,6 +3659,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_tel_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -3806,6 +3709,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_email_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -3888,6 +3794,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_calle_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -3935,6 +3844,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_numCalle_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -4003,6 +3915,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_codPostal_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>341</x>
@@ -4029,6 +3944,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QComboBox" name="show_ciudad_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -4579,7 +4497,7 @@ QLabel{background-color:none}</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="BotonEliminar">
+     <widget class="QPushButton" name="BotonDarDeBaja">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -5023,7 +4941,7 @@ QLabel{background-color:none}</string>
        </font>
       </property>
       <property name="text">
-       <string>Eliminar</string>
+       <string>Dar de baja</string>
       </property>
       <property name="iconSize">
        <size>
@@ -5038,7 +4956,7 @@ QLabel{background-color:none}</string>
         <x>10</x>
         <y>80</y>
         <width>421</width>
-        <height>221</height>
+        <height>191</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -5091,6 +5009,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_nameCliente_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -5138,6 +5059,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_Dni_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -5161,56 +5085,6 @@ QLabel{background-color:none}</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_fechaAlta_4">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>151</y>
-         <width>105</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-        </font>
-       </property>
-       <property name="text">
-        <string>Fecha de Alta:</string>
-       </property>
-      </widget>
-      <widget class="QDateEdit" name="show_fechaAlta_2">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>175</y>
-         <width>120</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
        </property>
       </widget>
      </widget>
@@ -5724,7 +5598,6 @@ QLabel{background-color:none}</string>
   <tabstop>tabWidget</tabstop>
   <tabstop>input_nameclient</tabstop>
   <tabstop>input_dni</tabstop>
-  <tabstop>input_fechaAlta</tabstop>
   <tabstop>input_calle</tabstop>
   <tabstop>input_numCalle</tabstop>
   <tabstop>input_ciudad</tabstop>
@@ -5737,7 +5610,6 @@ QLabel{background-color:none}</string>
   <tabstop>Botonbuscar</tabstop>
   <tabstop>show_nameCliente</tabstop>
   <tabstop>show_Dni</tabstop>
-  <tabstop>show_fechaAlta</tabstop>
   <tabstop>show_calle</tabstop>
   <tabstop>show_numCalle</tabstop>
   <tabstop>show_ciudad</tabstop>

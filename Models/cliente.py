@@ -59,6 +59,12 @@ class Cliente():
             cursor.execute(sql, nroDni)
             self.conn.commit()
 
+    def altaCliente(self,nroDni):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE cliente SET activo = "1" WHERE nroDni = %s"""
+            cursor.execute(sql, nroDni)
+            self.conn.commit()
+
     def getClientesActivos(self):
         with self.conn.cursor() as cursor:
             sql = """SELECT * FROM cliente WHERE activo = '1' """

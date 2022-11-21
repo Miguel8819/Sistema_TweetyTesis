@@ -42,7 +42,7 @@ class controlstockController():
         
         if len(products)>0:
             for prod in products:
-                self.product.updateProduct(prod[0],prod[1],prod[2],prod[3],prod[4],prod[5],prod[6],prod[7],prod[8],prod[9],prod[10],prod[11])
+                self.product.UpdateProduct(prod[0],prod[1],prod[2],prod[3],prod[4],prod[5],prod[6],prod[7],prod[8],prod[9],prod[10],prod[11])
         
         
         self.listProducts()
@@ -55,6 +55,25 @@ class controlstockController():
             if product:
                 self.product.deleteProduct(CodigoDeBarras)
         self.listProducts()
+
+
+    def listarProductosActivos(self):
+        table = self.controlstock.table_product
+        productos = self.product.getProductosActivos()
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def listarBajaProductos(self):
+        table = self.controlstock.table_product_2
+        productos = self.product.getProductosBaja()
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         
     
     def openCreate(self, Ui_CreateProduct):

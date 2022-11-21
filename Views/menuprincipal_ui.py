@@ -46,7 +46,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/ pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -269,7 +269,7 @@ class Ui_menuprincipal(object):
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.btn_controlStock = QtWidgets.QPushButton(self.page_gestionStock)
-        self.btn_controlStock.setGeometry(QtCore.QRect(131, 102, 290, 50))
+        self.btn_controlStock.setGeometry(QtCore.QRect(130, 180, 290, 50))
         self.btn_controlStock.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -286,7 +286,7 @@ class Ui_menuprincipal(object):
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.btn_abmProd = QtWidgets.QPushButton(self.page_gestionStock)
-        self.btn_abmProd.setGeometry(QtCore.QRect(131, 182, 290, 50))
+        self.btn_abmProd.setGeometry(QtCore.QRect(130, 100, 290, 50))
         self.btn_abmProd.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -417,8 +417,7 @@ class Ui_menuprincipal(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(menuprincipal)
 
-        
-#--------------------Events--------------------------------------
+        #--------------------Events--------------------------------------
         self.btn_gestionCompra.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionCompra))
         self.btn_gestionVenta.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionVenta))
         self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
@@ -451,7 +450,7 @@ class Ui_menuprincipal(object):
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))
         self.btn_listaClientes.setText(_translate("menuprincipal", "Lista de Clientes"))
         self.label_3.setText(_translate("menuprincipal", "Gestión de Stock"))
-        self.btn_controlStock.setText(_translate("menuprincipal", "Control de Stock"))
+        self.btn_controlStock.setText(_translate("menuprincipal", "Lista de productos"))
         self.btn_abmProd.setText(_translate("menuprincipal", "ABM Productos"))
         self.btn_movStock.setText(_translate("menuprincipal", "Movimiento de Stock"))
         self.label_4.setText(_translate("menuprincipal", "Administración"))

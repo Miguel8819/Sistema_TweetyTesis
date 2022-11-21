@@ -2175,8 +2175,12 @@ class Ui_CreateProduct(object):
         self.input_puntoPedido.setValidator(intValidator)
         self.input_costCompra.setValidator(intValidator)
         self.input_precVenta.setValidator(intValidator)
-
-       
+        self.input_searchcod.setValidator(intValidator)
+        self.input_cantMinStock_2.setValidator(intValidator)
+        self.input_puntoPedido_2.setValidator(intValidator)
+        self.input_costCompra_2.setValidator(intValidator)
+        self.input_precVenta_2.setValidator(intValidator)
+        self.input_searchcod_2.setValidator(intValidator)
         
 
         #--------------------Events--------------------------------------

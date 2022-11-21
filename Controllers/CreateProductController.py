@@ -91,6 +91,13 @@ class CreateProductController():
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
                     x = msg.exec_() 
+                    
+                    self.create_product.input_prod_2.clear()
+                    self.create_product.input_cod_2.clear()
+                    self.create_product.input_cantMinStock_2.clear()
+                    self.create_product.input_puntoPedido_2.clear()
+                    self.create_product.input_costCompra_2.clear()
+                    self.create_product.input_precVenta_2.clear()
 
         else:
                 msg = QMessageBox()
@@ -101,6 +108,13 @@ class CreateProductController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+
+                self.create_product.input_prod_2.clear()
+                self.create_product.input_cod_2.clear()
+                self.create_product.input_cantMinStock_2.clear()
+                self.create_product.input_puntoPedido_2.clear()
+                self.create_product.input_costCompra_2.clear()
+                self.create_product.input_precVenta_2.clear()
 
     def showProduct_2(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         if CodigoDeBarras:

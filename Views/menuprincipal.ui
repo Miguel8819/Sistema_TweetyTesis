@@ -80,7 +80,7 @@ QPushButton:hover{background-color:white; border-top-left-radius: 20px;border-bo
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>pngfind.com-bird-png-600629.png</pixmap>
+     <pixmap>../Imagenes/pngfind.com-bird-png-600629.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -682,8 +682,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_controlStock">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>102</y>
+          <x>130</x>
+          <y>180</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -702,7 +702,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          </font>
         </property>
         <property name="text">
-         <string>Control de Stock</string>
+         <string>Lista de productos</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_5">
@@ -739,8 +739,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_abmProd">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>182</y>
+          <x>130</x>
+          <y>100</y>
           <width>290</width>
           <height>50</height>
          </rect>
