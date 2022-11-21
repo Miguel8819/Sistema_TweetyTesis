@@ -41,11 +41,11 @@ class listarClienteController():
        if table.currentItem() != None:
             nroDni = table.currentItem().text()
             print(nroDni)
-            product = self.cliente.getCliente(nroDni)
+            product = self.cliente.getCliente(nroDni, '0')
+            print(product)
             if product:
-                self.cliente.altaCliente(nroDni)
-                print(product)
-            
+                self.cliente.altaCliente(nroDni)                
+            self.listarBajaClientes()
         
 
     def SalirA(self,listar_cliente):

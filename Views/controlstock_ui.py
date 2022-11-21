@@ -5,7 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 from wsgiref.validate import validator
 from PyQt5 import QtCore, QtGui, QtWidgets
-from modifBorrarProduct_ui import Ui_editEraseProduct
+
 from createproduct_ui import Ui_CreateProduct
 from Controllers.controlstockController import controlstockController
 from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
@@ -250,8 +250,9 @@ class Ui_controlstock(object):
         QtCore.QMetaObject.connectSlotsByName(controlstock)
 
         self.a = self.btn_actualizar.clicked.connect(lambda:self.controlstock_controller.listarProductosActivos())
-        self.c = self.btn_create.clicked.connect(lambda:self.controlstock_controller.openCreate(Ui_CreateProduct))
-        self.a = self.btn_actualizar_2.clicked.connect(lambda:self.controlstock_controller.listarBajaProductos())
+        self.b = self.btn_create.clicked.connect(lambda:self.controlstock_controller.openCreate(Ui_CreateProduct))
+        self.c = self.btn_actualizar_2.clicked.connect(lambda:self.controlstock_controller.listarBajaProductos())
+        self.d = self.btn_darDeAlta.clicked.connect(lambda:self.controlstock_controller.darAltaProducto())
         
         
         self.p = self.btn_volver.clicked.connect(lambda:self.controlstock_controller.salir(controlstock))

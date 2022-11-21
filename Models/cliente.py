@@ -33,10 +33,10 @@ class Cliente():
             result = cursor.fetchall()
             return result
     
-    def getCliente(self, nroDni):
+    def getCliente(self, nroDni, estado):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente WHERE nroDni = %s AND activo = '1'"""
-            cursor.execute(sql,nroDni)
+            sql = """SELECT * FROM cliente WHERE nroDni = %s AND activo = %s"""
+            cursor.execute(sql,(nroDni,estado))
             result = cursor.fetchone()
             if result:
                 return result

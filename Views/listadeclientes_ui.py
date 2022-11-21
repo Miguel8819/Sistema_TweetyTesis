@@ -210,7 +210,7 @@ class Ui_lista_clientes(object):
         self.tabWidget.addTab(self.tab_2, "")
 
         self.retranslateUi(lista_clientes)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0) 
         QtCore.QMetaObject.connectSlotsByName(lista_clientes)
 
         self.a = self.boton_actualizar.clicked.connect(lambda:self.listarclientecontroller.listarClientesActivos())

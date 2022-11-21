@@ -30,10 +30,10 @@ class Product():
             result = cursor.fetchall()
             return result
     
-    def getProduct(self, CodigoDeBarras):
+    def getProduct(self, CodigoDeBarras, estado):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM product WHERE CodigoDeBarras = %s AND activo = '1'"""
-            cursor.execute(sql,CodigoDeBarras)
+            sql = """SELECT * FROM product WHERE CodigoDeBarras = %s AND activo = %s"""
+            cursor.execute(sql,(CodigoDeBarras,estado))
             result = cursor.fetchone()
             if result:
                 return result

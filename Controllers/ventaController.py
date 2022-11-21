@@ -52,10 +52,10 @@ class ventaController():
 
     def buscarCliente(self,nroDni,nombreCliente,calle,ciudad):
         if nroDni:
-            result=self.cliente.getCliente(nroDni)
+            result=self.cliente.getCliente(nroDni, '1')
             self.idCliente = result[0]
             print(self.idCliente)
-            self.venta.input_nombre.setText(str(result[1]))
+            self.venta.input_nombre.setText(str(result[2]))
             self.venta.input_direccion.setText(str(result[4]))
             self.venta.input_localidad.setText(str(result[6]))       
 
@@ -65,7 +65,7 @@ class ventaController():
             if CodigoDeBarras and (cantidad > '0') :
                             
                 table = self.venta.table_venta
-                product = self.product.getProduct(CodigoDeBarras)
+                product = self.product.getProduct(CodigoDeBarras, '1')
                 if product:
                     if table.rowCount() == 50:
                         rowCount = 0
@@ -75,26 +75,19 @@ class ventaController():
                         table.setRowCount(table.rowCount() + 1)
 
                     
-                    table.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(
-                        str(product[0])))
-                    table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(
-                        str(product[1])))  # codBarras
-                    table.setItem(
-                        rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
-                    table.setItem(
-                        rowCount, 3, QtWidgets.QTableWidgetItem(product[2]))  # name
-                    table.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(
-                        str(product[11])))  # price
+                    table.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(str(product[0])))
+                    table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(str(product[1])))  # codBarras
+                    table.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
+                    table.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(product[2]))  # name
+                    table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(product[11])))  # price
 
-                    cantidad = float(table.item(rowCount, 1).text())
-                    precio = float(table.item(rowCount, 3).text())
+                    cantidad = float(table.item(rowCount, 2).text())
+                    precio = float(table.item(rowCount, 4).text())
                     subtotal = cantidad*precio
 
-                    table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(
-                        str(subtotal)))  # subtotal
+                    table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(str(subtotal)))  # subtotal
 
-                    table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(
-                        str(product[8])))  # stock
+                    table.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(product[8])))  # stock
 
                 #-------------------------------------------------- 
                    

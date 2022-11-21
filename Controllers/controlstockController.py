@@ -74,6 +74,18 @@ class controlstockController():
             table.insertRow(row_number)
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+
+    def darAltaProducto(self):
+       table = self.controlstock.table_product_2
+       if table.currentItem() != None:
+            CodigoDeBarras = table.currentItem().text()
+            print(CodigoDeBarras)
+            product = self.product.getProduct(CodigoDeBarras, '0')
+            print(product)
+            if product:
+                self.product.altaProducto(CodigoDeBarras)                
+            self.listarBajaProductos()
         
     
     def openCreate(self, Ui_CreateProduct):

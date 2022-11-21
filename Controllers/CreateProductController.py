@@ -15,7 +15,7 @@ class CreateProductController():
     def createProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,CreateProduct):
      if CodigoDeBarras:
             
-        result = self.product.getProduct(CodigoDeBarras)
+        result = self.product.getProduct(CodigoDeBarras, '1')
         print(result)
         if result:
             msg = QMessageBox()
@@ -70,7 +70,7 @@ class CreateProductController():
     def showProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         if CodigoDeBarras:
             
-                result = self.product.getProduct(CodigoDeBarras)
+                result = self.product.getProduct(CodigoDeBarras, '1')
                 if result:
                     self.create_product.input_prod_2.setText(str(result[2]))
                     self.create_product.box_cat_2.setCurrentText(str(result[3]))
@@ -119,7 +119,7 @@ class CreateProductController():
     def showProduct_2(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         if CodigoDeBarras:
             
-                result = self.product.getProduct(CodigoDeBarras)
+                result = self.product.getProduct(CodigoDeBarras, '1')
                 if result:
                     self.create_product.input_prod_3.setText(str(result[2]))
                     self.create_product.box_cat_3.setCurrentText(str(result[3]))
@@ -198,7 +198,7 @@ class CreateProductController():
     def showProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         if CodigoDeBarras:
             
-                result = self.product.getProduct(CodigoDeBarras)
+                result = self.product.getProduct(CodigoDeBarras, '1')
                 if result:
                     self.create_product.input_prod_2.setText(str(result[2]))
                     self.create_product.box_cat_2.setCurrentText(str(result[3]))
@@ -245,7 +245,7 @@ class CreateProductController():
     def showProduct_2(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         if CodigoDeBarras:
             
-                result = self.product.getProduct(CodigoDeBarras)
+                result = self.product.getProduct(CodigoDeBarras, '1')
                 if result:
                     self.create_product.input_prod_3.setText(str(result[2]))
                     self.create_product.box_cat_3.setCurrentText(str(result[3]))
