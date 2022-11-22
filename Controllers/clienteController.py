@@ -27,7 +27,7 @@ class ClienteController():
         self.create_cliente.Form.show()
         Form.show()
         
-    def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email,Form):
+    def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email):
      if nroDni:
 
         fechaAlta= date.today()  
@@ -88,7 +88,7 @@ class ClienteController():
                     
 
 
-    def showCliente(self,nroDni, nameCliente, dni, calle, numCalle, ciudad, codPostal, tel, email):
+    def showCliente(self,nroDni):
         if nroDni:
             
                 result = self.cliente.getCliente(nroDni, '1')
@@ -123,7 +123,7 @@ class ClienteController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-    def showCliente_2(self,nroDni, nameCliente, dni, calle, numCalle, ciudad, codPostal, tel, email):
+    def showCliente_2(self,nroDni):
         if nroDni:
             result = self.cliente.getCliente(nroDni, '1')
             if result:

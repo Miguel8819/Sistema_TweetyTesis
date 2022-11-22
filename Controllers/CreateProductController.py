@@ -67,7 +67,7 @@ class CreateProductController():
                         msg.setInformativeText("Vuelva a intentarlo")
                         x = msg.exec_()     
                         
-    def showProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def showProduct(self,CodigoDeBarras):
         if CodigoDeBarras:
             
                 result = self.product.getProduct(CodigoDeBarras, '1')
@@ -116,7 +116,7 @@ class CreateProductController():
                 self.create_product.input_costCompra_2.clear()
                 self.create_product.input_precVenta_2.clear()
 
-    def showProduct_2(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def showProduct_2(self,CodigoDeBarras):
         if CodigoDeBarras:
             
                 result = self.product.getProduct(CodigoDeBarras, '1')
@@ -151,7 +151,7 @@ class CreateProductController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-    def darBajaProducto(self,product,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def darBajaProducto(self,product,CodigoDeBarras):
         if CodigoDeBarras:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
@@ -195,7 +195,7 @@ class CreateProductController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-    def showProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def showProduct(self,CodigoDeBarras):
         if CodigoDeBarras:
             
                 result = self.product.getProduct(CodigoDeBarras, '1')
@@ -242,7 +242,7 @@ class CreateProductController():
                 self.create_product.input_costCompra_2.clear()
                 self.create_product.input_precVenta_2.clear()
 
-    def showProduct_2(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def showProduct_2(self,CodigoDeBarras):
         if CodigoDeBarras:
             
                 result = self.product.getProduct(CodigoDeBarras, '1')

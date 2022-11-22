@@ -1995,11 +1995,11 @@ class Ui_clientes(object):
         self.input_calle.setValidator(stringValidator)
 
 #--------------------Events-----------------------------------------------------------------
-        self.x = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), clientes))
+        self.x = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text()))
        
-        self.y = self.Botonbuscar.clicked.connect(lambda: self.clientecontroller.showCliente(self.input_searchDni.text(), self.show_nameCliente.text(), self.show_Dni.text(),self.show_calle.text(),self.show_numCalle.text(), self.input_ciudad.currentText(), self.show_codPostal.text(),self.show_tel.text(),self.show_email.text()))
+        self.y = self.Botonbuscar.clicked.connect(lambda: self.clientecontroller.showCliente(self.input_searchDni.text()))
 
-        self.a = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text(), self.show_nameCliente_2.text(), self.show_Dni_2.text(),self.show_calle_2.text(),self.show_numCalle_2.text(), self.show_ciudad_2.currentText(), self.show_codPostal_2.text(),self.show_tel_2.text(),self.show_email_2.text()))
+        self.a = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text()))
 
         self.z = self.BotonDarDeBaja.clicked.connect(lambda: self.clientecontroller.bajaCliente(self.cliente, self.input_searchDni_2.text()))
 

@@ -2133,9 +2133,9 @@ class Ui_proveedores(object):
 
         # self.create_proveedor_controller.autoCompleteProveedor(self.input_searchNameProv.text())
 #--------------------Events-----------------------------------------------------------------
-        self.x = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(), self.input_fechaAlta.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text(), proveedores))
+        self.x = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text(), proveedores))
         
-        self.y = self.Botonbuscar.clicked.connect(lambda: self.create_proveedor_controller.showProveedor(self.input_searchNameProv.text(), self.show_nameProv.text(), self.show_nameFact.text(),self.show_fechaAlta_2.text(),self.show_calle.text(),self.show_numCalle.text(), self.input_ciudad.currentText(), self.show_codPostal.text(),self.show_tel.text(),self.show_email.text(),self.show_web.text()))
+        self.y = self.Botonbuscar.clicked.connect(lambda: self.create_proveedor_controller.showProveedor(self.input_searchNameProv.text(), self.show_nameProv.text(), self.show_nameFact.text(),self.show_calle.text(),self.show_numCalle.text(), self.input_ciudad.currentText(), self.show_codPostal.text(),self.show_tel.text(),self.show_email.text(),self.show_web.text()))
 #--------------------End Events--------------------------------------------------------------
 
     def retranslateUi(self, proveedores):

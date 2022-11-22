@@ -19,14 +19,15 @@ class Proveedor():
 
     def insertProveedor(self,nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO proveedor (nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb))
+            activo= 1
+            sql = """INSERT INTO proveedor (nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb,activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb,activo))
             self.conn.commit()
 
-    def getProveedor(self, nombreProveedor):
+    def getProveedor(self, nombreProveedor, estado):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM proveedor WHERE nombreProveedor = %s"""
-            cursor.execute(sql, nombreProveedor)
+            sql = """SELECT * FROM proveedor WHERE nombreProveedor = %s AND activo = %s"""
+            cursor.execute(sql, (nombreProveedor, estado))
             result = cursor.fetchone()
             if result:
                 return result
