@@ -1990,9 +1990,17 @@ class Ui_clientes(object):
         self.input_tel.setValidator(intValidator)
         self.input_dni.setValidator(intValidator)
         self.input_searchDni.setValidator(intValidator)
-        
+        self.input_searchDni_2.setValidator(intValidator)
+        self.show_codPostal.setValidator(intValidator)
+        self.show_numCalle.setValidator(intValidator)
+        self.show_tel.setValidator(intValidator)
+        self.show_Dni.setValidator(intValidator)
+
         self.input_nameclient.setValidator(stringValidator)
         self.input_calle.setValidator(stringValidator)
+        self.show_nameCliente.setValidator(stringValidator)
+        self.show_calle.setValidator(stringValidator)
+
 
 #--------------------Events-----------------------------------------------------------------
         self.x = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text()))
