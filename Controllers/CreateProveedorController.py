@@ -74,19 +74,122 @@ class CreateProveedorController():
 
         
 
-    def showProveedor(self,nombreProveedor, nameProv, nameFact, calle, numCalle, ciudad, codPostal, tel, email, web):
+    def showProveedor(self,nombreProveedor):
         if nombreProveedor:
             result = self.proveedor.getProveedor(nombreProveedor, '1')
-            self.create_proveedor.show_nameProv.setText(str(result[1]))
-            self.create_proveedor.show_nameFact.setText(str(result[2]))
+            if result:
+                self.create_proveedor.show_nameProv.setText(str(result[1]))
+                self.create_proveedor.show_nameFact.setText(str(result[2]))
+                
+                self.create_proveedor.show_calle.setText(str(result[4]))
+                self.create_proveedor.show_numCalle.setText(str(result[5]))
+                self.create_proveedor.show_ciudad.setCurrentText(str(result[6]))
+                self.create_proveedor.show_codPostal.setText(str(result[7]))
+                self.create_proveedor.show_tel.setText(str(result[8]))
+                self.create_proveedor.show_email.setText(str(result[9]))
+                self.create_proveedor.show_web.setText(str(result[10]))
+            else: 
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El nombre de proveedor no existe")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_() 
+                    
+                    self.create_proveedor.show_nameProv.clear()
+                    self.create_proveedor.show_nameFact.clear()
+                    
+                    self.create_proveedor.show_calle.clear()
+                    self.create_proveedor.show_numCalle.clear()
+                    self.create_proveedor.show_ciudad.clear()
+                    self.create_proveedor.show_codPostal.clear()
+                    self.create_proveedor.show_tel.clear()
+                    self.create_proveedor.show_email.clear()
+                    self.create_proveedor.show_web.clear()
+
+        else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Ingrese un nombre de proveedor válido")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
+
+                self.create_proveedor.show_nameProv.clear()
+                self.create_proveedor.show_nameFact.clear()
+                    
+                self.create_proveedor.show_calle.clear()
+                self.create_proveedor.show_numCalle.clear()
+                self.create_proveedor.show_ciudad.clear()
+                self.create_proveedor.show_codPostal.clear()
+                self.create_proveedor.show_tel.clear()
+                self.create_proveedor.show_email.clear()
+                self.create_proveedor.show_web.clear()
+                
+
+
+    def showProveedor_2(self,nombreProveedor):
+        if nombreProveedor:
+            result = self.proveedor.getProveedor(nombreProveedor, '1')
+            self.create_proveedor.show_nameProv_2.setText(str(result[1]))
+            self.create_proveedor.show_nameFact_2.setText(str(result[2]))
             
-            self.create_proveedor.show_calle.setText(str(result[4]))
-            self.create_proveedor.show_numCalle.setText(str(result[5]))
-            self.create_proveedor.show_ciudad.setCurrentText(str(result[6]))
-            self.create_proveedor.show_codPostal.setText(str(result[7]))
-            self.create_proveedor.show_tel.setText(str(result[8]))
-            self.create_proveedor.show_email.setText(str(result[9]))
-            self.create_proveedor.show_web.setText(str(result[10]))
+            self.create_proveedor.show_calle_2.setText(str(result[4]))
+            self.create_proveedor.show_numCalle_2.setText(str(result[5]))
+            self.create_proveedor.show_ciudad_2.setCurrentText(str(result[6]))
+            self.create_proveedor.show_codPostal_2.setText(str(result[7]))
+            self.create_proveedor.show_tel_2.setText(str(result[8]))
+            self.create_proveedor.show_email_2.setText(str(result[9]))
+            self.create_proveedor.show_web_2.setText(str(result[10]))
+
+    def darBajaProveedor(self,proveedores,CodigoDeBarras):
+        if CodigoDeBarras:
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("¿Desea dar de baja al producto? ")
+            msgBox.setWindowTitle("Baja de producto")
+            msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+            
+                
+                if proveedores :
+                        
+
+                        self.product.bajaProducto(CodigoDeBarras)
+
+                msg = QMessageBox()
+                msg.setWindowTitle("Confirmado")
+                msg.setText("Producto dado de baja de la lista")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("")
+                x = msg.exec_() 
+
+            self.create_product.input_prod_3.clear()
+            self.create_product.input_searchcod_2.clear()
+            self.create_product.input_cantMinStock_3.clear()
+            self.create_product.input_puntoPedido_3.clear()
+            self.create_product.input_costCompra_3.clear()
+            self.create_product.input_precVenta_3.clear()
+
+          
+
+        else: 
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Ingrese un código de barras valido")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
+    
 
     def autoCompleteProveedor(self):
         result = QStringListModel(self.proveedor.autoComplete())

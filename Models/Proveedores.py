@@ -39,3 +39,35 @@ class Proveedor():
             return cursor.fetchall()
 
 
+    def bajaProveedor(self,nombreProveedor):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE proveedor SET activo = "0" WHERE nombreProveedor = %s"""
+            cursor.execute(sql, nombreProveedor)
+            self.conn.commit()
+
+    def altaProveedor(self,nombreProveedor):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE proveedor SET activo = "1" WHERE nombreProveedor = %s"""
+            cursor.execute(sql, nombreProveedor)
+            self.conn.commit()
+
+    def getProveedoresActivos(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM proveedor WHERE activo = '1' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def getProveedoresBaja(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM proveedor WHERE activo = '0' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def UpdateProduct(self,codProveedor,nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb):
+        with self.conn.cursor() as cursor:
+            
+            sql = """UPDATE proveedor SET  nombreProveedor = %s,nombreFactura = %s,fechaAlta = %s,calle = %s,numeroCalle = %s,ciudad = %s,codPostal = %s,celular = %s,email = %s,pagWeb = %s WHERE codProveedor = %s """
+            cursor.execute(sql,(nombreProveedor,nombreFactura,fechaAlta,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb,codProveedor))
+            self.conn.commit() 
