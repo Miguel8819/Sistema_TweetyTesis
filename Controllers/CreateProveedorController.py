@@ -16,7 +16,7 @@ class CreateProveedorController():
         self.proveedor = Proveedor(connection())
         self.create_proveedor = create_proveedor
 
-    def createProveedor(self, nroCuil, nombreProveedor, nombreFactura, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
+    def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor:
             fechaAlta= date.today()
             result = self.proveedor.getProveedor(nombreProveedor, '1')
