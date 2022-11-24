@@ -10,7 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Controllers.menuprincipalController import menuprincipalController
 from venta_ui import Ui_venta
 from controlstock_ui import Ui_controlstock
-from proveedores_ui import Ui_proveedores
+from proveedores_ui import Ui_Proveedores
 from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
@@ -423,7 +423,7 @@ class Ui_menuprincipal(object):
         self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
         self.btn_administracion.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_administracion))
         self.btn_mantenimiento.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_mantenimiento))
-        self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_proveedores, menuprincipal))
+        self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
         self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlstock, menuprincipal))
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))

@@ -20,7 +20,7 @@ class Ui_Proveedores(object):
         self.create_proveedor_controller = CreateProveedorController(self)
         self.proveedor = Proveedor(connection())
         
-    def setupUi(self, proveedores):
+    def setupUi(self, Proveedores):
         #Validador de input en int
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
         
