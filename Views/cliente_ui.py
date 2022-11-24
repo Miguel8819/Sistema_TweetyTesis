@@ -1076,6 +1076,7 @@ class Ui_clientes(object):
         self.label_nameProv_3.setFont(font)
         self.label_nameProv_3.setObjectName("label_nameProv_3")
         self.show_Dni = QtWidgets.QLineEdit(self.groupBox_generales_2)
+        self.show_Dni.setEnabled(False)
         self.show_Dni.setGeometry(QtCore.QRect(11, 115, 401, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -1980,7 +1981,7 @@ class Ui_clientes(object):
         clientes.setTabOrder(self.show_tel, self.show_email)
         clientes.setTabOrder(self.show_email, self.BotonGuardarCambios)
 
-        #Validador de input string
+            #Validador de input string
         stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
 
 
@@ -2010,6 +2011,8 @@ class Ui_clientes(object):
         self.a = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text()))
 
         self.z = self.BotonDarDeBaja.clicked.connect(lambda: self.clientecontroller.bajaCliente(self.cliente, self.input_searchDni_2.text()))
+
+        self.b = self.BotonGuardarCambios.clicked.connect(lambda:self.clientecontroller.modificarCliente(self.show_nameCliente.text(), self.show_Dni.text(), self.show_calle.text(), self.show_numCalle.text(), self.show_ciudad.currentText(), self.show_codPostal.text(), self.show_tel.text(), self.show_email.text()))
 
         
 #--------------------End Events--------------------------------------------------------------

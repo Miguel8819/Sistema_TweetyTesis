@@ -204,7 +204,9 @@ class ClienteController():
                 x = msg.exec_() 
 
                 
-    def modificarCliente(self, CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta ):
+    def modificarCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email ):
+        
+
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)
         msgBox.setText("¿Desea guardar los cambios del producto? ")
@@ -212,8 +214,8 @@ class ClienteController():
         msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         returnValue = msgBox.exec()
         if returnValue == QMessageBox.Ok:
-                    if producto != "" and cant_min_stock !="" and PuntoDePedido !="" and CostoDeCompra != "" and PrecioDeVenta !="":
-                        self.product.UpdateProduct(CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta)
+                    if nroDni:
+                        self.cliente.updateCliente(nombreCliente, nroDni,  calle, nroCalle, ciudad, codPostal, tel, email)
 
                         msg = QMessageBox()
                         msg.setWindowTitle("Confirmado")
@@ -225,12 +227,13 @@ class ClienteController():
                         x = msg.exec_() 
 
                         
-                        self.create_product.input_prod_2.clear()
-                        self.create_product.input_searchcod.clear()
-                        self.create_product.input_cantMinStock_2.clear()
-                        self.create_product.input_puntoPedido_2.clear()
-                        self.create_product.input_costCompra_2.clear()
-                        self.create_product.input_precVenta_2.clear()
+                        self.create_cliente.show_nameCliente.clear()
+                        self.create_cliente.show_Dni.clear()
+                        self.create_cliente.show_calle.clear()
+                        self.create_cliente.show_numCalle.clear()
+                        self.create_cliente.show_codPostal.clear()
+                        self.create_cliente.show_tel.clear()
+                        self.create_cliente.show_email.clear()
 
                     else: 
                         msg = QMessageBox()

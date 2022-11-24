@@ -2184,7 +2184,7 @@ class Ui_CreateProduct(object):
         
 
         #--------------------Events--------------------------------------
-        self.x = self.BotonAgregar.clicked.connect(lambda:self.create_product_controller.createProduct(self.input_cod.text(),self.input_prod.text(), self.box_cat.currentText(),self.box_subCat.currentText(),self.box_marca.currentText(),self.box_tipoUnid.currentText(),self.box_uniMedi.currentText(),self.input_cantMinStock.text(),self.input_puntoPedido.text(),self.input_costCompra.text(),self.input_precVenta.text(), CreateProduct))
+        self.x = self.BotonAgregar.clicked.connect(lambda:self.create_product_controller.createProduct(self.input_cod.text(),self.input_prod.text(), self.box_cat.currentText(),self.box_subCat.currentText(),self.box_marca.currentText(),self.box_tipoUnid.currentText(),self.box_uniMedi.currentText(),self.input_cantMinStock.text(),self.input_puntoPedido.text(),self.input_costCompra.text(),self.input_precVenta.text()))
 
         self.y = self.Botonbuscar.clicked.connect(lambda: self.create_product_controller.showProduct(self.input_searchcod.text()))
         

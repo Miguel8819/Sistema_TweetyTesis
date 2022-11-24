@@ -41,10 +41,10 @@ class Cliente():
             if result:
                 return result
     
-    def updateCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email):
+    def updateCliente(self,nombreCliente, nroDni,  calle, nroCalle, ciudad, codPostal, tel, email):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE cliente SET nombreCliente =%s, numDni = %s,fechaAlta = %s, calle = %s,nroCalle = %s,ciudad = %s, cosPostal = %s, tel = %s, email= %s WHERE codCliente = %s """
-            cursor.execute(sql,(nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email))
+            sql = """UPDATE cliente SET nombreCliente =%s, calle = %s,nroCalle = %s,ciudad = %s, codPostal = %s, tel = %s, email= %s WHERE nroDni = %s """
+            cursor.execute(sql,(nombreCliente, calle, nroCalle, ciudad, codPostal, tel, email,nroDni))
             self.conn.commit()
 
     def deleteCliente(self,nroDni):

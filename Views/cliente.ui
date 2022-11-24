@@ -3038,6 +3038,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="show_Dni">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>

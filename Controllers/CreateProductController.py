@@ -12,15 +12,15 @@ class CreateProductController():
         self.product = Product(connection())
         self.create_product = create_product
 
-    def createProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,CreateProduct):
+    def createProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
      if CodigoDeBarras:
             
         result = self.product.getProduct(CodigoDeBarras, '1')
-        print(result)
+        
         if result:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
-            msg.setText("ya existe")
+            msg.setText("El producto ya existe")
             msg.setIcon(QMessageBox.Information)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
@@ -38,16 +38,13 @@ class CreateProductController():
                         
                     if CodigoDeBarras and producto and categoria and subCategoria and marca and tipoUnidad and unidadMedida and cant_min_stock and PuntoDePedido and CostoDeCompra and PrecioDeVenta :
                         self.product.insertProduct(CodigoDeBarras, producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta)
+                        
                         msg = QMessageBox()
                         msg.setWindowTitle('¡Exito!')
                         msg.setText("¡Producto Guardado exitosamente!.")
-
                         msg.setIcon(QMessageBox.Information)
-
                         msg.setStandardButtons(QMessageBox.Ok)
                         msg.setDefaultButton(QMessageBox.Ok)
-                            
-
                         x = msg.exec_()
                                     
                         self.create_product.input_prod.clear()
@@ -289,7 +286,7 @@ class CreateProductController():
                 self.create_product.input_costCompra_3.clear()
                 self.create_product.input_precVenta_3.clear()
 
-    def modificarProducto(self, CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta ):
+    def modificarProducto(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta ):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)
         msgBox.setText("¿Desea guardar los cambios del producto? ")
