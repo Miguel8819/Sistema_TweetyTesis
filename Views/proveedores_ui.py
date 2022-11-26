@@ -25,7 +25,7 @@ class Ui_Proveedores(object):
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
         
         #Validador de input string
-        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+')) 
+        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))  
         Proveedores.setObjectName("Proveedores")
         Proveedores.resize(1021, 669)
         Proveedores.setStyleSheet("QWidget{background-color:rgb(51,102,255)}\n"
@@ -1265,7 +1265,7 @@ class Ui_Proveedores(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
         self.Botonbuscar.setPalette(palette)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Botonbuscar.setIcon(icon)
         self.Botonbuscar.setIconSize(QtCore.QSize(15, 20))
         self.Botonbuscar.setObjectName("Botonbuscar")
@@ -2439,10 +2439,10 @@ class Ui_Proveedores(object):
         self.input_searchNameFact_2.setMaxLength(40)
         self.input_searchNameFact_2.setAlignment(QtCore.Qt.AlignCenter)
         self.input_searchNameFact_2.setObjectName("input_searchNameFact_2")
-        self.BotonGuardarCambios_3 = QtWidgets.QPushButton(self.frame_buscar_editar_2)
-        self.BotonGuardarCambios_3.setGeometry(QtCore.QRect(750, 540, 151, 30))
-        self.BotonGuardarCambios_3.setMinimumSize(QtCore.QSize(75, 30))
-        self.BotonGuardarCambios_3.setMaximumSize(QtCore.QSize(200, 30))
+        self.BotonCancelar_3 = QtWidgets.QPushButton(self.frame_buscar_editar_2)
+        self.BotonCancelar_3.setGeometry(QtCore.QRect(750, 540, 151, 30))
+        self.BotonCancelar_3.setMinimumSize(QtCore.QSize(75, 30))
+        self.BotonCancelar_3.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -2579,14 +2579,14 @@ class Ui_Proveedores(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
-        self.BotonGuardarCambios_3.setPalette(palette)
+        self.BotonCancelar_3.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.BotonGuardarCambios_3.setFont(font)
-        self.BotonGuardarCambios_3.setIconSize(QtCore.QSize(15, 20))
-        self.BotonGuardarCambios_3.setObjectName("BotonGuardarCambios_3")
+        self.BotonCancelar_3.setFont(font)
+        self.BotonCancelar_3.setIconSize(QtCore.QSize(15, 20))
+        self.BotonCancelar_3.setObjectName("BotonCancelar_3")
         self.Botonbuscar_4 = QtWidgets.QPushButton(self.frame_buscar_editar_2)
         self.Botonbuscar_4.setGeometry(QtCore.QRect(920, 30, 31, 30))
         self.Botonbuscar_4.setMinimumSize(QtCore.QSize(10, 10))
@@ -2764,7 +2764,6 @@ class Ui_Proveedores(object):
         Proveedores.setTabOrder(self.show_email, self.show_web)
         Proveedores.setTabOrder(self.show_web, self.BotonGuardarCambios)
 
-
         #Inputs con validadores
         self.input_codPostal.setValidator(intValidator)
         self.input_numCalle.setValidator(intValidator)
@@ -2781,7 +2780,7 @@ class Ui_Proveedores(object):
         self.show_nameFact.setValidator(stringValidator)
         self.show_calle.setValidator(stringValidator)
 
-        # self.create_proveedor_controller.autoCompleteProveedor(self.input_searchNameProv.text())
+         # self.create_proveedor_controller.autoCompleteProveedor(self.input_searchNameProv.text())
 #--------------------Events-----------------------------------------------------------------
         self.a = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(),self.input_nroCuil.text(),  self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text()))
         
@@ -2802,6 +2801,7 @@ class Ui_Proveedores(object):
         self.j = self.BotonCancelar_3.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         
 #--------------------End Events--------------------------------------------------------------
+
 
     def retranslateUi(self, Proveedores):
         _translate = QtCore.QCoreApplication.translate
@@ -2919,7 +2919,7 @@ class Ui_Proveedores(object):
         self.input_searchNameProv_2.setPlaceholderText(_translate("Proveedores", "Apellido y Nombre Proveedor"))
         self.label_BnameProv_2.setText(_translate("Proveedores", "Nombre Facturación"))
         self.input_searchNameFact_2.setPlaceholderText(_translate("Proveedores", "Nombre Facturación"))
-        self.BotonGuardarCambios_3.setText(_translate("Proveedores", "Cancelar"))
+        self.BotonCancelar_3.setText(_translate("Proveedores", "Cancelar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab3), _translate("Proveedores", "Dar de Baja"))
 
 

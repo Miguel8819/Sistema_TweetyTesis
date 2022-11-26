@@ -6952,7 +6952,7 @@ QLabel{background-color:none}</string>
        <string>Nombre Facturación</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="BotonGuardarCambios_3">
+     <widget class="QPushButton" name="BotonCancelar_3">
       <property name="geometry">
        <rect>
         <x>750</x>
