@@ -132,6 +132,63 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel.clear()
                 self.create_proveedor.show_email.clear()
                 self.create_proveedor.show_web.clear()
+
+    def buscarProveedor(self,nombreFacturacion):
+        if nombreFacturacion:
+            result = self.proveedor.getProveedor_2(nombreFacturacion, '1')
+            if result:
+                self.create_proveedor.show_nroCuil.setText(str(result[1]))
+                self.create_proveedor.show_nameProv.setText(str(result[2]))
+                self.create_proveedor.show_nameFact.setText(str(result[3]))
+                self.create_proveedor.show_calle.setText(str(result[5]))
+                self.create_proveedor.show_numCalle.setText(str(result[6]))
+                self.create_proveedor.show_ciudad.setCurrentText(str(result[7]))
+                self.create_proveedor.show_codPostal.setText(str(result[8]))
+                self.create_proveedor.show_tel.setText(str(result[9]))
+                self.create_proveedor.show_email.setText(str(result[10]))
+                self.create_proveedor.show_web.setText(str(result[11]))
+            else: 
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El nombre de facturación no existe")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_() 
+                    
+                    self.create_proveedor.input_searchNameProv.clear()
+                    self.create_proveedor.show_nameProv.clear()
+                    self.create_proveedor.show_nameFact.clear()
+                            
+                    self.create_proveedor.show_calle.clear()
+                    self.create_proveedor.show_numCalle.clear()
+                    self.create_proveedor.show_nroCuil.clear()
+                    self.create_proveedor.show_codPostal.clear()
+                    self.create_proveedor.show_tel.clear()
+                    self.create_proveedor.show_email.clear()
+                    self.create_proveedor.show_web.clear()
+
+        else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Ingrese un nombre de facturación válido")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
+
+                self.create_proveedor.show_nameProv.clear()
+                self.create_proveedor.show_nameFact.clear()
+                    
+                self.create_proveedor.show_calle.clear()
+                self.create_proveedor.show_numCalle.clear()
+             
+                self.create_proveedor.show_codPostal.clear()
+                self.create_proveedor.show_tel.clear()
+                self.create_proveedor.show_email.clear()
+                self.create_proveedor.show_web.clear()
                 
 
 
@@ -158,6 +215,30 @@ class CreateProveedorController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+
+    def buscarProveedor_2(self,nombreFacturacion):
+        if nombreFacturacion:
+            result = self.proveedor.getProveedor_2(nombreFacturacion, '1')
+            if result:
+                self.create_proveedor.show_nroCuil_2.setText(str(result[1]))
+                self.create_proveedor.show_nameProv_2.setText(str(result[2]))
+                self.create_proveedor.show_nameFact_2.setText(str(result[3]))
+                self.create_proveedor.show_calle_2.setText(str(result[5]))
+                self.create_proveedor.show_numCalle_2.setText(str(result[6]))
+                self.create_proveedor.show_ciudad_2.setCurrentText(str(result[7]))
+                self.create_proveedor.show_codPostal_2.setText(str(result[8]))
+                self.create_proveedor.show_tel_2.setText(str(result[9]))
+                self.create_proveedor.show_email_2.setText(str(result[10]))
+                self.create_proveedor.show_web_2.setText(str(result[11]))
+            else: 
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Ingrese un nombre de facturación valido")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()
             
 
     def darBajaProveedor(self,proveedores,nombreProveedor):
@@ -260,4 +341,6 @@ class CreateProveedorController():
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         return completer
         
-    
+    def cancelar(self, Ui_Proveedores):
+
+        Ui_Proveedores.close()

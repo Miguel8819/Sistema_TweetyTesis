@@ -34,6 +34,14 @@ class Proveedor():
             result = cursor.fetchone()
             if result:
                 return result
+
+    def getProveedor_2(self, nombreFacturacion, estado):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM proveedor WHERE nombreFactura = %s AND activo = %s"""
+            cursor.execute(sql, (nombreFacturacion, estado))
+            result = cursor.fetchone()
+            if result:
+                return result
                 
     def autoComplete(self):
         with self.conn.cursor as cursor:
