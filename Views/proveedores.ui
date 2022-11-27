@@ -533,6 +533,9 @@ QPushButton{background-color:none}</string>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="placeholderText">
+       <string>Nro de CUIL o CUIT</string>
+      </property>
      </widget>
      <widget class="QLabel" name="cuilOcuit">
       <property name="geometry">
@@ -6204,7 +6207,7 @@ QLabel{background-color:none}</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="BotonGuardarCambios_2">
+     <widget class="QPushButton" name="BotonDarDeBaja">
       <property name="geometry">
        <rect>
         <x>590</x>

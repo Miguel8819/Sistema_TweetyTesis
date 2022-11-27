@@ -23,6 +23,10 @@ class Ui_clientes(object):
     def setupUi(self, clientes):
         #Validador de input en int
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
+
+
+        #Validador de input string
+        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
         clientes.setObjectName("clientes")
         clientes.resize(1021, 669)
         clientes.setStyleSheet("QWidget{background-color:rgb(51,102,255)}\n"
@@ -1981,10 +1985,7 @@ class Ui_clientes(object):
         clientes.setTabOrder(self.show_tel, self.show_email)
         clientes.setTabOrder(self.show_email, self.BotonGuardarCambios)
 
-            #Validador de input string
-        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
-
-
+        
 #Inputs con validadores
         self.input_codPostal.setValidator(intValidator)
         self.input_numCalle.setValidator(intValidator)
@@ -2019,7 +2020,7 @@ class Ui_clientes(object):
 
     def retranslateUi(self, clientes):
         _translate = QtCore.QCoreApplication.translate
-        clientes.setWindowTitle(_translate("clientes", "Proveedores"))
+        clientes.setWindowTitle(_translate("clientes", "Clientes"))
         self.label.setText(_translate("clientes", "Datos Cliente"))
         self.tabWidget.setWhatsThis(_translate("clientes", "<html><head/><body><p><br/></p></body></html>"))
         self.groupBox_direccion.setTitle(_translate("clientes", "Dirección"))

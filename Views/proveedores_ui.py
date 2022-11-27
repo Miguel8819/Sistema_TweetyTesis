@@ -25,7 +25,7 @@ class Ui_Proveedores(object):
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
         
         #Validador de input string
-        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))  
+        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+')) 
         Proveedores.setObjectName("Proveedores")
         Proveedores.resize(1021, 669)
         Proveedores.setStyleSheet("QWidget{background-color:rgb(51,102,255)}\n"
@@ -2176,10 +2176,10 @@ class Ui_Proveedores(object):
         self.Botonbuscar_3.setIcon(icon)
         self.Botonbuscar_3.setIconSize(QtCore.QSize(15, 20))
         self.Botonbuscar_3.setObjectName("Botonbuscar_3")
-        self.BotonGuardarCambios_2 = QtWidgets.QPushButton(self.frame_buscar_editar_2)
-        self.BotonGuardarCambios_2.setGeometry(QtCore.QRect(590, 540, 151, 30))
-        self.BotonGuardarCambios_2.setMinimumSize(QtCore.QSize(75, 30))
-        self.BotonGuardarCambios_2.setMaximumSize(QtCore.QSize(200, 30))
+        self.BotonDarDeBaja = QtWidgets.QPushButton(self.frame_buscar_editar_2)
+        self.BotonDarDeBaja.setGeometry(QtCore.QRect(590, 540, 151, 30))
+        self.BotonDarDeBaja.setMinimumSize(QtCore.QSize(75, 30))
+        self.BotonDarDeBaja.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -2316,14 +2316,14 @@ class Ui_Proveedores(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
-        self.BotonGuardarCambios_2.setPalette(palette)
+        self.BotonDarDeBaja.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.BotonGuardarCambios_2.setFont(font)
-        self.BotonGuardarCambios_2.setIconSize(QtCore.QSize(15, 20))
-        self.BotonGuardarCambios_2.setObjectName("BotonGuardarCambios_2")
+        self.BotonDarDeBaja.setFont(font)
+        self.BotonDarDeBaja.setIconSize(QtCore.QSize(15, 20))
+        self.BotonDarDeBaja.setObjectName("BotonDarDeBaja")
         self.groupBox_generales_3 = QtWidgets.QGroupBox(self.frame_buscar_editar_2)
         self.groupBox_generales_3.setGeometry(QtCore.QRect(10, 80, 421, 221))
         self.groupBox_generales_3.setMinimumSize(QtCore.QSize(421, 191))
@@ -2764,7 +2764,9 @@ class Ui_Proveedores(object):
         Proveedores.setTabOrder(self.show_email, self.show_web)
         Proveedores.setTabOrder(self.show_web, self.BotonGuardarCambios)
 
-        #Inputs con validadores
+        
+
+ #Inputs con validadores
         self.input_codPostal.setValidator(intValidator)
         self.input_numCalle.setValidator(intValidator)
         self.input_tel.setValidator(intValidator)
@@ -2794,14 +2796,13 @@ class Ui_Proveedores(object):
 
         self.f = self.BotonGuardarCambios.clicked.connect(lambda: self.create_proveedor_controller.modificarProveedor(self.show_nameProv.text(), self.show_nameFact.text(), self.show_nroCuil.text(), self.show_calle.text(), self.show_numCalle.text(), self.show_ciudad.currentText(), self.show_codPostal.text(), self.show_tel.text(), self.show_email.text(), self.show_web.text()))
 
-        self.g = self.BotonGuardarCambios_2.clicked.connect(lambda: self.create_proveedor_controller.darBajaProveedor(self.proveedor,self.input_searchNameProv_2.text()))
+        self.g = self.BotonDarDeBaja.clicked.connect(lambda: self.create_proveedor_controller.darBajaProveedor(self.proveedor,self.input_searchNameProv_2.text()))
 
         self.h = self.BotonCancelar.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         self.i = self.BotonCancelar_2.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         self.j = self.BotonCancelar_3.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         
-#--------------------End Events--------------------------------------------------------------
-
+#--------------------End Events------------------------------------------------------
 
     def retranslateUi(self, Proveedores):
         _translate = QtCore.QCoreApplication.translate
@@ -2833,6 +2834,7 @@ class Ui_Proveedores(object):
         self.input_nameProv.setPlaceholderText(_translate("Proveedores", "Apellido y Nombre Proveedor"))
         self.label_nameProv.setText(_translate("Proveedores", "<html><head/><body><p>Nombre Facturación<span style=\" font-weight:400;\">(</span><span style=\" color:#ff0000;\">*</span><span style=\" font-weight:400;\">)</span>:</p></body></html>"))
         self.input_nameFact.setPlaceholderText(_translate("Proveedores", "Nombre Facturación"))
+        self.input_nroCuil.setPlaceholderText(_translate("Proveedores", "Nro de CUIL o CUIT"))
         self.cuilOcuit.setText(_translate("Proveedores", "<html><head/><body><p>Nro de CUIL o CUIT<span style=\" font-weight:400;\">(</span><span style=\" color:#ff0000;\">*</span><span style=\" font-weight:400;\">)</span>:</p></body></html>"))
         self.label_2.setText(_translate("Proveedores", "Los campos con (*) son obligatorios"))
         self.BotonCancelar.setText(_translate("Proveedores", "Cancelar"))
@@ -2910,7 +2912,7 @@ class Ui_Proveedores(object):
         self.show_ciudad_2.setItemText(11, _translate("Proveedores", "Villa Carlos Paz"))
         self.show_ciudad_2.setItemText(12, _translate("Proveedores", "Villa Giardino"))
         self.label_numCalle_5.setText(_translate("Proveedores", "Buscar Por:"))
-        self.BotonGuardarCambios_2.setText(_translate("Proveedores", "Dar de Baja"))
+        self.BotonDarDeBaja.setText(_translate("Proveedores", "Dar de Baja"))
         self.groupBox_generales_3.setTitle(_translate("Proveedores", "Generales"))
         self.label_codProv_4.setText(_translate("Proveedores", "<html><head/><body><p>Apellido y Nombre Proveedor<span style=\" font-weight:400;\">(</span><span style=\" color:#ff0000;\">*</span><span style=\" font-weight:400;\">)</span>:</p></body></html>"))
         self.label_nameProv_4.setText(_translate("Proveedores", "<html><head/><body><p>Nombre Facturación<span style=\" font-weight:400;\">(</span><span style=\" color:#ff0000;\">*</span><span style=\" font-weight:400;\">)</span>:</p></body></html>"))

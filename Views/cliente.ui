@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Proveedores</string>
+   <string>Clientes</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{background-color:rgb(51,102,255)}

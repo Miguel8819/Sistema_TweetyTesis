@@ -24,7 +24,6 @@ class Ui_CreateProduct(object):
         
         #Validador de input string
         stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
-
         CreateProduct.setObjectName("CreateProduct")
         CreateProduct.resize(1021, 663)
         CreateProduct.setStyleSheet("QWidget{background-color:rgb(51,102,255)}\n"
@@ -2169,6 +2168,7 @@ class Ui_CreateProduct(object):
         CreateProduct.setTabOrder(self.input_searchcod, self.Botonbuscar)
         CreateProduct.setTabOrder(self.Botonbuscar, self.BotonGuardarCambios)
 
+         
         #Inputs con validadores
         self.input_cod.setValidator(intValidator)
         self.input_cantMinStock.setValidator(intValidator)
@@ -2197,10 +2197,9 @@ class Ui_CreateProduct(object):
         self.e = self.BotonCancelar.clicked.connect(lambda:self.create_product_controller.salir(CreateProduct))
         #--------------------End Events---------------------------------
 
-
     def retranslateUi(self, CreateProduct):
         _translate = QtCore.QCoreApplication.translate
-        CreateProduct.setWindowTitle(_translate("CreateProduct", "Proveedores"))
+        CreateProduct.setWindowTitle(_translate("CreateProduct", "Productos"))
         self.tabWidget.setWhatsThis(_translate("CreateProduct", "<html><head/><body><p><br/></p></body></html>"))
         self.label_2.setText(_translate("CreateProduct", "Los campos con (*) son obligatorios"))
         self.BotonCancelar.setText(_translate("CreateProduct", "Cancelar"))
