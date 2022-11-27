@@ -14,6 +14,7 @@ from proveedores_ui import Ui_Proveedores
 from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
+from listadeproveedores_ui import Ui_lista_proveedores
 
 
 class Ui_menuprincipal(object):
@@ -428,7 +429,9 @@ class Ui_menuprincipal(object):
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
-        self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_lista_clientes, menuprincipal))
+        self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
+        self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_lista_proveedores, menuprincipal))
+
 #--------------------End Events---------------------------------
 
     def retranslateUi(self, menuprincipal):
