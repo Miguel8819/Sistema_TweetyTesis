@@ -15,6 +15,7 @@ from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
 from listadeproveedores_ui import Ui_lista_proveedores
+from informedeventas_ui import Ui_informeDeVentas
 
 
 class Ui_menuprincipal(object):
@@ -430,7 +431,8 @@ class Ui_menuprincipal(object):
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
-        self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_lista_proveedores, menuprincipal))
+        self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
+        self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
 
 #--------------------End Events---------------------------------
 

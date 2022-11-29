@@ -64,3 +64,10 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show()   
+
+   def openInformeDeVentas(self, Ui_informeDeVentas, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_informeDeVentas()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show()  
