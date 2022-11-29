@@ -47,7 +47,7 @@ class Ui_informeDeVentas(object):
 "")
         self.Boton_Buscar.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Boton_Buscar.setIcon(icon)
         self.Boton_Buscar.setObjectName("Boton_Buscar")
         self.Btn_Volver = QtWidgets.QPushButton(self.tab)
