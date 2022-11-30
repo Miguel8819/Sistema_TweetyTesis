@@ -11,6 +11,7 @@ from tokenize import Number
 from datetime import datetime
 from unittest import result
 
+
 from Models.cabeceraFactura import CabeceraFactura
 
 
@@ -162,7 +163,7 @@ class ventaController():
       neto=0
 
       for  i in range(table.rowCount()):
-        neto += float(table.item(i,4).text())
+        neto += float(table.item(i,5).text())
 
       self.venta.input_neto.setText(str(neto))
 
@@ -314,13 +315,12 @@ class ventaController():
      if returnValue == QMessageBox.Ok:
 
         fecha= datetime.now()
-        
+        cabecera = 0
         if fecha and self.idCliente:
-             self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
+            cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
 
-        
         print(datetime.now())
-        cabecera=1
+        
         # validaciones
     # guardar cabecera y recuperar el Id 
       
