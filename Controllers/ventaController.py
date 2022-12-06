@@ -324,21 +324,47 @@ class ventaController():
         self.venta.input_localidad.clear()
 
     def finalizar (self, Ui_venta):
-    
-    
-     msgBox = QMessageBox()
-     msgBox.setIcon(QMessageBox.Information)
-     msgBox.setText("¿Desea finalizar la venta? ")
-     msgBox.setWindowTitle("Finalizar Venta")
-     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-     returnValue = msgBox.exec()
-     if returnValue == QMessageBox.Ok:
-
         fecha= datetime.now()
         cabecera = 0
-        if fecha and self.idCliente:
-            cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
-
+        table = self.venta.table_venta  
+        if fecha and self.idCliente: #Validar todo
+            if self.venta.input_importe.text() != '':
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea finalizar la venta? ")
+                msgBox.setWindowTitle("Finalizar Venta")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:     
+                    cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
+                    for  i in range(table.rowCount()):
+                        # datelle de factura
+                        CodProducto = table.item(i,0).text()
+                        CodigoDeBarras = table.item(i,1).text()
+                        cantidad = table.item(i,2).text()
+                        producto = table.item(i,3).text()
+                        precio = table.item(i,4).text()         
+                       
+                        if  cabecera  and CodProducto and cantidad and precio: 
+                            self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
+            
+                    msg = QMessageBox()
+                    msg.setWindowTitle('Venta Finalizada')
+                    msg.setText("¡Venta Guardada exitosamente!.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
+                    self.limpiar_venta(Ui_venta)
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("No ha ingresado productos.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
@@ -347,46 +373,8 @@ class ventaController():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
-            x = msg.exec_()
+            x = msg.exec_()         
 
-        print(datetime.now())
-        
-        # validaciones
-    # guardar cabecera y recuperar el Id 
-    
-        table = self.venta.table_venta     
-        
-        for  i in range(table.rowCount()):
-            # datelle de factura
-            CodProducto = table.item(i,0).text()
-            CodigoDeBarras = table.item(i,1).text()
-            cantidad = table.item(i,2).text()
-            producto = table.item(i,3).text()
-            precio = table.item(i,4).text()
-            
-            
-           
-            if  cabecera  and CodProducto and cantidad and precio: 
-                self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio) 
-                
-                msg = QMessageBox()
-                msg.setWindowTitle('Venta Finalizada')
-                msg.setText("¡Venta Guardada exitosamente!.")
-                msg.setIcon(QMessageBox.Information)
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-          
-
-        
-            self.limpiar_venta(Ui_venta)
-       
-
-
-        # idCabecera = 1
-
-        # cada dato que quieras guardar
-        # llamar al insert pasandole los datos que recuperaste de la tabla arriba
 
 
       
