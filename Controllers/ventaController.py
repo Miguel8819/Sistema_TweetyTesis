@@ -51,16 +51,34 @@ class ventaController():
 
 
 
-    def buscarCliente(self,nroDni,nombreCliente,calle,ciudad):
+    def buscarCliente(self,nroDni):
         if nroDni:
-            result=self.cliente.getCliente(nroDni, '1')
-            self.idCliente = result[0]
-            print(self.idCliente)
-            self.venta.input_nombre.setText(str(result[2]))
-            self.venta.input_direccion.setText(str(result[4]))
-            self.venta.input_localidad.setText(str(result[6]))       
-
-
+                result=self.cliente.getCliente(nroDni, '1')
+                if result:
+                    
+                    self.idCliente = result[0]
+                    self.venta.input_nombre.setText(str(result[2]))
+                    self.venta.input_direccion.setText(str(result[4]))
+                    self.venta.input_localidad.setText(str(result[6]))       
+                else:
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El DNI ingresado no existe.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_() 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese un numero de DNI.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_() 
+            
     def aceptar(self, Ui_venta, CodigoDeBarras, cantidad,nombre,precio1,subtotal,stock):
 
             if CodigoDeBarras and (cantidad > '0') :
@@ -306,6 +324,8 @@ class ventaController():
         self.venta.input_localidad.clear()
 
     def finalizar (self, Ui_venta):
+    
+    
      msgBox = QMessageBox()
      msgBox.setIcon(QMessageBox.Information)
      msgBox.setText("¿Desea finalizar la venta? ")
@@ -319,11 +339,21 @@ class ventaController():
         if fecha and self.idCliente:
             cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Debe ingresar el DNI del cliente.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
+
         print(datetime.now())
         
         # validaciones
     # guardar cabecera y recuperar el Id 
-      
+    
         table = self.venta.table_venta     
         
         for  i in range(table.rowCount()):
@@ -339,15 +369,17 @@ class ventaController():
             if  cabecera  and CodProducto and cantidad and precio: 
                 self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio) 
                 
-        msg = QMessageBox()
-        msg.setWindowTitle('Venta Finalizada')
-        msg.setText("¡Venta Guardada exitosamente!.")
-        msg.setIcon(QMessageBox.Information)
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.setDefaultButton(QMessageBox.Ok)
-        x = msg.exec_()
+                msg = QMessageBox()
+                msg.setWindowTitle('Venta Finalizada')
+                msg.setText("¡Venta Guardada exitosamente!.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+          
+
         
-        self.limpiar_venta(Ui_venta)
+            self.limpiar_venta(Ui_venta)
        
 
 

@@ -32,11 +32,7 @@ class Venta():
             if result:
                 return result
     
-    def updateVenta(self,table_venta):
-        with self.conn.cursor() as cursor:
-            sql = """UPDATE venta SET  cantidad = %s, descripcion= %s, precio_unit = %s, descuento = %s, total = %s, stock = %s, WHERE codigo = %s """
-            cursor.execute(sql,( table_venta))
-            self.conn.commit()
+   
 
     def deleteVenta(self,cod):
         with self.conn.cursor() as cursor:
@@ -49,3 +45,17 @@ class Venta():
             sql = """INSERT INTO venta (codCabecera,codProducto,cantidad,precioUnitario) VALUES (%s,%s,%s,%s)"""
             cursor.execute(sql, (codCabecera,codProducto,cantidad,precio))
             self.conn.commit()
+
+    
+
+    def ventasDiarias(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y"), SUM(df.cantidad * df.precioUnitario) 
+                    FROM cabecerafactura cf ,venta df
+                    WHERE
+                    df.codCabecera = cf.nroFactura 
+                    GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y")"""
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result

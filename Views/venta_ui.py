@@ -1710,7 +1710,7 @@ class Ui_venta(object):
        
         self.c = self.Boton_cancelar.clicked.connect(lambda:self.ventaController.cancelar(venta))
  
-        self.p = self.Botonbuscar_cliente.clicked.connect(lambda:self.ventaController.buscarCliente(self.input_nroDni.text(),self.input_nombre.text(),self.input_direccion.text(),self.input_localidad.text()))
+        self.p = self.Botonbuscar_cliente.clicked.connect(lambda:self.ventaController.buscarCliente(self.input_nroDni.text()))
 
         self.t = self.Boton_agregarcliente.clicked.connect(lambda:self.menuPrincipal.openClientes(Ui_clientes,venta))
 

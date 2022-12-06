@@ -20,9 +20,10 @@ class listarVentas():
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget
-        ventasDiarias = self.venta.getVentas()
+        ventasDiarias = self.venta.ventasDiarias()
+           
         table.setRowCount(0)
         for row_number, row_data in enumerate(ventasDiarias):
-            table.insertRow(row_number)
-            for column_number, data in enumerate(row_data):
-                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                table.insertRow(row_number)
+                for column_number, data in enumerate(row_data):
+                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
