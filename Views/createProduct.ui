@@ -1250,7 +1250,7 @@ QPushButton{background-color:none}</string>
         <string/>
        </property>
        <property name="maxLength">
-        <number>20</number>
+        <number>14</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -6046,12 +6046,48 @@ QLabel{background-color:none}</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
+  <tabstop>input_cod</tabstop>
+  <tabstop>input_prod</tabstop>
+  <tabstop>box_cat</tabstop>
+  <tabstop>box_subCat</tabstop>
+  <tabstop>box_marca</tabstop>
+  <tabstop>box_tipoUnid</tabstop>
+  <tabstop>box_uniMedi</tabstop>
+  <tabstop>input_cantMinStock</tabstop>
+  <tabstop>input_puntoPedido</tabstop>
+  <tabstop>input_costCompra</tabstop>
+  <tabstop>input_precVenta</tabstop>
   <tabstop>BotonAgregar</tabstop>
   <tabstop>BotonCancelar</tabstop>
   <tabstop>input_searchcod</tabstop>
   <tabstop>Botonbuscar</tabstop>
+  <tabstop>input_prod_2</tabstop>
+  <tabstop>box_cat_2</tabstop>
+  <tabstop>box_subCat_2</tabstop>
+  <tabstop>box_marca_2</tabstop>
+  <tabstop>box_tipoUnid_2</tabstop>
+  <tabstop>box_uniMedi_2</tabstop>
+  <tabstop>input_cantMinStock_2</tabstop>
+  <tabstop>input_puntoPedido_2</tabstop>
+  <tabstop>input_costCompra_2</tabstop>
+  <tabstop>input_precVenta_2</tabstop>
   <tabstop>BotonGuardarCambios</tabstop>
+  <tabstop>BotonCancelar_2</tabstop>
+  <tabstop>input_searchcod_2</tabstop>
+  <tabstop>Botonbuscar_2</tabstop>
+  <tabstop>input_prod_3</tabstop>
+  <tabstop>box_cat_3</tabstop>
+  <tabstop>box_subCat_3</tabstop>
+  <tabstop>box_marca_3</tabstop>
+  <tabstop>box_tipoUnid_3</tabstop>
+  <tabstop>box_uniMedi_3</tabstop>
+  <tabstop>input_cantMinStock_3</tabstop>
+  <tabstop>input_puntoPedido_3</tabstop>
+  <tabstop>input_costCompra_3</tabstop>
+  <tabstop>input_precVenta_3</tabstop>
+  <tabstop>Boton_DarDeBaja</tabstop>
+  <tabstop>BotonCancelar_3</tabstop>
+  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>
