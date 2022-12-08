@@ -178,7 +178,7 @@
       <rect>
        <x>320</x>
        <y>120</y>
-       <width>171</width>
+       <width>221</width>
        <height>361</height>
       </rect>
      </property>
@@ -188,61 +188,11 @@
      <property name="sizeAdjustPolicy">
       <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
-     <row>
+     <column>
       <property name="text">
-       <string>Enero</string>
+       <string>Mes</string>
       </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Febrero</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Marzo</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Abril</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Mayo</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Junio</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Julio</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Agosto</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Septiembre</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Octubre</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Diciembre</string>
-      </property>
-     </row>
+     </column>
      <column>
       <property name="text">
        <string>Importe</string>
