@@ -109,8 +109,8 @@ background-color:rgb(187, 235, 255);
   <widget class="QTableWidget" name="table_venta">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>300</y>
+     <x>60</x>
+     <y>280</y>
      <width>741</width>
      <height>171</height>
     </rect>
@@ -498,7 +498,7 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>70</y>
      <width>161</width>
      <height>21</height>
@@ -1039,6 +1039,9 @@ background-color:rgb(187, 235, 255);
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="placeholderText">
+    <string>Nro DNI</string>
+   </property>
   </widget>
   <widget class="QLabel" name="codprod">
    <property name="geometry">
@@ -1085,11 +1088,14 @@ background-color:rgb(187, 235, 255);
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
   </widget>
   <widget class="QLabel" name="direccion">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>50</y>
      <width>61</width>
      <height>16</height>
@@ -1108,7 +1114,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="localidad">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>630</x>
      <y>90</y>
      <width>61</width>
      <height>16</height>
@@ -1126,13 +1132,13 @@ background-color:rgb(187, 235, 255);
   </widget>
   <widget class="QLineEdit" name="input_nombre">
    <property name="enabled">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
      <x>220</x>
      <y>70</y>
-     <width>161</width>
+     <width>221</width>
      <height>21</height>
     </rect>
    </property>
@@ -1157,8 +1163,8 @@ background-color:rgb(187, 235, 255);
     <rect>
      <x>220</x>
      <y>50</y>
-     <width>47</width>
-     <height>13</height>
+     <width>111</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -1168,7 +1174,7 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="text">
-    <string>Nombre</string>
+    <string>Apellido y nombre</string>
    </property>
   </widget>
   <widget class="QLabel" name="condIVA">
@@ -1216,7 +1222,7 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>630</x>
      <y>110</y>
      <width>171</width>
      <height>21</height>
@@ -1238,7 +1244,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QPushButton" name="boton_aceptar">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>560</x>
      <y>160</y>
      <width>75</width>
      <height>21</height>
@@ -1757,7 +1763,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="tcant">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>380</x>
      <y>150</y>
      <width>71</width>
      <height>41</height>
@@ -1776,7 +1782,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLineEdit" name="input_cantidad">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>450</x>
      <y>160</y>
      <width>91</width>
      <height>21</height>
@@ -2721,7 +2727,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>50</y>
+     <y>20</y>
      <width>81</width>
      <height>121</height>
     </rect>
@@ -2833,6 +2839,11 @@ background-color: rgb(255, 45, 3);}</string>
    <item>
     <property name="text">
      <string>Responsable No Inscripto</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Responsable Inscripto</string>
     </property>
    </item>
    <item>
@@ -4160,11 +4171,14 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_producto">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>230</x>
      <y>200</y>
-     <width>141</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -4189,7 +4203,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="precio">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>460</x>
      <y>190</y>
      <width>81</width>
      <height>31</height>
@@ -4211,7 +4225,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>510</x>
      <y>200</y>
      <width>91</width>
      <height>21</height>
@@ -4244,8 +4258,8 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="stock">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>260</y>
+     <x>680</x>
+     <y>230</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -4266,8 +4280,8 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>260</y>
+     <x>720</x>
+     <y>230</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -4299,7 +4313,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="subtotal">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>440</x>
      <y>230</y>
      <width>61</width>
      <height>31</height>
@@ -4321,7 +4335,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>510</x>
      <y>240</y>
      <width>91</width>
      <height>21</height>
@@ -4357,7 +4371,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>630</x>
      <y>70</y>
      <width>81</width>
      <height>21</height>
@@ -4382,7 +4396,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="direccion_2">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>630</x>
      <y>50</y>
      <width>61</width>
      <height>16</height>
