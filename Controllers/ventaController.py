@@ -59,6 +59,7 @@ class ventaController():
                     self.idCliente = result[0]
                     self.venta.input_nombre.setText(str(result[2]))
                     self.venta.input_direccion.setText(str(result[4]))
+                    self.venta.input_nroCalle.setText(str(result[5]))
                     self.venta.input_localidad.setText(str(result[6]))       
                 else:
                     msg = QMessageBox()
