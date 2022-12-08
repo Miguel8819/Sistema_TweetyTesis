@@ -27,3 +27,13 @@ class listarVentas():
                 table.insertRow(row_number)
                 for column_number, data in enumerate(row_data):
                     table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def detalleVenta(self):
+        table = self.listar_ventasDiarias.tableWidget_3
+        ventasDiarias = self.venta.detalleVentas()
+           
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(ventasDiarias):
+                table.insertRow(row_number)
+                for column_number, data in enumerate(row_data):
+                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))

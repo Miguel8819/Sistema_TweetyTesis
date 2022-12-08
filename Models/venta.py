@@ -54,7 +54,31 @@ class Venta():
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     df.codCabecera = cf.nroFactura 
-                    GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y")"""
+                    GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y")
+                   
+                    """
+                    
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
+
+
+    def detalleVentas(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, cc.codCliente, dp.codProducto, df.cantidad, dp.producto, df.precioUnitario, df.cantidad * df.precioUnitario 
+                    FROM cabecerafactura cf ,venta df, Product dp, cliente cc 
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    AND
+                    cc.codCliente = cf.codCliente
+                    AND
+                    dp.codProducto = df.codProducto
+                    order by cf.nroFactura
+                    
+                    
+                     
+                    """
             cursor.execute(sql)
             result = cursor.fetchall()
             if result:
