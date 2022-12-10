@@ -4,7 +4,7 @@ class Proveedor():
         with self.conn.cursor() as cursor:
             sql = """CREATE TABLE IF NOT EXISTS proveedor
                         (codProveedor INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                        nroCuilCuit INT(12) NOT NULL,
+                        nroCuilCuit VARCHAR(12) NOT NULL,
                         nombreProveedor VARCHAR(45) NOT NULL,
                         nombreFactura VARCHAR(45) NOT NULL,
                         fechaAlta VARCHAR (10) NOT NULL, 

@@ -17,7 +17,8 @@ class Product():
                         cant_min_stock VARCHAR(45) NOT NULL,
                         PuntoDePedido VARCHAR(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,
-                        PrecioDeVenta VARCHAR(45) NOT NULL
+                        PrecioDeVenta VARCHAR(45) NOT NULL,
+                        activo BOOLEAN NOT NULL
                         
                         )"""
             cursor.execute(sql)

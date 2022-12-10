@@ -14,7 +14,8 @@ class Cliente():
                         ciudad VARCHAR(45) NOT NULL,
                         codPostal INT(10) NOT NULL,
                         tel INT(20) NOT NULL,
-                        email VARCHAR(45) NOT NULL
+                        email VARCHAR(45) NOT NULL,
+                        activo BOOLEAN NOT NULL
                         )"""
             cursor.execute(sql)
             self.conn.commit()
