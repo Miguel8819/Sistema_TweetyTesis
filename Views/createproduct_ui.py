@@ -826,7 +826,7 @@ class Ui_CreateProduct(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
         self.Botonbuscar.setPalette(palette)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Botonbuscar.setIcon(icon)
         self.Botonbuscar.setIconSize(QtCore.QSize(15, 20))
         self.Botonbuscar.setObjectName("Botonbuscar")
@@ -2258,6 +2258,8 @@ class Ui_CreateProduct(object):
         self.m = self.BotonGuardarCambios.clicked.connect(lambda: self.create_product_controller.modificarProducto(self.input_searchcod.text(),self.input_prod_2.text(), self.box_cat_2.currentText(),self.box_subCat_2.currentText(),self.box_marca_2.currentText(),self.box_tipoUnid_2.currentText(),self.box_uniMedi_2.currentText(),self.input_cantMinStock_2.text(),self.input_puntoPedido_2.text(),self.input_costCompra_2.text(),self.input_precVenta_2.text()))
         
         self.e = self.BotonCancelar.clicked.connect(lambda:self.create_product_controller.salir(CreateProduct))
+        self.f = self.BotonCancelar_2.clicked.connect(lambda:self.create_product_controller.salir(CreateProduct))
+        self.g = self.BotonCancelar_3.clicked.connect(lambda:self.create_product_controller.salir(CreateProduct))
         #--------------------End Events---------------------------------
 
 
