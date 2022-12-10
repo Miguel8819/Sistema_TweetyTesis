@@ -2005,16 +2005,19 @@ class Ui_clientes(object):
 
 
 #--------------------Events-----------------------------------------------------------------
-        self.x = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text()))
+        self.a = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text()))
        
-        self.y = self.Botonbuscar.clicked.connect(lambda: self.clientecontroller.showCliente(self.input_searchDni.text()))
+        self.b = self.Botonbuscar.clicked.connect(lambda: self.clientecontroller.showCliente(self.input_searchDni.text()))
 
-        self.a = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text()))
+        self.c = self.Botonbuscar_2.clicked.connect(lambda: self.clientecontroller.showCliente_2(self.input_searchDni_2.text()))
 
-        self.z = self.BotonDarDeBaja.clicked.connect(lambda: self.clientecontroller.bajaCliente(self.cliente, self.input_searchDni_2.text()))
+        self.d = self.BotonDarDeBaja.clicked.connect(lambda: self.clientecontroller.bajaCliente(self.cliente, self.input_searchDni_2.text()))
 
-        self.b = self.BotonGuardarCambios.clicked.connect(lambda:self.clientecontroller.modificarCliente(self.show_nameCliente.text(), self.show_Dni.text(), self.show_calle.text(), self.show_numCalle.text(), self.show_ciudad.currentText(), self.show_codPostal.text(), self.show_tel.text(), self.show_email.text()))
+        self.e = self.BotonGuardarCambios.clicked.connect(lambda:self.clientecontroller.modificarCliente(self.show_nameCliente.text(), self.show_Dni.text(), self.show_calle.text(), self.show_numCalle.text(), self.show_ciudad.currentText(), self.show_codPostal.text(), self.show_tel.text(), self.show_email.text()))
 
+        self.f = self.BotonCancelar.clicked.connect(lambda: self.clientecontroller.cancelar(clientes))
+        self.g = self.BotonCancelar_2.clicked.connect(lambda: self.clientecontroller.cancelar(clientes))
+        self.h = self.BotonCancelar_3.clicked.connect(lambda: self.clientecontroller.cancelar(clientes))
         
 #--------------------End Events--------------------------------------------------------------
 
