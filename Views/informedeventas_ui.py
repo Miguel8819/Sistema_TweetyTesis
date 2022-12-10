@@ -192,7 +192,8 @@ class Ui_informeDeVentas(object):
 
         self.a = self.Btn_Ver_Importes.clicked.connect(lambda:self.listarVentas.listarVentas())
         self.b = self.Btn_ventas_mensuales.clicked.connect(lambda:self.listarVentas.ventasMensuales())
-        self.b = self.Btn_listar.clicked.connect(lambda:self.listarVentas.detalleVenta())
+        self.c = self.Btn_listar.clicked.connect(lambda:self.listarVentas.detalleVenta())
+        # self.d = self.Boton_Buscar.clicked.connect(lambda:self.listarVentas.fechaVentaDiaria(self.search_fecha.text()))
 
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate

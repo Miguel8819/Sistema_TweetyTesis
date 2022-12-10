@@ -40,10 +40,22 @@ class listarVentas():
 
     def ventasMensuales(self):
         table = self.listar_ventasDiarias.tableWidget_2
-        ventasDiarias = self.venta.ventasMensuales()
+        ventasMensuales = self.venta.ventasMensuales()
            
         table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasDiarias):
+        for row_number, row_data in enumerate(ventasMensuales):
                 table.insertRow(row_number)
                 for column_number, data in enumerate(row_data):
                     table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def fechaVentaDiaria(self,fecha):
+        if fecha:    
+            ventaDiaria= self.venta.ventaPorFecha(fecha)
+            if ventaDiaria:
+                table = self.listar_ventasDiarias.tableWidget
+                
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))

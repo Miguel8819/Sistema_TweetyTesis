@@ -21,11 +21,6 @@ class Ui_controlstock(object):
         
         #Validador de input string
         stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
-
-
-#Inputs con validadores
-        self.input_codigo.setValidator(intValidator)
-    def setupUi(self, controlstock):
         controlstock.setObjectName("controlstock")
         controlstock.resize(1324, 683)
         controlstock.setStyleSheet("background-color: rgb(56, 213, 203);")
@@ -51,11 +46,19 @@ class Ui_controlstock(object):
         self.label_2.setObjectName("label_2")
         self.input_codigo = QtWidgets.QLineEdit(self.ProductosActivos)
         self.input_codigo.setGeometry(QtCore.QRect(40, 130, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.input_codigo.setFont(font)
         self.input_codigo.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_codigo.setMaxLength(15)
         self.input_codigo.setObjectName("input_codigo")
         self.input_prod = QtWidgets.QLineEdit(self.ProductosActivos)
         self.input_prod.setGeometry(QtCore.QRect(210, 130, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.input_prod.setFont(font)
         self.input_prod.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_prod.setMaxLength(20)
         self.input_prod.setObjectName("input_prod")
         self.btn_buscar = QtWidgets.QPushButton(self.ProductosActivos)
         self.btn_buscar.setGeometry(QtCore.QRect(390, 130, 75, 21))
@@ -137,12 +140,20 @@ class Ui_controlstock(object):
         self.btn_volver.setFont(font)
         self.btn_volver.setStyleSheet("background-color: rgb(212, 212, 212);")
         self.btn_volver.setObjectName("btn_volver")
+        self.btn_limpiar = QtWidgets.QPushButton(self.ProductosActivos)
+        self.btn_limpiar.setGeometry(QtCore.QRect(480, 130, 75, 21))
+        self.btn_limpiar.setStyleSheet("background-color: rgb(212, 212, 212);")
+        self.btn_limpiar.setObjectName("btn_limpiar")
         self.tabWidget.addTab(self.ProductosActivos, "")
         self.ProductosDadosDeBaja = QtWidgets.QWidget()
         self.ProductosDadosDeBaja.setObjectName("ProductosDadosDeBaja")
         self.input_prod_2 = QtWidgets.QLineEdit(self.ProductosDadosDeBaja)
         self.input_prod_2.setGeometry(QtCore.QRect(210, 130, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.input_prod_2.setFont(font)
         self.input_prod_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_prod_2.setMaxLength(20)
         self.input_prod_2.setObjectName("input_prod_2")
         self.btn_volver_2 = QtWidgets.QPushButton(self.ProductosDadosDeBaja)
         self.btn_volver_2.setGeometry(QtCore.QRect(760, 560, 141, 31))
@@ -173,7 +184,11 @@ class Ui_controlstock(object):
         self.btn_actualizar_2.setObjectName("btn_actualizar_2")
         self.input_codigo_2 = QtWidgets.QLineEdit(self.ProductosDadosDeBaja)
         self.input_codigo_2.setGeometry(QtCore.QRect(40, 130, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.input_codigo_2.setFont(font)
         self.input_codigo_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_codigo_2.setMaxLength(15)
         self.input_codigo_2.setObjectName("input_codigo_2")
         self.label_5 = QtWidgets.QLabel(self.ProductosDadosDeBaja)
         self.label_5.setGeometry(QtCore.QRect(210, 100, 81, 16))
@@ -243,22 +258,32 @@ class Ui_controlstock(object):
         self.btn_darDeAlta.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_darDeAlta.setStyleSheet("background-color: rgb(212, 212, 212);")
         self.btn_darDeAlta.setObjectName("btn_darDeAlta")
+        self.btn_limpiar_2 = QtWidgets.QPushButton(self.ProductosDadosDeBaja)
+        self.btn_limpiar_2.setGeometry(QtCore.QRect(480, 130, 75, 21))
+        self.btn_limpiar_2.setStyleSheet("background-color: rgb(212, 212, 212);")
+        self.btn_limpiar_2.setObjectName("btn_limpiar_2")
         self.tabWidget.addTab(self.ProductosDadosDeBaja, "")
 
         self.retranslateUi(controlstock)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(controlstock)
 
+        #Inputs con validadores
+        self.input_codigo.setValidator(intValidator)
+        self.input_codigo_2.setValidator(intValidator)
+        
+
         self.a = self.btn_actualizar.clicked.connect(lambda:self.controlstock_controller.listarProductosActivos())
         self.b = self.btn_create.clicked.connect(lambda:self.controlstock_controller.openCreate(Ui_CreateProduct))
         self.c = self.btn_actualizar_2.clicked.connect(lambda:self.controlstock_controller.listarBajaProductos())
         self.d = self.btn_darDeAlta.clicked.connect(lambda:self.controlstock_controller.darAltaProducto())
-        
-        
+        self.e = self.btn_buscar.clicked.connect(lambda:self.controlstock_controller.buscarProductoActivo(self.input_codigo.text(), self.input_prod.text()))
+        self.e = self.btn_buscar_2.clicked.connect(lambda:self.controlstock_controller.buscarProductoBaja(self.input_codigo_2.text(), self.input_prod_2.text()))
+        self.e = self.btn_limpiar.clicked.connect(lambda:self.controlstock_controller.limpiar())
+        self.e = self.btn_limpiar_2.clicked.connect(lambda:self.controlstock_controller.limpiar_2())
         self.p = self.btn_volver.clicked.connect(lambda:self.controlstock_controller.salir(controlstock))
         self.p = self.btn_volver_2.clicked.connect(lambda:self.controlstock_controller.salir(controlstock))
         #--------------------End Events---------------------------------
-
 
     def retranslateUi(self, controlstock):
         _translate = QtCore.QCoreApplication.translate
@@ -294,6 +319,7 @@ class Ui_controlstock(object):
         self.btn_actualizar.setText(_translate("controlstock", "Actualizar"))
         self.btn_create.setText(_translate("controlstock", "Crear"))
         self.btn_volver.setText(_translate("controlstock", "Volver atrás"))
+        self.btn_limpiar.setText(_translate("controlstock", "Limpiar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.ProductosActivos), _translate("controlstock", "Productos Activos"))
         self.btn_volver_2.setText(_translate("controlstock", "Volver atrás"))
         self.label_4.setText(_translate("controlstock", "Codigo de Barras"))
@@ -326,6 +352,7 @@ class Ui_controlstock(object):
         item.setText(_translate("controlstock", "Precio Venta"))
         self.btn_buscar_2.setText(_translate("controlstock", "Buscar"))
         self.btn_darDeAlta.setText(_translate("controlstock", "Dar de alta"))
+        self.btn_limpiar_2.setText(_translate("controlstock", "Limpiar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.ProductosDadosDeBaja), _translate("controlstock", "Productos dados de baja"))
 
 
