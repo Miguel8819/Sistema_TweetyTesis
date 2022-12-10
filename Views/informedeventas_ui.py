@@ -193,6 +193,9 @@ class Ui_informeDeVentas(object):
         self.a = self.Btn_Ver_Importes.clicked.connect(lambda:self.listarVentas.listarVentas())
         self.b = self.Btn_ventas_mensuales.clicked.connect(lambda:self.listarVentas.ventasMensuales())
         self.c = self.Btn_listar.clicked.connect(lambda:self.listarVentas.detalleVenta())
+        self.c = self.Btn_Volver.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        self.c = self.Btn_volver2.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        self.c = self.Btn_volver3.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
         # self.d = self.Boton_Buscar.clicked.connect(lambda:self.listarVentas.fechaVentaDiaria(self.search_fecha.text()))
 
     def retranslateUi(self, informeDeVentas):

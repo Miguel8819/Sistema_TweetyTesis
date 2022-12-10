@@ -59,3 +59,6 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def salir(self, listar_ventasDiarias):
+        listar_ventasDiarias.close()

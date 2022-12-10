@@ -2773,7 +2773,7 @@ class Ui_Proveedores(object):
         self.show_codPostal.setValidator(intValidator)
         self.show_numCalle.setValidator(intValidator)
         self.show_tel.setValidator(intValidator)
-
+        self.input_nroCuil.setValidator(intValidator)
 
         self.input_nameProv.setValidator(stringValidator)
         self.input_nameFact.setValidator(stringValidator)

@@ -209,12 +209,21 @@ class CreateProveedorController():
             else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("Ingrese un proveedor valido")
+                msg.setText("El nombre de proveedor no existe")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese un proveedor valido")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_() 
 
     def buscarProveedor_2(self,nombreFacturacion):
         if nombreFacturacion:
@@ -233,13 +242,22 @@ class CreateProveedorController():
             else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("Ingrese un nombre de facturación valido")
+                msg.setText("El nombre de facturación no existe")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_()
-            
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese un nombre de facturación valido")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
+
 
     def darBajaProveedor(self,proveedores,nombreProveedor):
         if nombreProveedor:
