@@ -9,7 +9,7 @@ from Models.Proveedores import *
 from PyQt5.QtWidgets import QMessageBox, QLineEdit, QCompleter
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from datetime import date
+from datetime import datetime
 
 class CreateProveedorController():
     def __init__(self, create_proveedor):
@@ -18,7 +18,10 @@ class CreateProveedorController():
 
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor:
-            fechaAlta= date.today()
+            
+            fechaAlta1= datetime.now()
+            fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
+            
             result = self.proveedor.getProveedor(nombreProveedor, '1')
         
             if result:
@@ -66,9 +69,7 @@ class CreateProveedorController():
                             msg = QMessageBox()
                             msg.setWindowTitle("Error")
                             msg.setText("Complete los campos que estan vacios")
-
                             msg.setIcon(QMessageBox.Information)
-
                             msg.setStandardButtons(QMessageBox.Ok)
                             msg.setDefaultButton(QMessageBox.Ok)
                             msg.setInformativeText("")
@@ -102,8 +103,7 @@ class CreateProveedorController():
                     
                     self.create_proveedor.input_searchNameProv.clear()
                     self.create_proveedor.show_nameProv.clear()
-                    self.create_proveedor.show_nameFact.clear()
-                            
+                    self.create_proveedor.show_nameFact.clear()                         
                     self.create_proveedor.show_calle.clear()
                     self.create_proveedor.show_numCalle.clear()
                     self.create_proveedor.show_nroCuil.clear()
@@ -123,11 +123,9 @@ class CreateProveedorController():
                 x = msg.exec_() 
 
                 self.create_proveedor.show_nameProv.clear()
-                self.create_proveedor.show_nameFact.clear()
-                    
+                self.create_proveedor.show_nameFact.clear()                
                 self.create_proveedor.show_calle.clear()
                 self.create_proveedor.show_numCalle.clear()
-             
                 self.create_proveedor.show_codPostal.clear()
                 self.create_proveedor.show_tel.clear()
                 self.create_proveedor.show_email.clear()
@@ -160,7 +158,6 @@ class CreateProveedorController():
                     self.create_proveedor.input_searchNameProv.clear()
                     self.create_proveedor.show_nameProv.clear()
                     self.create_proveedor.show_nameFact.clear()
-                            
                     self.create_proveedor.show_calle.clear()
                     self.create_proveedor.show_numCalle.clear()
                     self.create_proveedor.show_nroCuil.clear()
@@ -180,11 +177,9 @@ class CreateProveedorController():
                 x = msg.exec_() 
 
                 self.create_proveedor.show_nameProv.clear()
-                self.create_proveedor.show_nameFact.clear()
-                    
+                self.create_proveedor.show_nameFact.clear()                    
                 self.create_proveedor.show_calle.clear()
                 self.create_proveedor.show_numCalle.clear()
-             
                 self.create_proveedor.show_codPostal.clear()
                 self.create_proveedor.show_tel.clear()
                 self.create_proveedor.show_email.clear()
@@ -270,9 +265,7 @@ class CreateProveedorController():
             if returnValue == QMessageBox.Ok:
             
                 
-                if proveedores :
-                        
-
+                if proveedores :                      
                         self.proveedor.bajaProveedor(nombreProveedor)
 
                 msg = QMessageBox()
@@ -331,8 +324,7 @@ class CreateProveedorController():
 
                         self.create_proveedor.input_searchNameProv.clear()
                         self.create_proveedor.show_nameProv.clear()
-                        self.create_proveedor.show_nameFact.clear()
-                            
+                        self.create_proveedor.show_nameFact.clear()              
                         self.create_proveedor.show_calle.clear()
                         self.create_proveedor.show_numCalle.clear()
                         self.create_proveedor.show_nroCuil.clear()
