@@ -37,15 +37,31 @@ class listarProveedoresController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def darAltaProveedor(self):
-       table = self.listar_proveedor.tableWidget_2
-       if table.currentItem() != None:
-            nombreProveedor = table.currentItem().text()
-            print(nombreProveedor)
-            proveedor = self.proveedores.getProveedor(nombreProveedor, '0')
-            print(proveedor)
-            if proveedor:
-                self.proveedores.altaProveedor(nombreProveedor)                
-            self.listarBajaProveedores()
+        table = self.listar_proveedor.tableWidget_2
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea dar de alta al proveedor? ")
+        msgBox.setWindowTitle("Confirmacion")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            
+            if table.currentItem() != None:
+                    nombreProveedor = table.currentItem().text()
+                    print(nombreProveedor)
+                    proveedor = self.proveedores.getProveedor(nombreProveedor, '0')
+                    print(proveedor)
+                    if proveedor:
+                        self.proveedores.altaProveedor(nombreProveedor)                
+                    self.listarBajaProveedores()
+
+                    msg = QMessageBox()
+                    msg.setWindowTitle('¡Exito!')
+                    msg.setText("¡Proveedor dado de alta!.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
         
 
     def SalirA(self,listar_proveedor):

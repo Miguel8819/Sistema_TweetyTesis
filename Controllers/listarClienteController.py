@@ -37,16 +37,32 @@ class listarClienteController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def darAltaCliente(self):
-       table = self.listar_cliente.tableWidget_2
-       if table.currentItem() != None:
-            nroDni = table.currentItem().text()
-            print(nroDni)
-            product = self.cliente.getCliente(nroDni, '0')
-            print(product)
-            if product:
-                self.cliente.altaCliente(nroDni)                
-            self.listarBajaClientes()
-        
+        table = self.listar_cliente.tableWidget_2
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea dar de alta al cliente? ")
+        msgBox.setWindowTitle("Confirmacion")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+       
+            if table.currentItem() != None:
+                    nroDni = table.currentItem().text()
+                    print(nroDni)
+                    product = self.cliente.getCliente(nroDni, '0')
+                    print(product)
+                    if product:
+                        self.cliente.altaCliente(nroDni)                
+                    self.listarBajaClientes()
+
+                    msg = QMessageBox()
+                    msg.setWindowTitle('¡Exito!')
+                    msg.setText("¡Cliente dado de alta!.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
+
 
     def SalirA(self,listar_cliente):
          listar_cliente.close()

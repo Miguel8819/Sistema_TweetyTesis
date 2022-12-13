@@ -3,17 +3,13 @@ import os
 
 myDir = os.getcwd()
 sys.path.append(myDir)
-
 from PyQt5 import QtWidgets
-from Database.Connection import connection
-from Models.Product import Product
-from Models.Proveedores import Proveedor
+
+
 
 class menuprincipalController():
 
    def __init__(self, menuprincipal):
-     self.product = Product(connection())
-     self.proveedor = Proveedor (connection())
      self.menuprincipal = menuprincipal
 
    def openFacturacion(self, Ui_venta, Form):
