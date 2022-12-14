@@ -19,6 +19,7 @@ from Database.Connection import connection
 from cliente_ui import Ui_clientes
 from createproduct_ui import Ui_CreateProduct
 from controlstock_ui import Ui_controlstock
+from ticketfactura_ui import Ui_TicketFactura
 
 
 
@@ -1693,25 +1694,27 @@ class Ui_venta(object):
         #---------------------------------------------------------------------------------------------------------------------------
         self.a = self.boton_aceptar.clicked.connect(lambda:self.ventaController.aceptar(venta,self.input_codprod.text(), self.input_cantidad.text(),self.input_producto.text(),self.input_stock.text(),self.input_precio.text(), self.input_subtotal.text()))
         
-        self.p = self.boton_calcularPago.clicked.connect(lambda: self.ventaController.calcular_pago(venta, self.input_efectivo.text(), self.input_importe.text()))
+        self.b = self.boton_calcularPago.clicked.connect(lambda: self.ventaController.calcular_pago(venta, self.input_efectivo.text(), self.input_importe.text()))
 
-        self.i = self.Boton_importe.clicked.connect(lambda: self.ventaController.calcular_importe(venta,self.input_neto.text(),self.input_descuento.text(), self.input_importe.text()))
+        self.c = self.Boton_importe.clicked.connect(lambda: self.ventaController.calcular_importe(venta,self.input_neto.text(),self.input_descuento.text(), self.input_importe.text()))
 
-        self.f = self.Boton_finalizar.clicked.connect(lambda: self.ventaController.finalizar(venta)) 
+        self.d = self.Boton_finalizar.clicked.connect(lambda: self.ventaController.finalizar(venta,Ui_TicketFactura,Form)) 
 
-        self.l = self.Boton_limpiar.clicked.connect(lambda:self.ventaController.limpiar_venta(venta))
+        self.e = self.Boton_limpiar.clicked.connect(lambda:self.ventaController.limpiar_venta(venta))
 
-        self.r = self.boton_remover.clicked.connect(lambda:self.ventaController.remover(venta,self.input_importe.text()))
+        self.f = self.boton_remover.clicked.connect(lambda:self.ventaController.remover(venta,self.input_importe.text()))
        
-        self.c = self.Boton_cancelar.clicked.connect(lambda:self.ventaController.cancelar(venta))
+        self.g = self.Boton_cancelar.clicked.connect(lambda:self.ventaController.cancelar(venta))
  
-        self.p = self.Botonbuscar_cliente.clicked.connect(lambda:self.ventaController.buscarCliente(self.input_nroDni.text()))
+        self.h = self.Botonbuscar_cliente.clicked.connect(lambda:self.ventaController.buscarCliente(self.input_nroDni.text()))
 
-        self.t = self.Boton_agregarcliente.clicked.connect(lambda:self.menuPrincipal.openClientes(Ui_clientes,venta))
+        self.i = self.Boton_agregarcliente.clicked.connect(lambda:self.menuPrincipal.openClientes(Ui_clientes,venta))
 
-        self.t = self.boton_agregarprod.clicked.connect(lambda:self.menuPrincipal.openCreateProduct(Ui_CreateProduct,venta))
+        self.j = self.boton_agregarprod.clicked.connect(lambda:self.menuPrincipal.openCreateProduct(Ui_CreateProduct,venta))
 
-        self.t = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
+        self.k = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
+
+        # self.l = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
 
 #------------------------------------------------------------------------------------------
 

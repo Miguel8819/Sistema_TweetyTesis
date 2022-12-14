@@ -46,7 +46,13 @@ class ventaController():
         self.venta.ui = Ui_venta()
         self.venta.ui.setupUi(self.venta.Form)
         self.venta.Form.show()   
-
+    
+    def openInformeFacturaDeVenta(self, Ui_Factura, Form):
+     self.venta.Form = QtWidgets.QWidget()
+     self.venta.ui = Ui_Factura()
+     self.venta.ui.setupUi(self.venta.Form)
+     self.venta.Form.show()
+    
        
 
 
@@ -324,7 +330,7 @@ class ventaController():
         self.venta.input_direccion.clear()
         self.venta.input_localidad.clear()
 
-    def finalizar (self, Ui_venta):
+    def finalizar (self, Ui_venta,Ui_TicketFactura, Form):
         fecha= datetime.now()
         cabecera = 0
         table = self.venta.table_venta  
@@ -348,15 +354,19 @@ class ventaController():
                        
                         if  cabecera  and CodProducto and cantidad and precio: 
                             self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
-            
-                    msg = QMessageBox()
-                    msg.setWindowTitle('Venta Finalizada')
-                    msg.setText("¡Venta Guardada exitosamente!.")
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setStandardButtons(QMessageBox.Ok)
-                    msg.setDefaultButton(QMessageBox.Ok)
-                    x = msg.exec_()
-                    
+
+                    msgBox = QMessageBox()
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setText("¿Desea imprimir la factura de venta? ")
+                    msgBox.setWindowTitle("")
+                    msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                    returnValue = msgBox.exec()
+                    if returnValue == QMessageBox.Ok: 
+
+                           self.openInformeFacturaDeVenta(Ui_TicketFactura, Form) 
+
+                         
+                            
                     self.venta.table_venta.setRowCount(0)
                     self.venta.input_importe.clear()
                     self.venta.input_neto.clear()
@@ -391,7 +401,9 @@ class ventaController():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
-            x = msg.exec_()         
+            x = msg.exec_()       
+
+     
 
 
 

@@ -45,4 +45,6 @@ class CabeceraFactura():
             self.conn.commit()
             return id
 
+    
+
             
