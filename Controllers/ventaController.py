@@ -35,6 +35,7 @@ class ventaController():
     def __init__(self, venta):
         self.product = Product(connection())
         self.venta = venta
+        
         self.Venta = Venta(connection())
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())
@@ -47,12 +48,17 @@ class ventaController():
         self.venta.ui.setupUi(self.venta.Form)
         self.venta.Form.show()   
     
-    def openInformeFacturaDeVenta(self, Ui_Factura, Form):
+    def openInformeFacturaDeVenta(self, Ui_TicketFactura,Form):
      self.venta.Form = QtWidgets.QWidget()
-     self.venta.ui = Ui_Factura()
+     self.venta.ui = Ui_TicketFactura()
      self.venta.ui.setupUi(self.venta.Form)
      self.venta.Form.show()
     
+    def ticket(self,nroFactura):
+       result=self.Facturacion.getNroFactura(nroFactura)
+       if result:             
+            self.TicketFactura.input_nroTicket.setText(str(result[0]))
+            self.TicketFactura.input_fecha.setText(str(result[1]))
        
 
 
@@ -362,7 +368,8 @@ class ventaController():
                     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                     returnValue = msgBox.exec()
                     if returnValue == QMessageBox.Ok: 
-
+                           nroFactura=0
+                           self.ticket(nroFactura) 
                            self.openInformeFacturaDeVenta(Ui_TicketFactura, Form) 
 
                          
@@ -403,8 +410,7 @@ class ventaController():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()       
 
-     
+    
+             
 
-
-
-      
+        
