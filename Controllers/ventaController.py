@@ -11,6 +11,7 @@ from tokenize import Number
 from datetime import datetime
 from unittest import result
 
+
 from Models.cabeceraFactura import CabeceraFactura
 
 
@@ -34,6 +35,7 @@ class ventaController():
     def __init__(self, venta):
         self.product = Product(connection())
         self.venta = venta
+        
         self.Venta = Venta(connection())
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())
@@ -45,21 +47,51 @@ class ventaController():
         self.venta.ui = Ui_venta()
         self.venta.ui.setupUi(self.venta.Form)
         self.venta.Form.show()   
-
+    
+    def openInformeFacturaDeVenta(self, Ui_TicketFactura,Form):
+     self.venta.Form = QtWidgets.QWidget()
+     self.venta.ui = Ui_TicketFactura()
+     self.venta.ui.setupUi(self.venta.Form)
+     self.venta.Form.show()
+    
+    def ticket(self,nroFactura):
+       result=self.Facturacion.getNroFactura(nroFactura)
+       if result:             
+            self.TicketFactura.input_nroTicket.setText(str(result[0]))
+            self.TicketFactura.input_fecha.setText(str(result[1]))
        
 
 
 
-    def buscarCliente(self,nroDni,nombreCliente,calle,ciudad):
+    def buscarCliente(self,nroDni):
         if nroDni:
-            result=self.cliente.getCliente(nroDni, '1')
-            self.idCliente = result[0]
-            print(self.idCliente)
-            self.venta.input_nombre.setText(str(result[2]))
-            self.venta.input_direccion.setText(str(result[4]))
-            self.venta.input_localidad.setText(str(result[6]))       
-
-
+                result=self.cliente.getCliente(nroDni, '1')
+                if result:
+                    
+                    self.idCliente = result[0]
+                    self.venta.input_nombre.setText(str(result[2]))
+                    self.venta.input_direccion.setText(str(result[4]))
+                    self.venta.input_nroCalle.setText(str(result[5]))
+                    self.venta.input_localidad.setText(str(result[6]))       
+                else:
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El DNI ingresado no existe.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_() 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese un numero de DNI.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_() 
+            
     def aceptar(self, Ui_venta, CodigoDeBarras, cantidad,nombre,precio1,subtotal,stock):
 
             if CodigoDeBarras and (cantidad > '0') :
@@ -162,7 +194,7 @@ class ventaController():
       neto=0
 
       for  i in range(table.rowCount()):
-        neto += float(table.item(i,4).text())
+        neto += float(table.item(i,5).text())
 
       self.venta.input_neto.setText(str(neto))
 
@@ -304,57 +336,81 @@ class ventaController():
         self.venta.input_direccion.clear()
         self.venta.input_localidad.clear()
 
-    def finalizar (self, Ui_venta):
-     msgBox = QMessageBox()
-     msgBox.setIcon(QMessageBox.Information)
-     msgBox.setText("¿Desea finalizar la venta? ")
-     msgBox.setWindowTitle("Finalizar Venta")
-     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-     returnValue = msgBox.exec()
-     if returnValue == QMessageBox.Ok:
-
+    def finalizar (self, Ui_venta,Ui_TicketFactura, Form):
         fecha= datetime.now()
-        
-        if fecha and self.idCliente:
-             self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
+        cabecera = 0
+        table = self.venta.table_venta  
+        if fecha and self.idCliente: #Validar todo
+            if self.venta.input_importe.text() != '':
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea finalizar la venta? ")
+                msgBox.setWindowTitle("Finalizar Venta")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:     
+                    cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
+                    for  i in range(table.rowCount()):
+                        # datelle de factura
+                        CodProducto = table.item(i,0).text()
+                        CodigoDeBarras = table.item(i,1).text()
+                        cantidad = table.item(i,2).text()
+                        producto = table.item(i,3).text()
+                        precio = table.item(i,4).text()         
+                       
+                        if  cabecera  and CodProducto and cantidad and precio: 
+                            self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
+
+                    msgBox = QMessageBox()
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setText("¿Desea imprimir la factura de venta? ")
+                    msgBox.setWindowTitle("")
+                    msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                    returnValue = msgBox.exec()
+                    if returnValue == QMessageBox.Ok: 
+                           nroFactura=0
+                           self.ticket(nroFactura) 
+                           self.openInformeFacturaDeVenta(Ui_TicketFactura, Form) 
+
+                         
+                            
+                    self.venta.table_venta.setRowCount(0)
+                    self.venta.input_importe.clear()
+                    self.venta.input_neto.clear()
+                    self.venta.input_efectivo.clear()
+                    self.venta.input_cambio.clear()
+                    self.venta.input_total.clear()
+                    descuento= '0'
+                    self.venta.input_descuento.setText(str(descuento))
+                    self.venta.descuento_valor.clear()
+                    self.venta.input_producto.clear()
+                    self.venta.input_stock.clear()
+                    self.venta.input_precio.clear()
+                    self.venta.input_subtotal.clear()
+                    self.venta.input_nroDni.clear()
+                    self.venta.input_nombre.clear()
+                    self.venta.input_direccion.clear()
+                    self.venta.input_localidad.clear()
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("No ha ingresado productos.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Debe ingresar el DNI del cliente.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()       
+
+    
+             
 
         
-        print(datetime.now())
-        cabecera=1
-        # validaciones
-    # guardar cabecera y recuperar el Id 
-      
-        table = self.venta.table_venta     
-        
-        for  i in range(table.rowCount()):
-            # datelle de factura
-            CodProducto = table.item(i,0).text()
-            CodigoDeBarras = table.item(i,1).text()
-            cantidad = table.item(i,2).text()
-            producto = table.item(i,3).text()
-            precio = table.item(i,4).text()
-            
-            
-           
-            if  cabecera  and CodProducto and cantidad and precio: 
-                self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio) 
-                
-        msg = QMessageBox()
-        msg.setWindowTitle('Venta Finalizada')
-        msg.setText("¡Venta Guardada exitosamente!.")
-        msg.setIcon(QMessageBox.Information)
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.setDefaultButton(QMessageBox.Ok)
-        x = msg.exec_()
-        
-        self.limpiar_venta(Ui_venta)
-       
-
-
-        # idCabecera = 1
-
-        # cada dato que quieras guardar
-        # llamar al insert pasandole los datos que recuperaste de la tabla arriba
-
-
-      

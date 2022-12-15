@@ -82,8 +82,16 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>15</number>
      </property>
     </widget>
     <widget class="QLineEdit" name="input_prod">
@@ -95,8 +103,16 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>20</number>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_buscar">
@@ -349,6 +365,22 @@
       <string>Volver atrás</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="btn_limpiar">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>130</y>
+       <width>75</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(212, 212, 212);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="ProductosDadosDeBaja">
     <attribute name="title">
@@ -363,8 +395,16 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>20</number>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_volver_2">
@@ -455,8 +495,16 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>15</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -667,6 +715,22 @@ background-color: rgb(255, 255, 127);</string>
      </property>
      <property name="text">
       <string>Dar de alta</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_limpiar_2">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>130</y>
+       <width>75</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(212, 212, 212);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar</string>
      </property>
     </widget>
    </widget>

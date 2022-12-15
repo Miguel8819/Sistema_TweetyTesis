@@ -17,7 +17,8 @@ class Product():
                         cant_min_stock VARCHAR(45) NOT NULL,
                         PuntoDePedido VARCHAR(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,
-                        PrecioDeVenta VARCHAR(45) NOT NULL
+                        PrecioDeVenta VARCHAR(45) NOT NULL,
+                        activo BOOLEAN NOT NULL
                         
                         )"""
             cursor.execute(sql)
@@ -81,5 +82,33 @@ class Product():
         with self.conn.cursor() as cursor:
             sql = """SELECT * FROM Product WHERE activo = '0' """
             cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+    
+    def buscarProductoXcodigo(self,codigoDeBarras):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '1' AND CodigoDeBarras = %s """
+            cursor.execute(sql,codigoDeBarras)
+            result = cursor.fetchall()
+            return result
+
+    def buscarProductoXnombre(self,nombre):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '1' AND producto = %s """
+            cursor.execute(sql,nombre)
+            result = cursor.fetchall()
+            return result
+
+    def buscarProductoXcodigoB(self,codigoDeBarras):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '0' AND CodigoDeBarras = %s """
+            cursor.execute(sql,codigoDeBarras)
+            result = cursor.fetchall()
+            return result
+
+    def buscarProductoXnombreB(self,nombre):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM Product WHERE activo = '0' AND producto = %s """
+            cursor.execute(sql,nombre)
             result = cursor.fetchall()
             return result

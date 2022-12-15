@@ -14,6 +14,8 @@ from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
 from gestionClaves_ui import Ui_LogIn
 from gestionBackup_ui import Ui_Backup
+from listadeproveedores_ui import Ui_lista_proveedores
+from informedeventas_ui import Ui_informeDeVentas
 
 
 class Ui_menuprincipal(object):
@@ -46,7 +48,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -347,6 +349,11 @@ class Ui_menuprincipal(object):
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_lista_clientes, menuprincipal))
         self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
         self.btn_abrirCerrarCaja_2.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
+        self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
+        self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
+        self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
+
+
 #--------------------End Events---------------------------------
 
     def retranslateUi(self, menuprincipal):

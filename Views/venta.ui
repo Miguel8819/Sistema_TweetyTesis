@@ -37,7 +37,7 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="text">
-    <string>nro DNI</string>
+    <string>Número DNI</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_descuento">
@@ -90,7 +90,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="condpago">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>280</x>
      <y>100</y>
      <width>61</width>
      <height>16</height>
@@ -109,8 +109,8 @@ background-color:rgb(187, 235, 255);
   <widget class="QTableWidget" name="table_venta">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>300</y>
+     <x>60</x>
+     <y>280</y>
      <width>741</width>
      <height>171</height>
     </rect>
@@ -498,7 +498,7 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>70</y>
      <width>161</width>
      <height>21</height>
@@ -534,7 +534,7 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../..Imagenes/buscar.png</normaloff>../../../.designer/Imagenes/buscar.png</iconset>
+     <normaloff>../..Imagenes/buscar.png</normaloff>../..Imagenes/buscar.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -1039,6 +1039,9 @@ background-color:rgb(187, 235, 255);
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="placeholderText">
+    <string>Nro DNI</string>
+   </property>
   </widget>
   <widget class="QLabel" name="codprod">
    <property name="geometry">
@@ -1057,53 +1060,6 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="text">
     <string>CODIGO DE BARRAS</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="input_nroFactura">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>610</x>
-     <y>100</y>
-     <width>171</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="maxLength">
-    <number>15</number>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="NroOrden">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>100</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Nro de Factura</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_codprod">
@@ -1132,11 +1088,14 @@ background-color:rgb(187, 235, 255);
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
   </widget>
   <widget class="QLabel" name="direccion">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>450</x>
      <y>50</y>
      <width>61</width>
      <height>16</height>
@@ -1149,14 +1108,14 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="text">
-    <string>Direccion</string>
+    <string>Calle</string>
    </property>
   </widget>
   <widget class="QLabel" name="localidad">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>50</y>
+     <x>630</x>
+     <y>90</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -1172,11 +1131,14 @@ background-color:rgb(187, 235, 255);
    </property>
   </widget>
   <widget class="QLineEdit" name="input_nombre">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>220</x>
      <y>70</y>
-     <width>161</width>
+     <width>221</width>
      <height>21</height>
     </rect>
    </property>
@@ -1201,8 +1163,8 @@ background-color:rgb(187, 235, 255);
     <rect>
      <x>220</x>
      <y>50</y>
-     <width>47</width>
-     <height>13</height>
+     <width>111</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -1212,13 +1174,13 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="text">
-    <string>Nombre</string>
+    <string>Apellido y nombre</string>
    </property>
   </widget>
   <widget class="QLabel" name="condIVA">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>30</x>
      <y>100</y>
      <width>51</width>
      <height>16</height>
@@ -1237,7 +1199,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>30</x>
      <y>20</y>
      <width>141</width>
      <height>21</height>
@@ -1260,8 +1222,8 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>70</y>
+     <x>630</x>
+     <y>110</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -1282,7 +1244,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QPushButton" name="boton_aceptar">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>560</x>
      <y>160</y>
      <width>75</width>
      <height>21</height>
@@ -1738,25 +1700,6 @@ background-color:rgb(187, 235, 255);
     <string>Calcular Pago</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Boton_ticket">
-   <property name="geometry">
-    <rect>
-     <x>840</x>
-     <y>360</y>
-     <width>141</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ticket</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="importe">
    <property name="geometry">
     <rect>
@@ -1788,11 +1731,14 @@ background-color:rgb(187, 235, 255);
      <height>721</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../Sistema_Tweety-main/Imagenes/20901.png</pixmap>
+    <pixmap>../Imagenes/20901.png</pixmap>
    </property>
   </widget>
   <widget class="QPushButton" name="Boton_importe">
@@ -1817,7 +1763,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="tcant">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>380</x>
      <y>150</y>
      <width>71</width>
      <height>41</height>
@@ -1836,7 +1782,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLineEdit" name="input_cantidad">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>450</x>
      <y>160</y>
      <width>91</width>
      <height>21</height>
@@ -2727,7 +2673,7 @@ background-color: rgb(255, 45, 3);}</string>
      <x>805</x>
      <y>0</y>
      <width>21</width>
-     <height>631</height>
+     <height>671</height>
     </rect>
    </property>
    <property name="orientation">
@@ -2781,7 +2727,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>880</x>
-     <y>50</y>
+     <y>20</y>
      <width>81</width>
      <height>121</height>
     </rect>
@@ -2790,7 +2736,7 @@ background-color: rgb(255, 45, 3);}</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../Sistema_Tweety-main/Imagenes/tweety_preview_rev_1.png</pixmap>
+    <pixmap>../Imagenes/tweety_preview_rev_1.png</pixmap>
    </property>
   </widget>
   <widget class="Line" name="line_3">
@@ -2798,7 +2744,7 @@ background-color: rgb(255, 45, 3);}</string>
     <rect>
      <x>820</x>
      <y>400</y>
-     <width>201</width>
+     <width>221</width>
      <height>20</height>
     </rect>
    </property>
@@ -2829,7 +2775,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QComboBox" name="comboBox_pago">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>350</x>
      <y>100</y>
      <width>131</width>
      <height>22</height>
@@ -2869,7 +2815,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QComboBox" name="comboBox_iva">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>90</x>
      <y>100</y>
      <width>151</width>
      <height>22</height>
@@ -2893,6 +2839,11 @@ background-color: rgb(255, 45, 3);}</string>
    <item>
     <property name="text">
      <string>Responsable No Inscripto</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Responsable Inscripto</string>
     </property>
    </item>
    <item>
@@ -4220,11 +4171,14 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_producto">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>230</x>
      <y>200</y>
-     <width>141</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -4249,7 +4203,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="precio">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>460</x>
      <y>190</y>
      <width>81</width>
      <height>31</height>
@@ -4271,7 +4225,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>510</x>
      <y>200</y>
      <width>91</width>
      <height>21</height>
@@ -4304,8 +4258,8 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="stock">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>260</y>
+     <x>680</x>
+     <y>230</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -4326,8 +4280,8 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>260</y>
+     <x>720</x>
+     <y>230</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -4359,7 +4313,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="subtotal">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>440</x>
      <y>230</y>
      <width>61</width>
      <height>31</height>
@@ -4381,7 +4335,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>510</x>
      <y>240</y>
      <width>91</width>
      <height>21</height>
@@ -4411,6 +4365,53 @@ background-color: rgb(255, 45, 3);}</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLineEdit" name="input_nroCalle">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>70</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>5</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="direccion_2">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>50</y>
+     <width>61</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Numero</string>
+   </property>
+  </widget>
   <zorder>label_3</zorder>
   <zorder>nroDni</zorder>
   <zorder>input_descuento</zorder>
@@ -4423,8 +4424,6 @@ background-color: rgb(255, 45, 3);}</string>
   <zorder>input_neto</zorder>
   <zorder>input_nroDni</zorder>
   <zorder>codprod</zorder>
-  <zorder>input_nroFactura</zorder>
-  <zorder>NroOrden</zorder>
   <zorder>input_codprod</zorder>
   <zorder>direccion</zorder>
   <zorder>localidad</zorder>
@@ -4440,7 +4439,6 @@ background-color: rgb(255, 45, 3);}</string>
   <zorder>total</zorder>
   <zorder>input_total</zorder>
   <zorder>boton_calcularPago</zorder>
-  <zorder>Boton_ticket</zorder>
   <zorder>importe</zorder>
   <zorder>Boton_importe</zorder>
   <zorder>tcant</zorder>
@@ -4470,6 +4468,8 @@ background-color: rgb(255, 45, 3);}</string>
   <zorder>input_stock</zorder>
   <zorder>subtotal</zorder>
   <zorder>input_subtotal</zorder>
+  <zorder>input_nroCalle</zorder>
+  <zorder>direccion_2</zorder>
  </widget>
  <tabstops>
   <tabstop>input_codprod</tabstop>
@@ -4493,7 +4493,6 @@ background-color: rgb(255, 45, 3);}</string>
   <tabstop>Boton_finalizar</tabstop>
   <tabstop>Boton_limpiar</tabstop>
   <tabstop>Boton_cancelar</tabstop>
-  <tabstop>Boton_ticket</tabstop>
   <tabstop>input_nroDni</tabstop>
   <tabstop>Botonbuscar_cliente</tabstop>
   <tabstop>Boton_agregarcliente</tabstop>
@@ -4502,7 +4501,6 @@ background-color: rgb(255, 45, 3);}</string>
   <tabstop>input_localidad</tabstop>
   <tabstop>comboBox_iva</tabstop>
   <tabstop>comboBox_pago</tabstop>
-  <tabstop>input_nroFactura</tabstop>
   <tabstop>table_venta</tabstop>
  </tabstops>
  <resources/>

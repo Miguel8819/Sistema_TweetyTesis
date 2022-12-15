@@ -4863,6 +4863,9 @@ QLabel{background-color:none}</string>
        </property>
       </widget>
       <widget class="QComboBox" name="show_ciudad_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -5440,7 +5443,7 @@ QLabel{background-color:none}</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="BotonGuardarCambios_2">
+     <widget class="QPushButton" name="BotonDarDeBaja">
       <property name="geometry">
        <rect>
         <x>590</x>
@@ -6215,7 +6218,7 @@ QLabel{background-color:none}</string>
        <string>Nro de CUIL o CUIT</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="BotonGuardarCambios_3">
+     <widget class="QPushButton" name="BotonCancelar_3">
       <property name="geometry">
        <rect>
         <x>750</x>
@@ -6699,6 +6702,7 @@ QLabel{background-color:none}</string>
       <property name="geometry">
        <rect>
         <x>930</x>
+        <x>920</x>
         <y>30</y>
         <width>31</width>
         <height>30</height>
@@ -7161,6 +7165,7 @@ QLabel{background-color:none}</string>
       <property name="icon">
        <iconset>
         <normaloff>../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</normaloff>../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</iconset>
+        <normaloff>../../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</normaloff>../../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</iconset>
       </property>
       <property name="iconSize">
        <size>

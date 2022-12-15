@@ -1,6 +1,6 @@
 # from tkinter import Label, Tk
 # from time import   strftime
-
+import datetime
 # class Reloj(object):
 #      def __init__(self) -> None:
 #            pass
@@ -53,6 +53,7 @@
 # obtener_tiempo()
 # ventana.mainloop()
 
-n1= 
-n2= 1
-print( str(n1+n2))
+ahora= datetime.datetime.now ()
+
+print (ahora)
+

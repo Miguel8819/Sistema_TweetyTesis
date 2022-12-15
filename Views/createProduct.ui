@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Proveedores</string>
+   <string>Productos</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{background-color:rgb(51,102,255)}
@@ -1101,6 +1101,11 @@ QPushButton{background-color:none}</string>
          <string>Fibrones</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Otro</string>
+        </property>
+       </item>
       </widget>
       <widget class="QLineEdit" name="input_prod">
        <property name="geometry">
@@ -1168,7 +1173,7 @@ QPushButton{background-color:none}</string>
        </item>
        <item>
         <property name="text">
-         <string/>
+         <string>Otro</string>
         </property>
        </item>
       </widget>
@@ -1250,7 +1255,7 @@ QPushButton{background-color:none}</string>
         <string/>
        </property>
        <property name="maxLength">
-        <number>20</number>
+        <number>14</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1371,6 +1376,11 @@ QPushButton{background-color:none}</string>
          <string>1810</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Otro</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QFrame" name="frame_2">
@@ -1450,6 +1460,56 @@ QPushButton{background-color:none}</string>
             <string>Unidad</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>Litro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Centilitro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Mililitro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Metro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Centimetro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Milimetro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kilogramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Gramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Miligramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Otro</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -1493,6 +1553,26 @@ QPushButton{background-color:none}</string>
           <item>
            <property name="text">
             <string>Unidad</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Volumen</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Peso</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Longitud</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Otro</string>
            </property>
           </item>
          </widget>
@@ -3307,6 +3387,11 @@ QLabel{background-color:none}</string>
          <string>Fibrones</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Otro</string>
+        </property>
+       </item>
       </widget>
       <widget class="QLineEdit" name="input_prod_2">
        <property name="geometry">
@@ -3374,7 +3459,7 @@ QLabel{background-color:none}</string>
        </item>
        <item>
         <property name="text">
-         <string/>
+         <string>Otro</string>
         </property>
        </item>
       </widget>
@@ -3530,6 +3615,11 @@ QLabel{background-color:none}</string>
          <string>1810</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Otro</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QFrame" name="frame_5">
@@ -3569,92 +3659,6 @@ QLabel{background-color:none}</string>
        <property name="text">
         <string>- Datos Stock</string>
        </property>
-      </widget>
-      <widget class="QWidget" name="layoutWidget_8">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>40</y>
-         <width>181</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_13">
-        <item>
-         <widget class="QLabel" name="label_uniMed_2">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unidad de Medida&lt;span style=&quot; font-weight:400;&quot;&gt;(*)&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="box_uniMedi_2">
-          <property name="font">
-           <font>
-            <pointsize>9</pointsize>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <item>
-           <property name="text">
-            <string>Unidad</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget_9">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>40</y>
-         <width>141</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_14">
-        <item>
-         <widget class="QLabel" name="label_tipoUni_2">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tipo Unidad&lt;span style=&quot; font-weight:400;&quot;&gt;(*)&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="box_tipoUnid_2">
-          <property name="font">
-           <font>
-            <pointsize>9</pointsize>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <item>
-           <property name="text">
-            <string>Unidad</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
       </widget>
       <widget class="QWidget" name="layoutWidget_10">
        <property name="geometry">
@@ -3743,6 +3747,162 @@ QLabel{background-color:none}</string>
           <property name="placeholderText">
            <string>Cant. Min. Stock</string>
           </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_7">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>40</y>
+         <width>141</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QLabel" name="label_tipoUni_2">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tipo Unidad&lt;span style=&quot; font-weight:400;&quot;&gt;(*)&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="box_tipoUnid_2">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string>Unidad</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Volumen</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Peso</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Longitud</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Otro</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_8">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>40</y>
+         <width>181</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <item>
+         <widget class="QLabel" name="label_uniMed_2">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unidad de Medida&lt;span style=&quot; font-weight:400;&quot;&gt;(*)&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="box_uniMedi_2">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string>Unidad</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Litro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Centilitro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Mililitro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Metro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Centimetro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Milimetro</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kilogramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Gramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Miligramo</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Otro</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -6046,12 +6206,46 @@ QLabel{background-color:none}</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
+  <tabstop>input_cod</tabstop>
+  <tabstop>input_prod</tabstop>
+  <tabstop>box_cat</tabstop>
+  <tabstop>box_subCat</tabstop>
+  <tabstop>box_marca</tabstop>
+  <tabstop>box_tipoUnid</tabstop>
+  <tabstop>box_uniMedi</tabstop>
+  <tabstop>input_cantMinStock</tabstop>
+  <tabstop>input_puntoPedido</tabstop>
+  <tabstop>input_costCompra</tabstop>
+  <tabstop>input_precVenta</tabstop>
   <tabstop>BotonAgregar</tabstop>
   <tabstop>BotonCancelar</tabstop>
   <tabstop>input_searchcod</tabstop>
   <tabstop>Botonbuscar</tabstop>
+  <tabstop>input_prod_2</tabstop>
+  <tabstop>box_cat_2</tabstop>
+  <tabstop>box_subCat_2</tabstop>
+  <tabstop>box_marca_2</tabstop>
+  <tabstop>input_cantMinStock_2</tabstop>
+  <tabstop>input_puntoPedido_2</tabstop>
+  <tabstop>input_costCompra_2</tabstop>
+  <tabstop>input_precVenta_2</tabstop>
   <tabstop>BotonGuardarCambios</tabstop>
+  <tabstop>BotonCancelar_2</tabstop>
+  <tabstop>input_searchcod_2</tabstop>
+  <tabstop>Botonbuscar_2</tabstop>
+  <tabstop>input_prod_3</tabstop>
+  <tabstop>box_cat_3</tabstop>
+  <tabstop>box_subCat_3</tabstop>
+  <tabstop>box_marca_3</tabstop>
+  <tabstop>box_tipoUnid_3</tabstop>
+  <tabstop>box_uniMedi_3</tabstop>
+  <tabstop>input_cantMinStock_3</tabstop>
+  <tabstop>input_puntoPedido_3</tabstop>
+  <tabstop>input_costCompra_3</tabstop>
+  <tabstop>input_precVenta_3</tabstop>
+  <tabstop>Boton_DarDeBaja</tabstop>
+  <tabstop>BotonCancelar_3</tabstop>
+  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>

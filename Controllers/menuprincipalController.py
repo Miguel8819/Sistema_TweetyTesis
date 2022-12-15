@@ -3,17 +3,13 @@ import os
 
 myDir = os.getcwd()
 sys.path.append(myDir)
-
 from PyQt5 import QtWidgets
-from Database.Connection import connection
-from Models.Product import Product
-from Models.Proveedores import Proveedor
+
+
 
 class menuprincipalController():
 
    def __init__(self, menuprincipal):
-     self.product = Product(connection())
-     self.proveedor = Proveedor (connection())
      self.menuprincipal = menuprincipal
 
    def openFacturacion(self, Ui_venta, Form):
@@ -71,3 +67,18 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show() 
+
+   def openListaProveedores(self, Ui_lista_proveedores, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_lista_proveedores()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show()   
+
+   def openInformeDeVentas(self, Ui_informeDeVentas, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_informeDeVentas()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show()  
+

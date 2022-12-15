@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from PyQt5.QtWidgets import QMessageBox
-from datetime import date
+from datetime import datetime
 
 
 class ClienteController():
@@ -30,7 +30,9 @@ class ClienteController():
     def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email):
      if nroDni:
 
-        fechaAlta= date.today()  
+        fechaAlta1= datetime.now()
+        fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
+
         
         result = self.cliente.getCliente(nroDni, '1')
         
