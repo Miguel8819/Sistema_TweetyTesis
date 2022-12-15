@@ -48,7 +48,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -230,6 +230,15 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_listaClientes.setFont(font)
         self.btn_listaClientes.setObjectName("btn_listaClientes")
+        self.btn_infDeVentas = QtWidgets.QPushButton(self.page_gestionVenta)
+        self.btn_infDeVentas.setGeometry(QtCore.QRect(130, 342, 290, 50))
+        self.btn_infDeVentas.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_infDeVentas.setFont(font)
+        self.btn_infDeVentas.setObjectName("btn_infDeVentas")
         self.stackedWidget.addWidget(self.page_gestionVenta)
         self.page_gestionStock = QtWidgets.QWidget()
         self.page_gestionStock.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -333,7 +342,7 @@ class Ui_menuprincipal(object):
         self.verticalLayout.addWidget(self.stackedWidget)
 
         self.retranslateUi(menuprincipal)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(menuprincipal)
 
 #--------------------Events--------------------------------------
@@ -353,8 +362,8 @@ class Ui_menuprincipal(object):
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
 
-
 #--------------------End Events---------------------------------
+
 
     def retranslateUi(self, menuprincipal):
         _translate = QtCore.QCoreApplication.translate
@@ -372,6 +381,7 @@ class Ui_menuprincipal(object):
         self.btn_facturacion.setText(_translate("menuprincipal", "Facturación"))
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))
         self.btn_listaClientes.setText(_translate("menuprincipal", "Lista de Clientes"))
+        self.btn_infDeVentas.setText(_translate("menuprincipal", "Informe de Ventas"))
         self.label_3.setText(_translate("menuprincipal", "Gestión de Stock"))
         self.btn_controlStock.setText(_translate("menuprincipal", "Lista de productos"))
         self.btn_abmProd.setText(_translate("menuprincipal", "ABM Productos"))

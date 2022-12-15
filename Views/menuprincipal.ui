@@ -292,7 +292,7 @@ QPushButton:hover{background-color:white; border-top-left-radius: 20px;border-bo
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_gestionCompra">
        <property name="styleSheet">
@@ -578,6 +578,32 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         </property>
         <property name="text">
          <string>Lista de Clientes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_infDeVentas">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>342</y>
+          <width>290</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Informe de Ventas</string>
         </property>
        </widget>
       </widget>
