@@ -90,7 +90,7 @@ QPushButton:hover{background-color:white; border-top-left-radius: 20px;border-bo
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>422</y>
+      <y>342</y>
       <width>209</width>
       <height>50</height>
      </rect>
@@ -243,45 +243,6 @@ QPushButton:hover{background-color:white; border-top-left-radius: 20px;border-bo
     <property name="icon">
      <iconset>
       <normaloff>en-stock.png</normaloff>en-stock.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>35</width>
-      <height>35</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_administracion">
-    <property name="geometry">
-     <rect>
-      <x>11</x>
-      <y>342</y>
-      <width>209</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>209</width>
-      <height>50</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="text">
-     <string>Administración</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>investigacion.png</normaloff>investigacion.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -448,7 +409,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          </font>
         </property>
         <property name="text">
-         <string>Generar Orden de Compra</string>
+         <string>Ingresar Factura de Compra</string>
         </property>
        </widget>
        <widget class="QPushButton" name="btn_listaproveedores">
@@ -541,32 +502,6 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_infDeVentas">
-        <property name="geometry">
-         <rect>
-          <x>131</x>
-          <y>182</y>
-          <width>290</width>
-          <height>50</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>290</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Informe de Ventas</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="btn_facturacion">
         <property name="geometry">
          <rect>
@@ -597,7 +532,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>131</x>
-          <y>262</y>
+          <y>182</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -623,7 +558,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>340</y>
+          <y>262</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -762,174 +697,6 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>ABM Productos</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_movStock">
-        <property name="geometry">
-         <rect>
-          <x>131</x>
-          <y>262</y>
-          <width>290</width>
-          <height>50</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>290</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Movimiento de Stock</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_administracion">
-       <property name="styleSheet">
-        <string notr="true">QWidget{background-color:rgb(153,204,255)}
-QPushButton{background-color: rgb(61,61,61); border-top-right-radius: 20px; border-bottom-right-radius: 20px;color: rgb(255,255,255);}
-QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-bottom-right-radius: 20px;color: rgb(0,0,0);}</string>
-       </property>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>20</y>
-          <width>291</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>Administración</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_10">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>30</y>
-          <width>45</width>
-          <height>45</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>45</width>
-          <height>45</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>45</width>
-          <height>45</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>investigacion.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_infDeCaja">
-        <property name="geometry">
-         <rect>
-          <x>131</x>
-          <y>262</y>
-          <width>290</width>
-          <height>50</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>290</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Informe de Caja</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_movFondos">
-        <property name="geometry">
-         <rect>
-          <x>131</x>
-          <y>102</y>
-          <width>290</width>
-          <height>50</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>290</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Movimientos de Fondos</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_abrirCerrarCaja">
-        <property name="geometry">
-         <rect>
-          <x>131</x>
-          <y>182</y>
-          <width>290</width>
-          <height>50</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>290</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Abrir y Cerrar Caja</string>
-        </property>
-       </widget>
       </widget>
       <widget class="QWidget" name="page_mantenimiento">
        <property name="styleSheet">
@@ -1043,7 +810,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          </font>
         </property>
         <property name="text">
-         <string>Configuración de Usuarios</string>
+         <string>Manual de Usuario</string>
         </property>
        </widget>
        <widget class="QPushButton" name="btn_abrirCerrarCaja_2">
