@@ -10,7 +10,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Database.Connection import connection
 from Models.Product import Product
-from Views.menuprincipal import *
+#from Views.menuprincipal import *
 
 class controlstockController():
 

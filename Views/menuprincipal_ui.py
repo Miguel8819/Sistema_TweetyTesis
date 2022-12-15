@@ -355,7 +355,6 @@ class Ui_menuprincipal(object):
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
-        self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_lista_clientes, menuprincipal))
         self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
         self.btn_abrirCerrarCaja_2.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
