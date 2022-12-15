@@ -2070,7 +2070,6 @@ class Ui_Proveedores(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.BotonGuardarCambios_2.setPalette(palette)
         self.BotonDarDeBaja.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -2343,17 +2342,11 @@ class Ui_Proveedores(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.BotonGuardarCambios_3.setPalette(palette)
         self.BotonCancelar_3.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.BotonGuardarCambios_3.setFont(font)
-        self.BotonGuardarCambios_3.setIconSize(QtCore.QSize(15, 20))
-        self.BotonGuardarCambios_3.setObjectName("BotonGuardarCambios_3")
-        self.Botonbuscar_4 = QtWidgets.QPushButton(self.frame_buscar_editar_2)
-        self.Botonbuscar_4.setGeometry(QtCore.QRect(930, 30, 31, 30))
         self.BotonCancelar_3.setFont(font)
         self.BotonCancelar_3.setIconSize(QtCore.QSize(15, 20))
         self.BotonCancelar_3.setObjectName("BotonCancelar_3")
@@ -2507,10 +2500,9 @@ class Ui_Proveedores(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
         self.Botonbuscar_4.setPalette(palette)
-        self.Botonbuscar_4.setIcon(icon)
-        self.Botonbuscar_4.setIconSize(QtCore.QSize(15, 20))
         self.Botonbuscar_4.setObjectName("Botonbuscar_4")
         self.tabWidget.addTab(self.tab3, "")
+
         self.retranslateUi(Proveedores)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Proveedores)
@@ -2556,8 +2548,6 @@ class Ui_Proveedores(object):
         Proveedores.setTabOrder(self.show_codPostal_2, self.show_tel_2)
         Proveedores.setTabOrder(self.show_tel_2, self.show_email_2)
         Proveedores.setTabOrder(self.show_email_2, self.show_web_2)
-        Proveedores.setTabOrder(self.show_web_2, self.BotonGuardarCambios_2)
-        Proveedores.setTabOrder(self.BotonGuardarCambios_2, self.BotonGuardarCambios_3)
 
  #Inputs con validadores
 
@@ -2597,7 +2587,6 @@ class Ui_Proveedores(object):
         self.j = self.BotonCancelar_3.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         
 #--------------------End Events------------------------------------------------------
-
 
     def retranslateUi(self, Proveedores):
         _translate = QtCore.QCoreApplication.translate
@@ -2708,9 +2697,6 @@ class Ui_Proveedores(object):
         self.input_searchNameProv_2.setPlaceholderText(_translate("Proveedores", "Apellido y Nombre Proveedor"))
         self.label_BnameProv_2.setText(_translate("Proveedores", "Nro de CUIL o CUIT"))
         self.input_searchNameFact_2.setPlaceholderText(_translate("Proveedores", "Nro de CUIL o CUIT"))
-        self.BotonGuardarCambios_3.setText(_translate("Proveedores", "Cancelar"))
-        self.label_BnameProv_2.setText(_translate("Proveedores", "Nombre Facturación"))
-        self.input_searchNameFact_2.setPlaceholderText(_translate("Proveedores", "Nombre Facturación"))
         self.BotonCancelar_3.setText(_translate("Proveedores", "Cancelar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab3), _translate("Proveedores", "Dar de Baja"))
 

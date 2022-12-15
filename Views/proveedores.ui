@@ -6701,7 +6701,6 @@ QLabel{background-color:none}</string>
      <widget class="QPushButton" name="Botonbuscar_4">
       <property name="geometry">
        <rect>
-        <x>930</x>
         <x>920</x>
         <y>30</y>
         <width>31</width>
@@ -7162,17 +7161,6 @@ QLabel{background-color:none}</string>
         </disabled>
        </palette>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</normaloff>../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</iconset>
-        <normaloff>../../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</normaloff>../../../../Desktop/Sistema_Tweety_MIGUEL/Imagenes/buscar.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>15</width>
-        <height>20</height>
-       </size>
-      </property>
      </widget>
     </widget>
    </widget>
@@ -7222,8 +7210,6 @@ QLabel{background-color:none}</string>
   <tabstop>show_tel_2</tabstop>
   <tabstop>show_email_2</tabstop>
   <tabstop>show_web_2</tabstop>
-  <tabstop>BotonGuardarCambios_2</tabstop>
-  <tabstop>BotonGuardarCambios_3</tabstop>
  </tabstops>
  <resources/>
  <connections/>
