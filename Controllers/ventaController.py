@@ -32,10 +32,10 @@ class ventaController():
     
     
 
-    def __init__(self, venta):
+    def __init__(self, venta,TicketFactura =''):
         self.product = Product(connection())
         self.venta = venta
-        
+        self.TicketFactura = TicketFactura
         self.Venta = Venta(connection())
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())

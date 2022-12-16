@@ -51,14 +51,41 @@ class listarVentas():
     def fechaVentaDiaria(self,fecha):
         if fecha:    
             ventaDiaria= self.venta.ventaPorFecha(fecha)
-            if ventaDiaria:
-                table = self.listar_ventasDiarias.tableWidget
-                
-                table.setRowCount(0)
-                for row_number, row_data in enumerate(ventaDiaria):
-                        table.insertRow(row_number)
-                        for column_number, data in enumerate(row_data):
-                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            table = self.listar_ventasDiarias.tableWidget         
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventaDiaria):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("El numero de Factura no existe")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
+
+    def buscarVentaXFactura(self,nroFactura):
+        table = self.listar_ventasDiarias.tableWidget_3
+        if nroFactura:
+            
+            ventaDiaria= self.venta.ventaPorFactura(nroFactura)
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventaDiaria):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("El numero de Factura no existe")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
 
     def salir(self, listar_ventasDiarias):
         listar_ventasDiarias.close()
