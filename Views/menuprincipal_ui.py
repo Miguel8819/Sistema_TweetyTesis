@@ -16,6 +16,7 @@ from gestionClaves_ui import Ui_LogIn
 from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
+from facturaCompra_ui import Ui_FacturaDeCompra
 
 
 class Ui_menuprincipal(object):
@@ -360,6 +361,7 @@ class Ui_menuprincipal(object):
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
+        self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
 
 #--------------------End Events---------------------------------
 

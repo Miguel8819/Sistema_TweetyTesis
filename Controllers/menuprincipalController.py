@@ -82,3 +82,10 @@ class menuprincipalController():
      self.menuprincipal.Form.show()
      Form.show()  
 
+   def openFacturaCompra(self, Ui_facturaCompra, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_facturaCompra()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show()   
+
