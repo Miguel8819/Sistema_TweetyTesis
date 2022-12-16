@@ -99,16 +99,37 @@ class Venta():
     
     def ventaPorFecha(self, fecha):
         with self.conn.cursor() as cursor:
-            sql = """"SELECT date_format(cf.fechaYhora, "%d-%m-%Y"), SUM(df.cantidad * df.precioUnitario) 
+            sql = """"SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y"), SUM(df.cantidad * df.precioUnitario) 
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     cf.fechaYhora = %s
                     AND
                     df.codCabecera = cf.nroFactura 
-                    GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y")
+                    GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y")
                    
                     """
             cursor.execute(sql,fecha)
-            result = cursor.fetchone()
+            result = cursor.fetchall()
             if result:
                 return result
+
+    def ventaPorFactura(self,nroFactura):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura, cc.codCliente, dp.codProducto, df.cantidad, dp.producto, df.precioUnitario, df.cantidad * df.precioUnitario 
+                    FROM cabecerafactura cf ,venta df, Product dp, cliente cc 
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    AND
+                    cc.codCliente = cf.codCliente
+                    AND
+                    dp.codProducto = df.codProducto
+                    AND 
+                    cf.nroFactura = %s
+                    order by cf.nroFactura               
+                     
+                    """
+            cursor.execute(sql,nroFactura)
+            result = cursor.fetchall()
+            if result:
+                return result
+            

@@ -6,14 +6,12 @@ class Product():
                         (
                         codProducto INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,    
                         CodigoDeBarras VARCHAR(45) NOT NULL,
-                        
                         producto VARCHAR(45) NOT NULL,
                         categoria VARCHAR(45) NOT NULL,
                         subCategoria VARCHAR(45) NOT NULL,
                         marca VARCHAR(45) NOT NULL,
                         tipoUnidad VARCHAR(45) NOT NULL,
                         unidadDeMedida VARCHAR(45) NOT NULL,
-                        
                         cant_min_stock VARCHAR(45) NOT NULL,
                         PuntoDePedido VARCHAR(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,
