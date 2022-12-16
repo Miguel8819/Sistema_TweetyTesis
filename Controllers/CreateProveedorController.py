@@ -131,9 +131,9 @@ class CreateProveedorController():
                 self.create_proveedor.show_email.clear()
                 self.create_proveedor.show_web.clear()
 
-    def buscarProveedor(self,nombreFacturacion):
-        if nombreFacturacion:
-            result = self.proveedor.getProveedor_2(nombreFacturacion, '1')
+    def buscarProveedor(self,nroCuit):
+        if nroCuit:
+            result = self.proveedor.getProveedor_2(nroCuit, '1')
             if result:
                 self.create_proveedor.show_nroCuil.setText(str(result[1]))
                 self.create_proveedor.show_nameProv.setText(str(result[2]))
@@ -148,7 +148,7 @@ class CreateProveedorController():
             else: 
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
-                    msg.setText("El nombre de facturación no existe")
+                    msg.setText("El número de Cuit/Cuil no existe")
                     msg.setIcon(QMessageBox.Information)
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
@@ -169,7 +169,7 @@ class CreateProveedorController():
         else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("Ingrese un nombre de facturación válido")
+                msg.setText("Ingrese un número de Cuit/Cuil válido")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
@@ -220,9 +220,9 @@ class CreateProveedorController():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_() 
 
-    def buscarProveedor_2(self,nombreFacturacion):
-        if nombreFacturacion:
-            result = self.proveedor.getProveedor_2(nombreFacturacion, '1')
+    def buscarProveedor_2(self,nroCuit):
+        if nroCuit:
+            result = self.proveedor.getProveedor_2(nroCuit, '1')
             if result:
                 self.create_proveedor.show_nroCuil_2.setText(str(result[1]))
                 self.create_proveedor.show_nameProv_2.setText(str(result[2]))
@@ -237,7 +237,7 @@ class CreateProveedorController():
             else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("El nombre de facturación no existe")
+                msg.setText("El número de Cuit/Cuil no existe")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
@@ -246,7 +246,7 @@ class CreateProveedorController():
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
-            msg.setText("Ingrese un nombre de facturación valido")
+            msg.setText("Ingrese un número de Cuit/Cuil valido")
             msg.setIcon(QMessageBox.Information)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)

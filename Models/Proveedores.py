@@ -37,7 +37,7 @@ class Proveedor():
 
     def getProveedor_2(self, nombreFacturacion, estado):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM proveedor WHERE nombreFactura = %s AND activo = %s"""
+            sql = """SELECT * FROM proveedor WHERE nroCuilCuit  = %s AND activo = %s"""
             cursor.execute(sql, (nombreFacturacion, estado))
             result = cursor.fetchone()
             if result:
