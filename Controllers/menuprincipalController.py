@@ -54,6 +54,20 @@ class menuprincipalController():
      self.menuprincipal.Form.show()
      Form.show() 
 
+   def openGestionClaves(self, Ui_gestion_claves, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_gestion_claves()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 
+
+   def openGestionBackup(self, Ui_gestion_backup, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_gestion_backup()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 
+
    def openListaProveedores(self, Ui_lista_proveedores, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
      self.menuprincipal.ui = Ui_lista_proveedores()
@@ -67,3 +81,4 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show()  
+

@@ -15,3 +15,18 @@ class User():
             cursor.execute(sql, (user,password))
             result = cursor.fetchone()
             return result
+
+    def updatePassword(self, user, password, newPass):
+        with self.conn.cursor() as cursor: 
+            sql = """UPDATE user SET password = '{}' WHERE user_name = '{}' AND password = '{}'""".format(newPass, user, password)
+            cursor.execute(sql)
+            self.conn.commit() 
+            if cursor.rowcount > 0:
+                success = True
+                return success
+            else:
+                failure = False
+                return failure
+            
+            
+                

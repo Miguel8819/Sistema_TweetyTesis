@@ -324,6 +324,10 @@ class CreateProveedorController():
 
                         self.create_proveedor.input_searchNameProv.clear()
                         self.create_proveedor.show_nameProv.clear()
+
+                        self.create_proveedor.show_nameFact.clear()
+                        self.create_proveedor.show_ciudad.setCurrentText('Alta Gracia') 
+
                         self.create_proveedor.show_nameFact.clear()              
                         self.create_proveedor.show_calle.clear()
                         self.create_proveedor.show_numCalle.clear()
