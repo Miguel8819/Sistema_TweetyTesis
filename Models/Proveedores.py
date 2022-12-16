@@ -11,7 +11,7 @@ class Proveedor():
                         calle VARCHAR(45) NOT NULL,
                         numeroCalle VARCHAR(45) NOT NULL,
                         ciudad VARCHAR(45) NOT NULL,
-                        codPostal INT(45) NOT NULL,
+                        codPostal VARCHAR(45) NOT NULL,
                         celular VARCHAR(45) NOT NULL,
                         email VARCHAR(45) NOT NULL,
                         pagWeb VARCHAR(45) NOT NULL,

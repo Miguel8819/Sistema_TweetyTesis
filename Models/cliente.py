@@ -5,15 +5,14 @@ class Cliente():
             sql = """CREATE TABLE IF NOT EXISTS cliente
                         (
                         codCliente INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        nroDni VARCHAR(10) NOT NULL,
                         nombreCliente VARCHAR(45) NOT NULL,
-                        nroDni INT(10) NOT NULL,
                         fechaAlta VARCHAR(45) NOT NULL,
                         calle VARCHAR (20) NOT NULL, 
-                        
-                        nroCalle INT(10) NOT NULL,
+                        nroCalle VARCHAR(10) NOT NULL,
                         ciudad VARCHAR(45) NOT NULL,
-                        codPostal INT(10) NOT NULL,
-                        tel INT(20) NOT NULL,
+                        codPostal VARCHAR(10) NOT NULL,
+                        tel VARCHAR(20) NOT NULL,
                         email VARCHAR(45) NOT NULL,
                         activo BOOLEAN NOT NULL
                         )"""
