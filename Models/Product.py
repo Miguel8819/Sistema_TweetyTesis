@@ -12,6 +12,7 @@ class Product():
                         marca VARCHAR(45) NOT NULL,
                         tipoUnidad VARCHAR(45) NOT NULL,
                         unidadDeMedida VARCHAR(45) NOT NULL,
+                        stock VARCHAR(45) NOT NULL,
                         cant_min_stock VARCHAR(45) NOT NULL,
                         PuntoDePedido VARCHAR(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,

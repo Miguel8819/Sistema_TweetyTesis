@@ -143,6 +143,12 @@
        <height>351</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>740</width>
@@ -155,17 +161,29 @@
      <property name="midLineWidth">
       <number>1</number>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
      <property name="sizeAdjustPolicy">
       <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
      <property name="rowCount">
       <number>20</number>
      </property>
+     <property name="columnCount">
+      <number>13</number>
+     </property>
      <attribute name="horizontalHeaderCascadingSectionResizes">
       <bool>false</bool>
      </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>30</number>
+     </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>103</number>
+      <number>95</number>
      </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>30</number>
@@ -192,12 +210,12 @@
      <row/>
      <column>
       <property name="text">
-       <string>CodProducto</string>
+       <string>Cód. Producto</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Código de Barras</string>
+       <string>Cód. de Barras</string>
       </property>
      </column>
      <column>
@@ -227,7 +245,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Unidad de Medida</string>
+       <string>Unidad Medida</string>
       </property>
      </column>
      <column>
@@ -240,12 +258,17 @@
      </column>
      <column>
       <property name="text">
+       <string>Stock Min.</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>Punto de Pedido</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Costo de Compra</string>
+       <string>Costo Compra</string>
       </property>
      </column>
      <column>
