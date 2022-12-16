@@ -132,4 +132,7 @@ class Venta():
             result = cursor.fetchall()
             if result:
                 return result
+
+
+
             

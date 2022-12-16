@@ -408,7 +408,9 @@ class ventaController():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
-            x = msg.exec_()       
+            x = msg.exec_()     
+
+  
 
     
              
