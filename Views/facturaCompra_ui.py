@@ -771,7 +771,7 @@ class Ui_FacturaDeCompra(object):
 
         self.a = self.boton_agregarItem.clicked.connect(lambda:self.facturaCompraController.aceptar(self.input_codprod.text(), self.input_cantidad.text(),self.input_precio.text()))
         
-        self.d = self.guardar.clicked.connect(lambda: self.facturaCompraController.guardar(FacturaDeCompra)) 
+        self.d = self.boton_guardar.clicked.connect(lambda: self.facturaCompraController.guardar(FacturaDeCompra)) 
 
         self.c = self.boton_cancelar.clicked.connect(lambda:self.facturaCompraController.cancelar(FacturaDeCompra))
  
