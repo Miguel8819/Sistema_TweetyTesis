@@ -8,9 +8,9 @@ sys.path.append(myDir)
 
 from Controllers.CreateProveedorController import CreateProveedorController
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator, QStandardItemModel, QStandardItem
 from Models.Proveedores import Proveedor
 
 from Database.Connection import connection
@@ -2566,7 +2566,10 @@ class Ui_Proveedores(object):
         self.show_nameFact.setValidator(stringValidator)
         self.show_calle.setValidator(stringValidator)
 
-         # self.create_proveedor_controller.autoCompleteProveedor(self.input_searchNameProv.text())
+        self.completer = QCompleter(self.proveedor.autoComplete())
+        self.completer.setCaseSensitivity(Qt.CaseInsensitive)
+        self.input_searchNameProv.setCompleter(self.completer)
+
 #--------------------Events-----------------------------------------------------------------
         self.a = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(),self.input_nroCuil.text(),  self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text()))
         

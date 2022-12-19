@@ -1,3 +1,7 @@
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
 class Proveedor():
     def __init__(self,conn):
         self.conn = conn
@@ -44,10 +48,16 @@ class Proveedor():
                 return result
                 
     def autoComplete(self):
-        with self.conn.cursor as cursor:
-            sql ="""SELECT nombreProveedor FROM proveedor WHERE nombreProveedor LIKE = %s"""
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT nombreProveedor FROM proveedor"""
             cursor.execute(sql)
-            return cursor.fetchall()
+            result = cursor.fetchall()
+            new_list = [i[0] for i in result]
+            #print(new_list)  #Test print
+            self.model = QStringListModel()
+            self.model.setStringList(new_list)
+            if self.model:
+                return self.model
 
 
     def bajaProveedor(self,nombreProveedor):
