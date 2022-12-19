@@ -77,22 +77,19 @@ class controlstockController():
 
 
     def darAltaProducto(self):
-        table = self.controlstock.table_product_2
-        msgBox = QMessageBox()
-        msgBox.setIcon(QMessageBox.Information)
-        msgBox.setText("¿Desea dar de alta al producto? ")
-        msgBox.setWindowTitle("Confirmacion")
-        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        returnValue = msgBox.exec()
-        if returnValue == QMessageBox.Ok:
-       
-            if table.currentItem() != None:
-                    CodigoDeBarras = table.currentItem().text()
-                    print(CodigoDeBarras)
-                    product = self.product.getProduct(CodigoDeBarras, '0')
-                    print(product)
-                    if product:
-                        self.product.altaProducto(CodigoDeBarras)                
+        table = self.controlstock.table_product_2      
+        if table.currentItem() != None:
+            CodigoDeBarras = table.currentItem().text()  
+            product = self.product.getProduct(CodigoDeBarras, '0')
+            if product:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea dar de alta al producto? ")
+                msgBox.setWindowTitle("Confirmacion")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:
+                    self.product.altaProducto(CodigoDeBarras)                
                     self.listarBajaProductos()
 
                     msg = QMessageBox()
@@ -102,7 +99,23 @@ class controlstockController():
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     x = msg.exec_()
-        
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Seleccione el código de barras del producto y luego presione el boton Dar de Alta.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Seleccione el código de barras del producto para dar el alta.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+
     
     def openCreate(self, Ui_CreateProduct):
         self.controlstock.Form = QtWidgets.QWidget()

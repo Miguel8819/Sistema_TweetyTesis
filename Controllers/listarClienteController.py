@@ -38,21 +38,19 @@ class listarClienteController():
 
     def darAltaCliente(self):
         table = self.listar_cliente.tableWidget_2
-        msgBox = QMessageBox()
-        msgBox.setIcon(QMessageBox.Information)
-        msgBox.setText("¿Desea dar de alta al cliente? ")
-        msgBox.setWindowTitle("Confirmacion")
-        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        returnValue = msgBox.exec()
-        if returnValue == QMessageBox.Ok:
-       
-            if table.currentItem() != None:
-                    nroDni = table.currentItem().text()
-                    print(nroDni)
-                    product = self.cliente.getCliente(nroDni, '0')
-                    print(product)
-                    if product:
-                        self.cliente.altaCliente(nroDni)                
+        if table.currentItem() != None:
+            nroDni = table.currentItem().text()        
+            cliente = self.cliente.getCliente(nroDni, '0')
+                    
+            if cliente:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea dar de alta al cliente? ")
+                msgBox.setWindowTitle("Confirmacion")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:
+                    self.cliente.altaCliente(nroDni)                
                     self.listarBajaClientes()
 
                     msg = QMessageBox()
@@ -62,6 +60,22 @@ class listarClienteController():
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     x = msg.exec_()
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Seleccione el número de dni del ciente y luego presione el boton Dar de Alta.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Seleccione el número de DNI del cliente para dar el alta.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
 
     def SalirA(self,listar_cliente):
