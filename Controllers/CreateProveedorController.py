@@ -394,14 +394,6 @@ class CreateProveedorController():
                         msg.setInformativeText("Vuelva a intentarlo")
                         x = msg.exec_() 
 
-    
-
-    def autoCompleteProveedor(self):
-        result = QStringListModel(self.proveedor.autoComplete())
-        completer = QCompleter(result, self)
-        completer.setCaseSensitivity(Qt.CaseInsensitive)
-        return completer
-        
     def cancelar(self, Ui_Proveedores):
 
         Ui_Proveedores.close()
