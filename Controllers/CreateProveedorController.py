@@ -91,6 +91,9 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel.setText(str(result[9]))
                 self.create_proveedor.show_email.setText(str(result[10]))
                 self.create_proveedor.show_web.setText(str(result[11]))
+
+                self.create_proveedor.input_searchNameProv.clear()
+                
             else: 
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
@@ -145,6 +148,8 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel.setText(str(result[9]))
                 self.create_proveedor.show_email.setText(str(result[10]))
                 self.create_proveedor.show_web.setText(str(result[11]))
+
+                self.create_proveedor.input_searchNameFact.clear()
             else: 
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
@@ -201,6 +206,8 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel_2.setText(str(result[9]))
                 self.create_proveedor.show_email_2.setText(str(result[10]))
                 self.create_proveedor.show_web_2.setText(str(result[11]))
+
+                self.create_proveedor.input_searchNameProv_2.clear()
             else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -234,6 +241,9 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel_2.setText(str(result[9]))
                 self.create_proveedor.show_email_2.setText(str(result[10]))
                 self.create_proveedor.show_web_2.setText(str(result[11]))
+
+                self.create_proveedor.input_searchNameFact_2.clear()
+
             else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -258,7 +268,7 @@ class CreateProveedorController():
         if nombreProveedor:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
-            msgBox.setText("¿Desea dar de baja al proveedor? ")
+            msgBox.setText("¿Desea dar de baja al proveedor?")
             msgBox.setWindowTitle("Baja de proveedor")
             msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             returnValue = msgBox.exec()

@@ -2566,9 +2566,20 @@ class Ui_Proveedores(object):
         self.show_nameFact.setValidator(stringValidator)
         self.show_calle.setValidator(stringValidator)
 
-        self.completer = QCompleter(self.proveedor.autoComplete())
-        self.completer.setCaseSensitivity(Qt.CaseInsensitive)
-        self.input_searchNameProv.setCompleter(self.completer)
+        #Auto Complete de pestaña Buscar/Editar campo Apellido y Nombre Proveedor
+        self.completer_nameProv = QCompleter(self.proveedor.autoComplete())
+        self.completer_nameProv.setCaseSensitivity(Qt.CaseInsensitive)
+        self.input_searchNameProv.setCompleter(self.completer_nameProv)
+
+        #Auto Complete de pestaña Dar de Baja campo Apellido y Nombre Proveedor
+        self.input_searchNameProv_2.setCompleter(self.completer_nameProv)
+
+        #Auto Complete de pestaña Buscar/Editar campo Nro de Cuil o Cuit Proveedor
+        self.completer_nroCuitCuil = QCompleter(self.proveedor.autoComplete_2())
+        self.input_searchNameFact.setCompleter(self.completer_nroCuitCuil)
+
+        #Auto Complete de pestaña Dar de Baja campo Nro de Cuil o Cuit Proveedor
+        self.input_searchNameFact_2.setCompleter(self.completer_nroCuitCuil)
 
 #--------------------Events-----------------------------------------------------------------
         self.a = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(),self.input_nroCuil.text(),  self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text()))

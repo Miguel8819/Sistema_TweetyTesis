@@ -59,6 +59,18 @@ class Proveedor():
             if self.model:
                 return self.model
 
+    def autoComplete_2(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT nroCuilCuit FROM proveedor"""
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            new_list_2 = [i[0] for i in result]
+            #print(new_list)  #Test print
+            self.model_2 = QStringListModel()
+            self.model_2.setStringList(new_list_2)
+            if self.model_2:
+                return self.model_2
+
 
     def bajaProveedor(self,nombreProveedor):
         with self.conn.cursor() as cursor:
