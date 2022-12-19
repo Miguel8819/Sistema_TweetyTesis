@@ -6,7 +6,7 @@ sys.path.append(myDir)
 from PyQt5 import QtWidgets, QtGui
 from Database.Connection import connection
 from Models.Proveedores import *
-from PyQt5.QtWidgets import QMessageBox, QLineEdit, QCompleter
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from datetime import datetime

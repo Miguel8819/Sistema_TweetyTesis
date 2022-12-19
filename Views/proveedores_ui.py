@@ -19,7 +19,31 @@ class Ui_Proveedores(object):
     def __init__(self):
         self.create_proveedor_controller = CreateProveedorController(self)
         self.proveedor = Proveedor(connection())
-        
+
+    def autoMayus(self,txt):
+        cap_text = txt.title()  
+        oldPos = self.input_nameProv.cursorPosition()
+        self.input_nameProv.setText(cap_text)
+        self.input_nameProv.setCursorPosition(oldPos)
+
+    def autoMayus_2(self,txt):
+        cap_text = txt.title()  
+        oldPos = self.input_nameFact.cursorPosition()
+        self.input_nameFact.setText(cap_text)
+        self.input_nameFact.setCursorPosition(oldPos)
+
+    def autoMayus_3(self,txt):
+        cap_text = txt.title()  
+        oldPos = self.input_calle.cursorPosition()
+        self.input_calle.setText(cap_text)
+        self.input_calle.setCursorPosition(oldPos)
+
+    def autoLower(self,txt):
+        low_text = txt.lower()
+        oldPos = self.input_email.cursorPosition()
+        self.input_email.setText(low_text)
+        self.input_email.setCursorPosition(oldPos)
+
     def setupUi(self, Proveedores):
         #Validador de input en int
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
@@ -2581,6 +2605,17 @@ class Ui_Proveedores(object):
         #Auto Complete de pestaña Dar de Baja campo Nro de Cuil o Cuit Proveedor
         self.input_searchNameFact_2.setCompleter(self.completer_nroCuitCuil)
 
+        #Auto upper en primera letra de la palabra (title) para Nombre Prov
+        self.input_nameProv.textChanged.connect(self.autoMayus)
+
+        #Auto upper en primera letra de la palabra (title) para Nombre Fact
+        self.input_nameFact.textChanged.connect(self.autoMayus_2)
+
+        #Auto upper en primera letra de la palabra (title) para Calle
+        self.input_calle.textChanged.connect(self.autoMayus_3)
+
+        #Auto lower en todas las palabra (lower) para email
+        self.input_email.textChanged.connect(self.autoLower)
 #--------------------Events-----------------------------------------------------------------
         self.a = self.BotonAgregar.clicked.connect(lambda:self.create_proveedor_controller.createProveedor(self.input_nameProv.text(), self.input_nameFact.text(),self.input_nroCuil.text(),  self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text(), self.input_web.text()))
         
