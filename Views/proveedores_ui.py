@@ -2629,9 +2629,9 @@ class Ui_Proveedores(object):
 
         self.f = self.BotonGuardarCambios.clicked.connect(lambda: self.create_proveedor_controller.modificarProveedor(self.show_nameProv.text(), self.show_nameFact.text(), self.show_nroCuil.text(), self.show_calle.text(), self.show_numCalle.text(), self.show_ciudad.currentText(), self.show_codPostal.text(), self.show_tel.text(), self.show_email.text(), self.show_web.text()))
 
-        self.g = self.BotonDarDeBaja.clicked.connect(lambda: self.create_proveedor_controller.darBajaProveedor(self.proveedor,self.input_searchNameProv_2.text()))
+        self.g = self.BotonDarDeBaja.clicked.connect(lambda: self.create_proveedor_controller.darBajaProveedor(self.proveedor,self.input_searchNameProv_2.text(),self.input_searchNameFact_2.text()))
 
-        self.g = self.BotonDarDeBaja.clicked.connect(lambda: self.create_proveedor_controller.darBajaProveedor2(self.proveedor,self.input_searchNameFact_2.text()))
+        
 
         self.h = self.BotonCancelar.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
         self.i = self.BotonCancelar_2.clicked.connect(lambda: self.create_proveedor_controller.cancelar(Proveedores))
