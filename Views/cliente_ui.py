@@ -20,6 +20,25 @@ class Ui_clientes(object):
     def __init__(self):
         self.clientecontroller = ClienteController(self)
         self.cliente = Cliente(connection())
+
+    def autoMayus(self,txt):
+        cap_text = txt.title()  
+        oldPos = self.input_nameclient.cursorPosition()
+        self.input_nameclient.setText(cap_text)
+        self.input_nameclient.setCursorPosition(oldPos)
+
+    def autoMayus_2(self,txt):
+        cap_text = txt.title()  
+        oldPos = self.input_calle.cursorPosition()
+        self.input_calle.setText(cap_text)
+        self.input_calle.setCursorPosition(oldPos)
+
+    def autoLower(self,txt):
+        low_text = txt.lower()
+        oldPos = self.input_email.cursorPosition()
+        self.input_email.setText(low_text)
+        self.input_email.setCursorPosition(oldPos)
+
     def setupUi(self, clientes):
         #Validador de input en int
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
@@ -2003,6 +2022,14 @@ class Ui_clientes(object):
         self.show_nameCliente.setValidator(stringValidator)
         self.show_calle.setValidator(stringValidator)
 
+        #Auto upper en primera letra de la palabra (title) para Nombre Fact
+        self.input_nameclient.textChanged.connect(self.autoMayus)
+
+        #Auto upper en primera letra de la palabra (title) para Calle
+        self.input_calle.textChanged.connect(self.autoMayus_2)
+
+        #Auto lower en todas las palabra (lower) para email
+        self.input_email.textChanged.connect(self.autoLower)
 
 #--------------------Events-----------------------------------------------------------------
         self.a = self.BotonAgregar.clicked.connect(lambda:self.clientecontroller.createCliente(self.input_nameclient.text(), self.input_dni.text(), self.input_calle.text(), self.input_numCalle.text(), self.input_ciudad.currentText(), self.input_codPostal.text(), self.input_tel.text(), self.input_email.text()))
