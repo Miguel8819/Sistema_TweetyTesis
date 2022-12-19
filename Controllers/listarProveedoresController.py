@@ -48,9 +48,9 @@ class listarProveedoresController():
             
             if table.currentItem() != None:
                     nombreProveedor = table.currentItem().text()
-                    print(nombreProveedor)
+                    
                     proveedor = self.proveedores.getProveedor(nombreProveedor, '0')
-                    print(proveedor)
+                   
                     if proveedor:
                         self.proveedores.altaProveedor(nombreProveedor)                
                     self.listarBajaProveedores()

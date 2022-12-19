@@ -8,7 +8,7 @@ class FacturaCompra():
                         nroFacturaCompra INT (10) NOT NULL,
                         codProducto INT (10) NOT NULL,
                         cantidad VARCHAR(100) NOT NULL,
-                        precioUnitario VARCHAR(100) NOT NULL 
+                        precioUnitario VARCHAR(100) NOT NULL, 
                         fechaIngreso VARCHAR (10) NOT NULL,
                         fechaEmision VARCHAR (10) NOT NULL
                         )"""
@@ -20,3 +20,9 @@ class FacturaCompra():
             sql = """INSERT INTO facturaCompra (nroFacturaCompra,codProducto,cantidad,precioUnitario,fechaIngreso,fechaEmision) VALUES (%s,%s,%s,%s,%s,%s)"""
             cursor.execute(sql, (nroFactCompra,codProducto,cantidad,precio,fechaIngreso,fechaEmision))
             self.conn.commit()
+
+    # def updateStock(self,stock,CodBarras):
+    #     with self.conn.cursor() as cursor:
+    #         sql= """UPDATE product SET stock = %s WHERE CodigoDeBarras = %s"""
+    #         cursor.execute(sql,(stock,CodBarras))
+    #         self.conn.commit

@@ -6,6 +6,7 @@ sys.path.append(myDir)
 from Database.Connection import connection
 from Models.Proveedores import *
 from Models.Product import Product
+from Models.facturaCompra import FacturaCompra
 from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
 from PyQt5 import QtWidgets
@@ -14,6 +15,7 @@ class facturaCompraController():
     def __init__(self, factura_compra):
         self.proveedor = Proveedor(connection())
         self.product = Product(connection())
+        self.facturaCompra = FacturaCompra(connection())
         self.factura_compra = factura_compra
 
     def buscarProv(self,nameProv):
@@ -66,11 +68,12 @@ class facturaCompraController():
 
                 #-------------------------------------------------- 
                    
-                    self.factura_compra.input_codprod.setText(str(product[0]))
-                    self.factura_compra.input_cantidad.setText(str(cantidad))
-                    self.factura_compra.input_precio.setText(str(product[11]))
+                    #self.factura_compra.input_codprod.setText(str(product[0]))
+                    #self.factura_compra.input_cantidad.setText(str(cantidad))
+                    #self.factura_compra.input_precio.setText(str(product[11]))
                     self.factura_compra.input_codprod.clear()
                     self.factura_compra.input_cantidad.clear()
+                    self.factura_compra.input_precio.clear()
 
                 else:
                     msg = QMessageBox()
@@ -110,8 +113,32 @@ class facturaCompraController():
 
                     x = msg.exec_()
 
-    def guardar():
-        pass
+    def guardar(self,stock):
+        table = self.factura_compra.table_venta
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea guardar factura de compra?")
+        msgBox.setWindowTitle("")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            for  i in range(table.rowCount()):
+                CodProducto = table.item(i,0).text()
+                CodigoDeBarras = table.item(i,1).text()
+                stock = table.item(i,2).text()
+                producto = table.item(i,3).text()
+                precio = table.item(i,4).text() 
+                if CodigoDeBarras and stock:
+                    self.product.updateStock (stock, CodigoDeBarras)
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Confirmado")
+                    msg.setText("Cambios guardados")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("")
+                    x = msg.exec_() 
+        
 
     def cancelar(self, Ui_FacturaCompra):
         msgBox = QMessageBox()
