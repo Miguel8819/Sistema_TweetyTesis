@@ -12,9 +12,9 @@ class Product():
                         marca VARCHAR(45) NOT NULL,
                         tipoUnidad VARCHAR(45) NOT NULL,
                         unidadDeMedida VARCHAR(45) NOT NULL,
-                        stock VARCHAR(45) NOT NULL,
-                        cant_min_stock VARCHAR(45) NOT NULL,
-                        PuntoDePedido VARCHAR(45) NOT NULL,
+                        stock INT(45) NOT NULL,
+                        cant_min_stock INT(45) NOT NULL,
+                        PuntoDePedido INT(45) NOT NULL,
                         CostoDeCompra VARCHAR(45) NOT NULL,
                         PrecioDeVenta VARCHAR(45) NOT NULL,
                         activo BOOLEAN NOT NULL
@@ -57,6 +57,8 @@ class Product():
             sql = """INSERT INTO product (CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta, activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             cursor.execute(sql, (CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,activo))
             self.conn.commit()
+
+    
             
     def bajaProducto(self,CodigoDeBarras):
         with self.conn.cursor() as cursor:
@@ -117,3 +119,13 @@ class Product():
             sql= """UPDATE product SET stock = %s WHERE CodigoDeBarras = %s"""
             cursor.execute(sql,(stock,CodBarras))
             self.conn.commit
+
+
+    
+    def descontarStock(self,cantidad,codigodebarras):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE product SET stock = stock - %s
+                     WHERE CodigoDeBarras = %s            
+            """
+            cursor.execute(sql,(cantidad,codigodebarras))
+            self.conn.commit()

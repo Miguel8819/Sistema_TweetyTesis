@@ -48,6 +48,8 @@ class Venta():
 
     
 
+    
+
     def ventasDiarias(self):
         with self.conn.cursor() as cursor:
             sql = """SELECT date_format(cf.fechaYhora, "%d/%m/%Y"), SUM(df.cantidad * df.precioUnitario) 

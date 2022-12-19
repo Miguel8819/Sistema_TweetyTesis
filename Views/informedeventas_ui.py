@@ -125,7 +125,7 @@ class Ui_informeDeVentas(object):
 "")
         self.Boton_Buscar_nroFactura.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Boton_Buscar_nroFactura.setIcon(icon)
         self.Boton_Buscar_nroFactura.setObjectName("Boton_Buscar_nroFactura")
         self.label_3 = QtWidgets.QLabel(self.tab_3)

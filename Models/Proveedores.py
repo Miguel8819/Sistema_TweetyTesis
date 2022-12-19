@@ -56,6 +56,12 @@ class Proveedor():
             cursor.execute(sql, nombreProveedor)
             self.conn.commit()
 
+    def bajaProveedor2(self,cuil):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE proveedor SET activo = "0" WHERE nroCuilCuit = %s"""
+            cursor.execute(sql, cuil)
+            self.conn.commit()
+
     def altaProveedor(self,nombreProveedor):
         with self.conn.cursor() as cursor:
             sql = """UPDATE proveedor SET activo = "1" WHERE nombreProveedor = %s"""

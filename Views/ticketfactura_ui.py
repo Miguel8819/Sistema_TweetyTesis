@@ -12,7 +12,7 @@ from Controllers.ventaController import ventaController
 
 from Models.Product import Product
 from Models.cliente import Cliente
-
+from Controllers.ticketController import ticketController
 from Database.Connection import connection
 
 
@@ -23,6 +23,7 @@ class Ui_TicketFactura(object):
         self.ventaController = ventaController(self)
         self.product = Product(connection())
         self.cliente= Cliente(connection())
+        self.ticket= ticketController(connection())
         
 
     def setupUi(self, TicketFactura):
@@ -378,6 +379,8 @@ class Ui_TicketFactura(object):
         TicketFactura.setTabOrder(self.input_cuit, self.input_condVenta)
         TicketFactura.setTabOrder(self.input_condVenta, self.input_ingBrutos)
         TicketFactura.setTabOrder(self.input_ingBrutos, self.input_nroRemito)
+
+       
 
     def retranslateUi(self, TicketFactura):
         _translate = QtCore.QCoreApplication.translate
