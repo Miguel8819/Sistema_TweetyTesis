@@ -1698,7 +1698,7 @@ class Ui_venta(object):
 
         self.c = self.Boton_importe.clicked.connect(lambda: self.ventaController.calcular_importe(venta,self.input_neto.text(),self.input_descuento.text(), self.input_importe.text()))
 
-        self.d = self.Boton_finalizar.clicked.connect(lambda: self.ventaController.finalizar(venta,Ui_TicketFactura,Form)) 
+        self.d = self.Boton_finalizar.clicked.connect(lambda: self.ventaController.finalizar(venta)) 
 
         self.e = self.Boton_limpiar.clicked.connect(lambda:self.ventaController.limpiar_venta(venta))
 
@@ -1714,7 +1714,7 @@ class Ui_venta(object):
 
         self.k = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
 
-        # self.l = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
+      
 
 #------------------------------------------------------------------------------------------
 

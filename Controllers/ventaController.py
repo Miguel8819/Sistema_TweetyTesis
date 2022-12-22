@@ -1,3 +1,5 @@
+import os
+from fpdf import FPDF
 from ipaddress import summarize_address_range
 from locale import currency
 import numbers
@@ -32,10 +34,10 @@ class ventaController():
     
     
 
-    def __init__(self, venta,TicketFactura =''):
+    def __init__(self, venta,):
         self.product = Product(connection())
         self.venta = venta
-        self.TicketFactura = TicketFactura
+        
         self.Venta = Venta(connection())
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())
@@ -54,11 +56,7 @@ class ventaController():
      self.venta.ui.setupUi(self.venta.Form)
      self.venta.Form.show()
     
-    def ticket(self,nroFactura):
-       result=self.Facturacion.getNroFactura(nroFactura)
-       if result:             
-            self.TicketFactura.input_nroTicket.setText(str(result[0]))
-            self.TicketFactura.input_fecha.setText(str(result[1]))
+    
        
 
 
@@ -359,8 +357,11 @@ class ventaController():
         self.venta.input_codprod.clear()
         self.venta.input_cantidad.clear()
 
-    def finalizar (self, Ui_venta,Ui_TicketFactura, Form):
+    
+
+    def finalizar (self, Ui_venta):
         fecha= datetime.now()
+        fechaFactura= datetime.now().strftime("%d/%m/%Y")
         cabecera = 0
         table = self.venta.table_venta  
         if fecha and self.idCliente: #Validar todo
@@ -385,7 +386,7 @@ class ventaController():
                             self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
                     
                             self.product.descontarStock(cantidad,CodigoDeBarras)
-                    
+
 
                     msgBox = QMessageBox()
                     msgBox.setIcon(QMessageBox.Information)
@@ -394,30 +395,98 @@ class ventaController():
                     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                     returnValue = msgBox.exec()
                     if returnValue == QMessageBox.Ok: 
-                           nroFactura=0
-                           self.ticket(nroFactura) 
-                           self.openInformeFacturaDeVenta(Ui_TicketFactura, Form) 
+                          
+                   
+                        lista_datos = []
+                        for  i in range(table.rowCount()):    
+                            lista_datos.append((table.item(i,2).text(), table.item(i,3).text(), table.item(i,4).text(),table.item(i,5).text()))
+
+                        pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
+                        pdf.add_page()
+                        # TEXTO
+                        pdf.set_font('Arial', '', 16)
+                        # titulo
+                        pdf.cell(w = 0, h = 10, txt = 'Factura C', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.set_font('Times', '', 24)
+                        pdf.cell(w = 80, h = 10, txt = 'Libreria Tweety', border = 0, ln=0,
+                                align = 'C', fill = 0)
+                        pdf.set_font('Arial', '', 12)
+                        pdf.cell(w = 110, h = 10, txt = 'Fecha de emision: '+str(fechaFactura), border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 285, h = 5, txt = 'Factura N°: 0002-0000000 ', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 80, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 80, h = 5, txt = 'Roque S. Peña 203 - Loc. A', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 80, h = 5, txt = 'Tel: (03543) 15 531652', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 80, h = 5, txt = '5158 BIALET MASSE - CORDOBA', border = 0, ln=1,
+                                align = 'C', fill = 0)
+
+                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 30, h = 5, txt = 'Cliente: '+ str(self.venta.input_nombre.text()), border = 0, ln=0,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 200, h = 5, txt = 'Cond. IVA: ' + str(self.venta.comboBox_iva.currentText()), border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 34, h = 5, txt = 'Domicilio: ' + str(self.venta.input_direccion.text()+' '+ str(self.venta.input_nroCalle.text())), border = 0, ln=0,
+                                align = 'C', fill = 0)
+
+                        pdf.cell(w = 195, h = 5, txt = 'Cond. Pago: '+ str(self.venta.comboBox_pago.currentText()), border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                                align = 'C', fill = 0)
+
+                        # encabezado
+
+                        pdf.cell(w = 20, h = 10, txt = 'Cantidad', border = 1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 90, h = 10, txt = 'Detalle', border = 1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 40, h = 10, txt = 'Precio', border = 1,
+                                align = 'C', fill = 0)
+                        pdf.multi_cell(w = 0, h = 10, txt = 'Subtotal', border = 1,
+                                align = 'C', fill = 0)
+                        # valores
+                        for valor in lista_datos:
+                                pdf.cell(w = 20, h = 9, txt = str(valor[0]), border = 1,
+                                        align = 'C', fill = 0)
+                                pdf.cell(w = 90, h = 9, txt = str(valor[1]), border = 1,
+                                        align = 'C', fill = 0)
+                                pdf.cell(w = 40, h = 9, txt = str(valor[2] + '.00'), border = 1,
+                                        align = 'C', fill = 0)
+                                pdf.multi_cell(w = 0, h = 9, txt =str (valor[3] +'0'), border = 1,
+                                        align = 'C', fill = 0)
+                        pdf.output('factura.pdf')
+                        os.startfile('factura.pdf') 
+                                                    
+                        
+                            
 
                          
                             
-                    self.venta.table_venta.setRowCount(0)
-                    self.venta.input_importe.clear()
-                    self.venta.input_neto.clear()
-                    self.venta.input_efectivo.clear()
-                    self.venta.input_cambio.clear()
-                    self.venta.input_total.clear()
-                    descuento= '0'
-                    self.venta.input_descuento.setText(str(descuento))
-                    self.venta.descuento_valor.clear()
-                    self.venta.input_producto.clear()
-                    self.venta.input_stock.clear()
-                    self.venta.input_precio.clear()
-                    self.venta.input_subtotal.clear()
-                    self.venta.input_nroDni.clear()
-                    self.venta.input_nombre.clear()
-                    self.venta.input_direccion.clear()
-                    self.venta.input_localidad.clear()
-                    self.venta.input_nroCalle.clear()
+                        self.venta.table_venta.setRowCount(0)
+                        self.venta.input_importe.clear()
+                        self.venta.input_neto.clear()
+                        self.venta.input_efectivo.clear()
+                        self.venta.input_cambio.clear()
+                        self.venta.input_total.clear()
+                        descuento= '0'
+                        self.venta.input_descuento.setText(str(descuento))
+                        self.venta.descuento_valor.clear()
+                        self.venta.input_producto.clear()
+                        self.venta.input_stock.clear()
+                        self.venta.input_precio.clear()
+                        self.venta.input_subtotal.clear()
+                        self.venta.input_nroDni.clear()
+                        self.venta.input_nombre.clear()
+                        self.venta.input_direccion.clear()
+                        self.venta.input_localidad.clear()
+                        self.venta.input_nroCalle.clear()
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -437,9 +506,9 @@ class ventaController():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()     
 
-  
-
     
+        
+        
              
 
         
