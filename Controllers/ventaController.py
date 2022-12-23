@@ -402,42 +402,54 @@ class ventaController():
                             lista_datos.append((table.item(i,2).text(), table.item(i,3).text(), table.item(i,4).text(),table.item(i,5).text()))
 
                         pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
+                        pdf.set_margins(20, 10 , 10)
+                        pdf.set_auto_page_break(25)
                         pdf.add_page()
                         # TEXTO
+                        
                         pdf.set_font('Arial', '', 16)
                         # titulo
-                        pdf.cell(w = 0, h = 10, txt = 'Factura C', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 7, txt = 'Factura C', border = 1, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                                align = 'L', fill = 0)
+                        pdf.image('Imagenes/twetestudi.jpg' , 170 ,35, 25 , 25,'JPG') 
+
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
                         pdf.set_font('Times', '', 24)
-                        pdf.cell(w = 80, h = 10, txt = 'Libreria Tweety', border = 0, ln=0,
-                                align = 'C', fill = 0)
+                        pdf.cell(w = 50, h = 0, txt = 'Libreria Tweety', border = 0, ln=0,
+                                align = 'L', fill = 0)
                         pdf.set_font('Arial', '', 12)
-                        pdf.cell(w = 110, h = 10, txt = 'Fecha de emision: '+str(fechaFactura), border = 0, ln=1,
-                                align = 'C', fill = 0)
-                        pdf.cell(w = 285, h = 5, txt = 'Factura N°: 0002-0000000 ', border = 0, ln=1,
-                                align = 'C', fill = 0)
-                        pdf.cell(w = 80, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=1,
-                                align = 'C', fill = 0)
-                        pdf.cell(w = 80, h = 5, txt = 'Roque S. Peña 203 - Loc. A', border = 0, ln=1,
-                                align = 'C', fill = 0)
-                        pdf.cell(w = 80, h = 5, txt = 'Tel: (03543) 15 531652', border = 0, ln=1,
-                                align = 'C', fill = 0)
-                        pdf.cell(w = 80, h = 5, txt = '5158 BIALET MASSE - CORDOBA', border = 0, ln=1,
-                                align = 'C', fill = 0)
+                        pdf.cell(w = 0, h = 0, txt = 'Fecha de emision: '+str(fechaFactura), border = 0, ln=0,
+                                align = 'R', fill = 0)
+                        pdf.cell(w = 0, h = 10, txt = 'Factura N°: 0002-0000000'+ str(cabecera), border = 0, ln=1,
+                                align = 'R', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=1,
+                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Roque S. Peña 203 - Loc. A', border = 0, ln=1,
+                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Tel: (03543) 15 531652', border = 0, ln=1,
+                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = '5158 BIALET MASSE - CORDOBA', border = 0, ln=1,
+                                align = 'L', fill = 0)
 
-                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 10, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 30, h = 5, txt = 'Cliente: '+ str(self.venta.input_nombre.text()), border = 0, ln=0,
+                        pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 200, h = 5, txt = 'Cond. IVA: ' + str(self.venta.comboBox_iva.currentText()), border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 34, h = 5, txt = 'Domicilio: ' + str(self.venta.input_direccion.text()+' '+ str(self.venta.input_nroCalle.text())), border = 0, ln=0,
-                                align = 'C', fill = 0)
+                        
+                        pdf.cell(w = 0, h = 5, txt = 'Cliente: '+ str(self.venta.input_nombre.text()), border = 0, ln=0,
+                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Cond. IVA: ' + str(self.venta.comboBox_iva.currentText()), border = 0, ln=1,
+                                align = 'R', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Domicilio: ' + str(self.venta.input_direccion.text()+' '+ str(self.venta.input_nroCalle.text())), border = 0, ln=0,
+                                align = 'L', fill = 0)
 
-                        pdf.cell(w = 195, h = 5, txt = 'Cond. Pago: '+ str(self.venta.comboBox_pago.currentText()), border = 0, ln=1,
-                                align = 'C', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Cond. Pago: '+ str(self.venta.comboBox_pago.currentText()), border = 0, ln=1,
+                                align = 'R', fill = 0)
                         pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
 
@@ -451,19 +463,32 @@ class ventaController():
                                 align = 'C', fill = 0)
                         pdf.multi_cell(w = 0, h = 10, txt = 'Subtotal', border = 1,
                                 align = 'C', fill = 0)
+                        
                         # valores
                         for valor in lista_datos:
-                                pdf.cell(w = 20, h = 9, txt = str(valor[0]), border = 1,
+                                pdf.cell(w = 20, h = 7, txt = str(valor[0]), border = 1,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 90, h = 9, txt = str(valor[1]), border = 1,
+                                pdf.cell(w = 90, h = 7, txt = str(valor[1]), border = 1,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 40, h = 9, txt = str(valor[2] + '.00'), border = 1,
+                                pdf.cell(w = 40, h = 7, txt = str(valor[2] + '.00'), border = 1,
                                         align = 'C', fill = 0)
-                                pdf.multi_cell(w = 0, h = 9, txt =str (valor[3] +'0'), border = 1,
+                                pdf.multi_cell(w = 0, h = 7, txt =str (valor[3] +'0'), border = 1,
                                         align = 'C', fill = 0)
+                        
+                        pdf.set_y(240)
+                        pdf.cell(w = 0, h = 10, txt = 'Subtotal: $' + str(self.venta.input_neto.text()), border = 0, ln=1,
+                                align = 'R', fill = 0) 
+                        pdf.cell(w = 0, h = 10, txt = 'Descuento:' + str(self.venta.descuento_valor.text()), border = 0, ln=1,
+                                align = 'R', fill = 0) 
+                        pdf.cell(w = 0, h = 10, txt = 'Importe Total: $' + str(self.venta.input_importe.text()), border = 0, ln=1,
+                                align = 'R', fill = 0)  
+                        pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
+                                align = 'L', fill = 0)
+                            
+                                    
                         pdf.output('factura.pdf')
                         os.startfile('factura.pdf') 
-                                                    
+                                                 
                         
                             
 
