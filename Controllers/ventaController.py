@@ -470,9 +470,9 @@ class ventaController():
                                         align = 'C', fill = 0)
                                 pdf.cell(w = 90, h = 7, txt = str(valor[1]), border = 1,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 40, h = 7, txt = str(valor[2] + '.00'), border = 1,
+                                pdf.cell(w = 40, h = 7, txt ='$' + str(valor[2] + '.00'), border = 1,
                                         align = 'C', fill = 0)
-                                pdf.multi_cell(w = 0, h = 7, txt =str (valor[3] +'0'), border = 1,
+                                pdf.multi_cell(w = 0, h = 7, txt ='$' + str (valor[3] +'0'), border = 1,
                                         align = 'C', fill = 0)
                         
                         pdf.set_y(240)
