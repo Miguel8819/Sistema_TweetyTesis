@@ -113,7 +113,7 @@ class ventaController():
                         table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(str(product[1])))  # codBarras
                         table.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
                         table.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(product[2]))  # name
-                        table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(product[11])))  # price
+                        table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(product[12])))  # price
 
                         cantidad = int(table.item(rowCount, 2).text())
                         precio = float(table.item(rowCount, 4).text())
@@ -132,7 +132,7 @@ class ventaController():
                         self.venta.input_codprod.setText(str(product[0]))
                         self.venta.input_cantidad.setText(str(cantidad))
                         self.venta.input_producto.setText(str(product[2]))
-                        self.venta.input_precio.setText(str(product[11]))
+                        self.venta.input_precio.setText(str(product[12]))
                         self.venta.input_stock.setText(str(product[8]))
                         self.venta.input_subtotal.setText(str(subtotal))
                         self.venta.input_codprod.clear()
@@ -399,7 +399,7 @@ class ventaController():
                    
                         lista_datos = []
                         for  i in range(table.rowCount()):    
-                            lista_datos.append((table.item(i,2).text(), table.item(i,3).text(), table.item(i,4).text(),table.item(i,5).text()))
+                            lista_datos.append(( table.item(i,3).text(),table.item(i,2).text(), table.item(i,4).text(),table.item(i,5).text()))
 
                         pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
                         pdf.set_margins(20, 10 , 10)
@@ -413,30 +413,50 @@ class ventaController():
                                 align = 'C', fill = 0)
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'L', fill = 0)
-                        pdf.image('Imagenes/twetestudi.jpg' , 170 ,35, 25 , 25,'JPG') 
+                        pdf.image('Imagenes/twetestudi.jpg' , 100 ,35, 25 , 25,'JPG') 
 
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.set_font('Times', '', 24)
-                        pdf.cell(w = 50, h = 0, txt = 'Libreria Tweety', border = 0, ln=0,
+                        pdf.set_font('Times', '', 28)
+                        pdf.cell(w = 50, h = 5, txt = 'Libreria Tweety', border = 0, ln=1,
                                 align = 'L', fill = 0)
                         pdf.set_font('Arial', '', 12)
-                        pdf.cell(w = 0, h = 0, txt = 'Fecha de emision: '+str(fechaFactura), border = 0, ln=0,
+                        pdf.cell(w = 0, h = 7, txt ='Factura N°: 0002-0000000'+ str(cabecera) , border = 0, ln=1,
                                 align = 'R', fill = 0)
-                        pdf.cell(w = 0, h = 10, txt = 'Factura N°: 0002-0000000'+ str(cabecera), border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=0,
+                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt ='Fecha de emision: '+str(fechaFactura) , border = 0, ln=1,
                                 align = 'R', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=1,
+                        pdf.set_font('Arial', '', 8)
+                        pdf.cell(w = 60, h = 5, txt = 'de PEÑA DANIEL ALBERTO', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.set_font('Arial', '', 12)
+                        pdf.cell(w = 0, h = 5, txt = 'Roque S. Peña 203 - Loc. A', border = 0, ln=0,
                                 align = 'L', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = 'Roque S. Peña 203 - Loc. A', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt ='CUIT: 20318688800' , border = 0, ln=1,
+                                align = 'R', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Tel: (03543) 15 531652', border = 0, ln=0,
                                 align = 'L', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = 'Tel: (03543) 15 531652', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt ='Inicio de Actividades: 01/10/2021', border = 0, ln=1,
+                                align = 'R', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = '5158 BIALET MASSE - CORDOBA', border = 0, ln=0,
                                 align = 'L', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = '5158 BIALET MASSE - CORDOBA', border = 0, ln=1,
+                        
+                        pdf.cell(w = 0, h = 5, txt ='Ingresos Brutos: 286436927', border = 0, ln=1,
+                                align = 'R', fill = 0)
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        pdf.cell(w = 0, h = 5, txt = 'RESPONSABLE MONOTRIBUTO', border = 0, ln=1,
                                 align = 'L', fill = 0)
 
                         pdf.cell(w = 0, h = 10, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
+                        pdf.cell(w = 0, h = 1, txt = '', border = 1, ln=1,
                                 align = 'C', fill = 0)
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
@@ -445,34 +465,38 @@ class ventaController():
                                 align = 'L', fill = 0)
                         pdf.cell(w = 0, h = 5, txt = 'Cond. IVA: ' + str(self.venta.comboBox_iva.currentText()), border = 0, ln=1,
                                 align = 'R', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = 'Domicilio: ' + str(self.venta.input_direccion.text()+' '+ str(self.venta.input_nroCalle.text())), border = 0, ln=0,
+                        pdf.cell(w = 0, h = 5, txt = 'Domicilio: ' + str(self.venta.input_direccion.text()+' '+ str(self.venta.input_nroCalle.text()+' - '+ str (self.venta.input_localidad.text()))), border = 0, ln=0,
                                 align = 'L', fill = 0)
 
                         pdf.cell(w = 0, h = 5, txt = 'Cond. Pago: '+ str(self.venta.comboBox_pago.currentText()), border = 0, ln=1,
                                 align = 'R', fill = 0)
-                        pdf.cell(w = 20, h = 10, txt = '', border = 0, ln=1,
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 0, h = 1, txt = '', border = 1, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
 
                         # encabezado
 
-                        pdf.cell(w = 20, h = 10, txt = 'Cantidad', border = 1,
+                        pdf.cell(w = 90, h = 7, txt = 'Descripción', border = 1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 90, h = 10, txt = 'Detalle', border = 1,
+                        pdf.cell(w = 20, h = 7, txt = 'Cantidad', border = 1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 40, h = 10, txt = 'Precio', border = 1,
+                        pdf.cell(w = 40, h = 7, txt = 'Precio Unitario', border = 1,
                                 align = 'C', fill = 0)
-                        pdf.multi_cell(w = 0, h = 10, txt = 'Subtotal', border = 1,
+                        pdf.multi_cell(w = 0, h = 7, txt = 'Subtotal', border = 1,
                                 align = 'C', fill = 0)
                         
                         # valores
                         for valor in lista_datos:
-                                pdf.cell(w = 20, h = 7, txt = str(valor[0]), border = 1,
+                                pdf.cell(w = 90, h = 7, txt = str(valor[0]), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 90, h = 7, txt = str(valor[1]), border = 1,
+                                pdf.cell(w = 20, h = 7, txt = str(valor[1]), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 40, h = 7, txt ='$' + str(valor[2] + '.00'), border = 1,
+                                pdf.cell(w = 40, h = 7, txt ='$' + str(valor[2] + '.00'), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.multi_cell(w = 0, h = 7, txt ='$' + str (valor[3] +'0'), border = 1,
+                                pdf.multi_cell(w = 0, h = 7, txt ='$' + str (valor[3] +'0'), border = 0,
                                         align = 'C', fill = 0)
                         
                         pdf.set_y(240)
