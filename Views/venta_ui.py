@@ -19,7 +19,7 @@ from Database.Connection import connection
 from cliente_ui import Ui_clientes
 from createproduct_ui import Ui_CreateProduct
 from controlstock_ui import Ui_controlstock
-from ticketfactura_ui import Ui_TicketFactura
+
 
 
 
