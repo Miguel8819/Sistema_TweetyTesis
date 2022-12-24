@@ -490,16 +490,20 @@ class ventaController():
                         
                         # valores
                         for valor in lista_datos:
-                                pdf.cell(w = 90, h = 7, txt = str(valor[0]), border = 0,
+                                pdf.set_font('Arial', '', 10)    
+                                pdf.cell(w = 90, h = 5, txt = str(valor[0]), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 20, h = 7, txt = str(valor[1]), border = 0,
+                                pdf.cell(w = 20, h = 5, txt = str(valor[1]), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.cell(w = 40, h = 7, txt ='$' + str(valor[2] + '.00'), border = 0,
+                                pdf.cell(w = 40, h = 5, txt ='$' + str(valor[2] + '.00'), border = 0,
                                         align = 'C', fill = 0)
-                                pdf.multi_cell(w = 0, h = 7, txt ='$' + str (valor[3] +'0'), border = 0,
+                                pdf.multi_cell(w = 0, h = 5, txt ='$' + str (valor[3] +'0'), border = 0,
                                         align = 'C', fill = 0)
-                        
+                      
+                        pdf.set_font('Arial', '', 12)
                         pdf.set_y(240)
+                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                        align = 'C', fill = 0)
                         pdf.cell(w = 0, h = 10, txt = 'Subtotal: $' + str(self.venta.input_neto.text()), border = 0, ln=1,
                                 align = 'R', fill = 0) 
                         pdf.cell(w = 0, h = 10, txt = 'Descuento:' + str(self.venta.descuento_valor.text()), border = 0, ln=1,
@@ -508,7 +512,7 @@ class ventaController():
                                 align = 'R', fill = 0)  
                         pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
                                 align = 'L', fill = 0)
-                            
+                        
                                     
                         pdf.output('factura.pdf')
                         os.startfile('factura.pdf') 
