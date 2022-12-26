@@ -445,12 +445,6 @@ class ventaController():
                         pdf.cell(w = 0, h = 5, txt ='Ingresos Brutos: 286436927', border = 0, ln=1,
                                 align = 'R', fill = 0)
                         
-                        
-                        
-                        
-                        
-                        
-                        
                         pdf.cell(w = 0, h = 5, txt = 'RESPONSABLE MONOTRIBUTO', border = 0, ln=1,
                                 align = 'L', fill = 0)
 
