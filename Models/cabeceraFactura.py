@@ -5,7 +5,7 @@ class CabeceraFactura():
             sql = """CREATE TABLE IF NOT EXISTS cabeceraFactura
                         (
                         nroFactura INT(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                        fechaYhora VARCHAR(100) NOT NULL,
+                        fechaYhora DATETIME(100) NOT NULL,
                         codCliente INT(100) NOT NULL
                         
                         

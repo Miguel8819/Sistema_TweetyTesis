@@ -163,7 +163,6 @@ class Venta():
                     cc.codCliente = cf.codCliente
                     AND
                     dp.codProducto = df.codProducto
-                   
                     order by cf.nroFactura 
                    
                     """
