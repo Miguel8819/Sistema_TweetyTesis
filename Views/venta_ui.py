@@ -6,12 +6,11 @@ from pymysql import STRING
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Controllers.ventaController import ventaController
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from Models.Product import Product
 from Models.cliente import Cliente
 from Controllers.menuprincipalController import menuprincipalController
@@ -19,10 +18,6 @@ from Database.Connection import connection
 from cliente_ui import Ui_clientes
 from createproduct_ui import Ui_CreateProduct
 from controlstock_ui import Ui_controlstock
-
-
-
-
 
 
 class Ui_venta(object):
@@ -37,7 +32,7 @@ class Ui_venta(object):
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
         
         #Validador de input string
-        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
+        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+')) 
         venta.setObjectName("venta")
         venta.resize(1044, 671)
         venta.setStyleSheet("\n"
@@ -1493,7 +1488,7 @@ class Ui_venta(object):
         self.nombreprod.setFont(font)
         self.nombreprod.setObjectName("nombreprod")
         self.input_producto = QtWidgets.QLineEdit(venta)
-        self.input_producto.setEnabled(False)
+        self.input_producto.setEnabled(True)
         self.input_producto.setGeometry(QtCore.QRect(230, 200, 211, 20))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -1502,7 +1497,7 @@ class Ui_venta(object):
         font.setWeight(75)
         self.input_producto.setFont(font)
         self.input_producto.setText("")
-        self.input_producto.setMaxLength(20)
+        self.input_producto.setMaxLength(30)
         self.input_producto.setAlignment(QtCore.Qt.AlignCenter)
         self.input_producto.setObjectName("input_producto")
         self.precio = QtWidgets.QLabel(venta)
@@ -1686,10 +1681,11 @@ class Ui_venta(object):
         self.input_efectivo.setValidator(intValidator)
         self.input_descuento.setValidator(intValidator)
         self.input_nroDni.setValidator(intValidator)
-
        
         self.input_nombre.setValidator(stringValidator)
         
+        self.completer_nameProd = QCompleter(self.product.autoComplete()) 
+        self.input_producto.setCompleter(self.completer_nameProd)
         
 
         #---------------------------------------------------------------------------------------------------------------------------

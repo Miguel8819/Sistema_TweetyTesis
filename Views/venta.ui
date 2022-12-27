@@ -4172,7 +4172,7 @@ background-color: rgb(255, 45, 3);}</string>
   </widget>
   <widget class="QLineEdit" name="input_producto">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -4194,7 +4194,7 @@ background-color: rgb(255, 45, 3);}</string>
     <string/>
    </property>
    <property name="maxLength">
-    <number>20</number>
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

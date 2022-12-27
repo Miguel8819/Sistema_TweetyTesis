@@ -42,6 +42,14 @@ class Product():
             if result:
                 return result
     
+    def getProduct_2(self, nombre, estado):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM product WHERE producto = %s AND activo = %s"""
+            cursor.execute(sql,(nombre,estado))
+            result = cursor.fetchone()
+            if result:
+                return result
+    
     def UpdateProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         with self.conn.cursor() as cursor:
             
