@@ -1,3 +1,5 @@
+
+
 class Venta():
     def __init__(self,conn):
         self.conn = conn
@@ -170,5 +172,7 @@ class Venta():
             result = cursor.fetchall()
             if result:
                 return result
+
+    
 
             

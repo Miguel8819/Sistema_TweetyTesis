@@ -5,16 +5,19 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 from wsgiref.validate import validator
 from PyQt5 import QtCore, QtGui, QtWidgets
+from Models.Product import Product
 
 from createproduct_ui import Ui_CreateProduct
 from Controllers.controlstockController import controlstockController
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
+from Database.Connection import connection
 
 class Ui_controlstock(object):
     def __init__(self):
         self.controlstock_controller = controlstockController(self)
+        self.productos = Product(connection())
     def setupUi(self, controlstock):
         #Validador de input en int
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
@@ -281,6 +284,13 @@ class Ui_controlstock(object):
 #Inputs con validadores
         self.input_codigo.setValidator(intValidator)
         self.input_codigo_2.setValidator(intValidator)
+
+        self.completer_nameProd = QCompleter(self.productos.autoComplete()) 
+        self.input_prod.setCompleter(self.completer_nameProd)
+
+        self.completer_nameProd_2 = QCompleter(self.productos.autoComplete_2())
+        self.input_prod_2.setCompleter(self.completer_nameProd_2)
+        
         
 
         self.a = self.btn_actualizar.clicked.connect(lambda:self.controlstock_controller.listarProductosActivos())

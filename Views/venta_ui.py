@@ -1689,7 +1689,8 @@ class Ui_venta(object):
 
        
         self.input_nombre.setValidator(stringValidator)
-       
+        
+        
 
         #---------------------------------------------------------------------------------------------------------------------------
         self.a = self.boton_aceptar.clicked.connect(lambda:self.ventaController.aceptar(venta,self.input_codprod.text(), self.input_cantidad.text(),self.input_producto.text(),self.input_stock.text(),self.input_precio.text(), self.input_subtotal.text()))

@@ -1,3 +1,7 @@
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
 class Product():
     def __init__(self,conn):
         self.conn = conn
@@ -129,3 +133,27 @@ class Product():
             """
             cursor.execute(sql,(cantidad,codigodebarras))
             self.conn.commit()
+
+    def autoComplete(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT producto FROM product WHERE activo = '1' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            new_list = [i[0] for i in result]
+            #print(new_list)  #Test print
+            self.model = QStringListModel()
+            self.model.setStringList(new_list)
+            if self.model:
+                return self.model
+    
+    def autoComplete_2(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT producto FROM product WHERE activo = '0' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            new_list_2 = [i[0] for i in result]
+            #print(new_list)  #Test print
+            self.model_2 = QStringListModel()
+            self.model_2.setStringList(new_list_2)
+            if self.model_2:
+                return self.model_2

@@ -330,52 +330,7 @@ class CreateProveedorController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-    # def darBajaProveedor2(self,proveedores,cuil):
-    #     if cuil:
-    #         msgBox = QMessageBox()
-    #         msgBox.setIcon(QMessageBox.Information)
-    #         msgBox.setText("¿Desea dar de baja al proveedor? ")
-    #         msgBox.setWindowTitle("Baja de proveedor")
-    #         msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-    #         returnValue = msgBox.exec()
-    #         if returnValue == QMessageBox.Ok:
-            
-                
-    #             if proveedores :                      
-    #                     self.proveedor.bajaProveedor2(cuil)
-
-    #             msg = QMessageBox()
-    #             msg.setWindowTitle("Confirmado")
-    #             msg.setText("Proveedor dado de baja de la lista")
-    #             msg.setIcon(QMessageBox.Information)
-    #             msg.setStandardButtons(QMessageBox.Ok)
-    #             msg.setDefaultButton(QMessageBox.Ok)
-    #             msg.setInformativeText("")
-    #             x = msg.exec_() 
-
-    #             self.create_proveedor.input_searchNameProv_2.clear()
-    #             self.create_proveedor.show_nameProv_2.clear()
-    #             self.create_proveedor.show_nameFact_2.clear()
-                            
-    #             self.create_proveedor.show_calle_2.clear()
-    #             self.create_proveedor.show_numCalle_2.clear()
-    #             self.create_proveedor.show_nroCuil_2.clear()
-    #             self.create_proveedor.show_codPostal_2.clear()
-    #             self.create_proveedor.show_tel_2.clear()
-    #             self.create_proveedor.show_email_2.clear()
-    #             self.create_proveedor.show_web_2.clear()
-
-          
-
-    #     else: 
-    #             msg = QMessageBox()
-    #             msg.setWindowTitle("Error")
-    #             msg.setText("Ingrese un numero de cuit valido")
-    #             msg.setIcon(QMessageBox.Information)
-    #             msg.setStandardButtons(QMessageBox.Ok)
-    #             msg.setDefaultButton(QMessageBox.Ok)
-    #             msg.setInformativeText("Vuelva a intentarlo")
-    #             x = msg.exec_() 
+ 
 
 
     def modificarProveedor(self,nombreProveedor, nombreFactura, nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb ):
