@@ -390,7 +390,7 @@ class ventaController():
 
                     msgBox = QMessageBox()
                     msgBox.setIcon(QMessageBox.Information)
-                    msgBox.setText("¿Desea imprimir la factura de venta? ")
+                    msgBox.setText("¿Desea imprimir el comprobante de venta? ")
                     msgBox.setWindowTitle("")
                     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                     returnValue = msgBox.exec()
@@ -403,16 +403,19 @@ class ventaController():
 
                         pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
                         pdf.set_margins(20, 10 , 10)
-                        pdf.set_auto_page_break(25)
+                        pdf.set_auto_page_break(10)
                         pdf.add_page()
                         # TEXTO
                         
-                        pdf.set_font('Arial', '', 16)
+                        pdf.set_font('Arial', '', 48)
                         # titulo
-                        pdf.cell(w = 0, h = 7, txt = 'Factura C', border = 1, ln=1,
+                        pdf.cell(w = 0, h = 7, txt = '', border = 0, ln=1,
                                 align = 'C', fill = 0)
-                        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
-                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'X', border = 0, ln=1,
+                                align = 'C', fill = 0)
+                        pdf.set_font('Arial', '', 10)
+                        pdf.cell(w = 0, h = 10, txt = 'Documento no válido como factura', border = 0, ln=1,
+                                align = 'C', fill = 0)
                         pdf.image('Imagenes/twetestudi.jpg' , 100 ,35, 25 , 25,'JPG') 
 
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
@@ -421,7 +424,7 @@ class ventaController():
                         pdf.cell(w = 50, h = 5, txt = 'Libreria Tweety', border = 0, ln=1,
                                 align = 'L', fill = 0)
                         pdf.set_font('Arial', '', 12)
-                        pdf.cell(w = 0, h = 7, txt ='Factura N°: 0002-0000000'+ str(cabecera) , border = 0, ln=1,
+                        pdf.cell(w = 0, h = 7, txt ='Recibo N°: 0002-0000000'+ str(cabecera) , border = 0, ln=1,
                                 align = 'R', fill = 0)
                         pdf.cell(w = 0, h = 5, txt = 'Articulos escolares y comerciales', border = 0, ln=0,
                                 align = 'L', fill = 0)
@@ -495,14 +498,14 @@ class ventaController():
                                         align = 'C', fill = 0)
                       
                         pdf.set_font('Arial', '', 12)
-                        pdf.set_y(240)
+                        pdf.set_y(260)
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                         align = 'C', fill = 0)
-                        pdf.cell(w = 0, h = 10, txt = 'Subtotal: $' + str(self.venta.input_neto.text()), border = 0, ln=1,
+                        pdf.cell(w = 0, h = 7, txt = 'Subtotal: $' + str(self.venta.input_neto.text()), border = 0, ln=1,
                                 align = 'R', fill = 0) 
-                        pdf.cell(w = 0, h = 10, txt = 'Descuento:' + str(self.venta.descuento_valor.text()), border = 0, ln=1,
+                        pdf.cell(w = 0, h = 7, txt = 'Descuento:' + str(self.venta.descuento_valor.text()), border = 0, ln=1,
                                 align = 'R', fill = 0) 
-                        pdf.cell(w = 0, h = 10, txt = 'Importe Total: $' + str(self.venta.input_importe.text()), border = 0, ln=1,
+                        pdf.cell(w = 0, h = 7, txt = 'Importe Total: $' + str(self.venta.input_importe.text()), border = 0, ln=1,
                                 align = 'R', fill = 0)  
                         pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
                                 align = 'L', fill = 0)
