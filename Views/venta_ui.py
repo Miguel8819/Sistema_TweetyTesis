@@ -19,7 +19,6 @@ from cliente_ui import Ui_clientes
 from createproduct_ui import Ui_CreateProduct
 from controlstock_ui import Ui_controlstock
 
-
 class Ui_venta(object):
     def __init__(self):
         self.ventaController = ventaController(self)
@@ -32,7 +31,7 @@ class Ui_venta(object):
         intValidator = QRegExpValidator(QRegExp(r'[0-9\s]+'))
         
         #Validador de input string
-        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+')) 
+        stringValidator = QRegExpValidator(QRegExp(r'[a-zA-Z\s]+'))
         venta.setObjectName("venta")
         venta.resize(1044, 671)
         venta.setStyleSheet("\n"
@@ -477,7 +476,7 @@ class Ui_venta(object):
         self.condIVA.setFont(font)
         self.condIVA.setObjectName("condIVA")
         self.label = QtWidgets.QLabel(venta)
-        self.label.setGeometry(QtCore.QRect(30, 20, 141, 21))
+        self.label.setGeometry(QtCore.QRect(30, 20, 201, 21))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
@@ -1675,7 +1674,7 @@ class Ui_venta(object):
         venta.setTabOrder(self.comboBox_iva, self.comboBox_pago)
         venta.setTabOrder(self.comboBox_pago, self.table_venta)
 
-        #Inputs con validadores
+         #Inputs con validadores
         self.input_codprod.setValidator(intValidator)
         self.input_cantidad.setValidator(intValidator)
         self.input_efectivo.setValidator(intValidator)
@@ -1713,7 +1712,9 @@ class Ui_venta(object):
 
       
 
-#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------  
+
+
 
     def retranslateUi(self, venta):
         _translate = QtCore.QCoreApplication.translate
@@ -1847,7 +1848,7 @@ class Ui_venta(object):
         self.localidad.setText(_translate("venta", "Localidad"))
         self.nombre.setText(_translate("venta", "Apellido y nombre"))
         self.condIVA.setText(_translate("venta", "Cond IVA"))
-        self.label.setText(_translate("venta", "FACTURA C"))
+        self.label.setText(_translate("venta", "COMPROBANTE X"))
         self.boton_aceptar.setText(_translate("venta", "Aceptar"))
         self.efectivo.setText(_translate("venta", "Efectivo"))
         self.cambio.setText(_translate("venta", "Cambio"))
