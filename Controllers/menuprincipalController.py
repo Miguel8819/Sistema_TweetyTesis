@@ -87,5 +87,8 @@ class menuprincipalController():
      self.menuprincipal.ui = Ui_facturaCompra()
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
-     Form.show()   
+     Form.show()  
+
+   def manualUsuario(self):
+      os.startfile('ManualDeUsuarioSistemaTweety.pdf')  
 

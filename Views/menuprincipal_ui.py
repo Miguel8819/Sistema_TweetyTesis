@@ -362,6 +362,7 @@ class Ui_menuprincipal(object):
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
+        self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
 
 #--------------------End Events---------------------------------
 
