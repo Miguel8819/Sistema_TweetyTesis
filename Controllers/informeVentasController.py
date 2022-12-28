@@ -11,6 +11,7 @@ from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
 from PyQt5.QtWidgets import QMessageBox
 from fpdf import FPDF
+from functools import reduce
 
 
 class listarVentas():
@@ -125,8 +126,8 @@ class listarVentas():
         pdf.set_font('Times', '', 28)
         pdf.cell(w = 50, h = 10, txt = 'Libreria Tweety', border = 0, ln=1,
                 align = 'L', fill = 0)
-        
-        
+        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                align = 'C', fill = 0)
         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                 align = 'C', fill = 0)
         pdf.set_font('Arial', '', 16)
@@ -137,6 +138,7 @@ class listarVentas():
         pdf.multi_cell(w = 0, h = 7, txt = 'Importe', border = 1,
                 align = 'C', fill = 0)
         # valores
+        total = 0
         for valor in lista_datos:
                 pdf.set_font('Arial', '', 10)    
                 pdf.cell(w = 50, h = 5, txt = str(valor[0]), border = 0,
@@ -144,10 +146,14 @@ class listarVentas():
                 pdf.cell(w = 50, h = 5, txt = str(valor[1]), border = 0,
                         align = 'C', fill = 0)
                 pdf.multi_cell(w = 0, h = 5, txt ='$' + str(valor[2]), border = 0,
-                        align = 'C', fill = 0)
-                     
-                    
-        
+                        align = 'C', fill = 0)                        
+                total = total + float(valor[2])
+         # reduce(lambda x, y: x + y, valores)       
+        new = reduce(lambda x, y: x + y,list(map(lambda x : float(x[2]), lista_datos)))      
+        print(total)  
+        pdf.set_font('Arial', '', 15)
+        pdf.cell(w = 0, h = 20, txt = 'Importe Total: $'+str(total), border = 0, ln=1,
+                align = 'R', fill = 0)
         pdf.output('reporteVentas.pdf')
         os.startfile('reporteVentas.pdf') 
     
