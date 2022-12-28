@@ -93,94 +93,76 @@ class ventaController():
     def aceptar(self, Ui_venta, CodigoDeBarras, cantidad,nombre,stock,precio1,subtotal):
         if cantidad:
             cantidad= int(cantidad)
-            if CodigoDeBarras and (cantidad > 0) :
-                
-                         
+            if CodigoDeBarras and (cantidad > 0) :             
                 table = self.venta.table_venta
                 product = self.product.getProduct(CodigoDeBarras, '1')
-                if cantidad <= product[8]:
-                    
-                    
-                    if product:
-                        if table.rowCount() == 50:
-                            rowCount = 0
-                            table.setRowCount(1)
-                        else:
-                            rowCount = table.rowCount()
-                            table.setRowCount(table.rowCount() + 1)
+                if product:
+                    if cantidad <= product[8]:
+                            if table.rowCount() == 50:
+                                rowCount = 0
+                                table.setRowCount(1)
+                            else:
+                                rowCount = table.rowCount()
+                                table.setRowCount(table.rowCount() + 1)
 
+                            table.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(str(product[0])))
+                            table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(str(product[1])))  # codBarras
+                            table.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
+                            table.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(product[2]))  # name
+                            table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(product[12])))  # price
+
+                            cantidad = int(table.item(rowCount, 2).text())
+                            precio = float(table.item(rowCount, 4).text())
+                            subtotal = cantidad*precio
+
+                            table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(str(subtotal)))  # subtotal
+                            table.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(product[8])))  # stock
                         
-                        table.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(str(product[0])))
-                        table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(str(product[1])))  # codBarras
-                        table.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
-                        table.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(product[2]))  # name
-                        table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(product[12])))  # price
-
-                        cantidad = int(table.item(rowCount, 2).text())
-                        precio = float(table.item(rowCount, 4).text())
-                        subtotal = cantidad*precio
-
-                        table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(str(subtotal)))  # subtotal
-
-                        table.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(product[8])))  # stock
-                    
-                        stock=int(table.item(rowCount, 6).text())
-                        self.stockdisponible=stock - cantidad
-                      
-                        print (self.stockdisponible)
-                    #-------------------------------------------------- 
-                    
-                        self.venta.input_codprod.setText(str(product[0]))
-                        self.venta.input_cantidad.setText(str(cantidad))
-                        self.venta.input_producto.setText(str(product[2]))
-                        self.venta.input_precio.setText(str(product[12]))
-                        self.venta.input_stock.setText(str(product[8]))
-                        self.venta.input_subtotal.setText(str(subtotal))
-                        self.venta.input_codprod.clear()
-                        self.venta.input_producto.clear()
-                        self.venta.input_cantidad.clear()
+                            stock=int(table.item(rowCount, 6).text())
+                            self.stockdisponible=stock - cantidad
+                            print (self.stockdisponible)
+                        #-------------------------------------------------- 
                         
-                        self.calcular_subtotal()
-                        self.calcular_importe(Ui_venta,neto=any,descuento=any,importe=any)
+                            self.venta.input_codprod.setText(str(product[0]))
+                            self.venta.input_cantidad.setText(str(cantidad))
+                            self.venta.input_producto.setText(str(product[2]))
+                            self.venta.input_precio.setText(str(product[12]))
+                            self.venta.input_stock.setText(str(product[8]))
+                            self.venta.input_subtotal.setText(str(subtotal))
+                            self.venta.input_codprod.clear()
+                            self.venta.input_producto.clear()
+                            self.venta.input_cantidad.clear()
+                            self.calcular_subtotal()
+                            self.calcular_importe(Ui_venta,neto=any,descuento=any,importe=any)
                     else:
                         msg = QMessageBox()
                         msg.setWindowTitle("Error")
-                        msg.setText("El producto ingresado no existe.")
-
+                        msg.setText("La cantidad ingresada es mayor al stock disponible.")
                         msg.setIcon(QMessageBox.Information)
-
                         msg.setStandardButtons(QMessageBox.Ok)
                         msg.setDefaultButton(QMessageBox.Ok)
                         msg.setInformativeText("Vuelva a intentarlo")
-
                         x = msg.exec_()
                 else:
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
-                    msg.setText("La cantidad ingresada es mayor al stock disponible.")
-
+                    msg.setText("El código de barras no existe.")
                     msg.setIcon(QMessageBox.Information)
-
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
-
                     x = msg.exec_()
             elif nombre and (cantidad > 0) :
                 table = self.venta.table_venta
                 producto = self.product.getProduct_2(nombre, '1')
-                if cantidad <= producto[8]:
-                    
-                    
-                    if producto:
+                if producto:   
+                    if cantidad <= producto[8]:
                         if table.rowCount() == 50:
                             rowCount = 0
                             table.setRowCount(1)
                         else:
                             rowCount = table.rowCount()
                             table.setRowCount(table.rowCount() + 1)
-
-                        
                         table.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(str(producto[0])))
                         table.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(str(producto[1])))  # codBarras
                         table.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(str(cantidad)))  # cant
@@ -192,12 +174,9 @@ class ventaController():
                         subtotal = cantidad*precio
 
                         table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(str(subtotal)))  # subtotal
-
                         table.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(producto[8])))  # stock
-                    
                         stock=int(table.item(rowCount, 6).text())
                         self.stockdisponible=stock - cantidad
-                      
                         print (self.stockdisponible)
                     #-------------------------------------------------- 
                     
@@ -216,70 +195,49 @@ class ventaController():
                     else:
                         msg = QMessageBox()
                         msg.setWindowTitle("Error")
-                        msg.setText("El producto ingresado no existe.")
-
+                        msg.setText("La cantidad ingresada es mayor al stock disponible.")
                         msg.setIcon(QMessageBox.Information)
-
                         msg.setStandardButtons(QMessageBox.Ok)
                         msg.setDefaultButton(QMessageBox.Ok)
                         msg.setInformativeText("Vuelva a intentarlo")
-
                         x = msg.exec_()
                 else:
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
-                    msg.setText("La cantidad ingresada es mayor al stock disponible.")
-
+                    msg.setText("El producto ingresado no existe.")
                     msg.setIcon(QMessageBox.Information)
-
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
-
                     x = msg.exec_()
-
-
             else:
                 if not CodigoDeBarras or nombre:
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
                     msg.setText("Ingrese un codigo de producto o nombre de producto.")
-
                     msg.setIcon(QMessageBox.Information)
-
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
-
                     x = msg.exec_()
                 else:
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
                     msg.setText("Ingrese una cantidad válida.")
-
                     msg.setIcon(QMessageBox.Information)
-
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
-
                     x = msg.exec_()
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
             msg.setText("Ingrese una cantidad válida.")
-
             msg.setIcon(QMessageBox.Information)
-
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
-
             x = msg.exec_()
-            
-                
-
-
 
     def cancelar(self, Ui_venta):
         msgBox = QMessageBox()
@@ -291,7 +249,6 @@ class ventaController():
         if returnValue == QMessageBox.Ok:
             Ui_venta.close()
 
-
     def calcular_subtotal (self):
 
       table = self.venta.table_venta
@@ -302,8 +259,6 @@ class ventaController():
         neto += float(table.item(i,5).text())
 
       self.venta.input_neto.setText(str(neto))
-
-    
 
     def calcular_importe(self, Ui_venta,neto,descuento,importe):
         if  neto and descuento:
@@ -414,7 +369,6 @@ class ventaController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
         
-        
     def limpiar_venta(self, Ui_venta):
      msgBox = QMessageBox()
      msgBox.setIcon(QMessageBox.Information)
@@ -442,8 +396,7 @@ class ventaController():
         self.venta.input_localidad.clear()
         self.venta.input_codprod.clear()
         self.venta.input_cantidad.clear()
-
-    
+        self.venta.input_nroCalle.clear()
 
     def finalizar (self, Ui_venta):
         fecha= datetime.now()
@@ -470,9 +423,7 @@ class ventaController():
                         
                         if  cabecera  and CodProducto and cantidad and precio: 
                             self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
-                    
                             self.product.descontarStock(cantidad,CodigoDeBarras)
-
 
                     msgBox = QMessageBox()
                     msgBox.setIcon(QMessageBox.Information)
@@ -481,8 +432,6 @@ class ventaController():
                     msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                     returnValue = msgBox.exec()
                     if returnValue == QMessageBox.Ok: 
-                          
-                   
                         lista_datos = []
                         for  i in range(table.rowCount()):    
                             lista_datos.append(( table.item(i,3).text(),table.item(i,2).text(), table.item(i,4).text(),table.item(i,5).text()))
@@ -600,11 +549,6 @@ class ventaController():
                         pdf.output('factura.pdf')
                         os.startfile('factura.pdf') 
                                                  
-                        
-                            
-
-                         
-                            
                         self.venta.table_venta.setRowCount(0)
                         self.venta.input_importe.clear()
                         self.venta.input_neto.clear()
