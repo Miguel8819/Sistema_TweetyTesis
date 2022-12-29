@@ -32,6 +32,15 @@ class LoginController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+        else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Ingrese su Usuario y contraseña")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
 
     def salir():
         sys.exit()

@@ -1,14 +1,10 @@
-
 import sys
 import os
-
 myDir = os.getcwd()
 sys.path.append(myDir)
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from menuprincipal_ui import Ui_menuprincipal
 from Controllers.LoginController import LoginController
-
 
 class Ui_LogIn(object):
     def __init__(self):

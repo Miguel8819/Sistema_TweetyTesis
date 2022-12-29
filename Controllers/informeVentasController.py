@@ -195,5 +195,34 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
+    def buscarfechaDiaria(self,fecha):
+        table = self.listar_ventasDiarias.tableWidget 
+        if fecha:    
+            ventaDiaria= self.venta.importeYfecha(fecha)
+            if ventaDiaria:        
+                    table.setRowCount(0)
+                    for row_number, row_data in enumerate(ventaDiaria):
+                            table.insertRow(row_number)
+                            for column_number, data in enumerate(row_data):
+                                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Escriba una fecha válida")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()  
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Escriba una fecha. Por ejemplo: 2022-12-24")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
+
     def salir(self, listar_ventasDiarias):
         listar_ventasDiarias.close()
