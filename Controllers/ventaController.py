@@ -419,10 +419,11 @@ class ventaController():
                         CodigoDeBarras = table.item(i,1).text()
                         cantidad = table.item(i,2).text()
                         producto = table.item(i,3).text()
-                        precio = table.item(i,4).text()         
+                        precio = table.item(i,4).text()
+                        condicionPago = self.venta.comboBox_pago.currentText()         
                         
-                        if  cabecera  and CodProducto and cantidad and precio: 
-                            self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio)
+                        if  cabecera  and CodProducto and cantidad and precio and condicionPago: 
+                            self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio, condicionPago)
                             self.product.descontarStock(cantidad,CodigoDeBarras)
 
                     msgBox = QMessageBox()

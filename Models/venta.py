@@ -10,7 +10,8 @@ class Venta():
                         codCabecera INT (10) NOT NULL,
                         codProducto INT (10) NOT NULL,
                         cantidad VARCHAR(100) NOT NULL,
-                        precioUnitario VARCHAR(100) NOT NULL 
+                        precioUnitario VARCHAR(100) NOT NULL, 
+                        condPago VARCHAR(100)NOT NULL
                         
                         
                         )"""
@@ -42,10 +43,10 @@ class Venta():
             cursor.execute(sql, cod)
             self.conn.commit()
     
-    def insertVenta(self,codCabecera,codProducto,cantidad,precio):
+    def insertVenta(self,codCabecera,codProducto,cantidad,precio,condPago):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO venta (codCabecera,codProducto,cantidad,precioUnitario) VALUES (%s,%s,%s,%s)"""
-            cursor.execute(sql, (codCabecera,codProducto,cantidad,precio))
+            sql = """INSERT INTO venta (codCabecera,codProducto,cantidad,precioUnitario,condPago) VALUES (%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (codCabecera,codProducto,cantidad,precio,condPago))
             self.conn.commit()
 
     
@@ -188,6 +189,40 @@ class Venta():
             result = cursor.fetchall()
             if result:
                 return result
-    
 
+    def condPago(self,condPago):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario) 
+                    FROM cabecerafactura cf ,venta df
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                   
+                    AND 
+                    df.condPago = %s
+                    GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
+                    order by cf.nroFactura               
+                     
+                    """
+            cursor.execute(sql,condPago)
+            result = cursor.fetchall()
+            if result:
+                return result
+        
+    def condPagoTodos(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario) 
+                    FROM cabecerafactura cf ,venta df
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
+                    
+                    order by cf.nroFactura               
+                     
+                    """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
+
+    
             

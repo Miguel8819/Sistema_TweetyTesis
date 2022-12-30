@@ -224,5 +224,30 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
+    def buscarCondPago(self,condPago):
+        table = self.listar_ventasDiarias.tableWidget_4 
+        if condPago !='Todos':    
+            ventaDiaria= self.venta.condPago(condPago)
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+		 	
+        else:
+            table = self.listar_ventasDiarias.tableWidget_4 
+            ventaDiaria= self.venta.condPagoTodos()
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+			
+				 
+	
+
     def salir(self, listar_ventasDiarias):
         listar_ventasDiarias.close()
