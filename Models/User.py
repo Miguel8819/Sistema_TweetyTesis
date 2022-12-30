@@ -4,8 +4,8 @@ class User():
         self.conn = conn
         with self.conn.cursor() as cursor:
             sql = """CREATE TABLE IF NOT EXISTS user
-                        (user_name VARCHAR(21) NOT NULL,
-                        password VARCHAR(191) NOT NULL)"""
+                        (user_name VARCHAR(100) NOT NULL,
+                        password VARCHAR(100) NOT NULL)"""
             cursor.execute(sql)
             self.conn.commit()
     

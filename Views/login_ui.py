@@ -189,6 +189,8 @@ class Ui_LogIn(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.input_user.setFont(font)
+        self.input_user.setText("")
+        self.input_user.setMaxLength(100)
         self.input_user.setAlignment(QtCore.Qt.AlignCenter)
         self.input_user.setObjectName("input_user")
         self.input_password = QtWidgets.QLineEdit(LogIn)
@@ -197,6 +199,7 @@ class Ui_LogIn(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.input_password.setFont(font)
+        self.input_password.setMaxLength(100)
         self.input_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_password.setAlignment(QtCore.Qt.AlignCenter)
         self.input_password.setObjectName("input_password")
@@ -215,13 +218,14 @@ class Ui_LogIn(object):
         self.l = self.btn_login.clicked.connect(lambda:self.login_controller.logIn(self.input_user.text(), self.input_password.text(), Ui_menuprincipal, LogIn))
         #--------------------End Events---------------------------------
 
+
     def retranslateUi(self, LogIn):
         _translate = QtCore.QCoreApplication.translate
         LogIn.setWindowTitle(_translate("LogIn", "Login - Sistema Tweety"))
         self.mainlabel.setText(_translate("LogIn", "Libreria Tweety"))
         self.btn_login.setText(_translate("LogIn", "Ingresar"))
         self.btn_salir.setText(_translate("LogIn", "Salir"))
-        self.input_user.setPlaceholderText(_translate("LogIn", "Usuario"))
+        self.input_user.setPlaceholderText(_translate("LogIn", "Nombre de Usuario"))
         self.input_password.setPlaceholderText(_translate("LogIn", "Contraseña"))
 
 
