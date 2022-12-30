@@ -245,6 +245,27 @@ class listarVentas():
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
+    def buscarCondPago_2(self,condPago):
+        table = self.listar_ventasDiarias.tableWidget_3 
+        if condPago !='Todos':    
+            ventaDiaria= self.venta.condPago_2(condPago)
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+		 	
+        else:
+            table = self.listar_ventasDiarias.tableWidget_3 
+            ventaDiaria= self.venta.condPagoTodos_2()
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
 			
 				 
 	

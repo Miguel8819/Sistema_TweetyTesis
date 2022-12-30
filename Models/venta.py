@@ -224,5 +224,44 @@ class Venta():
             if result:
                 return result
 
+    def condPago_2(self,condPago):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura, cc.codCliente, dp.codProducto, df.cantidad, dp.producto, df.precioUnitario, df.cantidad * df.precioUnitario 
+                    FROM cabecerafactura cf ,venta df, Product dp, cliente cc 
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    AND
+                    cc.codCliente = cf.codCliente
+                    AND
+                    dp.codProducto = df.codProducto
+                    AND
+                    condPago = %s
+                    order by cf.nroFactura               
+                     
+                    """
+            cursor.execute(sql,condPago)
+            result = cursor.fetchall()
+            if result:
+                return result
+        
+    def condPagoTodos_2(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, cc.codCliente, dp.codProducto, df.cantidad, dp.producto, df.precioUnitario, df.cantidad * df.precioUnitario 
+                    FROM cabecerafactura cf ,venta df, Product dp, cliente cc 
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    AND
+                    cc.codCliente = cf.codCliente
+                    AND
+                    dp.codProducto = df.codProducto
+                    order by cf.nroFactura               
+                     
+                    """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
+
+    
     
             

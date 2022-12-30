@@ -295,19 +295,32 @@ class Ui_informeDeVentas(object):
         QtCore.QMetaObject.connectSlotsByName(informeDeVentas)
 
         self.a = self.Btn_Ver_Importes.clicked.connect(lambda:self.listarVentas.listarVentas())
+        
         self.b = self.Btn_ventas_mensuales.clicked.connect(lambda:self.listarVentas.ventasMensuales())
+        
         self.c = self.Btn_listar.clicked.connect(lambda:self.listarVentas.detalleVenta())
+        
         self.d = self.Boton_Buscar_nroFactura.clicked.connect(lambda:self.listarVentas.buscarVentaXFactura(self.search_nroFactura.text()))
+        
         self.e = self.Btn_Volver.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        
         self.f = self.Btn_volver2.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        
         self.g = self.Btn_volver3.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        
         self.h = self.Btn_listar_2.clicked.connect(lambda:self.listarVentas.buscarCondPago(self.comboBox_pago_2.currentText()))
-        self.i = self.btn_imprimir.clicked.connect(lambda:self.listarVentas.imprimirReporteVentas())
-        self.j = self.btn_buscarFecha.clicked.connect(lambda:self.listarVentas.fechaVentaDiaria(self.search_fecha.text()))
-        self.j = self.btn_fecha_diaria.clicked.connect(lambda:self.listarVentas.buscarfechaDiaria(self.input_fecha_diaria.text()))
+        
+        self.i = self.Btn_listar.clicked.connect(lambda:self.listarVentas.buscarCondPago_2(self.comboBox_pago.currentText()))
+        
+        self.j = self.btn_imprimir.clicked.connect(lambda:self.listarVentas.imprimirReporteVentas())
+        
+        self.k = self.btn_buscarFecha.clicked.connect(lambda:self.listarVentas.fechaVentaDiaria(self.search_fecha.text()))
+        
+        self.l = self.btn_fecha_diaria.clicked.connect(lambda:self.listarVentas.buscarfechaDiaria(self.input_fecha_diaria.text()))
        
-        self.k = self.btn_buscar_fecha1.clicked.connect(lambda:self.listarVentas.fechaDetalle(self.input_fecha.text()))
-        self.l = self.Btn_volver_4.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        self.m = self.btn_buscar_fecha1.clicked.connect(lambda:self.listarVentas.fechaDetalle(self.input_fecha.text()))
+        
+        self.n = self.Btn_volver_4.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
 
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate
