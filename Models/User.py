@@ -8,6 +8,12 @@ class User():
                         password VARCHAR(100) NOT NULL)"""
             cursor.execute(sql)
             self.conn.commit()
+    def getUser1(self, user):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT user_name FROM user WHERE user_name = %s"""
+            cursor.execute(sql, (user))
+            result = cursor.fetchone()
+            return result
     
     def getUser(self, user, password):
         with self.conn.cursor() as cursor:
