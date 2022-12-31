@@ -17,7 +17,7 @@ class CreateProveedorController():
         self.create_proveedor = create_proveedor
 
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
-        if nombreProveedor:
+        if nombreProveedor and nombreFactura and nroCuil and celular:
             
             fechaAlta1= datetime.now()
             fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
@@ -43,7 +43,7 @@ class CreateProveedorController():
                     returnValue = msgBox.exec()
                     if returnValue == QMessageBox.Ok:
                         
-                        if nroCuil and nombreProveedor and nombreFactura and fechaAlta and calle and numeroCalle and ciudad and codPostal and celular and email and pagWeb:
+                        if nroCuil and nombreProveedor and nombreFactura and fechaAlta and celular :
                             self.proveedor.insertProveedor(nroCuil,nombreProveedor,nombreFactura,fechaAlta,calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb)
 
                             msg = QMessageBox()
@@ -64,16 +64,37 @@ class CreateProveedorController():
                             self.create_proveedor.input_tel.clear()
                             self.create_proveedor.input_email.clear()
                             self.create_proveedor.input_web.clear()
-
                         else:
                             msg = QMessageBox()
-                            msg.setWindowTitle("Error")
-                            msg.setText("Complete los campos que estan vacios")
+                            msg.setWindowTitle("Exito")
+                            msg.setText("Proveedor guardado")
                             msg.setIcon(QMessageBox.Information)
                             msg.setStandardButtons(QMessageBox.Ok)
                             msg.setDefaultButton(QMessageBox.Ok)
                             msg.setInformativeText("")
                             x = msg.exec_()
+
+                            self.create_proveedor.input_nameProv.clear()
+                            self.create_proveedor.input_nameFact.clear()
+                            self.create_proveedor.input_nroCuil.clear()
+                            self.create_proveedor.input_calle.clear()
+                            self.create_proveedor.input_numCalle.clear()
+                            self.create_proveedor.input_codPostal.clear()
+                            self.create_proveedor.input_tel.clear()
+                            self.create_proveedor.input_email.clear()
+                            self.create_proveedor.input_web.clear()
+
+
+                        
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Complete los campos obligatorios")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("")
+            x = msg.exec_()
 
         
 

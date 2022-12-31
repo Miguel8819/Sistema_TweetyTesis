@@ -13,7 +13,7 @@ class CreateProductController():
         self.create_product = create_product
 
     def createProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
-     if CodigoDeBarras:
+     if CodigoDeBarras and producto and categoria and subCategoria and marca and tipoUnidad and unidadMedida and cant_min_stock and PuntoDePedido and CostoDeCompra and PrecioDeVenta:
             
         result = self.product.getProduct(CodigoDeBarras, '1')
         
@@ -54,15 +54,15 @@ class CreateProductController():
                         self.create_product.input_costCompra.clear()
                         self.create_product.input_precVenta.clear()
 
-                    else:
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Error")
-                        msg.setText("Hay campos vacios")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        msg.setInformativeText("Vuelva a intentarlo")
-                        x = msg.exec_()     
+     else:
+        msg = QMessageBox()
+        msg.setWindowTitle("Error")
+        msg.setText("Por favor complete todos los campos vacios")
+        msg.setIcon(QMessageBox.Information)
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Ok)
+        msg.setInformativeText("Vuelva a intentarlo")
+        x = msg.exec_()     
                         
     def showProduct(self,CodigoDeBarras):
         if CodigoDeBarras:

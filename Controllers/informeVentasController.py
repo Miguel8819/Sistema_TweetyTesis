@@ -234,8 +234,10 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
-		 	
-        else:
+            else: 
+                self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
+            
+        elif condPago:
             table = self.listar_ventasDiarias.tableWidget_4 
             ventaDiaria= self.venta.condPagoTodos()
             if ventaDiaria:
@@ -244,6 +246,7 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        
 
     def buscarCondPago_2(self,condPago):
         table = self.listar_ventasDiarias.tableWidget_3 
@@ -255,8 +258,10 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else: 
+                self.listar_ventasDiarias.tableWidget_3.setRowCount(0) 
 		 	
-        else:
+        elif condPago:
             table = self.listar_ventasDiarias.tableWidget_3 
             ventaDiaria= self.venta.condPagoTodos_2()
             if ventaDiaria:
@@ -266,7 +271,6 @@ class listarVentas():
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
-			
 				 
 	
 

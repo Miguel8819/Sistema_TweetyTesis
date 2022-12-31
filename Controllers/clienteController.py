@@ -28,7 +28,7 @@ class ClienteController():
         Form.show()
         
     def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email):
-     if nroDni:
+     if nroDni and nombreCliente and tel:
 
         fechaAlta1= datetime.now()
         fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
@@ -76,17 +76,16 @@ class ClienteController():
                         self.create_cliente.input_tel.clear()
                         self.create_cliente.input_email.clear()
 
-                    else:
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Error")
-                        msg.setText("Por favor complete los campos obligatorios")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        msg.setInformativeText("Vuelva a intentarlo")
-                        x = msg.exec_()
-
-
+                   
+     else:
+        msg = QMessageBox()
+        msg.setWindowTitle("Error")
+        msg.setText("Por favor complete los campos obligatorios")
+        msg.setIcon(QMessageBox.Information)
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Ok)
+        msg.setInformativeText("Vuelva a intentarlo")
+        x = msg.exec_()
                     
 
 
