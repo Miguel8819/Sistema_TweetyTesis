@@ -33,9 +33,9 @@ class menuprincipalController():
      self.menuprincipal.Form.show()
      Form.show() 
 
-   def openControlStock(self, Ui_controlstock, Form):
+   def openListaProductos(self, Ui_listaDeProductos, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
-     self.menuprincipal.ui = Ui_controlstock()
+     self.menuprincipal.ui = Ui_listaDeProductos()
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show()

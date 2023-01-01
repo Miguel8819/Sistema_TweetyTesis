@@ -15,7 +15,7 @@ from Models.Product import Product
 from Models.Proveedores import *
 from createproduct_ui import Ui_CreateProduct
 from proveedores_ui import Ui_Proveedores
-from controlstock_ui import Ui_controlstock
+from listaDeProductos_ui import Ui_listaDeProductos
 
 
 class Ui_FacturaDeCompra(object):
@@ -393,7 +393,7 @@ class Ui_FacturaDeCompra(object):
         self.botonbuscar_prov.setGeometry(QtCore.QRect(430, 65, 30, 25))
         self.botonbuscar_prov.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../Miguel/Sistema_Tweety_MIGUEL/Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.botonbuscar_prov.setIcon(icon1)
         self.botonbuscar_prov.setIconSize(QtCore.QSize(15, 20))
         self.botonbuscar_prov.setObjectName("botonbuscar_prov")
@@ -781,7 +781,7 @@ class Ui_FacturaDeCompra(object):
 
         self.f = self.boton_agregarprod.clicked.connect(lambda:self.menuPrincipal.openCreateProduct(Ui_CreateProduct,FacturaDeCompra))
 
-        self.g = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,FacturaDeCompra))
+        self.g = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openListaProductos(Ui_listaDeProductos,FacturaDeCompra))
 
 #-------------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>controlstock</class>
- <widget class="QWidget" name="controlstock">
+ <class>listaDeProductos</class>
+ <widget class="QWidget" name="listaDeProductos">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Control de Stock</string>
+   <string>Lista de Productos</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(56, 213, 203);</string>
@@ -179,11 +179,11 @@
      <attribute name="horizontalHeaderCascadingSectionResizes">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>30</number>
-     </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>95</number>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>30</number>
      </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>30</number>
@@ -385,7 +385,7 @@
       <string notr="true">background-color: rgb(212, 212, 212);</string>
      </property>
      <property name="text">
-      <string>Volver atrás</string>
+      <string>Salir</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_limpiar">
@@ -456,7 +456,7 @@
       <string notr="true">background-color: rgb(212, 212, 212);</string>
      </property>
      <property name="text">
-      <string>Volver atrás</string>
+      <string>Salir</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">

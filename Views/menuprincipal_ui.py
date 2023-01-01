@@ -7,7 +7,7 @@ sys.path.append(myDir)
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Controllers.menuprincipalController import menuprincipalController
 from venta_ui import Ui_venta
-from controlstock_ui import Ui_controlstock
+from listaDeProductos_ui import Ui_listaDeProductos
 from proveedores_ui import Ui_Proveedores
 from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
@@ -49,7 +49,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -283,6 +283,15 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_abmProd.setFont(font)
         self.btn_abmProd.setObjectName("btn_abmProd")
+        self.btn_controlStock_2 = QtWidgets.QPushButton(self.page_gestionStock)
+        self.btn_controlStock_2.setGeometry(QtCore.QRect(130, 260, 290, 50))
+        self.btn_controlStock_2.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_controlStock_2.setFont(font)
+        self.btn_controlStock_2.setObjectName("btn_controlStock_2")
         self.stackedWidget.addWidget(self.page_gestionStock)
         self.page_mantenimiento = QtWidgets.QWidget()
         self.page_mantenimiento.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -346,13 +355,13 @@ class Ui_menuprincipal(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(menuprincipal)
 
-        #--------------------Events--------------------------------------
+         #--------------------Events--------------------------------------
         self.btn_gestionCompra.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionCompra))
         self.btn_gestionVenta.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionVenta))
         self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
         self.btn_mantenimiento.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_mantenimiento))
         self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
-        self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlstock, menuprincipal))
+        self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openListaProductos(Ui_listaDeProductos, menuprincipal))
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
@@ -387,6 +396,7 @@ class Ui_menuprincipal(object):
         self.label_3.setText(_translate("menuprincipal", "Gestión de Stock"))
         self.btn_controlStock.setText(_translate("menuprincipal", "Lista de productos"))
         self.btn_abmProd.setText(_translate("menuprincipal", "ABM Productos"))
+        self.btn_controlStock_2.setText(_translate("menuprincipal", "Control de Stock"))
         self.label_12.setText(_translate("menuprincipal", "Mantenimiento"))
         self.btn_movFondos_2.setText(_translate("menuprincipal", "Gestion de Clave"))
         self.btn_infDeCaja_2.setText(_translate("menuprincipal", "Manual de Usuario"))

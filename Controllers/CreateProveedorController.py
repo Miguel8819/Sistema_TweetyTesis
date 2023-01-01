@@ -355,49 +355,60 @@ class CreateProveedorController():
 
 
     def modificarProveedor(self,nombreProveedor, nombreFactura, nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb ):
-        msgBox = QMessageBox()
-        msgBox.setIcon(QMessageBox.Information)
-        msgBox.setText("¿Desea guardar los cambios del proveedor? ")
-        msgBox.setWindowTitle("")
-        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        returnValue = msgBox.exec()
-        if returnValue == QMessageBox.Ok:
-                    if nombreProveedor != "" and nombreFactura !="" and calle !="" and numeroCalle != ""  and codPostal != "" and celular != "" and email != "" and pagWeb != "":
-                        self.proveedor.UpdateProveedor(nroCuil,nombreProveedor, nombreFactura, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb)
+        if nombreProveedor or nroCuil: 
+            
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("¿Desea guardar los cambios del proveedor? ")
+            msgBox.setWindowTitle("")
+            msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                        if nombreProveedor != "" and nombreFactura !="" and calle !="" and numeroCalle != ""  and codPostal != "" and celular != "" and email != "" and pagWeb != "":
+                            self.proveedor.UpdateProveedor(nroCuil,nombreProveedor, nombreFactura, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb)
 
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Confirmado")
-                        msg.setText("Cambios guardados")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        msg.setInformativeText("")
-                        x = msg.exec_() 
+                            msg = QMessageBox()
+                            msg.setWindowTitle("Confirmado")
+                            msg.setText("Cambios guardados")
+                            msg.setIcon(QMessageBox.Information)
+                            msg.setStandardButtons(QMessageBox.Ok)
+                            msg.setDefaultButton(QMessageBox.Ok)
+                            msg.setInformativeText("")
+                            x = msg.exec_() 
 
-                        self.create_proveedor.input_searchNameProv.clear()
-                        self.create_proveedor.show_nameProv.clear()
+                            self.create_proveedor.input_searchNameProv.clear()
+                            self.create_proveedor.show_nameProv.clear()
 
-                        self.create_proveedor.show_nameFact.clear()
-                        self.create_proveedor.show_ciudad.setCurrentText('Alta Gracia') 
+                            self.create_proveedor.show_nameFact.clear()
+                            self.create_proveedor.show_ciudad.setCurrentText('Alta Gracia') 
 
-                        self.create_proveedor.show_nameFact.clear()              
-                        self.create_proveedor.show_calle.clear()
-                        self.create_proveedor.show_numCalle.clear()
-                        self.create_proveedor.show_nroCuil.clear()
-                        self.create_proveedor.show_codPostal.clear()
-                        self.create_proveedor.show_tel.clear()
-                        self.create_proveedor.show_email.clear()
-                        self.create_proveedor.show_web.clear()
+                            self.create_proveedor.show_nameFact.clear()              
+                            self.create_proveedor.show_calle.clear()
+                            self.create_proveedor.show_numCalle.clear()
+                            self.create_proveedor.show_nroCuil.clear()
+                            self.create_proveedor.show_codPostal.clear()
+                            self.create_proveedor.show_tel.clear()
+                            self.create_proveedor.show_email.clear()
+                            self.create_proveedor.show_web.clear()
 
-                    else: 
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Error")
-                        msg.setText("Hay campos vacios")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        msg.setInformativeText("Vuelva a intentarlo")
-                        x = msg.exec_() 
+                        else: 
+                            msg = QMessageBox()
+                            msg.setWindowTitle("Error")
+                            msg.setText("Hay campos vacios")
+                            msg.setIcon(QMessageBox.Information)
+                            msg.setStandardButtons(QMessageBox.Ok)
+                            msg.setDefaultButton(QMessageBox.Ok)
+                            msg.setInformativeText("Vuelva a intentarlo")
+                            x = msg.exec_() 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese un nombre de proveedor o número de CUIL o CUIT válidos")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_() 
 
     def cancelar(self, Ui_Proveedores):
 
