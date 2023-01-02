@@ -165,3 +165,64 @@ class Product():
             self.model_2.setStringList(new_list_2)
             if self.model_2:
                 return self.model_2
+
+    def getStockActivos(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1' """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def getStockBajo(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1'
+            AND stock <= PuntoDePedido
+             """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+    
+    def buscarProductoBajoStock(self,codigoDeBarras):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1' 
+            AND CodigoDeBarras = %s
+            AND stock <= PuntoDePedido
+             """
+            cursor.execute(sql,codigoDeBarras)
+            result = cursor.fetchall()
+            return result
+  
+    def buscarNombreBajoStock(self,nombre):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1' 
+            AND producto = %s
+            AND stock <= PuntoDePedido
+             """
+            cursor.execute(sql,nombre)
+            result = cursor.fetchall()
+            return result
+
+    def autoComplete_3(self):
+        with self.conn.cursor() as cursor:
+            sql ="""SELECT producto 
+            FROM product 
+            WHERE activo = '1'
+            AND stock <= PuntoDePedido
+             """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            new_list_2 = [i[0] for i in result]
+            #print(new_list)  #Test print
+            self.model_2 = QStringListModel()
+            self.model_2.setStringList(new_list_2)
+            if self.model_2:
+                return self.model_2
+    

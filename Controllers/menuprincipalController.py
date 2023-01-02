@@ -88,6 +88,13 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show()  
+   
+   def openControlStock(self, Ui_controlDeStock, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_controlDeStock()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 
 
    def manualUsuario(self):
       os.startfile('ManualDeUsuarioSistemaTweety.pdf')  

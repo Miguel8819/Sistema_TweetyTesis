@@ -17,6 +17,7 @@ from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
+from controldestock_ui import Ui_controlDeStock
 
 
 class Ui_menuprincipal(object):
@@ -372,6 +373,8 @@ class Ui_menuprincipal(object):
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
         self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
+        self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
+
 
 #--------------------End Events---------------------------------
 
