@@ -1,6 +1,6 @@
 import sys
 import os
-
+import threading
 myDir = os.getcwd()
 sys.path.append(myDir)
 
@@ -18,11 +18,14 @@ from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
 from controldestock_ui import Ui_controlDeStock
+from Models.Product import *
+from Database.Connection import connection
 
 
 class Ui_menuprincipal(object):
     def __init__(self):
         self.menuprincipalController = menuprincipalController(self)
+        self.product= Product(connection())
     def setupUi(self, menuprincipal):
         menuprincipal.setObjectName("menuprincipal")
         menuprincipal.resize(795, 600)
@@ -50,7 +53,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -181,6 +184,18 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_listaproveedores.setFont(font)
         self.btn_listaproveedores.setObjectName("btn_listaproveedores")
+        self.alarma1 = QtWidgets.QLabel(self.page_gestionCompra)
+        self.alarma1.setGeometry(QtCore.QRect(40, 350, 461, 41))
+        self.alarma1.setStyleSheet("font: 87 18pt \"Arial Black\";\n"
+"color: rgb(255, 0, 0);")
+        self.alarma1.setObjectName("alarma1")
+        self.alarma2 = QtWidgets.QLabel(self.page_gestionCompra)
+        self.alarma2.setGeometry(QtCore.QRect(30, 400, 501, 31))
+        self.alarma2.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";\n"
+"\n"
+"color: rgb(255, 0, 0);\n"
+"")
+        self.alarma2.setObjectName("alarma2")
         self.stackedWidget.addWidget(self.page_gestionCompra)
         self.page_gestionVenta = QtWidgets.QWidget()
         self.page_gestionVenta.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -374,10 +389,21 @@ class Ui_menuprincipal(object):
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
         self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
-
-
+    
+        product = self.product.getStockBajo()
+        
+        if product:
+               self.alarma1.show()
+               self.alarma2.show()
+        #        t = threading.Timer(3,self.alarma1.show())
+        #        t.start()
+        else:
+                self.alarma1.hide()
+                self.alarma2.hide()
+         
+            
+                
 #--------------------End Events---------------------------------
-
 
     def retranslateUi(self, menuprincipal):
         _translate = QtCore.QCoreApplication.translate
@@ -391,6 +417,8 @@ class Ui_menuprincipal(object):
         self.btn_proveedores.setText(_translate("menuprincipal", "ABM Proveedores"))
         self.btn_genOrdenCompra.setText(_translate("menuprincipal", "Ingresar Factura de Compra"))
         self.btn_listaproveedores.setText(_translate("menuprincipal", "Lista de Proveedores"))
+        self.alarma1.setText(_translate("menuprincipal", "* Tiene productos bajos en Stock *"))
+        self.alarma2.setText(_translate("menuprincipal", "Para consultar la lista ingrese a Gestion de Stock, \" Control de Stock\"."))
         self.label_2.setText(_translate("menuprincipal", "Gestión de Venta"))
         self.btn_facturacion.setText(_translate("menuprincipal", "Facturación"))
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))

@@ -50,16 +50,6 @@ class ventaController():
         self.venta.ui.setupUi(self.venta.Form)
         self.venta.Form.show()   
     
-    def openInformeFacturaDeVenta(self, Ui_TicketFactura,Form):
-     self.venta.Form = QtWidgets.QWidget()
-     self.venta.ui = Ui_TicketFactura()
-     self.venta.ui.setupUi(self.venta.Form)
-     self.venta.Form.show()
-    
-    
-       
-
-
 
     def buscarCliente(self,nroDni):
         if nroDni:
@@ -425,6 +415,7 @@ class ventaController():
                         if  cabecera  and CodProducto and cantidad and precio and condicionPago: 
                             self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio, condicionPago)
                             self.product.descontarStock(cantidad,CodigoDeBarras)
+                            
 
                     msgBox = QMessageBox()
                     msgBox.setIcon(QMessageBox.Information)
@@ -534,7 +525,7 @@ class ventaController():
                                         align = 'C', fill = 0)
                       
                         pdf.set_font('Arial', '', 12)
-                        pdf.set_y(260)
+                        
                         pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
                         align = 'C', fill = 0)
                         pdf.cell(w = 0, h = 7, txt = 'Subtotal: $' + str(self.venta.input_neto.text()), border = 0, ln=1,
@@ -543,8 +534,8 @@ class ventaController():
                                 align = 'R', fill = 0) 
                         pdf.cell(w = 0, h = 7, txt = 'Importe Total: $' + str(self.venta.input_importe.text()), border = 0, ln=1,
                                 align = 'R', fill = 0)  
-                        pdf.cell(w = 0, h = 5, txt = '', border = 1, ln=1,
-                                align = 'L', fill = 0)
+                        pdf.cell(w = 0, h = 5, txt = 'Gracias por su compra!', border = 1, ln=1,
+                                align = 'C', fill = 0)
                         
                                     
                         pdf.output('factura.pdf')
@@ -568,6 +559,36 @@ class ventaController():
                         self.venta.input_direccion.clear()
                         self.venta.input_localidad.clear()
                         self.venta.input_nroCalle.clear()
+                    
+                    else:
+                        msg = QMessageBox()
+                        msg.setWindowTitle("¡Exito!")
+                        msg.setText("Venta Finalizada.")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        msg.setInformativeText("")
+                        x = msg.exec_()
+                       
+                        self.venta.table_venta.setRowCount(0)
+                        self.venta.input_importe.clear()
+                        self.venta.input_neto.clear()
+                        self.venta.input_efectivo.clear()
+                        self.venta.input_cambio.clear()
+                        self.venta.input_total.clear()
+                        descuento= '0'
+                        self.venta.input_descuento.setText(str(descuento))
+                        self.venta.descuento_valor.clear()
+                        self.venta.input_producto.clear()
+                        self.venta.input_stock.clear()
+                        self.venta.input_precio.clear()
+                        self.venta.input_subtotal.clear()
+                        self.venta.input_nroDni.clear()
+                        self.venta.input_nombre.clear()
+                        self.venta.input_direccion.clear()
+                        self.venta.input_localidad.clear()
+                        self.venta.input_nroCalle.clear()
+
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")

@@ -264,6 +264,7 @@ class controlstockController():
             table.insertRow(row_number)
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                
 
     def listarBajoStock(self):
         table = self.controlstock.table_product_2

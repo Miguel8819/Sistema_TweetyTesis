@@ -438,6 +438,42 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>Lista de Proveedores</string>
         </property>
        </widget>
+       <widget class="QLabel" name="alarma1">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>350</y>
+          <width>461</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 87 18pt &quot;Arial Black&quot;;
+color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>* Tiene productos bajos en Stock *</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="alarma2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>400</y>
+          <width>501</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+
+color: rgb(255, 0, 0);
+</string>
+        </property>
+        <property name="text">
+         <string>Para consultar la lista ingrese a Gestion de Stock, &quot; Control de Stock&quot;.</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page_gestionVenta">
        <property name="styleSheet">

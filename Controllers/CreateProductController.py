@@ -157,13 +157,8 @@ class CreateProductController():
             msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:
-            
-                
                 if product :
-                        
-
                         self.product.bajaProducto(CodigoDeBarras)
-
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
                 msg.setText("Producto dado de baja de la lista")
@@ -179,8 +174,6 @@ class CreateProductController():
             self.create_product.input_puntoPedido_3.clear()
             self.create_product.input_costCompra_3.clear()
             self.create_product.input_precVenta_3.clear()
-
-          
 
         else: 
                 msg = QMessageBox()
@@ -323,11 +316,6 @@ class CreateProductController():
                         msg.setDefaultButton(QMessageBox.Ok)
                         msg.setInformativeText("Vuelva a intentarlo")
                         x = msg.exec_() 
-
-
-            
-
-              
 
 
     def salir(self, CreateProduct):
