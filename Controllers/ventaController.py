@@ -415,7 +415,17 @@ class ventaController():
                         if  cabecera  and CodProducto and cantidad and precio and condicionPago: 
                             self.Venta.insertVenta(cabecera, CodProducto, cantidad, precio, condicionPago)
                             self.product.descontarStock(cantidad,CodigoDeBarras)
-                            
+                            product = self.product.getStockBajo()
+        
+                            if product:
+                                msg = QMessageBox()
+                                msg.setWindowTitle("Notificación")
+                                msg.setText("Tiene productos con stock bajo.")
+                                msg.setIcon(QMessageBox.Information)
+                                msg.setStandardButtons(QMessageBox.Ok)
+                                msg.setDefaultButton(QMessageBox.Ok)
+                                msg.setInformativeText("Informar al encargado de stock.")
+                                x = msg.exec_()
 
                     msgBox = QMessageBox()
                     msgBox.setIcon(QMessageBox.Information)
@@ -607,6 +617,12 @@ class ventaController():
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()     
+
+    
+        
+        
+             
+    
 
     
         
