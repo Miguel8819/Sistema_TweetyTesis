@@ -226,7 +226,7 @@ class Ui_informeDeVentas(object):
         self.label_7.setObjectName("label_7")
         self.tableWidget_4 = QtWidgets.QTableWidget(self.tab_4)
         self.tableWidget_4.setEnabled(True)
-        self.tableWidget_4.setGeometry(QtCore.QRect(340, 200, 311, 291))
+        self.tableWidget_4.setGeometry(QtCore.QRect(340, 200, 331, 291))
         self.tableWidget_4.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.tableWidget_4.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.tableWidget_4.setObjectName("tableWidget_4")
@@ -322,6 +322,7 @@ class Ui_informeDeVentas(object):
         
         self.n = self.Btn_volver_4.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
 
+
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate
         informeDeVentas.setWindowTitle(_translate("informeDeVentas", "Informe de ventas"))
@@ -380,7 +381,7 @@ class Ui_informeDeVentas(object):
         item = self.tableWidget_4.horizontalHeaderItem(1)
         item.setText(_translate("informeDeVentas", "Nro Factura"))
         item = self.tableWidget_4.horizontalHeaderItem(2)
-        item.setText(_translate("informeDeVentas", "Subtotal"))
+        item.setText(_translate("informeDeVentas", "Total"))
         self.Btn_listar_2.setText(_translate("informeDeVentas", "Listar Ventas"))
         self.Btn_volver_4.setText(_translate("informeDeVentas", "Volver atras"))
         self.btn_imprimir.setText(_translate("informeDeVentas", "Imprimir Reporte"))

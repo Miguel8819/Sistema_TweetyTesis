@@ -600,7 +600,7 @@
       <rect>
        <x>340</x>
        <y>200</y>
-       <width>311</width>
+       <width>331</width>
        <height>291</height>
       </rect>
      </property>
@@ -622,7 +622,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Subtotal</string>
+       <string>Total</string>
       </property>
      </column>
     </widget>
