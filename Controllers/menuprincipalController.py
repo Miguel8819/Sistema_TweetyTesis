@@ -1,16 +1,19 @@
 import sys
 import os
+import threading
 
 myDir = os.getcwd()
 sys.path.append(myDir)
 from PyQt5 import QtWidgets
-
+from Models.Product import Product
 
 
 class menuprincipalController():
 
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
+     self.product= Product
+     
 
    def openFacturacion(self, Ui_venta, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
@@ -98,4 +101,17 @@ class menuprincipalController():
 
    def manualUsuario(self):
       os.startfile('ManualDeUsuarioSistemaTweety.pdf')  
+
+   def time(self):
+        product = self.product.getStockBajo()
+        
+        if product:
+                self.menuprincipal.alarma1.show()
+                self.menuprincipal.alarma2.show()
+                
+        else:
+                self.menuprincipal.alarma1.hide()
+                self.menuprincipal.alarma2.hide()
+   t = threading.Timer(3,time)
+   t.start()     
 

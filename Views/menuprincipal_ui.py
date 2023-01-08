@@ -389,18 +389,7 @@ class Ui_menuprincipal(object):
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
         self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
-    
-        product = self.product.getStockBajo()
-        
-        if product:
-               self.alarma1.show()
-               self.alarma2.show()
-        #        t = threading.Timer(3,self.alarma1.show())
-        #        t.start()
-        else:
-                self.alarma1.hide()
-                self.alarma2.hide()
-         
+   
             
                 
 #--------------------End Events---------------------------------
