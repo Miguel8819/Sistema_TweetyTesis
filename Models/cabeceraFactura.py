@@ -39,7 +39,7 @@ class CabeceraFactura():
     
     def insertCabeceraFactura(self,fecha,codCliente):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO cabeceraFactura (fechaYhora,codCliente) VALUES (%s,%s)"""
+            sql = """INSERT INTO cabeceraFactura (fechaYhora,codCliente,activo) VALUES (%s,%s,'1')"""
             cursor.execute(sql, (fecha,codCliente))
             id = cursor.lastrowid
             self.conn.commit()

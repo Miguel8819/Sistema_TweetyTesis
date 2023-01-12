@@ -271,7 +271,58 @@ class listarVentas():
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
-				 
+    def anularVenta (self):
+        table = self.listar_ventasDiarias.tableWidget_4
+        if table.currentItem() != None:
+            nroFactura = table.currentItem().text()        
+            venta = self.venta.ventaPorFactura(nroFactura)
+                    
+            if venta:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Esta seguro de anular la venta? ")
+                msgBox.setWindowTitle("Confirmacion")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:
+                    self.venta.anular_venta(nroFactura) 
+                    self.venta.quitar_venta(nroFactura)               
+                    self.venta.imprimirVentas()
+
+                    msg = QMessageBox()
+                    msg.setWindowTitle('¡Exito!')
+                    msg.setText("¡Venta anulada!.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Seleccione el número de comprobante y luego presione el boton Anular Venta.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Seleccione el número de comprobante para anular la venta.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+    
+    def ventasAnuladas(self):
+        table = self.listar_ventasDiarias.tableWidget_5
+        ventasDiarias = self.venta.listarVentasAnuladas()       
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(ventasDiarias):
+                table.insertRow(row_number)
+                for column_number, data in enumerate(row_data):
+                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+			 
 	
 
     def salir(self, listar_ventasDiarias):

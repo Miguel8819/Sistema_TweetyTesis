@@ -292,7 +292,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Nro Factura</string>
+       <string>Nro Comprobante</string>
       </property>
      </column>
      <column>
@@ -329,9 +329,9 @@
     <widget class="QLineEdit" name="search_nroFactura">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>472</x>
        <y>100</y>
-       <width>113</width>
+       <width>91</width>
        <height>21</height>
       </rect>
      </property>
@@ -350,7 +350,7 @@
     <widget class="QPushButton" name="Boton_Buscar_nroFactura">
      <property name="geometry">
       <rect>
-       <x>530</x>
+       <x>570</x>
        <y>100</y>
        <width>31</width>
        <height>21</height>
@@ -371,9 +371,9 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>280</x>
        <y>100</y>
-       <width>131</width>
+       <width>191</width>
        <height>21</height>
       </rect>
      </property>
@@ -383,7 +383,7 @@
       </font>
      </property>
      <property name="text">
-      <string> Nro de Factura</string>
+      <string> Nro de Comprobante</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_volver3">
@@ -504,7 +504,7 @@
     <widget class="QComboBox" name="comboBox_pago">
      <property name="geometry">
       <rect>
-       <x>720</x>
+       <x>760</x>
        <y>100</y>
        <width>141</width>
        <height>22</height>
@@ -552,7 +552,7 @@
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>630</x>
        <y>100</y>
        <width>131</width>
        <height>21</height>
@@ -570,14 +570,14 @@
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
-     <string>Imprimir Reporte Diario</string>
+     <string>Reporte de ventas </string>
     </attribute>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>370</x>
        <y>10</y>
-       <width>321</width>
+       <width>251</width>
        <height>41</height>
       </rect>
      </property>
@@ -589,7 +589,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Reporte Ventas Diarias</string>
+      <string>Reporte de ventas</string>
      </property>
     </widget>
     <widget class="QTableWidget" name="tableWidget_4">
@@ -617,7 +617,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Nro Factura</string>
+       <string>Nro Comprobante</string>
       </property>
      </column>
      <column>
@@ -802,6 +802,226 @@
        <string>Cheque</string>
       </property>
      </item>
+    </widget>
+    <widget class="QPushButton" name="btn_anularVenta">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>400</y>
+       <width>91</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);
+color: rgb(255, 255, 255);
+background-color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Anular Venta</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_5">
+    <attribute name="title">
+     <string>Ventas anuladas</string>
+    </attribute>
+    <widget class="QPushButton" name="Btn_volver_5">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>470</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Volver atras</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_imprimir_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>260</y>
+       <width>91</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Imprimir Reporte</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>10</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ventas Anuladas</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>160</y>
+       <width>331</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>Fecha</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nro Comprobante</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Total</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="Btn_listar_3">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>160</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Listar Venta</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="read_motivo">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>250</y>
+       <width>301</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>100</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>220</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Motivo</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_buscarComprobante">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>100</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(195, 195, 195);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../Imagenes/vector-find-icon.jpg</normaloff>../Imagenes/vector-find-icon.jpg</iconset>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="search_comprobante">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>100</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="maxLength">
+      <number>5</number>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>100</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Nro Comprobante</string>
+     </property>
     </widget>
    </widget>
   </widget>

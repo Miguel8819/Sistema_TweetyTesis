@@ -130,6 +130,7 @@ class Venta():
                     dp.codProducto = df.codProducto
                     AND 
                     cf.nroFactura = %s
+                    AND cf.activo = '1'
                     order by cf.nroFactura               
                      
                     """
@@ -145,6 +146,7 @@ class Venta():
                     WHERE
                     DATE(cf.fechaYhora) = CURDATE() AND
                     cf.nroFactura = df.codCabecera
+                    AND cf.activo= '1'
                     GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura
                     order by cf.nroFactura              
                      
@@ -166,6 +168,8 @@ class Venta():
                     cc.codCliente = cf.codCliente
                     AND
                     dp.codProducto = df.codProducto
+                    AND 
+                    cf.activo = '1'
                     order by cf.nroFactura 
                    
                     """
@@ -182,6 +186,8 @@ class Venta():
                     DATE(cf.fechaYhora) = %s 
                     AND
                     df.codCabecera = cf.nroFactura 
+                    AND
+                    cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%%d/%%m/%%Y")
                    
                     """     
@@ -199,6 +205,8 @@ class Venta():
                    
                     AND 
                     df.condPago = %s
+                    AND
+                    cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
                     order by cf.nroFactura               
                      
@@ -214,6 +222,8 @@ class Venta():
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     cf.nroFactura = df.codCabecera
+                    AND
+                    cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
                     
                     order by cf.nroFactura               
@@ -236,6 +246,8 @@ class Venta():
                     dp.codProducto = df.codProducto
                     AND
                     condPago = %s
+                    AND
+                    cf.activo = '1'
                     order by cf.nroFactura               
                      
                     """
@@ -254,6 +266,8 @@ class Venta():
                     cc.codCliente = cf.codCliente
                     AND
                     dp.codProducto = df.codProducto
+                    AND
+                    cf.activo = '1'
                     order by cf.nroFactura               
                      
                     """
@@ -262,6 +276,46 @@ class Venta():
             if result:
                 return result
 
+    def anular_venta(self,nroFactura):
+        with self.conn.cursor() as cursor:
+            sql ="""UPDATE  product, venta, cabecerafactura SET product.stock = product.stock + venta.cantidad 
+                    WHERE cabecerafactura.nroFactura = venta.codCabecera
+                    AND product.codProducto = venta.codProducto 
+                    AND  cabecerafactura.nroFactura = %s          
+                                        
+                    """
+            
     
+            cursor.execute(sql,nroFactura)
+            self.conn.commit()
     
+    def quitar_venta(self,nroFactura):
+        with self.conn.cursor() as cursor:
+            sql ="""UPDATE venta, cabecerafactura SET activo = '0'
+                    WHERE cabecerafactura.nroFactura = venta.codCabecera
+                   
+                    AND  cabecerafactura.nroFactura = %s          
+                                        
+                    """
+            
+    
+            cursor.execute(sql,nroFactura)
+            self.conn.commit()
+
+    def listarVentasAnuladas(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario) 
+                    FROM cabecerafactura cf ,venta df 
+                    WHERE
+                    DATE(cf.fechaYhora) = CURDATE() AND
+                    cf.nroFactura = df.codCabecera
+                    AND cf.activo= '0'
+                    GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura
+                    order by cf.nroFactura              
+                     
+                    """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
             
