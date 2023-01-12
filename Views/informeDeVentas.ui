@@ -829,7 +829,7 @@ background-color: rgb(255, 0, 0);</string>
     <widget class="QPushButton" name="Btn_volver_5">
      <property name="geometry">
       <rect>
-       <x>320</x>
+       <x>330</x>
        <y>470</y>
        <width>75</width>
        <height>23</height>
@@ -840,22 +840,6 @@ background-color: rgb(255, 0, 0);</string>
      </property>
      <property name="text">
       <string>Volver atras</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btn_imprimir_2">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>260</y>
-       <width>91</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(218, 218, 218);</string>
-     </property>
-     <property name="text">
-      <string>Imprimir Reporte</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_15">
@@ -928,27 +912,11 @@ background-color: rgb(255, 0, 0);</string>
       <string>Listar Venta</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="read_motivo">
-     <property name="geometry">
-      <rect>
-       <x>570</x>
-       <y>250</y>
-       <width>301</width>
-       <height>201</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-     <property name="maxLength">
-      <number>100</number>
-     </property>
-    </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
        <x>570</x>
-       <y>220</y>
+       <y>120</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -1021,6 +989,41 @@ background-color: rgb(255, 0, 0);</string>
      </property>
      <property name="text">
       <string>Nro Comprobante</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="motivo_anulacion">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>160</y>
+       <width>261</width>
+       <height>150</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_verMotivo">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>130</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Ver motivo</string>
      </property>
     </widget>
    </widget>

@@ -287,7 +287,7 @@ class listarVentas():
                 if returnValue == QMessageBox.Ok:
                     self.venta.anular_venta(nroFactura) 
                     self.venta.quitar_venta(nroFactura)               
-                    self.venta.imprimirVentas()
+                    
 
                     msg = QMessageBox()
                     msg.setWindowTitle('¡Exito!')
@@ -296,6 +296,7 @@ class listarVentas():
                     msg.setStandardButtons(QMessageBox.Ok)
                     msg.setDefaultButton(QMessageBox.Ok)
                     x = msg.exec_()
+                    self.venta.imprimirVentas()
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle('¡Error!')
@@ -321,6 +322,35 @@ class listarVentas():
                 table.insertRow(row_number)
                 for column_number, data in enumerate(row_data):
                     table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def buscarVentaAnulada(self,nroFactura):
+        table = self.listar_ventasDiarias.tableWidget_5
+        if nroFactura:
+            ventaDiaria= self.venta.buscarAnulada(nroFactura)
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("El numero de Factura no existe")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Escriba un numero de factura")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
 
 			 
 	

@@ -298,13 +298,9 @@ class Ui_informeDeVentas(object):
         self.tab_5 = QtWidgets.QWidget()
         self.tab_5.setObjectName("tab_5")
         self.Btn_volver_5 = QtWidgets.QPushButton(self.tab_5)
-        self.Btn_volver_5.setGeometry(QtCore.QRect(320, 470, 75, 23))
+        self.Btn_volver_5.setGeometry(QtCore.QRect(330, 470, 75, 23))
         self.Btn_volver_5.setStyleSheet("background-color: rgb(218, 218, 218);")
         self.Btn_volver_5.setObjectName("Btn_volver_5")
-        self.btn_imprimir_2 = QtWidgets.QPushButton(self.tab_5)
-        self.btn_imprimir_2.setGeometry(QtCore.QRect(100, 260, 91, 23))
-        self.btn_imprimir_2.setStyleSheet("background-color: rgb(218, 218, 218);")
-        self.btn_imprimir_2.setObjectName("btn_imprimir_2")
         self.label_15 = QtWidgets.QLabel(self.tab_5)
         self.label_15.setGeometry(QtCore.QRect(370, 10, 251, 41))
         font = QtGui.QFont()
@@ -331,13 +327,8 @@ class Ui_informeDeVentas(object):
         self.Btn_listar_3.setGeometry(QtCore.QRect(110, 160, 75, 23))
         self.Btn_listar_3.setStyleSheet("background-color: rgb(218, 218, 218);")
         self.Btn_listar_3.setObjectName("Btn_listar_3")
-        self.read_motivo = QtWidgets.QLineEdit(self.tab_5)
-        self.read_motivo.setGeometry(QtCore.QRect(570, 250, 301, 201))
-        self.read_motivo.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.read_motivo.setMaxLength(100)
-        self.read_motivo.setObjectName("read_motivo")
         self.label = QtWidgets.QLabel(self.tab_5)
-        self.label.setGeometry(QtCore.QRect(570, 220, 141, 31))
+        self.label.setGeometry(QtCore.QRect(570, 120, 141, 31))
         self.label.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
         self.label.setObjectName("label")
         self.btn_buscarComprobante = QtWidgets.QPushButton(self.tab_5)
@@ -362,6 +353,15 @@ class Ui_informeDeVentas(object):
         font.setPointSize(14)
         self.label_14.setFont(font)
         self.label_14.setObjectName("label_14")
+        self.motivo_anulacion = QtWidgets.QTextEdit(self.tab_5)
+        self.motivo_anulacion.setGeometry(QtCore.QRect(570, 160, 261, 150))
+        self.motivo_anulacion.setMaximumSize(QtCore.QSize(300, 150))
+        self.motivo_anulacion.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.motivo_anulacion.setObjectName("motivo_anulacion")
+        self.btn_verMotivo = QtWidgets.QPushButton(self.tab_5)
+        self.btn_verMotivo.setGeometry(QtCore.QRect(760, 130, 75, 23))
+        self.btn_verMotivo.setStyleSheet("background-color: rgb(218, 218, 218);")
+        self.btn_verMotivo.setObjectName("btn_verMotivo")
         self.tabWidget.addTab(self.tab_5, "")
 
         self.retranslateUi(informeDeVentas)
@@ -399,6 +399,8 @@ class Ui_informeDeVentas(object):
         self.o = self.btn_anularVenta.clicked.connect(lambda:self.listarVentas.anularVenta())
 
         self.p = self.Btn_listar_3.clicked.connect(lambda:self.listarVentas.ventasAnuladas())
+
+        self.q = self.btn_buscarComprobante.clicked.connect(lambda:self.listarVentas.buscarVentaAnulada(self.search_comprobante.text()))
 
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate
@@ -475,7 +477,6 @@ class Ui_informeDeVentas(object):
         self.btn_anularVenta.setText(_translate("informeDeVentas", "Anular Venta"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("informeDeVentas", "Reporte de ventas "))
         self.Btn_volver_5.setText(_translate("informeDeVentas", "Volver atras"))
-        self.btn_imprimir_2.setText(_translate("informeDeVentas", "Imprimir Reporte"))
         self.label_15.setText(_translate("informeDeVentas", "Ventas Anuladas"))
         item = self.tableWidget_5.horizontalHeaderItem(0)
         item.setText(_translate("informeDeVentas", "Fecha"))
@@ -486,6 +487,7 @@ class Ui_informeDeVentas(object):
         self.Btn_listar_3.setText(_translate("informeDeVentas", "Listar Venta"))
         self.label.setText(_translate("informeDeVentas", "Motivo"))
         self.label_14.setText(_translate("informeDeVentas", "Nro Comprobante"))
+        self.btn_verMotivo.setText(_translate("informeDeVentas", "Ver motivo"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("informeDeVentas", "Ventas anuladas"))
 
 
