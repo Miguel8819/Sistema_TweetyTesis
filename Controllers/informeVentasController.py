@@ -281,6 +281,14 @@ class listarVentas():
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
             else: 
                 self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Aún no hay ventas.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        
             
         elif condPago:
             table = self.listar_ventasDiarias.tableWidget_4 
@@ -291,14 +299,15 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle('¡Error!')
-            msg.setText("Aún no hay ventas.")
-            msg.setIcon(QMessageBox.Information)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
+            else: 
+                self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Aún no hay ventas.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
         
 
     def buscarCondPago_2(self,condPago):
@@ -428,8 +437,35 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
-     		 
-	
+    def showMotivo(self):
+        table = self.listar_ventasDiarias.tableWidget_5
+        if table.currentItem() != None:
+            nroFactura = table.currentItem().text()        
+            self.venta.ventaPorFactura(nroFactura)
+            if nroFactura:
+                result = self.cabeceraFactura.getNroFactura(nroFactura)
+                if result:
+                    self.listar_ventasDiarias.motivo_anulacion.setText(str(result[4]))
+                else:    
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("Seleccione un nro de Comprobante")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_()
+                
+            
+        else:    
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Seleccione un nro de Comprobante")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
 
     def salir(self, listar_ventasDiarias):
         listar_ventasDiarias.close()

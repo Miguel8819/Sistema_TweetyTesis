@@ -408,10 +408,12 @@ class Ui_informeDeVentas(object):
         self.o = self.btn_anularVenta.clicked.connect(lambda:self.listarVentas.anularVenta(self.input_motivo.toPlainText()))
 
         self.p = self.Btn_listar_3.clicked.connect(lambda:self.listarVentas.ventasAnuladas())
+       
+        self.q = self.btn_verMotivo.clicked.connect(lambda:self.listarVentas.showMotivo())
 
-        self.q = self.btn_buscarComprobante.clicked.connect(lambda:self.listarVentas.buscarVentaAnulada(self.search_comprobante.text()))
+        self.r = self.btn_buscarComprobante.clicked.connect(lambda:self.listarVentas.buscarVentaAnulada(self.search_comprobante.text()))
 
-        self.r = self.Btn_volver_5.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
+        self.s = self.Btn_volver_5.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
 
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate
