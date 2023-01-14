@@ -6,7 +6,9 @@ class CabeceraFactura():
                         (
                         nroFactura INT(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                         fechaYhora DATETIME(6) NOT NULL,
-                        codCliente INT(100) NOT NULL
+                        codCliente INT(100) NOT NULL,
+                        activo BOOLEAN NOT NULL,
+                        motivoAnulacion VARCHAR(1000) NOT NULL
                         
                         
                         )"""
@@ -44,6 +46,14 @@ class CabeceraFactura():
             id = cursor.lastrowid
             self.conn.commit()
             return id
+
+    def insertMotivo(self,motivo,nroFactura):
+        with self.conn.cursor() as cursor:         
+            sql = """UPDATE cabeceraFactura SET motivoAnulacion = %s, activo = '0'
+            WHERE cabecerafactura.nroFactura = %s
+            """
+            cursor.execute(sql,(motivo,nroFactura))
+            self.conn.commit()
 
     
 

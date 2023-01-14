@@ -59,6 +59,7 @@ class Venta():
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     df.codCabecera = cf.nroFactura 
+                    AND cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%d/%m/%Y")
                    
                     """
@@ -74,6 +75,7 @@ class Venta():
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     df.codCabecera = cf.nroFactura 
+                    AND cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%M-%Y")
                    
                     """
@@ -94,6 +96,7 @@ class Venta():
                     cc.codCliente = cf.codCliente
                     AND
                     dp.codProducto = df.codProducto
+                    AND cf.activo = '1'
                     order by cf.nroFactura               
                      
                     """
@@ -110,6 +113,8 @@ class Venta():
                     DATE(cf.fechaYhora) = %s AND
                     cf.nroFactura = df.codCabecera
                     GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
+                    AND
+                    AND cf.activo = '1'
                     order by cf.nroFactura
                    
                     """
@@ -282,25 +287,11 @@ class Venta():
                     WHERE cabecerafactura.nroFactura = venta.codCabecera
                     AND product.codProducto = venta.codProducto 
                     AND  cabecerafactura.nroFactura = %s          
-                                        
                     """
-            
-    
             cursor.execute(sql,nroFactura)
             self.conn.commit()
     
-    def quitar_venta(self,nroFactura):
-        with self.conn.cursor() as cursor:
-            sql ="""UPDATE venta, cabecerafactura SET activo = '0'
-                    WHERE cabecerafactura.nroFactura = venta.codCabecera
-                   
-                    AND  cabecerafactura.nroFactura = %s          
-                                        
-                    """
-            
     
-            cursor.execute(sql,nroFactura)
-            self.conn.commit()
 
     def listarVentasAnuladas(self):
         with self.conn.cursor() as cursor:
@@ -308,13 +299,10 @@ class Venta():
                     FROM cabecerafactura cf ,venta df
                     WHERE
                     cf.nroFactura = df.codCabecera
-                   
-                    
                     AND
                     cf.activo = '0'
                     GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura
                     order by cf.nroFactura                 
-                     
                     """
             cursor.execute(sql)
             result = cursor.fetchall()

@@ -6,6 +6,7 @@ sys.path.append(myDir)
 from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.venta import Venta
+from Models.cabeceraFactura import CabeceraFactura
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QDate, QStringListModel, Qt
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
@@ -17,38 +18,63 @@ from functools import reduce
 class listarVentas():
     def __init__(self, listar_VentasDiarias):
         self.venta = Venta(connection())
+        self.cabeceraFactura = CabeceraFactura(connection())
         self.listar_ventasDiarias = listar_VentasDiarias
        
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget
         ventasDiarias = self.venta.ventasDiarias()
-           
-        table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasDiarias):
-                table.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        if ventasDiarias:   
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventasDiarias):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
     def detalleVenta(self):
         table = self.listar_ventasDiarias.tableWidget_3
         ventasDiarias = self.venta.detalleVentas()
-           
-        table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasDiarias):
-                table.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        if ventasDiarias:   
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventasDiarias):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
     def ventasMensuales(self):
         table = self.listar_ventasDiarias.tableWidget_2
         ventasMensuales = self.venta.ventasMensuales()
-           
-        table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasMensuales):
-                table.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        if ventasMensuales:   
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventasMensuales):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
     def fechaVentaDiaria(self,fecha):
         table = self.listar_ventasDiarias.tableWidget_4 
@@ -113,58 +139,77 @@ class listarVentas():
         lista_datos = []
         for  i in range(table.rowCount()):    
             lista_datos.append(( table.item(i,0).text(),table.item(i,1).text(), table.item(i,2).text()))
-        pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
-        pdf.set_margins(20, 10 , 10)
-        pdf.set_auto_page_break(25)
-        pdf.add_page()
-        # TEXTO
-        pdf.set_font('Arial', '', 15)
-        pdf.cell(w = 0, h = 7, txt = 'Reporte de Ventas Diarias', border = 1, ln=1,
-                                align = 'C', fill = 0)
-        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
-                align = 'C', fill = 0)
-        pdf.set_font('Times', '', 28)
-        pdf.cell(w = 50, h = 10, txt = 'Libreria Tweety', border = 0, ln=1,
-                align = 'L', fill = 0)
-        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
-                align = 'C', fill = 0)
-        pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
-                align = 'C', fill = 0)
-        pdf.set_font('Arial', '', 16)
-        pdf.cell(w = 50, h = 7, txt = 'Fecha', border = 1,
-                                align = 'C', fill = 0)
-        pdf.cell(w = 50, h = 7, txt = 'Número de Factura', border = 1,
-                align = 'C', fill = 0)
-        pdf.multi_cell(w = 0, h = 7, txt = 'Importe', border = 1,
-                align = 'C', fill = 0)
-        # valores
-        total = 0
-        for valor in lista_datos:
-                pdf.set_font('Arial', '', 10)    
-                pdf.cell(w = 50, h = 5, txt = str(valor[0]), border = 0,
-                        align = 'C', fill = 0)
-                pdf.cell(w = 50, h = 5, txt = str(valor[1]), border = 0,
-                        align = 'C', fill = 0)
-                pdf.multi_cell(w = 0, h = 5, txt ='$' + str(valor[2]), border = 0,
-                        align = 'C', fill = 0)                        
-                total = total + float(valor[2])
-         # reduce(lambda x, y: x + y, valores)       
-        new = reduce(lambda x, y: x + y,list(map(lambda x : float(x[2]), lista_datos)))      
-        print(total)  
-        pdf.set_font('Arial', '', 15)
-        pdf.cell(w = 0, h = 20, txt = 'Importe Total: $'+str(total), border = 0, ln=1,
-                align = 'R', fill = 0)
-        pdf.output('reporteVentas.pdf')
-        os.startfile('reporteVentas.pdf') 
+        if lista_datos:    
+            pdf = FPDF(orientation = 'P', unit = 'mm', format='A4') 
+            pdf.set_margins(20, 10 , 10)
+            pdf.set_auto_page_break(25)
+            pdf.add_page()
+            # TEXTO
+            pdf.set_font('Arial', '', 15)
+            pdf.cell(w = 0, h = 7, txt = 'Reporte de Ventas Diarias', border = 1, ln=1,
+                                    align = 'C', fill = 0)
+            pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                    align = 'C', fill = 0)
+            pdf.set_font('Times', '', 28)
+            pdf.cell(w = 50, h = 10, txt = 'Libreria Tweety', border = 0, ln=1,
+                    align = 'L', fill = 0)
+            pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                    align = 'C', fill = 0)
+            pdf.cell(w = 0, h = 5, txt = '', border = 0, ln=1,
+                    align = 'C', fill = 0)
+            pdf.set_font('Arial', '', 16)
+            pdf.cell(w = 50, h = 7, txt = 'Fecha', border = 1,
+                                    align = 'C', fill = 0)
+            pdf.cell(w = 50, h = 7, txt = 'Número de Factura', border = 1,
+                    align = 'C', fill = 0)
+            pdf.multi_cell(w = 0, h = 7, txt = 'Importe', border = 1,
+                    align = 'C', fill = 0)
+            # valores
+            total = 0
+            for valor in lista_datos:
+                    pdf.set_font('Arial', '', 10)    
+                    pdf.cell(w = 50, h = 5, txt = str(valor[0]), border = 0,
+                            align = 'C', fill = 0)
+                    pdf.cell(w = 50, h = 5, txt = str(valor[1]), border = 0,
+                            align = 'C', fill = 0)
+                    pdf.multi_cell(w = 0, h = 5, txt ='$' + str(valor[2]), border = 0,
+                            align = 'C', fill = 0)                        
+                    total = total + float(valor[2])
+            # reduce(lambda x, y: x + y, valores)       
+            new = reduce(lambda x, y: x + y,list(map(lambda x : float(x[2]), lista_datos)))      
+            print(total)  
+            pdf.set_font('Arial', '', 15)
+            pdf.cell(w = 0, h = 20, txt = 'Importe Total: $'+str(total), border = 0, ln=1,
+                    align = 'R', fill = 0)
+            pdf.output('reporteVentas.pdf')
+            os.startfile('reporteVentas.pdf') 
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("La lista esta vacia.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+            
     
     def listarReporte(self):
         table = self.listar_ventasDiarias.tableWidget_4
-        ventasDiarias = self.venta.imprimirVentas()       
-        table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasDiarias):
-                table.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        ventasDiarias = self.venta.imprimirVentas()   
+        if ventasDiarias:
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventasDiarias):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
     def fechaDetalle(self,fecha):
         table = self.listar_ventasDiarias.tableWidget_3 
@@ -246,6 +291,14 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
         
 
     def buscarCondPago_2(self,condPago):
@@ -270,8 +323,12 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            
+       
 
-    def anularVenta (self):
+
+
+    def anularVenta (self,motivo):
         table = self.listar_ventasDiarias.tableWidget_4
         if table.currentItem() != None:
             nroFactura = table.currentItem().text()        
@@ -285,18 +342,27 @@ class listarVentas():
                 msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                 returnValue = msgBox.exec()
                 if returnValue == QMessageBox.Ok:
-                    self.venta.anular_venta(nroFactura) 
-                    self.venta.quitar_venta(nroFactura)               
-                    
+                    if motivo:
+                        self.cabeceraFactura.insertMotivo(motivo,nroFactura) 
+                        self.venta.anular_venta(nroFactura)  
 
-                    msg = QMessageBox()
-                    msg.setWindowTitle('¡Exito!')
-                    msg.setText("¡Venta anulada!.")
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setStandardButtons(QMessageBox.Ok)
-                    msg.setDefaultButton(QMessageBox.Ok)
-                    x = msg.exec_()
-                    self.venta.imprimirVentas()
+                        msg = QMessageBox()
+                        msg.setWindowTitle('¡Exito!')
+                        msg.setText("¡Venta anulada!.")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        x = msg.exec_()
+                        
+                    else:
+                        msg = QMessageBox()
+                        msg.setWindowTitle('¡Error!')
+                        msg.setText("Por favor escriba el motivo de la anulación de venta y luego presione el botón Anular Venta.")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        x = msg.exec_()
+
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle('¡Error!')
@@ -315,13 +381,23 @@ class listarVentas():
             x = msg.exec_()
     
     def ventasAnuladas(self):
+        
         table = self.listar_ventasDiarias.tableWidget_5
-        ventasDiarias = self.venta.listarVentasAnuladas()       
-        table.setRowCount(0)
-        for row_number, row_data in enumerate(ventasDiarias):
-                table.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        ventasDiarias = self.venta.listarVentasAnuladas()
+        if ventasDiarias:
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(ventasDiarias):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("No hay ventas anuladas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
 
     def buscarVentaAnulada(self,nroFactura):
         table = self.listar_ventasDiarias.tableWidget_5
@@ -352,7 +428,7 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
-			 
+     		 
 	
 
     def salir(self, listar_ventasDiarias):
