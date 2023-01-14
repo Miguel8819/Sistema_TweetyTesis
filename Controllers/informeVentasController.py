@@ -488,5 +488,27 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
+    def limpiar1 (self):
+        self.listar_ventasDiarias.tableWidget.setRowCount(0)
+        self.listar_ventasDiarias.input_fecha_diaria.clear()
+        
+    def limpiar2 (self):
+        self.listar_ventasDiarias.tableWidget_2.setRowCount(0)
+        
+    def limpiar3 (self):
+        self.listar_ventasDiarias.tableWidget_3.setRowCount(0)
+        self.listar_ventasDiarias.input_fecha.clear()
+        self.listar_ventasDiarias.search_nroFactura.clear()
+    def limpiar4 (self):
+        self.listar_ventasDiarias.tableWidget_4.setRowCount(0)
+        self.listar_ventasDiarias.search_fecha.clear()
+        self.listar_ventasDiarias.input_motivo.clear()
+        
+    def limpiar5 (self):
+        self.listar_ventasDiarias.tableWidget_5.setRowCount(0)
+        self.listar_ventasDiarias.tableWidget_6.setRowCount(0)
+        self.listar_ventasDiarias.search_comprobante.clear()
+        self.listar_ventasDiarias.motivo_anulacion.clear()    
+
     def salir(self, listar_ventasDiarias):
         listar_ventasDiarias.close()

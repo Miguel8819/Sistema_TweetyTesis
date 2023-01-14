@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
+    <width>1011</width>
     <height>637</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
     <rect>
      <x>0</x>
      <y>10</y>
-     <width>941</width>
+     <width>991</width>
      <height>621</height>
     </rect>
    </property>
@@ -64,7 +64,7 @@
     <widget class="QPushButton" name="Btn_Volver">
      <property name="geometry">
       <rect>
-       <x>560</x>
+       <x>420</x>
        <y>490</y>
        <width>75</width>
        <height>23</height>
@@ -181,6 +181,22 @@
       <string>Fecha:</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="Btn_limpiar1">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>90</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar todo</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -218,7 +234,7 @@
     <widget class="QPushButton" name="Btn_volver2">
      <property name="geometry">
       <rect>
-       <x>560</x>
+       <x>410</x>
        <y>470</y>
        <width>75</width>
        <height>23</height>
@@ -270,6 +286,22 @@
      </property>
      <property name="text">
       <string>Total ventas mensuales</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Btn_limpiar2">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>100</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar todo</string>
      </property>
     </widget>
    </widget>
@@ -582,6 +614,22 @@
       <string>Condición Pago</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="Btn_limpiar3">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>170</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar todo</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
@@ -879,6 +927,22 @@ background-color: rgb(255, 0, 0);</string>
       <string>Motivo de anulación de venta</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="Btn_limpiar4">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>100</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar todo</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_5">
     <attribute name="title">
@@ -887,7 +951,7 @@ background-color: rgb(255, 0, 0);</string>
     <widget class="QPushButton" name="Btn_volver_5">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>230</x>
        <y>470</y>
        <width>75</width>
        <height>23</height>
@@ -927,9 +991,9 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>20</x>
        <y>160</y>
-       <width>331</width>
+       <width>521</width>
        <height>291</height>
       </rect>
      </property>
@@ -954,12 +1018,22 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
        <string>Total</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>codCliente</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </column>
     </widget>
     <widget class="QPushButton" name="Btn_listar_3">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>160</y>
+       <x>20</x>
+       <y>130</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -974,7 +1048,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>550</x>
        <y>310</y>
        <width>81</width>
        <height>31</height>
@@ -990,8 +1064,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QPushButton" name="btn_buscarComprobante">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>100</y>
+       <x>270</x>
+       <y>90</y>
        <width>31</width>
        <height>21</height>
       </rect>
@@ -1011,8 +1085,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLineEdit" name="search_comprobante">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>100</y>
+       <x>180</x>
+       <y>90</y>
        <width>81</width>
        <height>21</height>
       </rect>
@@ -1035,8 +1109,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>100</y>
+       <x>20</x>
+       <y>90</y>
        <width>151</width>
        <height>21</height>
       </rect>
@@ -1053,7 +1127,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QTextEdit" name="motivo_anulacion">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>550</x>
        <y>340</y>
        <width>261</width>
        <height>111</height>
@@ -1072,7 +1146,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QPushButton" name="btn_verMotivo">
      <property name="geometry">
       <rect>
-       <x>660</x>
+       <x>710</x>
        <y>130</y>
        <width>81</width>
        <height>23</height>
@@ -1091,7 +1165,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>550</x>
        <y>160</y>
        <width>421</width>
        <height>141</height>
@@ -1127,7 +1201,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>550</x>
        <y>120</y>
        <width>91</width>
        <height>31</height>
@@ -1138,6 +1212,22 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
       <string>Detalle</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Btn_limpiar5">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>90</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(218, 218, 218);</string>
+     </property>
+     <property name="text">
+      <string>Limpiar todo</string>
      </property>
     </widget>
    </widget>
