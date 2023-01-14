@@ -20,7 +20,6 @@ class listarVentas():
         self.venta = Venta(connection())
         self.cabeceraFactura = CabeceraFactura(connection())
         self.listar_ventasDiarias = listar_VentasDiarias
-       
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget
@@ -194,7 +193,6 @@ class listarVentas():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
-            
     
     def listarReporte(self):
         table = self.listar_ventasDiarias.tableWidget_4
@@ -312,7 +310,6 @@ class listarVentas():
                 msg.setDefaultButton(QMessageBox.Ok)
                 x = msg.exec_()
         
-
     def buscarCondPago_2(self,condPago):
         table = self.listar_ventasDiarias.tableWidget_3 
         if condPago !='Todos':    
@@ -336,10 +333,6 @@ class listarVentas():
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
             
-       
-
-
-
     def anularVenta (self,motivo):
         table = self.listar_ventasDiarias.tableWidget_4
         if table.currentItem() != None:
@@ -440,6 +433,30 @@ class listarVentas():
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
 
+    def detalleAnulada(self):
+        table = self.listar_ventasDiarias.tableWidget_5
+        if table.currentItem() != None:
+            nroFactura = table.currentItem().text()        
+            self.venta.ventaPorFactura(nroFactura)
+            if nroFactura:
+                ventasDiarias = self.venta.showDetalleAnulada(nroFactura)
+                if ventasDiarias: 
+                    table = self.listar_ventasDiarias.tableWidget_6  
+                    table.setRowCount(0)
+                    for row_number, row_data in enumerate(ventasDiarias):
+                            table.insertRow(row_number)
+                            for column_number, data in enumerate(row_data):
+                                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            self.listar_ventasDiarias.tableWidget_6.setRowCount(0)
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Aún no hay ventas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+
     def showMotivo(self):
         table = self.listar_ventasDiarias.tableWidget_5
         if table.currentItem() != None:
@@ -449,6 +466,7 @@ class listarVentas():
                 result = self.cabeceraFactura.getNroFactura(nroFactura)
                 if result:
                     self.listar_ventasDiarias.motivo_anulacion.setText(str(result[4]))
+                    self.detalleAnulada()
                 else:    
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")

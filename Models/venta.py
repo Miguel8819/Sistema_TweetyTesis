@@ -327,4 +327,23 @@ class Venta():
             result = cursor.fetchall()
             if result:
                 return result
+
+    def showDetalleAnulada(self,nroFactura):
+        with self.conn.cursor() as cursor:
+            sql = """ SELECT  dp.producto, df.cantidad, df.precioUnitario, df.cantidad * df.precioUnitario 
+                    FROM cabecerafactura cf ,venta df, Product dp 
+                    WHERE
+                    cf.nroFactura = df.codCabecera
+                    AND
+                    dp.codProducto = df.codProducto
+                    AND cf.activo = '0'
+                    AND cf.nroFactura = %s
+                    order by cf.nroFactura             
+                     
+                    """
+            cursor.execute(sql,nroFactura)
+            result = cursor.fetchall()
+            if result:
+                return result
+
             
