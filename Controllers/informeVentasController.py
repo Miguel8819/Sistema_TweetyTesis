@@ -32,6 +32,7 @@ class listarVentas():
                     for column_number, data in enumerate(row_data):
                         table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         else:
+            self.listar_ventasDiarias.tableWidget.setRowCount(0)
             msg = QMessageBox()
             msg.setWindowTitle('¡Error!')
             msg.setText("Aún no hay ventas.")
@@ -50,6 +51,7 @@ class listarVentas():
                     for column_number, data in enumerate(row_data):
                         table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         else:
+            self.listar_ventasDiarias.tableWidget_3.setRowCount(0)
             msg = QMessageBox()
             msg.setWindowTitle('¡Error!')
             msg.setText("Aún no hay ventas.")
@@ -68,6 +70,7 @@ class listarVentas():
                     for column_number, data in enumerate(row_data):
                         table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
         else:
+            self.listar_ventasDiarias.tableWidget_2.setRowCount(0)
             msg = QMessageBox()
             msg.setWindowTitle('¡Error!')
             msg.setText("Aún no hay ventas.")
