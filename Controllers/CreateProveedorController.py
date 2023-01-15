@@ -411,5 +411,12 @@ class CreateProveedorController():
             x = msg.exec_() 
 
     def cancelar(self, Ui_Proveedores):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea cancelar y salir?")
+        msgBox.setWindowTitle("Proveedores")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
 
-        Ui_Proveedores.close()
+            Ui_Proveedores.close()

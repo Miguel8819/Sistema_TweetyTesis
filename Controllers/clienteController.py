@@ -248,8 +248,14 @@ class ClienteController():
 
 
     def cancelar(self, Ui_cliente):
-
-        Ui_cliente.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea cancelar y salir?")
+        msgBox.setWindowTitle("Clientes")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            Ui_cliente.close()
 
 
     

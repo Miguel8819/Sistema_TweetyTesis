@@ -81,4 +81,11 @@ class listarProveedoresController():
             x = msg.exec_()
 
     def SalirA(self,listar_proveedor):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Lista de proveedores")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
          listar_proveedor.close()

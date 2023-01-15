@@ -319,4 +319,11 @@ class CreateProductController():
 
 
     def salir(self, CreateProduct):
-        CreateProduct.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea cancelar y salir?")
+        msgBox.setWindowTitle("Productos")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            CreateProduct.close()

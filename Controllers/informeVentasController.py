@@ -511,4 +511,11 @@ class listarVentas():
         self.listar_ventasDiarias.motivo_anulacion.clear()    
 
     def salir(self, listar_ventasDiarias):
-        listar_ventasDiarias.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Informe de ventas")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            listar_ventasDiarias.close()

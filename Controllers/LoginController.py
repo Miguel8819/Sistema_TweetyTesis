@@ -43,7 +43,14 @@ class LoginController():
                 x = msg.exec_() 
 
     def salir():
-        sys.exit()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea cerrar el programa y salir?")
+        msgBox.setWindowTitle("Sistema Tweety")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+         sys.exit()
 
     def modificarPassword(self, user, oldPassword, newPass, newPassRepeat):
             if user:

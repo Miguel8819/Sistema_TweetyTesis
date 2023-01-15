@@ -79,4 +79,11 @@ class listarClienteController():
 
 
     def SalirA(self,listar_cliente):
-         listar_cliente.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Lista de clientes")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+           listar_cliente.close()

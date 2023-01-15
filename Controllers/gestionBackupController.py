@@ -11,4 +11,11 @@ class gestionBackupController():
         self.backup = backup
 
     def salir(self,gestion_backup):
-        gestion_backup.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Backup")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            gestion_backup.close()

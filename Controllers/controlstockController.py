@@ -390,4 +390,11 @@ class controlstockController():
     
 
     def salir(self, controlstock):
-        controlstock.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Lista de productos")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            controlstock.close()
