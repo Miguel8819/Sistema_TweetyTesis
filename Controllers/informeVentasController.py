@@ -120,7 +120,7 @@ class listarVentas():
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("El numero de Factura no existe")
+                msg.setText("El número de comprobante no existe")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
@@ -129,7 +129,7 @@ class listarVentas():
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
-            msg.setText("Escriba un numero de factura")
+            msg.setText("Escriba un número de comprobante")
             msg.setIcon(QMessageBox.Information)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
@@ -162,7 +162,7 @@ class listarVentas():
             pdf.set_font('Arial', '', 16)
             pdf.cell(w = 50, h = 7, txt = 'Fecha', border = 1,
                                     align = 'C', fill = 0)
-            pdf.cell(w = 50, h = 7, txt = 'Número de Factura', border = 1,
+            pdf.cell(w = 50, h = 7, txt = 'Número de Comprobante', border = 1,
                     align = 'C', fill = 0)
             pdf.multi_cell(w = 0, h = 7, txt = 'Importe', border = 1,
                     align = 'C', fill = 0)
@@ -349,7 +349,9 @@ class listarVentas():
                 if returnValue == QMessageBox.Ok:
                     if motivo:
                         self.cabeceraFactura.insertMotivo(motivo,nroFactura) 
-                        self.venta.anular_venta(nroFactura)  
+                        self.venta.anular_venta(nroFactura) 
+                        self.buscarCondPago(condPago='Todos')
+                        self.listar_ventasDiarias.input_motivo.clear() 
 
                         msg = QMessageBox()
                         msg.setWindowTitle('¡Exito!')
@@ -417,7 +419,7 @@ class listarVentas():
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
-                msg.setText("El numero de Factura no existe")
+                msg.setText("El numero de comprobante no existe")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
@@ -426,7 +428,7 @@ class listarVentas():
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
-            msg.setText("Escriba un numero de factura")
+            msg.setText("Escriba un numero de comprobante")
             msg.setIcon(QMessageBox.Information)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
@@ -476,8 +478,6 @@ class listarVentas():
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
                     x = msg.exec_()
-                
-            
         else:    
             msg = QMessageBox()
             msg.setWindowTitle("Error")
