@@ -9,11 +9,12 @@ from Models.Product import Product
 
 
 class menuprincipalController():
+  
 
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
      self.product= Product
-     
+   
 
    def openFacturacion(self, Ui_venta, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
@@ -112,6 +113,5 @@ class menuprincipalController():
         else:
                 self.menuprincipal.alarma1.hide()
                 self.menuprincipal.alarma2.hide()
-   t = threading.Timer(3,time)
-   t.start()     
+        
 

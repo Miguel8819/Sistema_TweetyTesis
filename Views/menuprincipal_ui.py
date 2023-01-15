@@ -26,6 +26,8 @@ class Ui_menuprincipal(object):
     def __init__(self):
         self.menuprincipalController = menuprincipalController(self)
         self.product= Product(connection())
+       
+
     def setupUi(self, menuprincipal):
         menuprincipal.setObjectName("menuprincipal")
         menuprincipal.resize(795, 600)
@@ -389,9 +391,15 @@ class Ui_menuprincipal(object):
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
         self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
-   
-            
-                
+        
+        product = self.product.getStockBajo()
+        if product:
+                self.alarma1.show()
+                self.alarma2.show()
+        else:
+                self.alarma1.hide()
+                self.alarma2.hide()
+
 #--------------------End Events---------------------------------
 
     def retranslateUi(self, menuprincipal):

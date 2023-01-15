@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.User import User
-#from Views.menuprincipal import Ui_menuprincipal
+
 class LoginController():
 
     def __init__(self, log_in):
