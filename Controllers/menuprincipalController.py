@@ -13,7 +13,7 @@ class menuprincipalController():
 
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
-     self.product= Product
+   
    
 
    def openFacturacion(self, Ui_venta, Form):
@@ -99,19 +99,17 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show() 
+    
+   def openRegistroUsuarios(self, Ui_registrarUsuario, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_registrarUsuario()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 
 
    def manualUsuario(self):
       os.startfile('ManualDeUsuarioSistemaTweety.pdf')  
 
-   def time(self):
-        product = self.product.getStockBajo()
-        
-        if product:
-                self.menuprincipal.alarma1.show()
-                self.menuprincipal.alarma2.show()
-                
-        else:
-                self.menuprincipal.alarma1.hide()
-                self.menuprincipal.alarma2.hide()
+
         
 

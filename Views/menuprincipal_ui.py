@@ -18,6 +18,7 @@ from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
 from controldestock_ui import Ui_controlDeStock
+from registrarusuario_ui import Ui_registrarUsuario
 from Models.Product import *
 from Database.Connection import connection
 
@@ -400,6 +401,7 @@ class Ui_menuprincipal(object):
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
         self.btn_infDeCaja_2.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
+        self.btn_movFondos_3.clicked.connect(lambda:self.menuprincipalController.openRegistroUsuarios(Ui_registrarUsuario, menuprincipal))
         
         product = self.product.getStockBajo()
         if product:

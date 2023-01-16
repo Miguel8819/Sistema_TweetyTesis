@@ -21,27 +21,6 @@
 QFrame{background-color:rgb(153,204,255)}
 QLineEdit{background-color:rgb(255,255,255)}</string>
   </property>
-  <widget class="QLabel" name="label_confirm">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>330</y>
-     <width>311</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Las contraseñas no coinciden&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -119,7 +98,7 @@ QLineEdit{background-color:rgb(255,255,255)}</string>
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="btn_registrar">
+     <widget class="QPushButton" name="btn_registrarUsuario">
       <property name="minimumSize">
        <size>
         <width>310</width>
@@ -340,7 +319,7 @@ QLineEdit{background-color:rgb(255,255,255)}</string>
 </string>
       </property>
       <property name="text">
-       <string>Registarse</string>
+       <string>Registrarse</string>
       </property>
      </widget>
     </item>
@@ -651,87 +630,6 @@ QLineEdit{background-color:rgb(255,255,255)}</string>
     <string>Repita su contraseña:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_usuario">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>150</y>
-     <width>241</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="maxLength">
-    <number>20</number>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="placeholderText">
-    <string>Nombre de usuario</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="input_password">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>200</y>
-     <width>241</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="maxLength">
-    <number>20</number>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="placeholderText">
-    <string>Contraseña</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="repit_password">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>250</y>
-     <width>241</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="maxLength">
-    <number>20</number>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="placeholderText">
-    <string>Repita su contraseña</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
@@ -787,7 +685,138 @@ background-color: rgb(212, 212, 212);</string>
     </property>
    </item>
   </widget>
+  <widget class="QLineEdit" name="input_password">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>200</y>
+     <width>241</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255,255,255);
+border-style: outset;
+border-width: 1px;
+border-color: black;</string>
+   </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>Contraseña </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="repit_password">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>250</y>
+     <width>241</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255,255,255);
+border-style: outset;
+border-width: 1px;
+border-color: black;</string>
+   </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>Repita la contraseña</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="input_usuario">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>150</y>
+     <width>241</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255,255,255);
+border-style: outset;
+border-width: 1px;
+border-color: black;</string>
+   </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>Nombre de usuario</string>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>comboBox_Rol</tabstop>
+  <tabstop>input_usuario</tabstop>
+  <tabstop>input_password</tabstop>
+  <tabstop>repit_password</tabstop>
+  <tabstop>btn_registrarUsuario</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
