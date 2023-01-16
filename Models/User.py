@@ -5,7 +5,10 @@ class User():
         with self.conn.cursor() as cursor:
             sql = """CREATE TABLE IF NOT EXISTS user
                         (user_name VARCHAR(100) NOT NULL,
-                        password VARCHAR(100) NOT NULL)"""
+                        password VARCHAR(100) NOT NULL,
+                        rol VARCHAR(30) NOT NULL
+                        )
+                        """
             cursor.execute(sql)
             self.conn.commit()
     def getUser1(self, user):
@@ -33,6 +36,12 @@ class User():
             else:
                 failure = False
                 return failure
+
+    def registrarUsuario(self,user, password, rol):
+         with self.conn.cursor() as cursor:          
+            sql = """INSERT INTO user (user_name, password, rol) VALUES (%s,%s,%s)"""
+            cursor.execute(sql, (user, password, rol))
+            self.conn.commit()
             
             
                 

@@ -852,8 +852,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_movFondos_2">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>102</y>
+          <x>120</x>
+          <y>180</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -878,8 +878,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_infDeCaja_2">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>262</y>
+          <x>120</x>
+          <y>340</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -904,8 +904,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_abrirCerrarCaja_2">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>182</y>
+          <x>120</x>
+          <y>260</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -927,11 +927,38 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>Gestion de Backup</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="btn_movFondos_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>100</y>
+          <width>290</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Registro de usuarios</string>
+        </property>
+       </widget>
        <zorder>label_12</zorder>
        <zorder>label_11</zorder>
        <zorder>btn_movFondos_2</zorder>
        <zorder>btn_infDeCaja_2</zorder>
        <zorder>btn_abrirCerrarCaja_2</zorder>
+       <zorder>btn_movFondos_3</zorder>
       </widget>
      </widget>
     </item>

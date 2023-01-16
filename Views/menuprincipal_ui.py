@@ -26,7 +26,6 @@ class Ui_menuprincipal(object):
     def __init__(self):
         self.menuprincipalController = menuprincipalController(self)
         self.product= Product(connection())
-       
 
     def setupUi(self, menuprincipal):
         menuprincipal.setObjectName("menuprincipal")
@@ -335,7 +334,7 @@ class Ui_menuprincipal(object):
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
         self.btn_movFondos_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_movFondos_2.setGeometry(QtCore.QRect(131, 102, 290, 50))
+        self.btn_movFondos_2.setGeometry(QtCore.QRect(120, 180, 290, 50))
         self.btn_movFondos_2.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -344,7 +343,7 @@ class Ui_menuprincipal(object):
         self.btn_movFondos_2.setFont(font)
         self.btn_movFondos_2.setObjectName("btn_movFondos_2")
         self.btn_infDeCaja_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_infDeCaja_2.setGeometry(QtCore.QRect(131, 262, 290, 50))
+        self.btn_infDeCaja_2.setGeometry(QtCore.QRect(120, 340, 290, 50))
         self.btn_infDeCaja_2.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -353,7 +352,7 @@ class Ui_menuprincipal(object):
         self.btn_infDeCaja_2.setFont(font)
         self.btn_infDeCaja_2.setObjectName("btn_infDeCaja_2")
         self.btn_abrirCerrarCaja_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_abrirCerrarCaja_2.setGeometry(QtCore.QRect(131, 182, 290, 50))
+        self.btn_abrirCerrarCaja_2.setGeometry(QtCore.QRect(120, 260, 290, 50))
         self.btn_abrirCerrarCaja_2.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -361,11 +360,21 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_abrirCerrarCaja_2.setFont(font)
         self.btn_abrirCerrarCaja_2.setObjectName("btn_abrirCerrarCaja_2")
+        self.btn_movFondos_3 = QtWidgets.QPushButton(self.page_mantenimiento)
+        self.btn_movFondos_3.setGeometry(QtCore.QRect(120, 100, 290, 50))
+        self.btn_movFondos_3.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_movFondos_3.setFont(font)
+        self.btn_movFondos_3.setObjectName("btn_movFondos_3")
         self.label_12.raise_()
         self.label_11.raise_()
         self.btn_movFondos_2.raise_()
         self.btn_infDeCaja_2.raise_()
         self.btn_abrirCerrarCaja_2.raise_()
+        self.btn_movFondos_3.raise_()
         self.stackedWidget.addWidget(self.page_mantenimiento)
         self.verticalLayout.addWidget(self.stackedWidget)
 
@@ -429,6 +438,7 @@ class Ui_menuprincipal(object):
         self.btn_movFondos_2.setText(_translate("menuprincipal", "Gestion de Clave"))
         self.btn_infDeCaja_2.setText(_translate("menuprincipal", "Manual de Usuario"))
         self.btn_abrirCerrarCaja_2.setText(_translate("menuprincipal", "Gestion de Backup"))
+        self.btn_movFondos_3.setText(_translate("menuprincipal", "Registro de usuarios"))
 
 
 if __name__ == "__main__":
