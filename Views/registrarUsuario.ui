@@ -671,6 +671,11 @@ background-color: rgb(212, 212, 212);</string>
    </property>
    <item>
     <property name="text">
+     <string>Administrador</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>Encargado de ventas</string>
     </property>
    </item>

@@ -14,7 +14,6 @@ class Ui_registrarUsuario(object):
     def __init__(self):
         self.registrar_controller = RegistrarController(self)
         self.user = User(connection())
-
     def setupUi(self, registrarUsuario):
         registrarUsuario.setObjectName("registrarUsuario")
         registrarUsuario.setEnabled(True)
@@ -240,6 +239,7 @@ class Ui_registrarUsuario(object):
         self.comboBox_Rol.addItem("")
         self.comboBox_Rol.addItem("")
         self.comboBox_Rol.addItem("")
+        self.comboBox_Rol.addItem("")
         self.input_password = QtWidgets.QLineEdit(registrarUsuario)
         self.input_password.setGeometry(QtCore.QRect(360, 200, 241, 25))
         self.input_password.setMinimumSize(QtCore.QSize(0, 0))
@@ -294,7 +294,7 @@ class Ui_registrarUsuario(object):
         registrarUsuario.setTabOrder(self.btn_registrarUsuario, self.btn_cancelar)
 
         self.a = self.btn_registrarUsuario.clicked.connect(lambda:self.registrar_controller.registrarUsuario(self.input_usuario.text(),self.input_password.text(),self.repit_password.text() ,self.comboBox_Rol.currentText()))
-
+        
         self.b = self.btn_cancelar.clicked.connect(lambda:self.registrar_controller.cancelar(registrarUsuario))
 
     def retranslateUi(self, registrarUsuario):
@@ -307,9 +307,10 @@ class Ui_registrarUsuario(object):
         self.label_3.setText(_translate("registrarUsuario", "Contraseña:"))
         self.label_4.setText(_translate("registrarUsuario", "Repita su contraseña:"))
         self.label_5.setText(_translate("registrarUsuario", "Rol:"))
-        self.comboBox_Rol.setItemText(0, _translate("registrarUsuario", "Encargado de ventas"))
-        self.comboBox_Rol.setItemText(1, _translate("registrarUsuario", "Encargado de compras"))
-        self.comboBox_Rol.setItemText(2, _translate("registrarUsuario", "Encargado de deposito"))
+        self.comboBox_Rol.setItemText(0, _translate("registrarUsuario", "Administrador"))
+        self.comboBox_Rol.setItemText(1, _translate("registrarUsuario", "Encargado de ventas"))
+        self.comboBox_Rol.setItemText(2, _translate("registrarUsuario", "Encargado de compras"))
+        self.comboBox_Rol.setItemText(3, _translate("registrarUsuario", "Encargado de deposito"))
         self.input_password.setPlaceholderText(_translate("registrarUsuario", "Contraseña "))
         self.repit_password.setPlaceholderText(_translate("registrarUsuario", "Repita la contraseña"))
         self.input_usuario.setPlaceholderText(_translate("registrarUsuario", "Nombre de usuario"))

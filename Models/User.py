@@ -11,6 +11,7 @@ class User():
                         """
             cursor.execute(sql)
             self.conn.commit()
+    
     def getUser1(self, user):
         with self.conn.cursor() as cursor:
             sql = """SELECT user_name FROM user WHERE user_name = %s"""
