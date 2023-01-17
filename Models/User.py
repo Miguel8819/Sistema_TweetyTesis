@@ -12,6 +12,13 @@ class User():
             cursor.execute(sql)
             self.conn.commit()
     
+    def getRol(self, rol):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT user_name FROM user WHERE rol = %s"""
+            cursor.execute(sql, (rol))
+            result = cursor.fetchone()
+            return result
+
     def getUser1(self, user):
         with self.conn.cursor() as cursor:
             sql = """SELECT user_name FROM user WHERE user_name = %s"""

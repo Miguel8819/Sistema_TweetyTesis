@@ -12,7 +12,7 @@ from proveedores_ui import Ui_Proveedores
 from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
-from gestionClaves_ui import Ui_LogIn
+from gestionClaves_ui import Ui_gestionClaves
 from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
@@ -393,7 +393,7 @@ class Ui_menuprincipal(object):
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
-        self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
+        self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_gestionClaves, menuprincipal))
         self.btn_abrirCerrarCaja_2.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))

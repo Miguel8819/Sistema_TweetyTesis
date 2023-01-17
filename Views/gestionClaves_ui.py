@@ -5,14 +5,14 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Controllers.LoginController import LoginController
+from Controllers.gestionClavesController import gestionClavesController
 from Database.Connection import connection
 from Models.User import User
 
 
-class Ui_LogIn(object):
+class Ui_gestionClaves(object):
     def __init__(self):
-        self.login_controller = LoginController(self)
+        self.gestion_claves = gestionClavesController(self)
         self.user = User(connection())
     def setupUi(self, LogIn):
         LogIn.setObjectName("LogIn")
@@ -337,8 +337,8 @@ class Ui_LogIn(object):
         QtCore.QMetaObject.connectSlotsByName(LogIn)
 
 #--------------------Events----------------------------------------------------------------
-        self.a = self.btn_login.clicked.connect(lambda: self.login_controller.modificarPassword(self.input_user.text(), self.input_oldPassword.text(), self.input_newPassword.text(), self.input_newPasswordRepetir.text()))
-        self.b = self.btn_salir.clicked.connect(lambda: self.login_controller.salir(LogIn))
+        self.a = self.btn_login.clicked.connect(lambda: self.gestion_claves.modificarPassword(self.input_user.text(), self.input_oldPassword.text(), self.input_newPassword.text(), self.input_newPasswordRepetir.text()))
+        self.b = self.btn_salir.clicked.connect(lambda: self.gestion_claves.salir(LogIn))
 
 #--------------------Events-----------------------------------------------------------------
 
@@ -364,7 +364,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     LogIn = QtWidgets.QWidget()
-    ui = Ui_LogIn()
+    ui = Ui_gestionClaves()
     ui.setupUi(LogIn)
     LogIn.show()
     sys.exit(app.exec_())

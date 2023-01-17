@@ -393,7 +393,7 @@ class controlstockController():
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)
         msgBox.setText("¿Desea salir?")
-        msgBox.setWindowTitle("Lista de productos")
+        msgBox.setWindowTitle("Productos")
         msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         returnValue = msgBox.exec()
         if returnValue == QMessageBox.Ok:
