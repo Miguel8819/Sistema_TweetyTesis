@@ -12,7 +12,7 @@ class menuprincipalController():
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
    
-    # self.menuprincipal.btn_mantenimiento.hide()   
+ 
    
    def displayText(self,user):
      print(user[3])

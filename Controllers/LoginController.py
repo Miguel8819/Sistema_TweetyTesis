@@ -27,6 +27,8 @@ class LoginController():
                     self.log_in.ui.setupUi(self.log_in.Form)
                     self.log_in.Form.show()
                     self.menu.displayText(user)
+                    self.log_in.ui.usuario_label.setText(str(user[1]))
+                    self.log_in.ui.rol_usuario.setText(str(user[3]))
                     print('Estas logeado')
                     LogIn.close()
 
@@ -41,7 +43,8 @@ class LoginController():
                     self.log_in.ui.btn_registrarUsuario.hide()
                     self.log_in.ui.btn_gestionClave.hide()
                     self.log_in.ui.btn_gestionBackup.hide()
-                    
+                    self.log_in.ui.usuario_label.setText(str(user[1]))
+                    self.log_in.ui.rol_usuario.setText(str(user[3]))
                     print('Estas logeado')
                     LogIn.close()
                 if result == 'Encargado de ventas':
@@ -57,6 +60,8 @@ class LoginController():
                     self.log_in.ui.btn_gestionClave.hide()
                     self.log_in.ui.btn_gestionBackup.hide()
                     self.log_in.ui.btn_gestionStock.hide()
+                    self.log_in.ui.usuario_label.setText(str(user[1]))
+                    self.log_in.ui.rol_usuario.setText(str(user[3]))
                     print('Estas logeado')
                     LogIn.close()
                 if result == 'Encargado de deposito':
@@ -71,7 +76,9 @@ class LoginController():
                     self.log_in.ui.btn_gestionClave.hide()
                     self.log_in.ui.btn_gestionBackup.hide()
                     self.log_in.ui.btn_gestionCompra.hide()
-                    self.log_in.ui.page_gestionCompra.hide()  
+                    self.log_in.ui.page_gestionCompra.hide()
+                    self.log_in.ui.usuario_label.setText(str(user[1])) 
+                    self.log_in.ui.rol_usuario.setText(str(user[3])) 
                     print('Estas logeado')
                     LogIn.close()
             
