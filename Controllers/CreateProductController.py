@@ -11,7 +11,7 @@ class CreateProductController():
     def __init__(self, create_product):
         self.product = Product(connection())
         self.create_product = create_product
-
+  
     def createProduct(self,CodigoDeBarras,producto, categoria, subCategoria, marca,tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
      if CodigoDeBarras and producto and categoria and subCategoria and marca and tipoUnidad and unidadMedida and cant_min_stock and PuntoDePedido and CostoDeCompra and PrecioDeVenta:
             

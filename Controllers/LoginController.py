@@ -6,26 +6,76 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.User import User
-from Views.menuprincipal_ui import Ui_menuprincipal
+from Controllers.menuprincipalController import menuprincipalController
+
 
 class LoginController():
 
     def __init__(self, log_in):
-        self.user = User(connection())
+        self.user = User(connection())  
         self.log_in = log_in
-       
+        self.menu = menuprincipalController(connection())
         
-
-    def logIn(self,user,password, MenuPrincipal, LogIn):
+    def logIn(self,user,password, MenuPrincipal, LogIn): 
         if user and password:
             user = self.user.getUser(user,password)
             if user:
-                self.log_in.Form = QtWidgets.QMainWindow()
-                self.log_in.ui = MenuPrincipal()
-                self.log_in.ui.setupUi(self.log_in.Form)
-                self.log_in.Form.show()
-                print('Estas logeado')
-                LogIn.close()
+                result= user[3]
+                if result == 'Administrador':
+                    self.log_in.Form = QtWidgets.QMainWindow()
+                    self.log_in.ui = MenuPrincipal()
+                    self.log_in.ui.setupUi(self.log_in.Form)
+                    self.log_in.Form.show()
+                    self.menu.displayText(user)
+                    print('Estas logeado')
+                    LogIn.close()
+
+                if result == 'Encargado de compras':
+                    self.log_in.Form = QtWidgets.QMainWindow()
+                    self.log_in.ui = MenuPrincipal()
+                    self.log_in.ui.setupUi(self.log_in.Form)
+                    self.log_in.Form.show()
+                    self.menu.displayText(user)
+                    
+                    self.log_in.ui.btn_gestionVenta.hide()
+                    self.log_in.ui.btn_registrarUsuario.hide()
+                    self.log_in.ui.btn_gestionClave.hide()
+                    self.log_in.ui.btn_gestionBackup.hide()
+                    
+                    print('Estas logeado')
+                    LogIn.close()
+                if result == 'Encargado de ventas':
+                    self.log_in.Form = QtWidgets.QMainWindow()
+                    self.log_in.ui = MenuPrincipal()
+                    self.log_in.ui.setupUi(self.log_in.Form)
+                    self.log_in.Form.show()
+                    self.menu.displayText(user)
+                   
+                    self.log_in.ui.page_gestionCompra.hide()                    
+                    self.log_in.ui.btn_gestionCompra.hide()
+                    self.log_in.ui.btn_registrarUsuario.hide()
+                    self.log_in.ui.btn_gestionClave.hide()
+                    self.log_in.ui.btn_gestionBackup.hide()
+                    self.log_in.ui.btn_gestionStock.hide()
+                    print('Estas logeado')
+                    LogIn.close()
+                if result == 'Encargado de deposito':
+                    self.log_in.Form = QtWidgets.QMainWindow()
+                    self.log_in.ui = MenuPrincipal()
+                    self.log_in.ui.setupUi(self.log_in.Form)
+                    self.log_in.Form.show()
+                    self.menu.displayText(user)
+                    
+                    self.log_in.ui.btn_gestionVenta.hide()
+                    self.log_in.ui.btn_registrarUsuario.hide()
+                    self.log_in.ui.btn_gestionClave.hide()
+                    self.log_in.ui.btn_gestionBackup.hide()
+                    self.log_in.ui.btn_gestionCompra.hide()
+                    self.log_in.ui.page_gestionCompra.hide()  
+                    print('Estas logeado')
+                    LogIn.close()
+            
+
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -44,6 +94,7 @@ class LoginController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+
 
     def salir(self):
         msgBox = QMessageBox()

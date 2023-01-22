@@ -162,7 +162,7 @@ class listarVentas():
             pdf.set_font('Arial', '', 16)
             pdf.cell(w = 50, h = 7, txt = 'Fecha', border = 1,
                                     align = 'C', fill = 0)
-            pdf.cell(w = 50, h = 7, txt = 'Número de Comprobante', border = 1,
+            pdf.cell(w = 50, h = 7, txt = 'N° de Comprobante', border = 1,
                     align = 'C', fill = 0)
             pdf.multi_cell(w = 0, h = 7, txt = 'Importe', border = 1,
                     align = 'C', fill = 0)

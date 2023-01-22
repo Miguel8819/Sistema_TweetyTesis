@@ -849,7 +849,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_movFondos_2">
+       <widget class="QPushButton" name="btn_gestionClave">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -875,7 +875,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>Gestion de Clave</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_infDeCaja_2">
+       <widget class="QPushButton" name="btn_manualUsuario">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -901,7 +901,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>Manual de Usuario</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_abrirCerrarCaja_2">
+       <widget class="QPushButton" name="btn_gestionBackup">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -927,7 +927,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
          <string>Gestion de Backup</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="btn_movFondos_3">
+       <widget class="QPushButton" name="btn_registrarUsuario">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -955,10 +955,10 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        </widget>
        <zorder>label_12</zorder>
        <zorder>label_11</zorder>
-       <zorder>btn_movFondos_2</zorder>
-       <zorder>btn_infDeCaja_2</zorder>
-       <zorder>btn_abrirCerrarCaja_2</zorder>
-       <zorder>btn_movFondos_3</zorder>
+       <zorder>btn_gestionClave</zorder>
+       <zorder>btn_manualUsuario</zorder>
+       <zorder>btn_gestionBackup</zorder>
+       <zorder>btn_registrarUsuario</zorder>
       </widget>
      </widget>
     </item>

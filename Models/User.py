@@ -4,7 +4,8 @@ class User():
         self.conn = conn
         with self.conn.cursor() as cursor:
             sql = """CREATE TABLE IF NOT EXISTS user
-                        (user_name VARCHAR(100) NOT NULL,
+                        (codUsuario INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        user_name VARCHAR(100) NOT NULL,
                         password VARCHAR(100) NOT NULL,
                         rol VARCHAR(30) NOT NULL
                         )
@@ -28,7 +29,7 @@ class User():
     
     def getUser(self, user, password):
         with self.conn.cursor() as cursor:
-            sql = """SELECT user_name FROM user WHERE user_name = %s AND password = %s"""
+            sql = """SELECT * FROM user WHERE user_name = %s AND password = %s"""
             cursor.execute(sql, (user,password))
             result = cursor.fetchone()
             return result

@@ -379,15 +379,9 @@ class controlstockController():
                             align = 'C', fill = 0)
                     pdf.multi_cell(w = 0, h = 7, txt =str(valor[3]), border = 0,
                             align = 'C', fill = 0)                        
-                  
-                 
-            
-            
+                              
             pdf.output('listaStockBajo.pdf')
             os.startfile('listaStockBajo.pdf') 
-
-    
-    
 
     def salir(self, controlstock):
         msgBox = QMessageBox()

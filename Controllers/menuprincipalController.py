@@ -5,8 +5,6 @@ import threading
 myDir = os.getcwd()
 sys.path.append(myDir)
 from PyQt5 import QtWidgets
-from Models.Product import Product
-
 
 class menuprincipalController():
   
@@ -14,6 +12,11 @@ class menuprincipalController():
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
    
+    # self.menuprincipal.btn_mantenimiento.hide()   
+   
+   def displayText(self,user):
+     print(user[3])
+     
    
 
    def openFacturacion(self, Ui_venta, Form):
@@ -29,6 +32,7 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show() 
+    
 
    def openCreateProduct(self, Ui_CreateProduct, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
@@ -106,7 +110,7 @@ class menuprincipalController():
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show() 
-
+     
    def manualUsuario(self):
       os.startfile('ManualDeUsuarioSistemaTweety.pdf')  
 
