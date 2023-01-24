@@ -1,32 +1,23 @@
 import os
 from fpdf import FPDF
-from ipaddress import summarize_address_range
-from locale import currency
-import numbers
-from re import sub
-from sqlite3 import Row
 import sys
 import os
 from this import s
 from tkinter import CURRENT
 from tokenize import Number
 from datetime import datetime
-from unittest import result
-
-
-from Models.cabeceraFactura import CabeceraFactura
-
-
-from PyQt5.QtWidgets import QApplication, QDialog,QDialogButtonBox, QLabel, QPushButton
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
 myDir = os.getcwd()
 sys.path.append(myDir)
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5 import QtWidgets,QtCore,QtGui
+from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.Product import Product
 from Models.venta import Venta
 from Models.cliente import *
+from Models.cabeceraFactura import CabeceraFactura
+from Controllers.menuprincipalController import menuprincipalController
+from Models.User import User
+from Controllers import globales
 
 class ventaController():
     
@@ -37,13 +28,15 @@ class ventaController():
     def __init__(self, venta,):
         self.product = Product(connection())
         self.venta = venta
-        
+        self.menu = menuprincipalController(connection())
         self.Venta = Venta(connection())
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())
+        self.user=User(connection())
+        print(globales.logueado)
         
-
-
+        self.usuario = globales.logueado    
+    
     def open2(self, Ui_venta):
         self.venta.Form = QtWidgets.QWidget()
         self.venta.ui = Ui_venta()
@@ -110,7 +103,7 @@ class ventaController():
                         
                             stock=int(table.item(rowCount, 6).text())
                             self.stockdisponible=stock - cantidad
-                            print (self.stockdisponible)
+                           
                         #-------------------------------------------------- 
                         
                             self.venta.input_codprod.setText(str(product[0]))
@@ -389,9 +382,13 @@ class ventaController():
         self.venta.input_nroCalle.clear()
 
     def finalizar (self, Ui_venta):
+        
+        
+        
         fecha= datetime.now()
         fechaFactura= datetime.now().strftime("%d/%m/%Y")
         cabecera = 0
+      
         table = self.venta.table_venta  
         if fecha and self.idCliente: #Validar todo
             if self.venta.input_importe.text() != '':
@@ -402,7 +399,7 @@ class ventaController():
                 msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                 returnValue = msgBox.exec()
                 if returnValue == QMessageBox.Ok:     
-                    cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente)
+                    cabecera = self.Facturacion.insertCabeceraFactura(fecha, self.idCliente,self.usuario[0])
                     for  i in range(table.rowCount()):
                         # datelle de factura
                         CodProducto = table.item(i,0).text()

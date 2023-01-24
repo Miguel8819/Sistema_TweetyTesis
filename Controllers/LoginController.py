@@ -7,18 +7,26 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.User import User
 from Controllers.menuprincipalController import menuprincipalController
+from Controllers import globales
 
+#usuarioLogueado = None
 
 class LoginController():
+    
 
     def __init__(self, log_in):
         self.user = User(connection())  
         self.log_in = log_in
         self.menu = menuprincipalController(connection())
         
+        
     def logIn(self,user,password, MenuPrincipal, LogIn): 
+
         if user and password:
             user = self.user.getUser(user,password)
+            globales.logueado = user
+           
+            
             if user:
                 result= user[3]
                 if result == 'Administrador':
@@ -26,7 +34,7 @@ class LoginController():
                     self.log_in.ui = MenuPrincipal()
                     self.log_in.ui.setupUi(self.log_in.Form)
                     self.log_in.Form.show()
-                    self.menu.displayText(user)
+                   
                     self.log_in.ui.usuario_label.setText(str(user[1]))
                     self.log_in.ui.rol_usuario.setText(str(user[3]))
                     print('Estas logeado')
@@ -37,10 +45,8 @@ class LoginController():
                     self.log_in.ui = MenuPrincipal()
                     self.log_in.ui.setupUi(self.log_in.Form)
                     self.log_in.Form.show()
-                    self.menu.displayText(user)
+                   
                     
-                    self.log_in.ui.btn_gestionVenta.hide()
-                    self.log_in.ui.btn_registrarUsuario.hide()
                     self.log_in.ui.btn_gestionClave.hide()
                     self.log_in.ui.btn_gestionBackup.hide()
                     self.log_in.ui.usuario_label.setText(str(user[1]))
@@ -52,7 +58,7 @@ class LoginController():
                     self.log_in.ui = MenuPrincipal()
                     self.log_in.ui.setupUi(self.log_in.Form)
                     self.log_in.Form.show()
-                    self.menu.displayText(user)
+                 
                    
                     self.log_in.ui.page_gestionCompra.hide()                    
                     self.log_in.ui.btn_gestionCompra.hide()
@@ -69,8 +75,8 @@ class LoginController():
                     self.log_in.ui = MenuPrincipal()
                     self.log_in.ui.setupUi(self.log_in.Form)
                     self.log_in.Form.show()
-                    self.menu.displayText(user)
-                    
+                 
+                                       
                     self.log_in.ui.btn_gestionVenta.hide()
                     self.log_in.ui.btn_registrarUsuario.hide()
                     self.log_in.ui.btn_gestionClave.hide()
@@ -102,6 +108,8 @@ class LoginController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
+
+        
 
     def salir(self):
         msgBox = QMessageBox()

@@ -8,9 +8,6 @@ sys.path.append(myDir)
 
 from Controllers.informeVentasController import listarVentas
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
 from Models.venta import Venta
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -74,7 +71,7 @@ class Ui_informeDeVentas(object):
 "")
         self.btn_fecha_diaria.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_fecha_diaria.setIcon(icon)
         self.btn_fecha_diaria.setObjectName("btn_fecha_diaria")
         self.label_10 = QtWidgets.QLabel(self.tab)
@@ -247,11 +244,11 @@ class Ui_informeDeVentas(object):
         self.label_7.setObjectName("label_7")
         self.tableWidget_4 = QtWidgets.QTableWidget(self.tab_4)
         self.tableWidget_4.setEnabled(True)
-        self.tableWidget_4.setGeometry(QtCore.QRect(160, 200, 331, 291))
+        self.tableWidget_4.setGeometry(QtCore.QRect(160, 200, 431, 291))
         self.tableWidget_4.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.tableWidget_4.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.tableWidget_4.setObjectName("tableWidget_4")
-        self.tableWidget_4.setColumnCount(3)
+        self.tableWidget_4.setColumnCount(4)
         self.tableWidget_4.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_4.setHorizontalHeaderItem(0, item)
@@ -259,12 +256,14 @@ class Ui_informeDeVentas(object):
         self.tableWidget_4.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_4.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_4.setHorizontalHeaderItem(3, item)
         self.Btn_listar_2 = QtWidgets.QPushButton(self.tab_4)
         self.Btn_listar_2.setGeometry(QtCore.QRect(70, 200, 75, 23))
         self.Btn_listar_2.setStyleSheet("background-color: rgb(218, 218, 218);")
         self.Btn_listar_2.setObjectName("Btn_listar_2")
         self.Btn_volver_4 = QtWidgets.QPushButton(self.tab_4)
-        self.Btn_volver_4.setGeometry(QtCore.QRect(280, 510, 75, 23))
+        self.Btn_volver_4.setGeometry(QtCore.QRect(340, 510, 75, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.Btn_volver_4.setFont(font)
@@ -313,18 +312,18 @@ class Ui_informeDeVentas(object):
         self.comboBox_pago_2.addItem("")
         self.comboBox_pago_2.addItem("")
         self.btn_anularVenta = QtWidgets.QPushButton(self.tab_4)
-        self.btn_anularVenta.setGeometry(QtCore.QRect(650, 370, 91, 23))
+        self.btn_anularVenta.setGeometry(QtCore.QRect(710, 370, 91, 23))
         self.btn_anularVenta.setStyleSheet("background-color: rgb(218, 218, 218);\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(255, 0, 0);")
         self.btn_anularVenta.setObjectName("btn_anularVenta")
         self.input_motivo = QtWidgets.QTextEdit(self.tab_4)
-        self.input_motivo.setGeometry(QtCore.QRect(550, 200, 300, 150))
+        self.input_motivo.setGeometry(QtCore.QRect(610, 200, 300, 150))
         self.input_motivo.setMaximumSize(QtCore.QSize(300, 150))
         self.input_motivo.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.input_motivo.setObjectName("input_motivo")
         self.label_2 = QtWidgets.QLabel(self.tab_4)
-        self.label_2.setGeometry(QtCore.QRect(550, 170, 251, 21))
+        self.label_2.setGeometry(QtCore.QRect(610, 170, 251, 21))
         self.label_2.setStyleSheet("font: 14pt \"MS Shell Dlg 2\";")
         self.label_2.setObjectName("label_2")
         self.Btn_limpiar4 = QtWidgets.QPushButton(self.tab_4)
@@ -472,16 +471,15 @@ class Ui_informeDeVentas(object):
 
         self.s = self.Btn_volver_5.clicked.connect(lambda:self.listarVentas.salir(informeDeVentas))
 
-        self.q = self.Btn_limpiar1.clicked.connect(lambda:self.listarVentas.limpiar1())
+        self.t = self.Btn_limpiar1.clicked.connect(lambda:self.listarVentas.limpiar1())
 
-        self.q = self.Btn_limpiar2.clicked.connect(lambda:self.listarVentas.limpiar2())
+        self.u = self.Btn_limpiar2.clicked.connect(lambda:self.listarVentas.limpiar2())
 
-        self.q = self.Btn_limpiar3.clicked.connect(lambda:self.listarVentas.limpiar3())
+        self.v = self.Btn_limpiar3.clicked.connect(lambda:self.listarVentas.limpiar3())
 
-        self.q = self.Btn_limpiar4.clicked.connect(lambda:self.listarVentas.limpiar4())
+        self.w = self.Btn_limpiar4.clicked.connect(lambda:self.listarVentas.limpiar4())
 
-        self.q = self.Btn_limpiar5.clicked.connect(lambda:self.listarVentas.limpiar5())
-
+        self.x = self.Btn_limpiar5.clicked.connect(lambda:self.listarVentas.limpiar5())
 
     def retranslateUi(self, informeDeVentas):
         _translate = QtCore.QCoreApplication.translate
@@ -545,6 +543,8 @@ class Ui_informeDeVentas(object):
         item.setText(_translate("informeDeVentas", "Nro Comprobante"))
         item = self.tableWidget_4.horizontalHeaderItem(2)
         item.setText(_translate("informeDeVentas", "Total"))
+        item = self.tableWidget_4.horizontalHeaderItem(3)
+        item.setText(_translate("informeDeVentas", "Vendedor"))
         self.Btn_listar_2.setText(_translate("informeDeVentas", "Listar Ventas"))
         self.Btn_volver_4.setText(_translate("informeDeVentas", "Salir"))
         self.btn_imprimir.setText(_translate("informeDeVentas", "Imprimir Reporte"))
@@ -574,7 +574,7 @@ class Ui_informeDeVentas(object):
         item = self.tableWidget_5.horizontalHeaderItem(3)
         item.setText(_translate("informeDeVentas", "codCliente"))
         item = self.tableWidget_5.horizontalHeaderItem(4)
-        item.setText(_translate("informeDeVentas", "Nombre"))
+        item.setText(_translate("informeDeVentas", "Vendedor"))
         self.Btn_listar_3.setText(_translate("informeDeVentas", "Listar Ventas"))
         self.label.setText(_translate("informeDeVentas", "Motivo"))
         self.label_14.setText(_translate("informeDeVentas", "Nro Comprobante"))

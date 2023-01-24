@@ -1,4 +1,7 @@
+usuarioLogueado = 0
+
 class User():
+    
 
     def __init__(self,conn):
         self.conn = conn
@@ -32,6 +35,8 @@ class User():
             sql = """SELECT * FROM user WHERE user_name = %s AND password = %s"""
             cursor.execute(sql, (user,password))
             result = cursor.fetchone()
+            global usuarioLogueado
+            usuarioLogueado = result
             return result
 
     def updatePassword(self, user, password, newPass):
@@ -51,6 +56,9 @@ class User():
             sql = """INSERT INTO user (user_name, password, rol) VALUES (%s,%s,%s)"""
             cursor.execute(sql, (user, password, rol))
             self.conn.commit()
+
+    def getUsuarioLogueado():
+        return usuarioLogueado
             
             
                 

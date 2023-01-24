@@ -18,6 +18,8 @@ class facturaCompraController():
         self.facturaCompra = FacturaCompra(connection())
         self.factura_compra = factura_compra
 
+   
+
     def buscarProv(self,nameProv):
         if nameProv:
                 result = self.proveedor.getProveedor(nameProv, '1')

@@ -13,6 +13,8 @@ class RegistrarController():
         self.user = User(connection())
         self.registrar = registrar
 
+  
+
     def registrarUsuario(self, user, password, repitPassword,rol):
             if user and password and repitPassword and rol:
                 

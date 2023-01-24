@@ -2726,8 +2726,8 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>880</x>
-     <y>20</y>
+     <x>900</x>
+     <y>60</y>
      <width>81</width>
      <height>121</height>
     </rect>
@@ -4412,6 +4412,42 @@ background-color: rgb(255, 45, 3);}</string>
     <string>Numero</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>20</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Vendedor: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_vendedor">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>20</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_3</zorder>
   <zorder>nroDni</zorder>
   <zorder>input_descuento</zorder>
@@ -4470,6 +4506,8 @@ background-color: rgb(255, 45, 3);}</string>
   <zorder>input_subtotal</zorder>
   <zorder>input_nroCalle</zorder>
   <zorder>direccion_2</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_vendedor</zorder>
  </widget>
  <tabstops>
   <tabstop>input_codprod</tabstop>

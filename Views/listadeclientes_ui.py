@@ -8,11 +8,7 @@ sys.path.append(myDir)
 
 from Controllers.listarClienteController import listarClienteController
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
 from Models.cliente import Cliente
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Database.Connection import connection
 

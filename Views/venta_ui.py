@@ -856,7 +856,7 @@ class Ui_venta(object):
         self.Boton_finalizar.setFont(font)
         self.Boton_finalizar.setLayoutDirection(QtCore.Qt.LeftToRight)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../../.designer/Imagenes/png-transparent-green-grass-symbol-logo-dialog-box-accept-yellow-circle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Imagenes/png-transparent-green-grass-symbol-logo-dialog-box-accept-yellow-circle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Boton_finalizar.setIcon(icon1)
         self.Boton_finalizar.setObjectName("Boton_finalizar")
         self.frame_2 = QtWidgets.QFrame(venta)
@@ -902,7 +902,7 @@ class Ui_venta(object):
         font.setWeight(75)
         self.Boton_limpiar.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../.designer/Imagenes/limpiar.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("Imagenes/limpiar.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Boton_limpiar.setIcon(icon2)
         self.Boton_limpiar.setIconSize(QtCore.QSize(20, 16))
         self.Boton_limpiar.setObjectName("Boton_limpiar")
@@ -976,7 +976,7 @@ class Ui_venta(object):
         font.setWeight(75)
         self.Boton_cancelar.setFont(font)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../../.designer/Imagenes/png-transparent-computer-icons-cancel-button-miscellaneous-trademark-internet.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("Imagenes/png-transparent-computer-icons-cancel-button-miscellaneous-trademark-internet.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Boton_cancelar.setIcon(icon3)
         self.Boton_cancelar.setIconSize(QtCore.QSize(30, 15))
         self.Boton_cancelar.setObjectName("Boton_cancelar")
@@ -1007,7 +1007,7 @@ class Ui_venta(object):
         self.Boton_agregarcliente.setFont(font)
         self.Boton_agregarcliente.setObjectName("Boton_agregarcliente")
         self.label_2 = QtWidgets.QLabel(venta)
-        self.label_2.setGeometry(QtCore.QRect(880, 20, 81, 121))
+        self.label_2.setGeometry(QtCore.QRect(900, 60, 81, 121))
         self.label_2.setText("")
         self.label_2.setPixmap(QtGui.QPixmap("Imagenes/tweety_preview_rev_1.png"))
         self.label_2.setObjectName("label_2")
@@ -1583,6 +1583,19 @@ class Ui_venta(object):
         font.setWeight(75)
         self.direccion_2.setFont(font)
         self.direccion_2.setObjectName("direccion_2")
+        self.label_5 = QtWidgets.QLabel(venta)
+        self.label_5.setGeometry(QtCore.QRect(840, 20, 81, 16))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.label_vendedor = QtWidgets.QLabel(venta)
+        self.label_vendedor.setGeometry(QtCore.QRect(920, 20, 111, 16))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_vendedor.setFont(font)
+        self.label_vendedor.setText("")
+        self.label_vendedor.setObjectName("label_vendedor")
         self.label_3.raise_()
         self.nroDni.raise_()
         self.input_descuento.raise_()
@@ -1641,6 +1654,8 @@ class Ui_venta(object):
         self.input_subtotal.raise_()
         self.input_nroCalle.raise_()
         self.direccion_2.raise_()
+        self.label_5.raise_()
+        self.label_vendedor.raise_()
 
         self.retranslateUi(venta)
         QtCore.QMetaObject.connectSlotsByName(venta)
@@ -1674,7 +1689,7 @@ class Ui_venta(object):
         venta.setTabOrder(self.comboBox_iva, self.comboBox_pago)
         venta.setTabOrder(self.comboBox_pago, self.table_venta)
 
-         #Inputs con validadores
+        #Inputs con validadores
         self.input_codprod.setValidator(intValidator)
         self.input_cantidad.setValidator(intValidator)
         self.input_efectivo.setValidator(intValidator)
@@ -1685,6 +1700,7 @@ class Ui_venta(object):
         
         self.completer_nameProd = QCompleter(self.product.autoComplete()) 
         self.input_producto.setCompleter(self.completer_nameProd)
+         
         
 
         #---------------------------------------------------------------------------------------------------------------------------
@@ -1881,6 +1897,7 @@ class Ui_venta(object):
         self.stock.setText(_translate("venta", "STOCK"))
         self.subtotal.setText(_translate("venta", "SUBTOTAL"))
         self.direccion_2.setText(_translate("venta", "Numero"))
+        self.label_5.setText(_translate("venta", "Vendedor: "))
 
 
 if __name__ == "__main__":

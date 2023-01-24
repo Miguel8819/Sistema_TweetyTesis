@@ -13,6 +13,7 @@ class gestionClavesController():
         self.user = User(connection())
         self.gestionClaves = gestionClaves
 
+
     def modificarPassword(self, user, oldPassword, newPass, newPassRepeat):
             if user:
                 result = self.user.getUser1(user)    

@@ -663,7 +663,7 @@
       <rect>
        <x>160</x>
        <y>200</y>
-       <width>331</width>
+       <width>431</width>
        <height>291</height>
       </rect>
      </property>
@@ -688,6 +688,11 @@
        <string>Total</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Vendedor</string>
+      </property>
+     </column>
     </widget>
     <widget class="QPushButton" name="Btn_listar_2">
      <property name="geometry">
@@ -708,7 +713,7 @@
     <widget class="QPushButton" name="Btn_volver_4">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>340</x>
        <y>510</y>
        <width>75</width>
        <height>23</height>
@@ -874,7 +879,7 @@
     <widget class="QPushButton" name="btn_anularVenta">
      <property name="geometry">
       <rect>
-       <x>650</x>
+       <x>710</x>
        <y>370</y>
        <width>91</width>
        <height>23</height>
@@ -892,7 +897,7 @@ background-color: rgb(255, 0, 0);</string>
     <widget class="QTextEdit" name="input_motivo">
      <property name="geometry">
       <rect>
-       <x>550</x>
+       <x>610</x>
        <y>200</y>
        <width>300</width>
        <height>150</height>
@@ -914,7 +919,7 @@ background-color: rgb(255, 0, 0);</string>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>550</x>
+       <x>610</x>
        <y>170</y>
        <width>251</width>
        <height>21</height>
@@ -1025,7 +1030,7 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </column>
      <column>
       <property name="text">
-       <string>Nombre</string>
+       <string>Vendedor</string>
       </property>
      </column>
     </widget>

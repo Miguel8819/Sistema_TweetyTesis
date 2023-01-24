@@ -6,8 +6,6 @@ sys.path.append(myDir)
 from wsgiref.validate import validator
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Models.Product import Product
-
-from createproduct_ui import Ui_CreateProduct
 from Controllers.controlstockController import controlstockController
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *

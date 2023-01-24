@@ -201,10 +201,12 @@ class Venta():
 
     def condPago(self,condPago):
         with self.conn.cursor() as cursor:
-            sql = """SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario) 
-                    FROM cabecerafactura cf ,venta df
+            sql = """SELECT date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), dd.user_name 
+                    FROM cabecerafactura cf ,venta df, User dd
                     WHERE
                     cf.nroFactura = df.codCabecera
+                    AND
+                    cf.codUsuario = dd.codUsuario
                    
                     AND 
                     df.condPago = %s
@@ -221,10 +223,12 @@ class Venta():
         
     def condPagoTodos(self):
         with self.conn.cursor() as cursor:
-            sql ="""SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario) 
-                    FROM cabecerafactura cf ,venta df
+            sql ="""SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), dd.user_name 
+                    FROM cabecerafactura cf ,venta df, User dd
                     WHERE
                     cf.nroFactura = df.codCabecera
+                    AND
+                    cf.codUsuario = dd.codUsuario
                     AND
                     cf.activo = '1'
                     GROUP BY date_format(cf.fechaYhora, "%%d-%%m-%%Y/%%H:%%i"),cf.nroFactura
@@ -293,12 +297,14 @@ class Venta():
 
     def listarVentasAnuladas(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), cc.codCliente,cc.nombreCliente 
-                    FROM cabecerafactura cf ,venta df, cliente cc
+            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), cc.codCliente,dd.user_name 
+                    FROM cabecerafactura cf ,venta df, cliente cc, User dd
                     WHERE
                     cf.nroFactura = df.codCabecera
                     AND
                     cc.codCliente = cf.codCliente
+                    AND
+                    dd.codUsuario = cf.codUsuario
                     AND
                     cf.activo = '0'
                     GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura

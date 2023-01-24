@@ -5,24 +5,20 @@ import threading
 myDir = os.getcwd()
 sys.path.append(myDir)
 from PyQt5 import QtWidgets
-
+from Controllers import globales
 class menuprincipalController():
   
 
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
-   
- 
-   
-   def displayText(self,user):
-     print(user[3])
-     
-   
+
+     self.usuario = globales.logueado 
 
    def openFacturacion(self, Ui_venta, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
      self.menuprincipal.ui = Ui_venta()
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.ui.label_vendedor.setText(str(self.usuario[1]))
      self.menuprincipal.Form.show()
      Form.show() 
    

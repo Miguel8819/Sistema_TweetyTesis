@@ -8,8 +8,8 @@ class CabeceraFactura():
                         fechaYhora DATETIME(6) NOT NULL,
                         codCliente INT(100) NOT NULL,
                         activo BOOLEAN NOT NULL,
-                        motivoAnulacion VARCHAR(1000) NOT NULL
-                        
+                        motivoAnulacion VARCHAR(1000) NOT NULL,
+                        codUsuario INT(11) NOT NULL
                         
                         )"""
             cursor.execute(sql)
@@ -39,10 +39,10 @@ class CabeceraFactura():
             cursor.execute(sql, nroFactura)
             self.conn.commit()
     
-    def insertCabeceraFactura(self,fecha,codCliente):
+    def insertCabeceraFactura(self,fecha,codCliente,usuario):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO cabeceraFactura (fechaYhora,codCliente,activo) VALUES (%s,%s,'1')"""
-            cursor.execute(sql, (fecha,codCliente))
+            sql = """INSERT INTO cabeceraFactura (fechaYhora,codCliente,activo,codUsuario) VALUES (%s,%s,'1',%s)"""
+            cursor.execute(sql, (fecha,codCliente,usuario))
             id = cursor.lastrowid
             self.conn.commit()
             return id

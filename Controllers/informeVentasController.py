@@ -8,18 +8,17 @@ from Database.Connection import connection
 from Models.venta import Venta
 from Models.cabeceraFactura import CabeceraFactura
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from PyQt5.QtWidgets import QMessageBox
 from fpdf import FPDF
 from functools import reduce
-
+from Controllers import globales
 
 class listarVentas():
     def __init__(self, listar_VentasDiarias):
         self.venta = Venta(connection())
         self.cabeceraFactura = CabeceraFactura(connection())
         self.listar_ventasDiarias = listar_VentasDiarias
+
+        self.usuario = globales.logueado   
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget

@@ -10,7 +10,6 @@ from Controllers.CreateProductController import CreateProductController
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Models.Product import Product
 from Database.Connection import connection
-from PyQt5.QtWidgets import QApplication, QWidget, QLineEdit, QPlainTextEdit, QVBoxLayout
 from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator, QDoubleValidator, QValidator
 

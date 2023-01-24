@@ -7,9 +7,6 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.cliente import Cliente
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
 
 
@@ -18,7 +15,7 @@ class ClienteController():
         self.cliente = Cliente(connection())
         self.create_cliente = create_cliente
         
-        
+            
 
     def exito(self, Ui_Dialog, Form):
         self.create_cliente.Form = QtWidgets.QWidget()
