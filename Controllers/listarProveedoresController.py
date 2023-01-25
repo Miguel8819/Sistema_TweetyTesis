@@ -7,16 +7,15 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.Proveedores import Proveedor
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from PyQt5.QtWidgets import QMessageBox
+
 
 
 class listarProveedoresController():
     def __init__(self, listar_proveedor):
         self.proveedores = Proveedor(connection())
         self.listar_proveedor = listar_proveedor
-       
+
+    
 
     def listarProveedoresActivos(self):
         table = self.listar_proveedor.tableWidget
@@ -81,4 +80,11 @@ class listarProveedoresController():
             x = msg.exec_()
 
     def SalirA(self,listar_proveedor):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Lista de proveedores")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
          listar_proveedor.close()

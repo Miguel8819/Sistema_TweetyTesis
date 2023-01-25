@@ -47,7 +47,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>230</y>
+     <y>250</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -72,7 +72,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>210</y>
+     <y>230</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -90,7 +90,7 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="condpago">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>220</x>
      <y>100</y>
      <width>61</width>
      <height>16</height>
@@ -110,7 +110,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>280</y>
+     <y>290</y>
      <width>741</width>
      <height>171</height>
     </rect>
@@ -477,7 +477,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>160</y>
+     <y>180</y>
      <width>47</width>
      <height>13</height>
     </rect>
@@ -500,7 +500,7 @@ background-color:rgb(187, 235, 255);
     <rect>
      <x>450</x>
      <y>70</y>
-     <width>161</width>
+     <width>261</width>
      <height>21</height>
     </rect>
    </property>
@@ -514,7 +514,7 @@ background-color:rgb(187, 235, 255);
     <string/>
    </property>
    <property name="maxLength">
-    <number>20</number>
+    <number>35</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -524,7 +524,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>230</y>
+     <y>240</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -550,7 +550,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>180</y>
+     <y>200</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -1047,7 +1047,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>160</y>
+     <y>170</y>
      <width>125</width>
      <height>21</height>
     </rect>
@@ -1066,7 +1066,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>160</y>
+     <y>170</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -1114,8 +1114,8 @@ background-color:rgb(187, 235, 255);
   <widget class="QLabel" name="localidad">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>90</y>
+     <x>450</x>
+     <y>100</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -1152,7 +1152,7 @@ background-color:rgb(187, 235, 255);
     <string/>
    </property>
    <property name="maxLength">
-    <number>25</number>
+    <number>27</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -1201,7 +1201,7 @@ background-color:rgb(187, 235, 255);
     <rect>
      <x>30</x>
      <y>20</y>
-     <width>141</width>
+     <width>201</width>
      <height>21</height>
     </rect>
    </property>
@@ -1213,7 +1213,7 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="text">
-    <string>FACTURA C</string>
+    <string>COMPROBANTE X</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_localidad">
@@ -1222,9 +1222,9 @@ background-color:rgb(187, 235, 255);
    </property>
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>110</y>
-     <width>171</width>
+     <x>450</x>
+     <y>120</y>
+     <width>261</width>
      <height>21</height>
     </rect>
    </property>
@@ -1235,7 +1235,7 @@ background-color:rgb(187, 235, 255);
     </font>
    </property>
    <property name="maxLength">
-    <number>20</number>
+    <number>35</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -1245,7 +1245,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>160</y>
+     <y>170</y>
      <width>75</width>
      <height>21</height>
     </rect>
@@ -1258,7 +1258,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>500</y>
+     <y>510</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -1278,7 +1278,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>500</y>
+     <y>510</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -1308,7 +1308,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>540</y>
+     <y>550</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -1328,7 +1328,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>580</y>
+     <y>590</y>
      <width>47</width>
      <height>13</height>
     </rect>
@@ -1351,7 +1351,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>580</y>
+     <y>590</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -1685,7 +1685,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>500</y>
+     <y>510</y>
      <width>111</width>
      <height>23</height>
     </rect>
@@ -1704,7 +1704,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>260</y>
+     <y>280</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -1745,7 +1745,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>320</y>
+     <y>350</y>
      <width>141</width>
      <height>23</height>
     </rect>
@@ -1764,7 +1764,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>150</y>
+     <y>160</y>
      <width>71</width>
      <height>41</height>
     </rect>
@@ -1783,7 +1783,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>160</y>
+     <y>170</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -1816,7 +1816,7 @@ background-color:rgb(187, 235, 255);
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>230</y>
+     <y>240</y>
      <width>31</width>
      <height>23</height>
     </rect>
@@ -1855,7 +1855,7 @@ background-color:rgb(187, 235, 255);
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>0</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -2316,7 +2316,7 @@ background-color: rgb(235, 255, 46);}</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -2456,7 +2456,7 @@ background-color: rgb(255, 45, 3);}</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>141</width>
       <height>23</height>
      </rect>
@@ -2658,7 +2658,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>120</y>
+     <y>130</y>
      <width>811</width>
      <height>41</height>
     </rect>
@@ -2726,8 +2726,8 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>880</x>
-     <y>20</y>
+     <x>900</x>
+     <y>60</y>
      <width>81</width>
      <height>121</height>
     </rect>
@@ -2743,7 +2743,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>820</x>
-     <y>400</y>
+     <y>380</y>
      <width>221</width>
      <height>20</height>
     </rect>
@@ -2756,7 +2756,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>500</y>
+     <y>510</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -2775,9 +2775,9 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QComboBox" name="comboBox_pago">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>100</y>
-     <width>131</width>
+     <x>220</x>
+     <y>120</y>
+     <width>141</width>
      <height>22</height>
     </rect>
    </property>
@@ -2815,8 +2815,8 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QComboBox" name="comboBox_iva">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
+     <x>30</x>
+     <y>120</y>
      <width>151</width>
      <height>22</height>
     </rect>
@@ -2864,7 +2864,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>540</y>
+     <y>550</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -3201,7 +3201,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>840</x>
-     <y>280</y>
+     <y>300</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -3673,7 +3673,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>940</x>
-     <y>230</y>
+     <y>250</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -4155,7 +4155,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>200</y>
+     <y>210</y>
      <width>131</width>
      <height>21</height>
     </rect>
@@ -4172,12 +4172,12 @@ background-color: rgb(255, 45, 3);}</string>
   </widget>
   <widget class="QLineEdit" name="input_producto">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>200</y>
+     <y>210</y>
      <width>211</width>
      <height>20</height>
     </rect>
@@ -4194,7 +4194,7 @@ background-color: rgb(255, 45, 3);}</string>
     <string/>
    </property>
    <property name="maxLength">
-    <number>20</number>
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -4204,7 +4204,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>460</x>
-     <y>190</y>
+     <y>200</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -4226,7 +4226,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>200</y>
+     <y>210</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -4259,7 +4259,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>680</x>
-     <y>230</y>
+     <y>240</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -4281,7 +4281,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>720</x>
-     <y>230</y>
+     <y>240</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -4314,7 +4314,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>230</y>
+     <y>240</y>
      <width>61</width>
      <height>31</height>
     </rect>
@@ -4336,7 +4336,7 @@ background-color: rgb(255, 45, 3);}</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>240</y>
+     <y>250</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -4371,7 +4371,7 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>720</x>
      <y>70</y>
      <width>81</width>
      <height>21</height>
@@ -4396,7 +4396,7 @@ background-color: rgb(255, 45, 3);}</string>
   <widget class="QLabel" name="direccion_2">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>720</x>
      <y>50</y>
      <width>61</width>
      <height>16</height>
@@ -4410,6 +4410,42 @@ background-color: rgb(255, 45, 3);}</string>
    </property>
    <property name="text">
     <string>Numero</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>20</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Vendedor: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_vendedor">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>20</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label_3</zorder>
@@ -4470,6 +4506,8 @@ background-color: rgb(255, 45, 3);}</string>
   <zorder>input_subtotal</zorder>
   <zorder>input_nroCalle</zorder>
   <zorder>direccion_2</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_vendedor</zorder>
  </widget>
  <tabstops>
   <tabstop>input_codprod</tabstop>

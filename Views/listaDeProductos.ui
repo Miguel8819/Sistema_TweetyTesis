@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>controlstock</class>
- <widget class="QWidget" name="controlstock">
+ <class>listaDeProductos</class>
+ <widget class="QWidget" name="listaDeProductos">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Control de Stock</string>
+   <string>Lista de Productos</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(56, 213, 203);</string>
@@ -179,11 +179,11 @@
      <attribute name="horizontalHeaderCascadingSectionResizes">
       <bool>false</bool>
      </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>30</number>
-     </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>95</number>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>30</number>
      </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
       <number>30</number>
@@ -210,12 +210,12 @@
      <row/>
      <column>
       <property name="text">
-       <string>Cód. Producto</string>
+       <string>CódProducto</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Cód. de Barras</string>
+       <string>Código de Barras</string>
       </property>
      </column>
      <column>
@@ -300,7 +300,7 @@
       <rect>
        <x>430</x>
        <y>560</y>
-       <width>100</width>
+       <width>131</width>
        <height>30</height>
       </rect>
      </property>
@@ -332,7 +332,7 @@
       <rect>
        <x>580</x>
        <y>560</y>
-       <width>100</width>
+       <width>131</width>
        <height>30</height>
       </rect>
      </property>
@@ -362,9 +362,9 @@
     <widget class="QPushButton" name="btn_volver">
      <property name="geometry">
       <rect>
-       <x>750</x>
+       <x>730</x>
        <y>560</y>
-       <width>141</width>
+       <width>140</width>
        <height>31</height>
       </rect>
      </property>
@@ -385,7 +385,7 @@
       <string notr="true">background-color: rgb(212, 212, 212);</string>
      </property>
      <property name="text">
-      <string>Volver atrás</string>
+      <string>Salir</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_limpiar">
@@ -433,7 +433,7 @@
     <widget class="QPushButton" name="btn_volver_2">
      <property name="geometry">
       <rect>
-       <x>760</x>
+       <x>720</x>
        <y>560</y>
        <width>141</width>
        <height>31</height>
@@ -456,7 +456,7 @@
       <string notr="true">background-color: rgb(212, 212, 212);</string>
      </property>
      <property name="text">
-      <string>Volver atrás</string>
+      <string>Salir</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -480,9 +480,9 @@
     <widget class="QPushButton" name="btn_actualizar_2">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>430</x>
        <y>560</y>
-       <width>100</width>
+       <width>121</width>
        <height>30</height>
       </rect>
      </property>
@@ -711,9 +711,9 @@ background-color: rgb(255, 255, 127);</string>
     <widget class="QPushButton" name="btn_darDeAlta">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>570</x>
        <y>560</y>
-       <width>111</width>
+       <width>131</width>
        <height>30</height>
       </rect>
      </property>

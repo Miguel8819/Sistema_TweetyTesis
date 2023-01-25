@@ -1,28 +1,33 @@
 import sys
 import os
-
+import threading
 myDir = os.getcwd()
 sys.path.append(myDir)
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Controllers.menuprincipalController import menuprincipalController
 from venta_ui import Ui_venta
-from controlstock_ui import Ui_controlstock
+from listaDeProductos_ui import Ui_listaDeProductos
 from proveedores_ui import Ui_Proveedores
 from createproduct_ui import Ui_CreateProduct
 from cliente_ui import Ui_clientes
 from listadeclientes_ui import Ui_lista_clientes
-from gestionClaves_ui import Ui_LogIn
+from gestionClaves_ui import Ui_gestionClaves
 from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
 from listafactcompra_ui import Ui_lista_facturascompra
+from controldestock_ui import Ui_controlDeStock
+from registrarusuario_ui import Ui_registrarUsuario
+from Models.Product import *
+from Database.Connection import connection
 
 
 class Ui_menuprincipal(object):
     def __init__(self):
         self.menuprincipalController = menuprincipalController(self)
+        self.product= Product(connection())
     def setupUi(self, menuprincipal):
         menuprincipal.setObjectName("menuprincipal")
         menuprincipal.resize(795, 600)
@@ -115,6 +120,38 @@ class Ui_menuprincipal(object):
         self.btn_gestionStock.setIcon(icon3)
         self.btn_gestionStock.setIconSize(QtCore.QSize(35, 35))
         self.btn_gestionStock.setObjectName("btn_gestionStock")
+        self.label_4 = QtWidgets.QLabel(self.frame)
+        self.label_4.setGeometry(QtCore.QRect(20, 10, 181, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.usuario_label = QtWidgets.QLabel(self.frame)
+        self.usuario_label.setGeometry(QtCore.QRect(10, 40, 201, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.usuario_label.setFont(font)
+        self.usuario_label.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.usuario_label.setText("")
+        self.usuario_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.usuario_label.setObjectName("usuario_label")
+        self.rol_usuario = QtWidgets.QLabel(self.frame)
+        self.rol_usuario.setGeometry(QtCore.QRect(10, 420, 211, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.rol_usuario.setFont(font)
+        self.rol_usuario.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.rol_usuario.setText("")
+        self.rol_usuario.setAlignment(QtCore.Qt.AlignCenter)
+        self.rol_usuario.setObjectName("rol_usuario")
         self.frame_2 = QtWidgets.QFrame(menuprincipal)
         self.frame_2.setGeometry(QtCore.QRect(250, 9, 541, 582))
         self.frame_2.setStyleSheet("")
@@ -181,15 +218,18 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_listaproveedores.setFont(font)
         self.btn_listaproveedores.setObjectName("btn_listaproveedores")
-        self.btn_listaFactCompra = QtWidgets.QPushButton(self.page_gestionCompra)
-        self.btn_listaFactCompra.setGeometry(QtCore.QRect(130, 340, 290, 50))
-        self.btn_listaFactCompra.setMinimumSize(QtCore.QSize(290, 50))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_listaFactCompra.setFont(font)
-        self.btn_listaFactCompra.setObjectName("btn_listaFactCompra")
+        self.alarma1 = QtWidgets.QLabel(self.page_gestionCompra)
+        self.alarma1.setGeometry(QtCore.QRect(40, 350, 461, 41))
+        self.alarma1.setStyleSheet("font: 87 18pt \"Arial Black\";\n"
+"color: rgb(255, 0, 0);")
+        self.alarma1.setObjectName("alarma1")
+        self.alarma2 = QtWidgets.QLabel(self.page_gestionCompra)
+        self.alarma2.setGeometry(QtCore.QRect(30, 400, 501, 31))
+        self.alarma2.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";\n"
+"\n"
+"color: rgb(255, 0, 0);\n"
+"")
+        self.alarma2.setObjectName("alarma2")
         self.stackedWidget.addWidget(self.page_gestionCompra)
         self.page_gestionVenta = QtWidgets.QWidget()
         self.page_gestionVenta.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -293,6 +333,15 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_abmProd.setFont(font)
         self.btn_abmProd.setObjectName("btn_abmProd")
+        self.btn_controlStock_2 = QtWidgets.QPushButton(self.page_gestionStock)
+        self.btn_controlStock_2.setGeometry(QtCore.QRect(130, 260, 290, 50))
+        self.btn_controlStock_2.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_controlStock_2.setFont(font)
+        self.btn_controlStock_2.setObjectName("btn_controlStock_2")
         self.stackedWidget.addWidget(self.page_gestionStock)
         self.page_mantenimiento = QtWidgets.QWidget()
         self.page_mantenimiento.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -317,38 +366,48 @@ class Ui_menuprincipal(object):
         self.label_12.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
-        self.btn_movFondos_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_movFondos_2.setGeometry(QtCore.QRect(131, 102, 290, 50))
-        self.btn_movFondos_2.setMinimumSize(QtCore.QSize(290, 50))
+        self.btn_gestionClave = QtWidgets.QPushButton(self.page_mantenimiento)
+        self.btn_gestionClave.setGeometry(QtCore.QRect(120, 180, 290, 50))
+        self.btn_gestionClave.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.btn_movFondos_2.setFont(font)
-        self.btn_movFondos_2.setObjectName("btn_movFondos_2")
-        self.btn_infDeCaja_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_infDeCaja_2.setGeometry(QtCore.QRect(131, 262, 290, 50))
-        self.btn_infDeCaja_2.setMinimumSize(QtCore.QSize(290, 50))
+        self.btn_gestionClave.setFont(font)
+        self.btn_gestionClave.setObjectName("btn_gestionClave")
+        self.btn_manualUsuario = QtWidgets.QPushButton(self.page_mantenimiento)
+        self.btn_manualUsuario.setGeometry(QtCore.QRect(120, 340, 290, 50))
+        self.btn_manualUsuario.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.btn_infDeCaja_2.setFont(font)
-        self.btn_infDeCaja_2.setObjectName("btn_infDeCaja_2")
-        self.btn_abrirCerrarCaja_2 = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_abrirCerrarCaja_2.setGeometry(QtCore.QRect(131, 182, 290, 50))
-        self.btn_abrirCerrarCaja_2.setMinimumSize(QtCore.QSize(290, 50))
+        self.btn_manualUsuario.setFont(font)
+        self.btn_manualUsuario.setObjectName("btn_manualUsuario")
+        self.btn_gestionBackup = QtWidgets.QPushButton(self.page_mantenimiento)
+        self.btn_gestionBackup.setGeometry(QtCore.QRect(120, 260, 290, 50))
+        self.btn_gestionBackup.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.btn_abrirCerrarCaja_2.setFont(font)
-        self.btn_abrirCerrarCaja_2.setObjectName("btn_abrirCerrarCaja_2")
+        self.btn_gestionBackup.setFont(font)
+        self.btn_gestionBackup.setObjectName("btn_gestionBackup")
+        self.btn_registrarUsuario = QtWidgets.QPushButton(self.page_mantenimiento)
+        self.btn_registrarUsuario.setGeometry(QtCore.QRect(120, 100, 290, 50))
+        self.btn_registrarUsuario.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_registrarUsuario.setFont(font)
+        self.btn_registrarUsuario.setObjectName("btn_registrarUsuario")
         self.label_12.raise_()
         self.label_11.raise_()
-        self.btn_movFondos_2.raise_()
-        self.btn_infDeCaja_2.raise_()
-        self.btn_abrirCerrarCaja_2.raise_()
+        self.btn_gestionClave.raise_()
+        self.btn_manualUsuario.raise_()
+        self.btn_gestionBackup.raise_()
+        self.btn_registrarUsuario.raise_()
         self.stackedWidget.addWidget(self.page_mantenimiento)
         self.verticalLayout.addWidget(self.stackedWidget)
 
@@ -361,18 +420,30 @@ class Ui_menuprincipal(object):
         self.btn_gestionVenta.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionVenta))
         self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
         self.btn_mantenimiento.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_mantenimiento))
+        
         self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
-        self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlstock, menuprincipal))
+        self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openListaProductos(Ui_listaDeProductos, menuprincipal))
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
         self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openListaFactCompra(Ui_lista_facturascompra, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
-        self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
-        self.btn_abrirCerrarCaja_2.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
+        self.btn_gestionClave.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_gestionClaves, menuprincipal))
+        self.btn_gestionBackup.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
         self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
+        self.btn_manualUsuario.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
+        self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
+        self.btn_registrarUsuario.clicked.connect(lambda:self.menuprincipalController.openRegistroUsuarios(Ui_registrarUsuario, menuprincipal))
+        
+        product = self.product.getStockBajo()
+        if product:
+                self.alarma1.show()
+                self.alarma2.show()
+        else:
+                self.alarma1.hide()
+                self.alarma2.hide()
 
 #--------------------End Events---------------------------------
 
@@ -384,11 +455,14 @@ class Ui_menuprincipal(object):
         self.btn_gestionCompra.setText(_translate("menuprincipal", "Gestión de Compra"))
         self.btn_gestionVenta.setText(_translate("menuprincipal", "Gestión de Venta"))
         self.btn_gestionStock.setText(_translate("menuprincipal", "Gestión de Stock"))
+        self.label_4.setText(_translate("menuprincipal", "Usuario logueado:"))
         self.label.setText(_translate("menuprincipal", "Gestión de Compra"))
         self.btn_proveedores.setText(_translate("menuprincipal", "ABM Proveedores"))
         self.btn_genOrdenCompra.setText(_translate("menuprincipal", "Ingresar Factura de Compra"))
         self.btn_listaproveedores.setText(_translate("menuprincipal", "Lista de Proveedores"))
         self.btn_listaFactCompra.setText(_translate("menuprincipal", "Ver Facturas de Compra"))
+        self.alarma1.setText(_translate("menuprincipal", "* Tiene productos bajos en Stock *"))
+        self.alarma2.setText(_translate("menuprincipal", "Para consultar la lista ingrese a Gestion de Stock, \" Control de Stock\"."))
         self.label_2.setText(_translate("menuprincipal", "Gestión de Venta"))
         self.btn_facturacion.setText(_translate("menuprincipal", "Facturación"))
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))
@@ -397,10 +471,12 @@ class Ui_menuprincipal(object):
         self.label_3.setText(_translate("menuprincipal", "Gestión de Stock"))
         self.btn_controlStock.setText(_translate("menuprincipal", "Lista de productos"))
         self.btn_abmProd.setText(_translate("menuprincipal", "ABM Productos"))
+        self.btn_controlStock_2.setText(_translate("menuprincipal", "Control de Stock"))
         self.label_12.setText(_translate("menuprincipal", "Mantenimiento"))
-        self.btn_movFondos_2.setText(_translate("menuprincipal", "Gestion de Clave"))
-        self.btn_infDeCaja_2.setText(_translate("menuprincipal", "Manual de Usuario"))
-        self.btn_abrirCerrarCaja_2.setText(_translate("menuprincipal", "Gestion de Backup"))
+        self.btn_gestionClave.setText(_translate("menuprincipal", "Gestion de Clave"))
+        self.btn_manualUsuario.setText(_translate("menuprincipal", "Manual de Usuario"))
+        self.btn_gestionBackup.setText(_translate("menuprincipal", "Gestion de Backup"))
+        self.btn_registrarUsuario.setText(_translate("menuprincipal", "Registro de usuarios"))
 
 
 if __name__ == "__main__":

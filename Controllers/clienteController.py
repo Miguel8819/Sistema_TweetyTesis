@@ -7,9 +7,6 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.cliente import Cliente
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
 
 
@@ -18,7 +15,7 @@ class ClienteController():
         self.cliente = Cliente(connection())
         self.create_cliente = create_cliente
         
-        
+            
 
     def exito(self, Ui_Dialog, Form):
         self.create_cliente.Form = QtWidgets.QWidget()
@@ -28,7 +25,7 @@ class ClienteController():
         Form.show()
         
     def createCliente(self, nombreCliente, nroDni, calle, nroCalle, ciudad, codPostal, tel, email):
-     if nroDni:
+     if nroDni and nombreCliente and tel:
 
         fechaAlta1= datetime.now()
         fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
@@ -76,17 +73,16 @@ class ClienteController():
                         self.create_cliente.input_tel.clear()
                         self.create_cliente.input_email.clear()
 
-                    else:
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Error")
-                        msg.setText("Por favor complete los campos obligatorios")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        msg.setInformativeText("Vuelva a intentarlo")
-                        x = msg.exec_()
-
-
+                   
+     else:
+        msg = QMessageBox()
+        msg.setWindowTitle("Error")
+        msg.setText("Por favor complete los campos obligatorios")
+        msg.setIcon(QMessageBox.Information)
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Ok)
+        msg.setInformativeText("Vuelva a intentarlo")
+        x = msg.exec_()
                     
 
 
@@ -249,8 +245,14 @@ class ClienteController():
 
 
     def cancelar(self, Ui_cliente):
-
-        Ui_cliente.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea cancelar y salir?")
+        msgBox.setWindowTitle("Clientes")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            Ui_cliente.close()
 
 
     

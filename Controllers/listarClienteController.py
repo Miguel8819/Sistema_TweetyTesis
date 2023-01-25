@@ -7,15 +7,15 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.cliente import Cliente
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
-from PyQt5.QtWidgets import QMessageBox
+
 
 
 class listarClienteController():
     def __init__(self, listar_cliente):
         self.cliente = Cliente(connection())
         self.listar_cliente = listar_cliente
+
+   
        
 
     def listarClientesActivos(self):
@@ -79,4 +79,11 @@ class listarClienteController():
 
 
     def SalirA(self,listar_cliente):
-         listar_cliente.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Lista de clientes")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+           listar_cliente.close()

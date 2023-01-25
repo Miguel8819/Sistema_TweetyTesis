@@ -541,11 +541,17 @@ font: 68pt &quot;Gabriola&quot;;
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>100</number>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
    <property name="placeholderText">
-    <string>Usuario</string>
+    <string>Nombre de Usuario</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_password">
@@ -567,6 +573,9 @@ font: 68pt &quot;Gabriola&quot;;
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="maxLength">
+    <number>100</number>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>

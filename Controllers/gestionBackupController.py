@@ -3,12 +3,21 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5 import QtWidgets
+
 
 class gestionBackupController():
     
     def __init__(self, backup):
         self.backup = backup
+    
+   
 
     def salir(self,gestion_backup):
-        gestion_backup.close()
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("¿Desea salir?")
+        msgBox.setWindowTitle("Backup")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            gestion_backup.close()
