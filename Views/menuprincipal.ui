@@ -333,7 +333,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>131</x>
-          <y>102</y>
+          <y>100</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -390,7 +390,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>250</y>
+          <y>260</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -436,6 +436,32 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         </property>
         <property name="text">
          <string>Lista de Proveedores</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_listaFactCompra">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>340</y>
+          <width>290</width>
+          <height>50</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>290</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ver Facturas de Compra</string>
         </property>
        </widget>
       </widget>
@@ -506,7 +532,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>131</x>
-          <y>102</y>
+          <y>100</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -531,8 +557,8 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
        <widget class="QPushButton" name="btn_dbClientes">
         <property name="geometry">
          <rect>
-          <x>131</x>
-          <y>182</y>
+          <x>130</x>
+          <y>180</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -558,7 +584,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>262</y>
+          <y>260</y>
           <width>290</width>
           <height>50</height>
          </rect>
@@ -584,7 +610,7 @@ QPushButton:hover{background-color:white; border-top-right-radius: 20px;border-b
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>342</y>
+          <y>340</y>
           <width>290</width>
           <height>50</height>
          </rect>

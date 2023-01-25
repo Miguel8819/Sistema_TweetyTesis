@@ -17,6 +17,7 @@ from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
+from listafactcompra_ui import Ui_lista_facturascompra
 
 
 class Ui_menuprincipal(object):
@@ -49,7 +50,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -146,7 +147,7 @@ class Ui_menuprincipal(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.btn_proveedores = QtWidgets.QPushButton(self.page_gestionCompra)
-        self.btn_proveedores.setGeometry(QtCore.QRect(131, 102, 290, 50))
+        self.btn_proveedores.setGeometry(QtCore.QRect(131, 100, 290, 50))
         self.btn_proveedores.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -163,7 +164,7 @@ class Ui_menuprincipal(object):
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
         self.btn_genOrdenCompra = QtWidgets.QPushButton(self.page_gestionCompra)
-        self.btn_genOrdenCompra.setGeometry(QtCore.QRect(130, 250, 290, 50))
+        self.btn_genOrdenCompra.setGeometry(QtCore.QRect(130, 260, 290, 50))
         self.btn_genOrdenCompra.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -180,6 +181,15 @@ class Ui_menuprincipal(object):
         font.setWeight(75)
         self.btn_listaproveedores.setFont(font)
         self.btn_listaproveedores.setObjectName("btn_listaproveedores")
+        self.btn_listaFactCompra = QtWidgets.QPushButton(self.page_gestionCompra)
+        self.btn_listaFactCompra.setGeometry(QtCore.QRect(130, 340, 290, 50))
+        self.btn_listaFactCompra.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_listaFactCompra.setFont(font)
+        self.btn_listaFactCompra.setObjectName("btn_listaFactCompra")
         self.stackedWidget.addWidget(self.page_gestionCompra)
         self.page_gestionVenta = QtWidgets.QWidget()
         self.page_gestionVenta.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -205,7 +215,7 @@ class Ui_menuprincipal(object):
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.btn_facturacion = QtWidgets.QPushButton(self.page_gestionVenta)
-        self.btn_facturacion.setGeometry(QtCore.QRect(131, 102, 290, 50))
+        self.btn_facturacion.setGeometry(QtCore.QRect(131, 100, 290, 50))
         self.btn_facturacion.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -214,7 +224,7 @@ class Ui_menuprincipal(object):
         self.btn_facturacion.setFont(font)
         self.btn_facturacion.setObjectName("btn_facturacion")
         self.btn_dbClientes = QtWidgets.QPushButton(self.page_gestionVenta)
-        self.btn_dbClientes.setGeometry(QtCore.QRect(131, 182, 290, 50))
+        self.btn_dbClientes.setGeometry(QtCore.QRect(130, 180, 290, 50))
         self.btn_dbClientes.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -223,7 +233,7 @@ class Ui_menuprincipal(object):
         self.btn_dbClientes.setFont(font)
         self.btn_dbClientes.setObjectName("btn_dbClientes")
         self.btn_listaClientes = QtWidgets.QPushButton(self.page_gestionVenta)
-        self.btn_listaClientes.setGeometry(QtCore.QRect(130, 262, 290, 50))
+        self.btn_listaClientes.setGeometry(QtCore.QRect(130, 260, 290, 50))
         self.btn_listaClientes.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -232,7 +242,7 @@ class Ui_menuprincipal(object):
         self.btn_listaClientes.setFont(font)
         self.btn_listaClientes.setObjectName("btn_listaClientes")
         self.btn_infDeVentas = QtWidgets.QPushButton(self.page_gestionVenta)
-        self.btn_infDeVentas.setGeometry(QtCore.QRect(130, 342, 290, 50))
+        self.btn_infDeVentas.setGeometry(QtCore.QRect(130, 340, 290, 50))
         self.btn_infDeVentas.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -346,7 +356,7 @@ class Ui_menuprincipal(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(menuprincipal)
 
-        #--------------------Events--------------------------------------
+#--------------------Events--------------------------------------
         self.btn_gestionCompra.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionCompra))
         self.btn_gestionVenta.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionVenta))
         self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
@@ -354,6 +364,7 @@ class Ui_menuprincipal(object):
         self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
         self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlstock, menuprincipal))
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
+        self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openListaFactCompra(Ui_lista_facturascompra, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
         self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
@@ -364,7 +375,6 @@ class Ui_menuprincipal(object):
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
 
 #--------------------End Events---------------------------------
-
 
     def retranslateUi(self, menuprincipal):
         _translate = QtCore.QCoreApplication.translate
@@ -378,6 +388,7 @@ class Ui_menuprincipal(object):
         self.btn_proveedores.setText(_translate("menuprincipal", "ABM Proveedores"))
         self.btn_genOrdenCompra.setText(_translate("menuprincipal", "Ingresar Factura de Compra"))
         self.btn_listaproveedores.setText(_translate("menuprincipal", "Lista de Proveedores"))
+        self.btn_listaFactCompra.setText(_translate("menuprincipal", "Ver Facturas de Compra"))
         self.label_2.setText(_translate("menuprincipal", "Gestión de Venta"))
         self.btn_facturacion.setText(_translate("menuprincipal", "Facturación"))
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))

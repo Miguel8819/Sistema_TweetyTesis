@@ -1713,6 +1713,7 @@ class Ui_venta(object):
         self.j = self.boton_agregarprod.clicked.connect(lambda:self.menuPrincipal.openCreateProduct(Ui_CreateProduct,venta))
 
         self.k = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlstock,venta))
+        
 
       
 

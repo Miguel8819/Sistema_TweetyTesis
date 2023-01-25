@@ -93,13 +93,11 @@ class ventaController():
     def aceptar(self, Ui_venta, CodigoDeBarras, cantidad,nombre,stock,precio1,subtotal):
             cantidad= int(cantidad)
             if CodigoDeBarras and (cantidad > 0) :
-                
-                         
+                           
                 table = self.venta.table_venta
                 product = self.product.getProduct(CodigoDeBarras, '1')
-                if cantidad <= product[8]:
-                    
-                    
+                if cantidad: #<= product[8]:
+
                     if product:
                         if table.rowCount() == 50:
                             rowCount = 0
