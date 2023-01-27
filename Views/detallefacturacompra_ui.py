@@ -21,7 +21,7 @@ class Ui_detallefacturacompra(object):
 
     def setupUi(self, detallefacturacompra):
         detallefacturacompra.setObjectName("detallefacturacompra")
-        detallefacturacompra.resize(1028, 730)
+        detallefacturacompra.resize(1028, 670)
         detallefacturacompra.setStyleSheet("QWidget{background-color:rgb(146,193,220)}\n"
 "QGroupBox{background-color:lightgray}\n"
 "QFrame{background-color:none}\n"
@@ -32,7 +32,7 @@ class Ui_detallefacturacompra(object):
 "QTableWidget{background-color:black}\n"
 "QPushButton{background-color:none}")
         self.groupBox_generales = QtWidgets.QGroupBox(detallefacturacompra)
-        self.groupBox_generales.setGeometry(QtCore.QRect(10, 250, 1010, 170))
+        self.groupBox_generales.setGeometry(QtCore.QRect(10, 200, 1010, 170))
         self.groupBox_generales.setMinimumSize(QtCore.QSize(421, 1))
         self.groupBox_generales.setMaximumSize(QtCore.QSize(1200, 900))
         font = QtGui.QFont()
@@ -190,7 +190,7 @@ class Ui_detallefacturacompra(object):
         self.label_ciudad_3.setFont(font)
         self.label_ciudad_3.setObjectName("label_ciudad_3")
         self.boton_salir = QtWidgets.QPushButton(detallefacturacompra)
-        self.boton_salir.setGeometry(QtCore.QRect(930, 690, 91, 27))
+        self.boton_salir.setGeometry(QtCore.QRect(930, 630, 91, 27))
         self.boton_salir.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -345,7 +345,7 @@ class Ui_detallefacturacompra(object):
         self.boton_salir.setFont(font)
         self.boton_salir.setObjectName("boton_salir")
         self.groupBox_datosContacto = QtWidgets.QGroupBox(detallefacturacompra)
-        self.groupBox_datosContacto.setGeometry(QtCore.QRect(10, 430, 1010, 241))
+        self.groupBox_datosContacto.setGeometry(QtCore.QRect(10, 380, 1010, 241))
         self.groupBox_datosContacto.setMinimumSize(QtCore.QSize(421, 211))
         self.groupBox_datosContacto.setMaximumSize(QtCore.QSize(1010, 900))
         font = QtGui.QFont()
@@ -602,7 +602,7 @@ class Ui_detallefacturacompra(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.boton_buscarProv = QtWidgets.QPushButton(detallefacturacompra)
-        self.boton_buscarProv.setGeometry(QtCore.QRect(360, 40, 101, 27))
+        self.boton_buscarProv.setGeometry(QtCore.QRect(360, 10, 101, 27))
         self.boton_buscarProv.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -757,7 +757,7 @@ class Ui_detallefacturacompra(object):
         self.boton_buscarProv.setFont(font)
         self.boton_buscarProv.setObjectName("boton_buscarProv")
         self.label_nameProv_2 = QtWidgets.QLabel(detallefacturacompra)
-        self.label_nameProv_2.setGeometry(QtCore.QRect(10, 40, 83, 18))
+        self.label_nameProv_2.setGeometry(QtCore.QRect(10, 10, 83, 18))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -767,7 +767,7 @@ class Ui_detallefacturacompra(object):
         self.label_nameProv_2.setObjectName("label_nameProv_2")
         self.input_provFact_2 = QtWidgets.QLineEdit(detallefacturacompra)
         self.input_provFact_2.setEnabled(True)
-        self.input_provFact_2.setGeometry(QtCore.QRect(140, 40, 201, 25))
+        self.input_provFact_2.setGeometry(QtCore.QRect(140, 10, 201, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -778,7 +778,7 @@ class Ui_detallefacturacompra(object):
         self.input_provFact_2.setAlignment(QtCore.Qt.AlignCenter)
         self.input_provFact_2.setObjectName("input_provFact_2")
         self.boton_buscarNroFact = QtWidgets.QPushButton(detallefacturacompra)
-        self.boton_buscarNroFact.setGeometry(QtCore.QRect(360, 80, 101, 27))
+        self.boton_buscarNroFact.setGeometry(QtCore.QRect(360, 50, 101, 27))
         self.boton_buscarNroFact.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -934,7 +934,7 @@ class Ui_detallefacturacompra(object):
         self.boton_buscarNroFact.setObjectName("boton_buscarNroFact")
         self.input_nroFac_2 = QtWidgets.QLineEdit(detallefacturacompra)
         self.input_nroFac_2.setEnabled(True)
-        self.input_nroFac_2.setGeometry(QtCore.QRect(140, 80, 201, 25))
+        self.input_nroFac_2.setGeometry(QtCore.QRect(140, 50, 201, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -945,7 +945,7 @@ class Ui_detallefacturacompra(object):
         self.input_nroFac_2.setAlignment(QtCore.Qt.AlignCenter)
         self.input_nroFac_2.setObjectName("input_nroFac_2")
         self.cuilOcuit_3 = QtWidgets.QLabel(detallefacturacompra)
-        self.cuilOcuit_3.setGeometry(QtCore.QRect(10, 80, 116, 18))
+        self.cuilOcuit_3.setGeometry(QtCore.QRect(10, 50, 116, 18))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -954,7 +954,7 @@ class Ui_detallefacturacompra(object):
         self.cuilOcuit_3.setFont(font)
         self.cuilOcuit_3.setObjectName("cuilOcuit_3")
         self.tableWidget = QtWidgets.QTableWidget(detallefacturacompra)
-        self.tableWidget.setGeometry(QtCore.QRect(480, 40, 541, 201))
+        self.tableWidget.setGeometry(QtCore.QRect(480, 10, 541, 181))
         self.tableWidget.setStyleSheet("QTableWidget{background-color:rgb(187,235,255)}")
         self.tableWidget.setRowCount(50)
         self.tableWidget.setObjectName("tableWidget")
@@ -1002,7 +1002,7 @@ class Ui_detallefacturacompra(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, item)
         self.boton_abrir = QtWidgets.QPushButton(detallefacturacompra)
-        self.boton_abrir.setGeometry(QtCore.QRect(190, 150, 91, 27))
+        self.boton_abrir.setGeometry(QtCore.QRect(190, 120, 91, 27))
         self.boton_abrir.setMaximumSize(QtCore.QSize(200, 30))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -1156,19 +1156,11 @@ class Ui_detallefacturacompra(object):
         font.setWeight(75)
         self.boton_abrir.setFont(font)
         self.boton_abrir.setObjectName("boton_abrir")
-        self.label_2 = QtWidgets.QLabel(detallefacturacompra)
-        self.label_2.setGeometry(QtCore.QRect(570, 10, 341, 25))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
 
         self.retranslateUi(detallefacturacompra)
         QtCore.QMetaObject.connectSlotsByName(detallefacturacompra)
 
-    #Auto Complete de Nombre Proveedor
+        #Auto Complete de Nombre Proveedor
         self.completer_nameProv = QCompleter(self.proveedor.autoComplete())
         self.completer_nameProv.setCaseSensitivity(Qt.CaseInsensitive)
         self.input_provFact_2.setCompleter(self.completer_nameProv)
@@ -1378,7 +1370,6 @@ class Ui_detallefacturacompra(object):
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("detallefacturacompra", "Fecha de Carga"))
         self.boton_abrir.setText(_translate("detallefacturacompra", "Abrir"))
-        self.label_2.setText(_translate("detallefacturacompra", "Facturas de Compra Registradas"))
 
 
 if __name__ == "__main__":

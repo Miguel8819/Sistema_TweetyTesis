@@ -133,6 +133,24 @@ class facturaCompraController():
         msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         returnValue = msgBox.exec()
         if returnValue == QMessageBox.Ok:
+            if self.factura_compra.input_provFact.text() == "":
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("El campo Proveedor esta vacio")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
+            elif self.factura_compra.input_nroFac.text() == "":
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("El campo Número de Factura esta vacio")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_() 
             if tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
                 self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal)
                 for i in range(table.rowCount()):
@@ -236,7 +254,6 @@ class facturaCompraController():
                     self.factura_compra.table_venta.removeRow(self.factura_compra.table_venta.currentRow())
                     self.calcular_subtotal()
                     self.calcular_iva()
-                    #self.calcular_importe(Ui_venta=any,descuento=any,neto=any,importe=any)
         
             else:
                 msg = QMessageBox()
@@ -247,3 +264,8 @@ class facturaCompraController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
+
+    def descuentoAgregado(self):
+        self.calcular_subtotal()
+        self.calcular_iva()
+        self.calcular_importe(neto=any,descuento=any,importe=any)

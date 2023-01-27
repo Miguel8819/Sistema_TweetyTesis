@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1028</width>
-    <height>730</height>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>250</y>
+     <y>200</y>
      <width>1010</width>
      <height>170</height>
     </rect>
@@ -437,7 +437,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>930</x>
-     <y>690</y>
+     <y>630</y>
      <width>91</width>
      <height>27</height>
     </rect>
@@ -905,7 +905,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>430</y>
+     <y>380</y>
      <width>1010</width>
      <height>241</height>
     </rect>
@@ -1539,7 +1539,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>40</y>
+     <y>10</y>
      <width>101</width>
      <height>27</height>
     </rect>
@@ -2007,7 +2007,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>10</y>
      <width>83</width>
      <height>18</height>
     </rect>
@@ -2031,7 +2031,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>40</y>
+     <y>10</y>
      <width>201</width>
      <height>25</height>
     </rect>
@@ -2060,7 +2060,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>80</y>
+     <y>50</y>
      <width>101</width>
      <height>27</height>
     </rect>
@@ -2531,7 +2531,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>80</y>
+     <y>50</y>
      <width>201</width>
      <height>25</height>
     </rect>
@@ -2560,7 +2560,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>50</y>
      <width>116</width>
      <height>18</height>
     </rect>
@@ -2581,9 +2581,9 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>480</x>
-     <y>40</y>
+     <y>10</y>
      <width>541</width>
-     <height>201</height>
+     <height>181</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -2736,7 +2736,7 @@ QPushButton{background-color:none}</string>
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>150</y>
+     <y>120</y>
      <width>91</width>
      <height>27</height>
     </rect>
@@ -3198,26 +3198,6 @@ QPushButton{background-color:none}</string>
    </property>
    <property name="text">
     <string>Abrir</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>570</x>
-     <y>10</y>
-     <width>341</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Facturas de Compra Registradas</string>
    </property>
   </widget>
  </widget>
