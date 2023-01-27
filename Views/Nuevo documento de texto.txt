@@ -1,0 +1,47 @@
+pyuic5 -x menuprincipal.ui -o menuprincipal_ui.py
+
+import sys
+import os
+
+myDir = os.getcwd()
+sys.path.append(myDir)
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from Controllers.menuprincipalController import menuprincipalController
+from venta_ui import Ui_venta
+from controlstock_ui import Ui_controlstock
+from proveedores_ui import Ui_Proveedores
+from createproduct_ui import Ui_CreateProduct
+from cliente_ui import Ui_clientes
+from listadeclientes_ui import Ui_lista_clientes
+from gestionClaves_ui import Ui_LogIn
+from gestionBackup_ui import Ui_Backup
+from listadeproveedores_ui import Ui_lista_proveedores
+from informedeventas_ui import Ui_informeDeVentas
+from facturaCompra_ui import Ui_FacturaDeCompra
+
+
+class Ui_menuprincipal(object):
+    def __init__(self):
+        self.menuprincipalController = menuprincipalController(self)
+    def setupUi(self, menuprincipal):
+
+
+        #--------------------Events--------------------------------------
+        self.btn_gestionCompra.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionCompra))
+        self.btn_gestionVenta.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionVenta))
+        self.btn_gestionStock.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_gestionStock))
+        self.btn_mantenimiento.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_mantenimiento))
+        self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
+        self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlstock, menuprincipal))
+        self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
+        self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
+        self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
+        self.btn_movFondos_2.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_LogIn, menuprincipal))
+        self.btn_abrirCerrarCaja_2.clicked.connect(lambda: self.menuprincipalController.openGestionBackup(Ui_Backup, menuprincipal))
+        self.btn_listaClientes.clicked.connect(lambda:self.menuprincipalController.openListaClientes(Ui_lista_clientes, menuprincipal))
+        self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
+        self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
+        self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
+
+#--------------------End Events---------------------------------

@@ -15,6 +15,7 @@ from Models.Product import Product
 from Models.cliente import Cliente
 from Controllers.menuprincipalController import menuprincipalController
 from Database.Connection import connection
+from controldestock_ui import Ui_controlDeStock
 from cliente_ui import Ui_clientes
 from createproduct_ui import Ui_CreateProduct
 from listaDeProductos_ui import Ui_listaDeProductos
@@ -1724,6 +1725,8 @@ class Ui_venta(object):
 
         self.j = self.boton_agregarprod.clicked.connect(lambda:self.menuPrincipal.openCreateProduct(Ui_CreateProduct,venta))
 
+        self.k = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openControlStock(Ui_controlDeStock,venta))
+        
         self.k = self.boton_buscar.clicked.connect(lambda:self.menuPrincipal.openListaProductos(Ui_listaDeProductos,venta))
 
       

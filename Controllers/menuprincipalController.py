@@ -113,3 +113,9 @@ class menuprincipalController():
 
         
 
+   def openListaFactCompra(self, Ui_lista_facturascompra, Form):
+     self.menuprincipal.Form = QtWidgets.QWidget()
+     self.menuprincipal.ui = Ui_lista_facturascompra()
+     self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
+     self.menuprincipal.Form.show()
+     Form.show() 
