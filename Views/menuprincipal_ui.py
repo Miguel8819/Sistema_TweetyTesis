@@ -17,9 +17,9 @@ from gestionBackup_ui import Ui_Backup
 from listadeproveedores_ui import Ui_lista_proveedores
 from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
-from listafactcompra_ui import Ui_lista_facturascompra
 from controldestock_ui import Ui_controlDeStock
 from registrarusuario_ui import Ui_registrarUsuario
+from listafactcompra_ui import Ui_lista_facturascompra
 from Models.Product import *
 from Database.Connection import connection
 
@@ -55,7 +55,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("../Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("/Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)
@@ -219,17 +219,26 @@ class Ui_menuprincipal(object):
         self.btn_listaproveedores.setFont(font)
         self.btn_listaproveedores.setObjectName("btn_listaproveedores")
         self.alarma1 = QtWidgets.QLabel(self.page_gestionCompra)
-        self.alarma1.setGeometry(QtCore.QRect(40, 350, 461, 41))
+        self.alarma1.setGeometry(QtCore.QRect(40, 420, 461, 41))
         self.alarma1.setStyleSheet("font: 87 18pt \"Arial Black\";\n"
 "color: rgb(255, 0, 0);")
         self.alarma1.setObjectName("alarma1")
         self.alarma2 = QtWidgets.QLabel(self.page_gestionCompra)
-        self.alarma2.setGeometry(QtCore.QRect(30, 400, 501, 31))
+        self.alarma2.setGeometry(QtCore.QRect(30, 470, 501, 31))
         self.alarma2.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";\n"
 "\n"
 "color: rgb(255, 0, 0);\n"
 "")
         self.alarma2.setObjectName("alarma2")
+        self.btn_listaFactCompra = QtWidgets.QPushButton(self.page_gestionCompra)
+        self.btn_listaFactCompra.setGeometry(QtCore.QRect(130, 340, 290, 50))
+        self.btn_listaFactCompra.setMinimumSize(QtCore.QSize(290, 50))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_listaFactCompra.setFont(font)
+        self.btn_listaFactCompra.setObjectName("btn_listaFactCompra")
         self.stackedWidget.addWidget(self.page_gestionCompra)
         self.page_gestionVenta = QtWidgets.QWidget()
         self.page_gestionVenta.setStyleSheet("QWidget{background-color:rgb(153,204,255)}\n"
@@ -255,7 +264,7 @@ class Ui_menuprincipal(object):
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.btn_facturacion = QtWidgets.QPushButton(self.page_gestionVenta)
-        self.btn_facturacion.setGeometry(QtCore.QRect(131, 100, 290, 50))
+        self.btn_facturacion.setGeometry(QtCore.QRect(130, 100, 290, 50))
         self.btn_facturacion.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -367,7 +376,7 @@ class Ui_menuprincipal(object):
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
         self.btn_gestionClave = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_gestionClave.setGeometry(QtCore.QRect(120, 180, 290, 50))
+        self.btn_gestionClave.setGeometry(QtCore.QRect(130, 180, 290, 50))
         self.btn_gestionClave.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -376,7 +385,7 @@ class Ui_menuprincipal(object):
         self.btn_gestionClave.setFont(font)
         self.btn_gestionClave.setObjectName("btn_gestionClave")
         self.btn_manualUsuario = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_manualUsuario.setGeometry(QtCore.QRect(120, 340, 290, 50))
+        self.btn_manualUsuario.setGeometry(QtCore.QRect(130, 340, 290, 50))
         self.btn_manualUsuario.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -385,7 +394,7 @@ class Ui_menuprincipal(object):
         self.btn_manualUsuario.setFont(font)
         self.btn_manualUsuario.setObjectName("btn_manualUsuario")
         self.btn_gestionBackup = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_gestionBackup.setGeometry(QtCore.QRect(120, 260, 290, 50))
+        self.btn_gestionBackup.setGeometry(QtCore.QRect(130, 260, 290, 50))
         self.btn_gestionBackup.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -394,7 +403,7 @@ class Ui_menuprincipal(object):
         self.btn_gestionBackup.setFont(font)
         self.btn_gestionBackup.setObjectName("btn_gestionBackup")
         self.btn_registrarUsuario = QtWidgets.QPushButton(self.page_mantenimiento)
-        self.btn_registrarUsuario.setGeometry(QtCore.QRect(120, 100, 290, 50))
+        self.btn_registrarUsuario.setGeometry(QtCore.QRect(130, 100, 290, 50))
         self.btn_registrarUsuario.setMinimumSize(QtCore.QSize(290, 50))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -424,7 +433,6 @@ class Ui_menuprincipal(object):
         self.btn_proveedores.clicked.connect(lambda:self.menuprincipalController.openProveedores(Ui_Proveedores, menuprincipal))
         self.btn_controlStock.clicked.connect(lambda:self.menuprincipalController.openListaProductos(Ui_listaDeProductos, menuprincipal))
         self.btn_facturacion.clicked.connect(lambda:self.menuprincipalController.openFacturacion(Ui_venta, menuprincipal))
-        self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openListaFactCompra(Ui_lista_facturascompra, menuprincipal))
         self.btn_abmProd.clicked.connect(lambda:self.menuprincipalController.openCreateProduct(Ui_CreateProduct, menuprincipal))
         self.btn_dbClientes.clicked.connect(lambda:self.menuprincipalController.openClientes(Ui_clientes, menuprincipal))
         self.btn_gestionClave.clicked.connect(lambda:self.menuprincipalController.openGestionClaves(Ui_gestionClaves, menuprincipal))
@@ -433,6 +441,7 @@ class Ui_menuprincipal(object):
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
+        self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openListaFactCompra(Ui_lista_facturascompra, menuprincipal))
         self.btn_manualUsuario.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
         self.btn_registrarUsuario.clicked.connect(lambda:self.menuprincipalController.openRegistroUsuarios(Ui_registrarUsuario, menuprincipal))
@@ -460,9 +469,9 @@ class Ui_menuprincipal(object):
         self.btn_proveedores.setText(_translate("menuprincipal", "ABM Proveedores"))
         self.btn_genOrdenCompra.setText(_translate("menuprincipal", "Ingresar Factura de Compra"))
         self.btn_listaproveedores.setText(_translate("menuprincipal", "Lista de Proveedores"))
-        self.btn_listaFactCompra.setText(_translate("menuprincipal", "Ver Facturas de Compra"))
         self.alarma1.setText(_translate("menuprincipal", "* Tiene productos bajos en Stock *"))
         self.alarma2.setText(_translate("menuprincipal", "Para consultar la lista ingrese a Gestion de Stock, \" Control de Stock\"."))
+        self.btn_listaFactCompra.setText(_translate("menuprincipal", "Ver Facturas de Compra"))
         self.label_2.setText(_translate("menuprincipal", "Gestión de Venta"))
         self.btn_facturacion.setText(_translate("menuprincipal", "Facturación"))
         self.btn_dbClientes.setText(_translate("menuprincipal", "ABM Clientes"))
