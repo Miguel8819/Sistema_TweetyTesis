@@ -110,12 +110,9 @@ class menuprincipalController():
    def manualUsuario(self):
       os.startfile('ManualDeUsuarioSistemaTweety.pdf')  
 
-
-        
-
-   def openListaFactCompra(self, Ui_lista_facturascompra, Form):
+   def openDetalleFactCompra(self, Ui_detallefacturacompra, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
-     self.menuprincipal.ui = Ui_lista_facturascompra()
+     self.menuprincipal.ui = Ui_detallefacturacompra()
      self.menuprincipal.ui.setupUi(self.menuprincipal.Form)
      self.menuprincipal.Form.show()
      Form.show() 
