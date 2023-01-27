@@ -11,7 +11,6 @@ class menuprincipalController():
 
    def __init__(self, menuprincipal):
      self.menuprincipal = menuprincipal
-
      self.usuario = globales.logueado 
 
    def openFacturacion(self, Ui_venta, Form):
@@ -29,7 +28,6 @@ class menuprincipalController():
      self.menuprincipal.Form.show()
      Form.show() 
     
-
    def openCreateProduct(self, Ui_CreateProduct, Form):
      self.menuprincipal.Form = QtWidgets.QWidget()
      self.menuprincipal.ui = Ui_CreateProduct()

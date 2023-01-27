@@ -75,7 +75,6 @@ class listarClienteController():
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
 
-
     def SalirA(self,listar_cliente):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)

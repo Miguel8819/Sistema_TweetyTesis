@@ -108,9 +108,6 @@ class LoginController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
 
-
-        
-
     def salir(self):
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)

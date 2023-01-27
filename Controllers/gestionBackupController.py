@@ -9,8 +9,6 @@ class gestionBackupController():
     
     def __init__(self, backup):
         self.backup = backup
-    
-   
 
     def salir(self,gestion_backup):
         msgBox = QMessageBox()

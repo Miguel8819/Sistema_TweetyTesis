@@ -7,16 +7,15 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.Proveedores import Proveedor
 from PyQt5.QtWidgets import QMessageBox
-
-
+from datetime import datetime
+from Controllers import globales
 
 class listarProveedoresController():
     def __init__(self, listar_proveedor):
         self.proveedores = Proveedor(connection())
         self.listar_proveedor = listar_proveedor
-
+        self.usuario= globales.logueado[0]
     
-
     def listarProveedoresActivos(self):
         table = self.listar_proveedor.tableWidget
         proveedor = self.proveedores.getProveedoresActivos()
@@ -36,6 +35,8 @@ class listarProveedoresController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def darAltaProveedor(self):
+        fechaAlta1= datetime.now()
+        fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
         table = self.listar_proveedor.tableWidget_2      
         if table.currentItem() != None:
             nombreProveedor = table.currentItem().text()
@@ -51,7 +52,7 @@ class listarProveedoresController():
                 returnValue = msgBox.exec()
                 
                 if returnValue == QMessageBox.Ok:
-                    self.proveedores.altaProveedor(nombreProveedor)                
+                    self.proveedores.altaProveedor(nombreProveedor,fechaAlta,self.usuario)                
                     self.listarBajaProveedores()
 
                     msg = QMessageBox()

@@ -13,7 +13,6 @@ class gestionClavesController():
         self.user = User(connection())
         self.gestionClaves = gestionClaves
 
-
     def modificarPassword(self, user, oldPassword, newPass, newPassRepeat):
             if user:
                 result = self.user.getUser1(user)    
@@ -120,7 +119,6 @@ class gestionClavesController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
-
 
     def salir(self,gestion_clave):
         msgBox = QMessageBox()

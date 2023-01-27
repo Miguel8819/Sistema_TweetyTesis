@@ -235,7 +235,6 @@ class ventaController():
     def calcular_subtotal (self):
 
       table = self.venta.table_venta
-
       neto=0
 
       for  i in range(table.rowCount()):
@@ -316,9 +315,7 @@ class ventaController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_()    
 
-    def remover (self,Ui_venta,importe):
-        
-        
+    def remover (self,Ui_venta,importe):  
         
             if importe > '0.0':
                 msgBox = QMessageBox()
@@ -382,9 +379,7 @@ class ventaController():
         self.venta.input_nroCalle.clear()
 
     def finalizar (self, Ui_venta):
-        
-        
-        
+          
         fecha= datetime.now()
         fechaFactura= datetime.now().strftime("%d/%m/%Y")
         cabecera = 0
