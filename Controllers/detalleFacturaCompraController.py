@@ -7,16 +7,15 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Database.Connection import connection
 from Models.facturaCompra import FacturaCompra
-from Controllers.listarFacturaCompraController import listarFacturaCompraController
 
 class detalleFacturaCompraController():
     def __init__(self, detalle_factCompra):
-        self.FactCompra = FacturaCompra(connection())
-        self.listarFacturaCompraController = listarFacturaCompraController(self)
+        self.factCompra = FacturaCompra(connection())
         self.detalle_factCompra = detalle_factCompra
 
-    def displayFactura(self):
-        factura = self.FactCompra.getDetalleFactura(self.listarFacturaCompraController.getcellvalue)
+    def displayFactura(self, nrofactura):
+        factura = self.factCompra.getDetalleFactura(nrofactura)
+        print(factura)
         if factura:
             self.detalle_factCompra.input_provFact.setText(str(factura[2]))
             self.detalle_factCompra.input_nroFac.setText(str(factura[3]))

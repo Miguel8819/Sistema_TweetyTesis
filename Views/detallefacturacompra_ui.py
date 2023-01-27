@@ -15,8 +15,9 @@ from Database.Connection import connection
 
 class Ui_detallefacturacompra(object):
     def __init__(self):
-        self.detalleFacturaCompraController = detalleFacturaCompraController
+        self.detalleFacturaCompraController = detalleFacturaCompraController (self)
         self.factCompra = FacturaCompra(connection())
+
 
     def setupUi(self, detallefacturacompra):
         detallefacturacompra.setObjectName("detallefacturacompra")
@@ -612,8 +613,10 @@ class Ui_detallefacturacompra(object):
         self.retranslateUi(detallefacturacompra)
         QtCore.QMetaObject.connectSlotsByName(detallefacturacompra)
 
+        #
     #--------------------Events------------------------------------------------
-        self.detalleFacturaCompraController.displayFactura(self)
+    def displayInfo(self):
+        self.show() 
     #--------------------End Events--------------------------------------------
 
     def retranslateUi(self, detallefacturacompra):

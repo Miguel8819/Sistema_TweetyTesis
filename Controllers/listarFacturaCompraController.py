@@ -7,11 +7,14 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from Database.Connection import connection
 from Models.facturaCompra import FacturaCompra
+from Views.detallefacturacompra_ui import Ui_detallefacturacompra
 
 class listarFacturaCompraController():
     def __init__(self, lista_factCompra):
         self.FactCompra = FacturaCompra(connection())
         self.lista_factCompra = lista_factCompra
+        self.detalleFact = Ui_detallefacturacompra
+
 
     def buscarFactNombreProv(self, nameProv):
         table = self.lista_factCompra.tableWidget
@@ -36,6 +39,11 @@ class listarFacturaCompraController():
         self.FactCompra.getDetalleTablaFactura(nroFact)
 
     def openDetalleFactura(self, Ui_detallefacturacompra, Form):
+        table = self.lista_factCompra.tableWidget
+        nrofact = table.currentItem().text() 
+        print(nrofact)
+        factura = self.FactCompra.getDetalleFactura(nrofact)
+        print (factura)
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)
         msgBox.setText("¿Desea ver detalle de la factura seleccionada?")
@@ -48,11 +56,10 @@ class listarFacturaCompraController():
             self.lista_factCompra.ui.setupUi(self.lista_factCompra.Form)
             self.lista_factCompra.Form.show()
             Form.show()
+            print(type(self.detalleFact.input_provFact.setText(str(factura[0][2]))))
 
-    def getcellvalue(self):
-        table = self.lista_factCompra.tableWidget
-        cell_value = table.currentItem().text()  
-        return cell_value
 
     def Salir(self,lista_factCompra):
         lista_factCompra.close()
+
+            

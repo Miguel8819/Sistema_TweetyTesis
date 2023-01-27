@@ -18,6 +18,7 @@ class Ui_lista_facturascompra(object):
         self.listarFacturaCompraController = listarFacturaCompraController(self)
         self.factCompra = FacturaCompra(connection())
         self.proveedor = Proveedor(connection())
+        self.detalleFact = Ui_detallefacturacompra
 
     def setupUi(self, lista_facturascompra):
         lista_facturascompra.setObjectName("lista_facturascompra")
@@ -776,8 +777,6 @@ class Ui_lista_facturascompra(object):
         self.a = self.boton_buscarProv.clicked.connect(lambda:self.listarFacturaCompraController.buscarFactNombreProv(self.input_provFact.text()))
 
         self.b = self.boton_buscarNroFact.clicked.connect(lambda:self.listarFacturaCompraController.buscarFactNumFact(self.input_nroFac.text()))
-
-        self.e = self.tableWidget.cellClicked.connect(self.listarFacturaCompraController.getcellvalue)
 
         self.c = self.boton_abrir.clicked.connect(lambda:self.listarFacturaCompraController.openDetalleFactura(Ui_detallefacturacompra, lista_facturascompra))
 
