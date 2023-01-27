@@ -87,7 +87,7 @@ class FacturaCompra():
 
     def getDetalleTablaFactura(self, numFact):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM tablafacturacompra WHERE nroFacturaCompra = %s"""
+            sql = """SELECT codProducto, codBarra, producto, cantidad, precioUnitario, subtotal FROM tablafacturacompra WHERE nroFacturaCompra = %s"""
             cursor.execute(sql, (numFact))
             result = cursor.fetchall()
             return result
