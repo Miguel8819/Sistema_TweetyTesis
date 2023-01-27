@@ -297,7 +297,7 @@ class Venta():
 
     def listarVentasAnuladas(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), cc.codCliente,dd.user_name 
+            sql = """SELECT date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura, SUM(df.cantidad * df.precioUnitario), cc.codCliente,dd.user_name, cf.anulo 
                     FROM cabecerafactura cf ,venta df, cliente cc, User dd
                     WHERE
                     cf.nroFactura = df.codCabecera
@@ -307,6 +307,7 @@ class Venta():
                     dd.codUsuario = cf.codUsuario
                     AND
                     cf.activo = '0'
+                    
                     GROUP BY date_format(cf.fechaYhora, "%d-%m-%Y/%H:%i"),cf.nroFactura
                     order by cf.nroFactura                 
                     """

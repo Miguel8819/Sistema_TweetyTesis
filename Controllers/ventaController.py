@@ -545,8 +545,8 @@ class ventaController():
                                 align = 'C', fill = 0)
                         
                                     
-                        pdf.output('factura.pdf')
-                        os.startfile('factura.pdf') 
+                        pdf.output('comprobanteVenta.pdf')
+                        os.startfile('comprobanteVenta.pdf') 
                                                  
                         self.venta.table_venta.setRowCount(0)
                         self.venta.input_importe.clear()

@@ -3,19 +3,16 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from PyQt5 import QtWidgets, QtGui
 from Database.Connection import connection
 from Models.Proveedores import *
-from PyQt5.QtWidgets import QMessageBox, QLineEdit, QCompleter
-from PyQt5.QtCore import QDate, QStringListModel, Qt
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery, QSqlQueryModel
+from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
-
+from Controllers import globales
 class CreateProveedorController():
     def __init__(self, create_proveedor):
         self.proveedor = Proveedor(connection())
         self.create_proveedor = create_proveedor
-
+        self.usuario= globales.logueado[0]
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor and nombreFactura and nroCuil and celular:
             
@@ -44,7 +41,7 @@ class CreateProveedorController():
                     if returnValue == QMessageBox.Ok:
                         
                         if nroCuil and nombreProveedor and nombreFactura and fechaAlta and celular :
-                            self.proveedor.insertProveedor(nroCuil,nombreProveedor,nombreFactura,fechaAlta,calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb)
+                            self.proveedor.insertProveedor(nroCuil,nombreProveedor,nombreFactura,fechaAlta,calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb,self.usuario)
 
                             msg = QMessageBox()
                             msg.setWindowTitle("Exito")
@@ -284,6 +281,8 @@ class CreateProveedorController():
 
 
     def darBajaProveedor(self,proveedores,nombreProveedor,cuil):
+        fechaBaja1= datetime.now()
+        fechaBaja= datetime.strftime(fechaBaja1, '%d/%m/%Y %H:%M:%S')
         if nombreProveedor:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
@@ -293,7 +292,7 @@ class CreateProveedorController():
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:   
                 if proveedores :                      
-                        self.proveedor.bajaProveedor(nombreProveedor)
+                        self.proveedor.bajaProveedor(nombreProveedor,fechaBaja,self.usuario)
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
                 msg.setText("Proveedor dado de baja de la lista")
@@ -321,7 +320,7 @@ class CreateProveedorController():
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:  
                 if proveedores :                      
-                        self.proveedor.bajaProveedor2(cuil)
+                        self.proveedor.bajaProveedor2(cuil,fechaBaja,self.usuario)
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
                 msg.setText("Proveedor dado de baja de la lista")

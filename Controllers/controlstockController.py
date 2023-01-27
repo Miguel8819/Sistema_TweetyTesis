@@ -256,6 +256,8 @@ class controlstockController():
         self.controlstock.input_codigo_2.clear()
         self.controlstock.input_prod_2.clear()
 
+   #Funciones de pantalla Control de stock
+   
     def listarStockActivos(self):
         table = self.controlstock.table_product
         productos = self.product.getStockActivos()
@@ -274,6 +276,63 @@ class controlstockController():
             table.insertRow(row_number)
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def buscarStock(self,codigoDeBarras,nombre):
+        table = self.controlstock.table_product
+        if codigoDeBarras:
+            productos = self.product.buscarProductoStock(codigoDeBarras)
+            if productos:
+                
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(productos):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("El código de producto no existe")
+
+                msg.setIcon(QMessageBox.Information)
+
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+
+                x = msg.exec_()
+            
+        elif nombre:
+            producto = self.product.buscarNombreStock(nombre)
+            if producto:
+                
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(producto):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("El nombre de producto no existe")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("Vuelva a intentarlo")
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Ingrese el código o nombre del producto")
+
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+
+            x = msg.exec_()
+    
+    
 
     def buscarStockBajo(self,codigoDeBarras,nombre):
         table = self.controlstock.table_product_2

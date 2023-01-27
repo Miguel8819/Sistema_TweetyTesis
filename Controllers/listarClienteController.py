@@ -7,16 +7,12 @@ from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.cliente import Cliente
 from PyQt5.QtWidgets import QMessageBox
-
-
+from datetime import datetime
 
 class listarClienteController():
     def __init__(self, listar_cliente):
         self.cliente = Cliente(connection())
         self.listar_cliente = listar_cliente
-
-   
-       
 
     def listarClientesActivos(self):
         table = self.listar_cliente.tableWidget
@@ -37,6 +33,8 @@ class listarClienteController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def darAltaCliente(self):
+        fechaAlta1= datetime.now()
+        fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
         table = self.listar_cliente.tableWidget_2
         if table.currentItem() != None:
             nroDni = table.currentItem().text()        
@@ -50,7 +48,7 @@ class listarClienteController():
                 msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                 returnValue = msgBox.exec()
                 if returnValue == QMessageBox.Ok:
-                    self.cliente.altaCliente(nroDni)                
+                    self.cliente.altaCliente(nroDni,fechaAlta)                
                     self.listarBajaClientes()
 
                     msg = QMessageBox()

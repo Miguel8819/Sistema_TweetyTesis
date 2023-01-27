@@ -12,6 +12,7 @@ from fpdf import FPDF
 from functools import reduce
 from Controllers import globales
 
+
 class listarVentas():
     def __init__(self, listar_VentasDiarias):
         self.venta = Venta(connection())
@@ -19,6 +20,7 @@ class listarVentas():
         self.listar_ventasDiarias = listar_VentasDiarias
 
         self.usuario = globales.logueado   
+       
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget
@@ -29,6 +31,7 @@ class listarVentas():
                     table.insertRow(row_number)
                     for column_number, data in enumerate(row_data):
                         table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                        
         else:
             self.listar_ventasDiarias.tableWidget.setRowCount(0)
             msg = QMessageBox()
@@ -57,6 +60,7 @@ class listarVentas():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
+            
 
     def ventasMensuales(self):
         table = self.listar_ventasDiarias.tableWidget_2
@@ -331,6 +335,33 @@ class listarVentas():
                         table.insertRow(row_number)
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+
+    def refrescarAnulacion(self,condPago):
+        table = self.listar_ventasDiarias.tableWidget_4 
+        if condPago !='Todos':    
+            ventaDiaria= self.venta.condPago(condPago)
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else: 
+                self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
+            
+        elif condPago:
+            table = self.listar_ventasDiarias.tableWidget_4 
+            ventaDiaria= self.venta.condPagoTodos()
+            if ventaDiaria:
+                table.setRowCount(0)
+                for row_number, row_data in enumerate(ventaDiaria):
+                        table.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+            else: 
+                self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
+                
             
     def anularVenta (self,motivo):
         table = self.listar_ventasDiarias.tableWidget_4
@@ -347,9 +378,9 @@ class listarVentas():
                 returnValue = msgBox.exec()
                 if returnValue == QMessageBox.Ok:
                     if motivo:
-                        self.cabeceraFactura.insertMotivo(motivo,nroFactura) 
+                        self.cabeceraFactura.insertMotivo(motivo,nroFactura,self.usuario[0]) 
                         self.venta.anular_venta(nroFactura) 
-                        self.buscarCondPago(condPago='Todos')
+                        self.refrescarAnulacion(condPago='Todos')
                         self.listar_ventasDiarias.input_motivo.clear() 
 
                         msg = QMessageBox()

@@ -9,7 +9,8 @@ class CabeceraFactura():
                         codCliente INT(100) NOT NULL,
                         activo BOOLEAN NOT NULL,
                         motivoAnulacion VARCHAR(1000) NOT NULL,
-                        codUsuario INT(11) NOT NULL
+                        codUsuario INT(11) NOT NULL,
+                        anulo INT (30) NOT NULL
                         
                         )"""
             cursor.execute(sql)
@@ -47,12 +48,13 @@ class CabeceraFactura():
             self.conn.commit()
             return id
 
-    def insertMotivo(self,motivo,nroFactura):
+    def insertMotivo(self,motivo,nroFactura,anulo):
         with self.conn.cursor() as cursor:         
-            sql = """UPDATE cabeceraFactura SET motivoAnulacion = %s, activo = '0'
+            sql = """UPDATE cabeceraFactura SET motivoAnulacion = %s, activo = '0', anulo = %s
             WHERE cabecerafactura.nroFactura = %s
             """
-            cursor.execute(sql,(motivo,nroFactura))
+            print(sql)
+            cursor.execute(sql,(motivo,anulo,nroFactura))
             self.conn.commit()
 
     

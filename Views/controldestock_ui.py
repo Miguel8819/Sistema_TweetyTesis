@@ -274,7 +274,7 @@ class Ui_controlDeStock(object):
         
         self.c = self.btn_actualizar_2.clicked.connect(lambda:self.controlstock_controller.listarBajoStock())
         self.c = self.btn_imprimir.clicked.connect(lambda:self.controlstock_controller.imprimirLista())
-        self.e = self.btn_buscar.clicked.connect(lambda:self.controlstock_controller.buscarProductoActivo(self.input_codigo.text(), self.input_prod.text()))
+        self.e = self.btn_buscar.clicked.connect(lambda:self.controlstock_controller.buscarStock(self.input_codigo.text(), self.input_prod.text()))
         self.e = self.btn_buscar_2.clicked.connect(lambda:self.controlstock_controller.buscarStockBajo(self.input_codigo_2.text(), self.input_prod_2.text()))
         self.e = self.btn_limpiar.clicked.connect(lambda:self.controlstock_controller.limpiar())
         self.e = self.btn_limpiar_2.clicked.connect(lambda:self.controlstock_controller.limpiar_2())
