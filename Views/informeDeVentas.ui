@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1011</width>
-    <height>637</height>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <x>0</x>
      <y>10</y>
      <width>991</width>
-     <height>621</height>
+     <height>601</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -638,7 +638,7 @@
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>290</x>
        <y>10</y>
        <width>251</width>
        <height>41</height>
@@ -956,8 +956,8 @@ background-color: rgb(255, 0, 0);</string>
     <widget class="QPushButton" name="Btn_volver_5">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>470</y>
+       <x>430</x>
+       <y>530</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -996,10 +996,10 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>160</y>
-       <width>521</width>
-       <height>291</height>
+       <x>150</x>
+       <y>150</y>
+       <width>631</width>
+       <height>171</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1033,12 +1033,17 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
        <string>Vendedor</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Anuló</string>
+      </property>
+     </column>
     </widget>
     <widget class="QPushButton" name="Btn_listar_3">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>130</y>
+       <x>70</x>
+       <y>150</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -1053,8 +1058,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>310</y>
+       <x>590</x>
+       <y>340</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -1069,8 +1074,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QPushButton" name="btn_buscarComprobante">
      <property name="geometry">
       <rect>
-       <x>270</x>
-       <y>90</y>
+       <x>400</x>
+       <y>80</y>
        <width>31</width>
        <height>21</height>
       </rect>
@@ -1090,8 +1095,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLineEdit" name="search_comprobante">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>90</y>
+       <x>310</x>
+       <y>80</y>
        <width>81</width>
        <height>21</height>
       </rect>
@@ -1114,8 +1119,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>90</y>
+       <x>150</x>
+       <y>80</y>
        <width>151</width>
        <height>21</height>
       </rect>
@@ -1132,10 +1137,10 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QTextEdit" name="motivo_anulacion">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>340</y>
-       <width>261</width>
-       <height>111</height>
+       <x>590</x>
+       <y>370</y>
+       <width>191</width>
+       <height>141</height>
       </rect>
      </property>
      <property name="maximumSize">
@@ -1151,8 +1156,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QPushButton" name="btn_verMotivo">
      <property name="geometry">
       <rect>
-       <x>710</x>
-       <y>130</y>
+       <x>60</x>
+       <y>370</y>
        <width>81</width>
        <height>23</height>
       </rect>
@@ -1170,8 +1175,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>160</y>
+       <x>150</x>
+       <y>370</y>
        <width>421</width>
        <height>141</height>
       </rect>
@@ -1206,8 +1211,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>550</x>
-       <y>120</y>
+       <x>310</x>
+       <y>340</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -1222,8 +1227,8 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     <widget class="QPushButton" name="Btn_limpiar5">
      <property name="geometry">
       <rect>
-       <x>320</x>
-       <y>90</y>
+       <x>450</x>
+       <y>80</y>
        <width>75</width>
        <height>23</height>
       </rect>

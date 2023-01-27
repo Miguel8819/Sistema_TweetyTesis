@@ -8,7 +8,7 @@ from Database.Connection import connection
 from Models.cliente import Cliente
 from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
-
+from Controllers import globales
 
 class ClienteController():
     def __init__(self, create_cliente):
@@ -29,8 +29,8 @@ class ClienteController():
 
         fechaAlta1= datetime.now()
         fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
+        usuario= globales.logueado[0]
 
-        
         result = self.cliente.getCliente(nroDni, '1')
         
         if result:
@@ -53,7 +53,7 @@ class ClienteController():
                 if returnValue == QMessageBox.Ok:
                 
                     if  nombreCliente and nroDni  and ciudad  and tel:
-                        self.cliente.insertCliente(nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email)
+                        self.cliente.insertCliente(nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email,usuario)
 
                             
                         msg = QMessageBox()
@@ -157,6 +157,9 @@ class ClienteController():
             
 
     def bajaCliente(self,cliente,nroDni):
+        fechaBaja1= datetime.now()
+        fechaBaja= datetime.strftime(fechaBaja1, '%d/%m/%Y %H:%M:%S')
+        usuario=globales.logueado[0]
         if nroDni:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
@@ -165,12 +168,10 @@ class ClienteController():
             msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:
-            
                 
                 if cliente :
-                        
 
-                        self.cliente.bajaCliente(nroDni)
+                        self.cliente.bajaCliente(nroDni,fechaBaja,usuario)
 
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")

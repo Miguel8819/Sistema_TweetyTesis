@@ -93,7 +93,9 @@ class Product():
 
     def getProductosBaja(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM Product WHERE activo = '0' """
+            sql = """SELECT codProducto,CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta
+            FROM Product 
+            WHERE activo = '0' """
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
@@ -166,6 +168,8 @@ class Product():
             if self.model_2:
                 return self.model_2
 
+                # Funciones de pantalla Control de stock
+
     def getStockActivos(self):
         with self.conn.cursor() as cursor:
             sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
@@ -183,6 +187,30 @@ class Product():
             AND stock <= PuntoDePedido
              """
             cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def buscarProductoStock(self,codigoDeBarras):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1' 
+            AND CodigoDeBarras = %s
+            
+             """
+            cursor.execute(sql,codigoDeBarras)
+            result = cursor.fetchall()
+            return result
+  
+    def buscarNombreStock(self,nombre):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, codigoDeBarras, producto, marca, stock, PuntoDePedido, cant_min_stock 
+            FROM Product 
+            WHERE activo = '1' 
+            AND producto = %s
+            
+             """
+            cursor.execute(sql,nombre)
             result = cursor.fetchall()
             return result
     

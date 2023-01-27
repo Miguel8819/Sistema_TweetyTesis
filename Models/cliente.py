@@ -14,16 +14,18 @@ class Cliente():
                         codPostal VARCHAR(10) NOT NULL,
                         tel VARCHAR(20) NOT NULL,
                         email VARCHAR(45) NOT NULL,
-                        activo BOOLEAN NOT NULL
+                        activo BOOLEAN NOT NULL,
+                        fechaBaja VARCHAR(45) NOT NULL,
+                        codUsuario INT(10) NOT NULL
                         )"""
             cursor.execute(sql)
             self.conn.commit()
 
-    def insertCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email):
+    def insertCliente(self,nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email,usuario):
         with self.conn.cursor() as cursor:
             activo = 1
-            sql = """INSERT INTO cliente (nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad, codPostal, tel,email,activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email, activo))
+            sql = """INSERT INTO cliente (nombreCliente,nroDni,fechaAlta,calle,nroCalle,ciudad, codPostal, tel,email,activo,codUsuario) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (nombreCliente, nroDni, fechaAlta, calle, nroCalle, ciudad, codPostal, tel, email, activo,usuario))
             self.conn.commit()
 
     def getClientes(self):
@@ -53,28 +55,34 @@ class Cliente():
             cursor.execute(sql, nroDni)
             self.conn.commit()
 
-    def bajaCliente(self,nroDni):
+    def bajaCliente(self,nroDni,fechaBaja,usuario):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE cliente SET activo = "0" WHERE nroDni = %s"""
-            cursor.execute(sql, nroDni)
+            sql = """UPDATE cliente SET activo = "0", fechaBaja = %s, codUsuario = %s WHERE nroDni = %s"""
+            cursor.execute(sql, (fechaBaja,usuario,nroDni))
             self.conn.commit()
 
-    def altaCliente(self,nroDni):
+    def altaCliente(self,nroDni,fechaAlta):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE cliente SET activo = "1" WHERE nroDni = %s"""
-            cursor.execute(sql, nroDni)
+            sql = """UPDATE cliente SET activo = "1", fechaAlta= %s WHERE nroDni = %s"""
+            cursor.execute(sql,(fechaAlta, nroDni))
             self.conn.commit()
 
     def getClientesActivos(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente WHERE activo = '1' """
+            sql = """SELECT  c.codCliente, c.nroDni, c.nombreCliente, c.fechaAlta, c.calle, c.nroCalle, c.ciudad, c.codPostal, c.tel, c.email, c.codUsuario 
+            FROM cliente c
+            WHERE activo = '1' 
+            """
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
 
     def getClientesBaja(self):
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente WHERE activo = '0' """
+            sql = """SELECT c.codCliente, c.nroDni, c.nombreCliente, c.fechaAlta, c.fechaBaja, c.tel, c.email, c.codUsuario 
+            FROM cliente c 
+            WHERE activo = '0' 
+            """
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
