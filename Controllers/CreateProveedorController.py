@@ -15,12 +15,9 @@ class CreateProveedorController():
         self.usuario= globales.logueado[0]
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor and nombreFactura and nroCuil and celular:
-            
             fechaAlta1= datetime.now()
             fechaAlta= datetime.strftime(fechaAlta1, '%d/%m/%Y %H:%M:%S')
-            
-            result = self.proveedor.getProveedor(nombreProveedor, '1')
-        
+            result = self.proveedor.getProveedor(nombreProveedor, '1')      
             if result:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -80,9 +77,6 @@ class CreateProveedorController():
                             self.create_proveedor.input_tel.clear()
                             self.create_proveedor.input_email.clear()
                             self.create_proveedor.input_web.clear()
-
-
-                        
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
@@ -91,9 +85,7 @@ class CreateProveedorController():
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("")
-            x = msg.exec_()
-
-        
+            x = msg.exec_()     
 
     def showProveedor(self,nombreProveedor):
         if nombreProveedor:
@@ -208,8 +200,6 @@ class CreateProveedorController():
                 self.create_proveedor.show_email.clear()
                 self.create_proveedor.show_web.clear()
                 
-
-
     def showProveedor_2(self,nombreProveedor):
         if nombreProveedor:
             result = self.proveedor.getProveedor(nombreProveedor, '1')
@@ -278,7 +268,6 @@ class CreateProveedorController():
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
-
 
     def darBajaProveedor(self,proveedores,nombreProveedor,cuil):
         fechaBaja1= datetime.now()
@@ -349,9 +338,6 @@ class CreateProveedorController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
-
- 
-
 
     def modificarProveedor(self,nombreProveedor, nombreFactura, nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb ):
         if nombreProveedor or nroCuil: 

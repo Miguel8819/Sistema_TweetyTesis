@@ -93,10 +93,10 @@ class Proveedor():
             cursor.execute(sql, (cuil,fechaBaja,usuario))
             self.conn.commit()
 
-    def altaProveedor(self,nombreProveedor):
+    def altaProveedor(self,nombreProveedor,fechaAlta,usuario):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE proveedor SET activo = "1" WHERE nombreProveedor = %s"""
-            cursor.execute(sql, nombreProveedor)
+            sql = """UPDATE proveedor SET activo = "1",fechaAlta = %s, codUsuario =%s WHERE nombreProveedor = %s"""
+            cursor.execute(sql, (fechaAlta,usuario,nombreProveedor))
             self.conn.commit()
 
     def getProveedoresActivos(self):

@@ -95,7 +95,6 @@ class CreateProductController():
                     self.create_product.input_puntoPedido_2.clear()
                     self.create_product.input_costCompra_2.clear()
                     self.create_product.input_precVenta_2.clear()
-
         else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -137,7 +136,6 @@ class CreateProductController():
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
                     x = msg.exec_() 
-
         else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -174,7 +172,6 @@ class CreateProductController():
             self.create_product.input_puntoPedido_3.clear()
             self.create_product.input_costCompra_3.clear()
             self.create_product.input_precVenta_3.clear()
-
         else: 
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -184,100 +181,6 @@ class CreateProductController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
-
-    # def showProduct(self,CodigoDeBarras):
-    #     if CodigoDeBarras:
-            
-    #             result = self.product.getProduct(CodigoDeBarras, '1')
-    #             if result:
-    #                 self.create_product.input_prod_2.setText(str(result[2]))
-    #                 self.create_product.box_cat_2.setCurrentText(str(result[3]))
-    #                 self.create_product.box_subCat_2.setCurrentText(str(result[4]))
-    #                 self.create_product.box_marca_2.setCurrentText(str(result[5]))
-    #                 self.create_product.box_tipoUnid_2.setCurrentText(str(result[6]))
-    #                 self.create_product.box_uniMedi_2.setCurrentText(str(result[7]))
-    #                 self.create_product.input_cantMinStock_2.setText(str(result[9]))
-    #                 self.create_product.input_puntoPedido_2.setText(str(result[10]))
-    #                 self.create_product.input_costCompra_2.setText(str(result[11]))
-    #                 self.create_product.input_precVenta_2.setText(str(result[12]))
-    #             else: 
-    #                 msg = QMessageBox()
-    #                 msg.setWindowTitle("Error")
-    #                 msg.setText("El código de barras no existe")
-    #                 msg.setIcon(QMessageBox.Information)
-    #                 msg.setStandardButtons(QMessageBox.Ok)
-    #                 msg.setDefaultButton(QMessageBox.Ok)
-    #                 msg.setInformativeText("Vuelva a intentarlo")
-    #                 x = msg.exec_() 
-    #                 self.create_product.input_prod_2.clear()
-    #                 self.create_product.input_searchcod.clear()
-    #                 self.create_product.input_cantMinStock_2.clear()
-    #                 self.create_product.input_puntoPedido_2.clear()
-    #                 self.create_product.input_costCompra_2.clear()
-    #                 self.create_product.input_precVenta_2.clear()
-
-    #     else:
-    #             msg = QMessageBox()
-    #             msg.setWindowTitle("Error")
-    #             msg.setText("Ingrese un código de barras valido")
-    #             msg.setIcon(QMessageBox.Information)
-    #             msg.setStandardButtons(QMessageBox.Ok)
-    #             msg.setDefaultButton(QMessageBox.Ok)
-    #             msg.setInformativeText("Vuelva a intentarlo")
-    #             x = msg.exec_() 
-    #             self.create_product.input_prod_2.clear()
-    #             self.create_product.input_searchcod.clear()
-    #             self.create_product.input_cantMinStock_2.clear()
-    #             self.create_product.input_puntoPedido_2.clear()
-    #             self.create_product.input_costCompra_2.clear()
-    #             self.create_product.input_precVenta_2.clear()
-
-    # def showProduct_2(self,CodigoDeBarras):
-    #     if CodigoDeBarras:
-            
-    #             result = self.product.getProduct(CodigoDeBarras, '1')
-    #             if result:
-    #                 self.create_product.input_prod_3.setText(str(result[2]))
-    #                 self.create_product.box_cat_3.setCurrentText(str(result[3]))
-    #                 self.create_product.box_subCat_3.setCurrentText(str(result[4]))
-    #                 self.create_product.box_marca_3.setCurrentText(str(result[5]))
-    #                 self.create_product.box_tipoUnid_3.setCurrentText(str(result[6]))
-    #                 self.create_product.box_uniMedi_3.setCurrentText(str(result[7]))
-    #                 self.create_product.input_cantMinStock_3.setText(str(result[9]))
-    #                 self.create_product.input_puntoPedido_3.setText(str(result[10]))
-    #                 self.create_product.input_costCompra_3.setText(str(result[11]))
-    #                 self.create_product.input_precVenta_3.setText(str(result[12]))
-    #             else: 
-    #                 msg = QMessageBox()
-    #                 msg.setWindowTitle("Error")
-    #                 msg.setText("El código de barras no existe")
-    #                 msg.setIcon(QMessageBox.Information)
-    #                 msg.setStandardButtons(QMessageBox.Ok)
-    #                 msg.setDefaultButton(QMessageBox.Ok)
-    #                 msg.setInformativeText("Vuelva a intentarlo")
-    #                 x = msg.exec_() 
-    #                 self.create_product.input_prod_3.clear()
-    #                 self.create_product.input_searchcod_2.clear()
-    #                 self.create_product.input_cantMinStock_3.clear()
-    #                 self.create_product.input_puntoPedido_3.clear()
-    #                 self.create_product.input_costCompra_3.clear()
-    #                 self.create_product.input_precVenta_3.clear()
-
-    #     else:
-    #             msg = QMessageBox()
-    #             msg.setWindowTitle("Error")
-    #             msg.setText("Ingrese un código de barras valido")
-    #             msg.setIcon(QMessageBox.Information)
-    #             msg.setStandardButtons(QMessageBox.Ok)
-    #             msg.setDefaultButton(QMessageBox.Ok)
-    #             msg.setInformativeText("Vuelva a intentarlo")
-    #             x = msg.exec_() 
-    #             self.create_product.input_prod_3.clear()
-    #             self.create_product.input_searchcod_2.clear()
-    #             self.create_product.input_cantMinStock_3.clear()
-    #             self.create_product.input_puntoPedido_3.clear()
-    #             self.create_product.input_costCompra_3.clear()
-    #             self.create_product.input_precVenta_3.clear()
 
     def modificarProducto(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta ):
         msgBox = QMessageBox()
@@ -299,14 +202,12 @@ class CreateProductController():
                         msg.setInformativeText("")
                         x = msg.exec_() 
 
-                        
                         self.create_product.input_prod_2.clear()
                         self.create_product.input_searchcod.clear()
                         self.create_product.input_cantMinStock_2.clear()
                         self.create_product.input_puntoPedido_2.clear()
                         self.create_product.input_costCompra_2.clear()
                         self.create_product.input_precVenta_2.clear()
-
                     else: 
                         msg = QMessageBox()
                         msg.setWindowTitle("Error")

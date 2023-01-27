@@ -18,9 +18,7 @@ class listarVentas():
         self.venta = Venta(connection())
         self.cabeceraFactura = CabeceraFactura(connection())
         self.listar_ventasDiarias = listar_VentasDiarias
-
-        self.usuario = globales.logueado   
-       
+        self.usuario = globales.logueado      
 
     def listarVentas(self):
         table = self.listar_ventasDiarias.tableWidget
@@ -61,7 +59,6 @@ class listarVentas():
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
             
-
     def ventasMensuales(self):
         table = self.listar_ventasDiarias.tableWidget_2
         ventasMensuales = self.venta.ventasMensuales()
@@ -336,7 +333,6 @@ class listarVentas():
                         for column_number, data in enumerate(row_data):
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
-
     def refrescarAnulacion(self,condPago):
         table = self.listar_ventasDiarias.tableWidget_4 
         if condPago !='Todos':    
@@ -361,8 +357,7 @@ class listarVentas():
                             table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
             else: 
                 self.listar_ventasDiarias.tableWidget_4.setRowCount(0) 
-                
-            
+                       
     def anularVenta (self,motivo):
         table = self.listar_ventasDiarias.tableWidget_4
         if table.currentItem() != None:
@@ -529,6 +524,7 @@ class listarVentas():
         self.listar_ventasDiarias.tableWidget_3.setRowCount(0)
         self.listar_ventasDiarias.input_fecha.clear()
         self.listar_ventasDiarias.search_nroFactura.clear()
+    
     def limpiar4 (self):
         self.listar_ventasDiarias.tableWidget_4.setRowCount(0)
         self.listar_ventasDiarias.search_fecha.clear()

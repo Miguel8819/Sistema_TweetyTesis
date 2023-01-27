@@ -19,9 +19,7 @@ class modificarProductoController():
         self.product.modificarProduct(CodigoDeBarras,self.modificar.input_prod.text(),
         self.modificar.input_cantMinStock.text(),self.modificar.input_puntoPedido.text(),
         self.modificar.input_costCompra.text(),self.modificar.input_precVenta.text())
-        
-    
-
+ 
     def borrar(self):
         self.modificar.input_prod.clear()
         self.modificar.input_cantMinStock.clear()
@@ -29,7 +27,6 @@ class modificarProductoController():
         self.modificar.input_costCompra.clear()
         self.modificar.input_precVenta.clear()
     
-
     def salir(self, ModificarProducto):
         ModificarProducto.close()
 
