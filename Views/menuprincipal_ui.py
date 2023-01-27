@@ -19,7 +19,7 @@ from informedeventas_ui import Ui_informeDeVentas
 from facturaCompra_ui import Ui_FacturaDeCompra
 from controldestock_ui import Ui_controlDeStock
 from registrarusuario_ui import Ui_registrarUsuario
-from listafactcompra_ui import Ui_lista_facturascompra
+from detallefacturacompra_ui import Ui_detallefacturacompra
 from Models.Product import *
 from Database.Connection import connection
 
@@ -441,7 +441,7 @@ class Ui_menuprincipal(object):
         self.btn_listaproveedores.clicked.connect(lambda:self.menuprincipalController.openListaProveedores(Ui_lista_proveedores, menuprincipal))
         self.btn_infDeVentas.clicked.connect(lambda:self.menuprincipalController.openInformeDeVentas(Ui_informeDeVentas, menuprincipal))
         self.btn_genOrdenCompra.clicked.connect(lambda:self.menuprincipalController.openFacturaCompra(Ui_FacturaDeCompra, menuprincipal))
-        self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openListaFactCompra(Ui_lista_facturascompra, menuprincipal))
+        self.btn_listaFactCompra.clicked.connect(lambda:self.menuprincipalController.openDetalleFactCompra(Ui_detallefacturacompra, menuprincipal))
         self.btn_manualUsuario.clicked.connect(lambda:self.menuprincipalController.manualUsuario())
         self.btn_controlStock_2.clicked.connect(lambda:self.menuprincipalController.openControlStock(Ui_controlDeStock, menuprincipal))
         self.btn_registrarUsuario.clicked.connect(lambda:self.menuprincipalController.openRegistroUsuarios(Ui_registrarUsuario, menuprincipal))
