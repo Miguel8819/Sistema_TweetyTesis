@@ -92,9 +92,3 @@ class FacturaCompra():
             result = cursor.fetchall()
             return result
         
-
-    # def updateStock(self,stock,CodBarras):
-    #     with self.conn.cursor() as cursor:
-    #         sql= """UPDATE product SET stock = %s WHERE CodigoDeBarras = %s"""
-    #         cursor.execute(sql,(stock,CodBarras))
-    #         self.conn.commit

@@ -955,8 +955,15 @@ class Ui_FacturaDeCompra(object):
         #self.input_nombreProd.textChanged.connect(self.product.actualizarCodBarra(self.input_nombreProd))
 
         self.input_nombreProd.textChanged.connect(lambda:self.updatecodbarra())
-        #temp_var = self.date_fechaEmision.date()
-        #var_name = temp_var.toPyDate()
+        
+        self.input_subtotal.setMaxLength(10)
+        self.input_subtotal.setValidator(QDoubleValidator(0.99,99.99,2))
+
+        self.input_iva.setMaxLength(10)
+        self.input_iva.setValidator(QDoubleValidator(0.99,99.99,2))
+
+        self.input_importe.setMaxLength(10)
+        self.input_importe.setValidator(QDoubleValidator(0.99,99.99,2))
 
 #------------------------------------------------------------------------------
 
@@ -976,9 +983,9 @@ class Ui_FacturaDeCompra(object):
 
         self.h = self.boton_remover.clicked.connect(lambda:self.facturaCompraController.remover(self.input_subtotal.text()))
 
-        self.i = self.boton_agregarDescuento.clicked.connect(lambda: self.input_descuento_2.setText(self.input_descuento.text()))
+        self.i = self.boton_agregarDescuento.clicked.connect(lambda: self.input_descuento_2.setText(self.input_descuento.text()) and self.facturaCompraController.descuentoAgregado)
 
-        self.h = self.boton_agregarDescuento.clicked.connect(lambda: self.facturaCompraController.descuentoAgregado)
+        #self.h = self.boton_agregarDescuento.clicked.connect(lambda: self.facturaCompraController.descuentoAgregado)
 #-------------------------------------------------------------------------------
 
     def retranslateUi(self, FacturaDeCompra):

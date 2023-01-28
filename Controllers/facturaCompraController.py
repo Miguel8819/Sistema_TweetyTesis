@@ -74,7 +74,7 @@ class facturaCompraController():
 
                     cantidad = int(table.item(rowCount, 3).text())
                     precio = float(table.item(rowCount, 4).text())
-                    subtotal = cantidad*precio
+                    subtotal = float(cantidad*precio)
 
                     table.setItem(rowCount, 5, QtWidgets.QTableWidgetItem(str(subtotal)))  # subtotal
 
@@ -151,7 +151,7 @@ class facturaCompraController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_() 
-            if tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
+            elif tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
                 self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal)
                 for i in range(table.rowCount()):
                     CodProducto = table.item(i,0).text()
@@ -161,6 +161,9 @@ class facturaCompraController():
                     precio = table.item(i,4).text()
                     subtotalTabla = table.item(i,5).text()
                     self.facturaCompra.insertTabla(nroFactCompra, nroCuil, fechaIngreso, CodProducto, CodigoDeBarras, producto, stock, precio, subtotalTabla)
+                    self.product.updateStock(stock,CodigoDeBarras)
+                    self.product.updateCostoCompra(precio,CodigoDeBarras)
+
                 msg = QMessageBox()
                 msg.setWindowTitle("Confirmado")
                 msg.setText("Factura de Compra guardada")
@@ -169,6 +172,21 @@ class facturaCompraController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("")
                 x = msg.exec_() 
+                d = QDate(2000, 1, 1)
+                table.setRowCount(0)
+                self.factura_compra.date_fechaEmision.setDate(d)
+                self.factura_compra.input_nroFac.clear()
+                self.factura_compra.input_provFact.clear()
+                self.factura_compra.input_nroCuil.clear()
+                self.factura_compra.input_codprod.clear()
+                self.factura_compra.input_nombreProd.clear()
+                self.factura_compra.input_cantidad.clear()
+                self.factura_compra.input_precio.clear()
+                self.factura_compra.input_descuento.clear()
+                self.factura_compra.input_subtotal.clear()
+                self.factura_compra.input_descuento_2.clear()
+                self.factura_compra.input_iva.clear()
+                self.factura_compra.input_importe.clear()
         
 
     def cancelar(self, Ui_FacturaCompra):
@@ -193,7 +211,7 @@ class facturaCompraController():
     def calcular_iva(self):
         subtotal = float(self.factura_compra.input_subtotal.text())
         porcentajeIva = 0.21
-        iva = subtotal * porcentajeIva
+        iva = float(subtotal * porcentajeIva)
         self.factura_compra.input_iva.setText(str(iva))
 
     def calcular_importe(self,neto,descuento,importe):
@@ -204,12 +222,12 @@ class facturaCompraController():
              
                 descuento = (neto * (float(self.factura_compra.input_descuento.text())) / 100)
             
-                importe = neto - descuento
-                descuento_valor = neto - importe
+                importe = float(neto - descuento)
+                descuento_valor = float(neto - importe)
 
                 iva = float(self.factura_compra.input_iva.text())
 
-                importeFinal = importe + iva
+                importeFinal = float(importe + iva)
 
                 self.factura_compra.input_descuento_2.setText(str(descuento_valor))
                 self.factura_compra.input_importe.setText(str(importeFinal))      
@@ -245,7 +263,7 @@ class facturaCompraController():
             if importe > '0.0':
                 msgBox = QMessageBox()
                 msgBox.setIcon(QMessageBox.Information)
-                msgBox.setText("¿Desea quitar el producto de la lista? ")
+                msgBox.setText("¿Desea quitar el producto de la lista?")
                 msgBox.setWindowTitle("Remover producto")
                 msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                 returnValue = msgBox.exec()
@@ -254,6 +272,7 @@ class facturaCompraController():
                     self.factura_compra.table_venta.removeRow(self.factura_compra.table_venta.currentRow())
                     self.calcular_subtotal()
                     self.calcular_iva()
+                    self.calcular_importe(neto=any,descuento=any,importe=any)
         
             else:
                 msg = QMessageBox()
