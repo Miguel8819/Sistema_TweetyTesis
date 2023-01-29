@@ -69,6 +69,7 @@ class facturaCompraController():
                     table.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(str(precio)))  # price
 
                     self.factura_compra.input_codprod.clear()
+                    self.factura_compra.input_nombreProd.clear()
                     self.factura_compra.input_cantidad.clear()
                     self.factura_compra.input_precio.clear()
 
