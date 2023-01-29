@@ -179,6 +179,14 @@ class Product():
             cursor.execute(sql,nombre)
             result = cursor.fetchone()
             return result
+        
+    def actualizarNombreProd(self,codBarra):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT producto FROM Product WHERE CodigoDeBarras = %s """
+            cursor.execute(sql,codBarra)
+            result = cursor.fetchone()
+            return result
+        
     def autoComplete(self):
         with self.conn.cursor() as cursor:
             sql ="""SELECT producto FROM product WHERE activo = '1' """

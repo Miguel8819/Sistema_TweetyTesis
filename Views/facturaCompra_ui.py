@@ -25,9 +25,37 @@ class Ui_FacturaDeCompra(object):
         self.proveedor = Proveedor(connection())
         self.menuPrincipal= menuprincipalController(self)
 
-    def updatecodbarra(self):
-            codbarra = self.product.actualizarCodBarra(self.input_nombreProd)
-            self.input_codprod.setText(codbarra)
+    def timerNombreProducto(self):
+        self.typing_timer = QtCore.QTimer()
+        self.typing_timer.setSingleShot(True)
+        self.typing_timer.timeout.connect(self.cambiarCodBarras)
+        self.input_nombreProd.textChanged.connect(self.timerEscribiendo)
+
+    def timerCodBarras(self):
+        self.typing_timer = QtCore.QTimer()
+        self.typing_timer.setSingleShot(True)
+        self.typing_timer.timeout.connect(self.cambiarNombreProd)
+        self.input_codprod.textChanged.connect(self.timerEscribiendo)
+
+    def timerEscribiendo(self):
+        #Se espera 200 ms antes de chequear si hubo cambios
+        self.typing_timer.start(200)
+
+    def cambiarNombreProd(self):
+        codbarra = self.input_codprod.text()
+        nombreProd = self.product.actualizarNombreProd(codbarra)
+        try:
+            self.input_nombreProd.setText(str(nombreProd[0]))
+        except:
+            pass
+
+    def cambiarCodBarras(self):
+        nombreProd = self.input_nombreProd.text()
+        codbarra = self.product.actualizarCodBarra(nombreProd)
+        try:
+            self.input_codprod.setText(str(codbarra[0]))
+        except:
+            pass
 
     def setupUi(self, FacturaDeCompra):
         FacturaDeCompra.setObjectName("FacturaDeCompra")
@@ -954,7 +982,9 @@ class Ui_FacturaDeCompra(object):
 
         #self.input_nombreProd.textChanged.connect(self.product.actualizarCodBarra(self.input_nombreProd))
 
-        self.input_nombreProd.textChanged.connect(lambda:self.updatecodbarra())
+        self.timerNombreProducto()
+
+        self.timerCodBarras()
         
         self.input_subtotal.setMaxLength(10)
         self.input_subtotal.setValidator(QDoubleValidator(0.99,99.99,2))
