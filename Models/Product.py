@@ -160,7 +160,7 @@ class Product():
         with self.conn.cursor() as cursor:
             sql = """UPDATE product SET stock = stock + %s WHERE CodigoDeBarras = %s"""
             cursor.execute(sql,(cantidad,codigodebarras))
-            self.conn.commit
+            self.conn.commit()
 
     
     def descontarStock(self,cantidad,codigodebarras):
@@ -175,7 +175,7 @@ class Product():
         with self.conn.cursor() as cursor:
             sql = """UPDATE product SET CostoDeCompra = %s WHERE CodigoDeBarras = %s"""
             cursor.execute(sql,(valor,codigodebarras))
-            self.conn.commit
+            self.conn.commit()
 
     def autoCompleteCodProd(self):
         with self.conn.cursor() as cursor:
