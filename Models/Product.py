@@ -26,6 +26,22 @@ class Product():
                         )"""
             cursor.execute(sql)
             self.conn.commit()
+
+            # TABLA PRODUCTO POR PROVEEDOR
+#______________________________________________________________________________________________________
+
+        with self.conn.cursor() as cursor:
+            sql = """CREATE TABLE IF NOT EXISTS productoxproveedor
+                        (
+                        codProducto INT(10) NOT NULL,    
+                        codProveedor INT(10) NOT NULL,
+                        precio INT(10) NOT NULL
+                        )"""
+            cursor.execute(sql)
+            self.conn.commit()
+
+#______________________________________________________________________________________________________
+
     
     def getProducts(self):
         with self.conn.cursor() as cursor:
@@ -50,6 +66,13 @@ class Product():
             if result:
                 return result
     
+    def insertProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+        with self.conn.cursor() as cursor:
+            activo = 1
+            sql = """INSERT INTO product (CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta, activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,activo))
+            self.conn.commit()
+
     def UpdateProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
         with self.conn.cursor() as cursor:
             
@@ -57,17 +80,22 @@ class Product():
             cursor.execute(sql,(producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,CodigoDeBarras))
             self.conn.commit()
 
-    def deleteProduct(self,CodigoDeBarras):
+    def deleteProductxProveedor(self,nombreProveedor):
         with self.conn.cursor() as cursor:
-            sql = """DELETE FROM product WHERE CodigoDeBarras = %s"""
-            cursor.execute(sql, CodigoDeBarras)
+            sql = """DELETE * 
+            FROM productxproveedores 
+            WHERE nombreProveedor = %s
+            AND 
+            """
+            cursor.execute(sql, nombreProveedor)
             self.conn.commit()
     
-    def insertProduct(self,CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta):
+    def insertProductxProveedor(self,codProducto,codProveedor,precio):
         with self.conn.cursor() as cursor:
-            activo = 1
-            sql = """INSERT INTO product (CodigoDeBarras,producto,categoria,subCategoria,marca,tipoUnidad,UnidadDeMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta, activo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (CodigoDeBarras,producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,activo))
+            
+            sql = """INSERT INTO productoxproveedor (codProducto,codProveedor,precio) VALUES (%s,%s,%s)
+             WHERE CodigoDeBarras = %s"""
+            cursor.execute(sql, (codProducto,codProveedor,precio))
             self.conn.commit()
 
     
@@ -284,4 +312,48 @@ class Product():
             self.model_2.setStringList(new_list_2)
             if self.model_2:
                 return self.model_2
+
+#Productos por proveedor
+
+    def productosDeProveedorXnombreProv(self,nombre):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT pd.codProducto, pd.producto, pd.marca, pp.precio
+            FROM Product pd, Proveedor pv, productoxproveedor pp
+            WHERE pd.codProducto = pp.codProducto      
+            AND pv.codProveedor = pp.codProveedor
+            AND nombreProveedor = %s  
+             """
+            cursor.execute(sql, nombre)
+            result = cursor.fetchall()
+            return result
+
+    def productosParaAgregar(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, producto, marca, CostoDeCompra
+            FROM Product 
+            WHERE activo = '1'      
+             """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def AgregarxCod(self,codProducto):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT codProducto, producto, marca, CostoDeCompra
+            FROM Product 
+            WHERE activo = '1'
+            AND codProducto = %s      
+             """
+            cursor.execute(sql, codProducto)
+            result = cursor.fetchall()
+            return result
+
+    def insertProductoaProveedor(self,codProducto):
+        with self.conn.cursor() as cursor:
+            sql = """INSERT INTO productoXproveedor (codProducto,'1') VALUES (%s,%s)"""
+            cursor.execute(sql, codProducto)
+            id = cursor.lastrowid
+            self.conn.commit()
+            return id
+
     

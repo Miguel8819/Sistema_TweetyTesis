@@ -48,7 +48,7 @@ class CabeceraFactura():
             self.conn.commit()
             return id
 
-    def insertMotivo(self,motivo,nroFactura,anulo):
+    def  insertMotivo(self,motivo,nroFactura,anulo):
         with self.conn.cursor() as cursor:         
             sql = """UPDATE cabeceraFactura SET motivoAnulacion = %s, activo = '0', anulo = %s
             WHERE cabecerafactura.nroFactura = %s

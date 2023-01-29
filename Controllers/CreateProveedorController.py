@@ -3,16 +3,21 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
+from PyQt5 import QtWidgets
 from Database.Connection import connection
 from Models.Proveedores import *
 from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
+from Models.Product import Product
 from Controllers import globales
+
 class CreateProveedorController():
     def __init__(self, create_proveedor):
         self.proveedor = Proveedor(connection())
         self.create_proveedor = create_proveedor
+        self.product = Product(connection())
         self.usuario= globales.logueado[0]
+
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor and nombreFactura and nroCuil and celular:
             fechaAlta1= datetime.now()
@@ -101,8 +106,8 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel.setText(str(result[9]))
                 self.create_proveedor.show_email.setText(str(result[10]))
                 self.create_proveedor.show_web.setText(str(result[11]))
-
                 self.create_proveedor.input_searchNameProv.clear()
+                self.showProductos(nombreProveedor)
                 
             else: 
                     msg = QMessageBox()
@@ -268,6 +273,109 @@ class CreateProveedorController():
             msg.setDefaultButton(QMessageBox.Ok)
             msg.setInformativeText("Vuelva a intentarlo")
             x = msg.exec_()
+
+    def showProductos(self,nombre):
+
+        table = self.create_proveedor.tablaProductos
+        productos = self.product.productosDeProveedorXnombreProv(nombre)
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def quitarProductos(self):
+            table = self.create_proveedor.tablaProductos
+            if table.currentItem() != None:    
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea quitar el producto de la lista? ")
+                msgBox.setWindowTitle("Remover producto")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:
+                    
+                    self.create_proveedor.tablaProductos.removeRow(self.create_proveedor.tablaProductos.currentRow())
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("La tabla esta vacia")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                msg.setInformativeText("")
+                x = msg.exec_()         
+
+    def deleteProduct(self):
+        table = self.create_proveedor.tablaProductos
+        if table.currentItem() != None:
+            nombre = table.currentItem().text()
+            product = self.product.productosDeProveedorXnombreProv(nombre)
+            if product:
+                self.product.deleteProductxProveedor(nombre)
+        self.listProducts()
+
+
+
+    def openAgregarProducto(self, Ui_AgregarProducto,Form):
+        self.create_proveedor.Form = QtWidgets.QWidget()
+        self.create_proveedor.ui = Ui_AgregarProducto()
+        self.create_proveedor.ui.setupUi(self.create_proveedor.Form)
+        self.create_proveedor.Form.show()
+        Form.show() 
+    
+    def verProductos(self):
+        table = self.create_proveedor.tableWidget
+        productos = self.product.productosParaAgregar()
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
+    def ingresarProductoaProveedor (self):
+        table = self.create_proveedor.tableWidget
+        if table.currentItem() != None:
+            codProducto = table.currentItem().text()        
+            prod = self.product.AgregarxCod(codProducto)
+                    
+            if prod:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setText("¿Desea agregar este producto al proveedor? ")
+                msgBox.setWindowTitle("Confirmacion")
+                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                returnValue = msgBox.exec()
+                if returnValue == QMessageBox.Ok:
+                        self.product.insertProductoaProveedor(codProducto) 
+                        msg = QMessageBox()
+                        msg.setWindowTitle('¡Exito!')
+                        msg.setText("¡Producto agregado!.")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        x = msg.exec_()
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle('¡Error!')
+                msg.setText("Seleccione el codProducto y luego presione el boton Agregar.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("Seleccione el codProducto para agregar un producto.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+    
+
+
+    
+
 
     def darBajaProveedor(self,proveedores,nombreProveedor,cuil):
         fechaBaja1= datetime.now()
