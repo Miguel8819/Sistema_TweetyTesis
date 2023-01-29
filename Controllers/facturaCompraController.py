@@ -83,6 +83,7 @@ class facturaCompraController():
                     self.calcular_subtotal()
                     self.calcular_iva()
                     self.calcular_importe(neto=any,descuento=any,importe=any)
+                    
 
                 else:
                     msg = QMessageBox()
@@ -100,7 +101,7 @@ class facturaCompraController():
                 if not CodigoDeBarras :
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
-                    msg.setText("Ingrese un codigo de producto.")
+                    msg.setText("No ha ingresado un codigo de producto.")
 
                     msg.setIcon(QMessageBox.Information)
 
@@ -210,8 +211,12 @@ class facturaCompraController():
 
     def calcular_iva(self):
         subtotal = float(self.factura_compra.input_subtotal.text())
+        descuento = (subtotal * (float(self.factura_compra.input_descuento.text())) / 100)
+
+        total = float(subtotal - descuento)
+
         porcentajeIva = 0.21
-        iva = float(subtotal * porcentajeIva)
+        iva = float(total * porcentajeIva)
         self.factura_compra.input_iva.setText(str(iva))
 
     def calcular_importe(self,neto,descuento,importe):
@@ -273,6 +278,7 @@ class facturaCompraController():
                     self.calcular_subtotal()
                     self.calcular_iva()
                     self.calcular_importe(neto=any,descuento=any,importe=any)
+
         
             else:
                 msg = QMessageBox()
@@ -282,9 +288,11 @@ class facturaCompraController():
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
                 msg.setInformativeText("Vuelva a intentarlo")
-                x = msg.exec_() 
+                x = msg.exec_()   
 
-    def descuentoAgregado(self):
-        self.calcular_subtotal()
-        self.calcular_iva()
-        self.calcular_importe(neto=any,descuento=any,importe=any)
+    def descuentoAgregado(self,descuento):
+        if descuento:
+            self.factura_compra.input_descuento_2.setText(str(descuento)) 
+            self.calcular_iva()   
+            self.calcular_importe(neto=any,descuento=any,importe=any)
+

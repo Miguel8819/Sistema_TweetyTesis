@@ -983,9 +983,7 @@ class Ui_FacturaDeCompra(object):
 
         self.h = self.boton_remover.clicked.connect(lambda:self.facturaCompraController.remover(self.input_subtotal.text()))
 
-        self.i = self.boton_agregarDescuento.clicked.connect(lambda: self.input_descuento_2.setText(self.input_descuento.text()) and self.facturaCompraController.descuentoAgregado)
-
-        #self.h = self.boton_agregarDescuento.clicked.connect(lambda: self.facturaCompraController.descuentoAgregado)
+        self.i = self.boton_agregarDescuento.clicked.connect(lambda: self.facturaCompraController.descuentoAgregado(self.input_descuento.text()))
 #-------------------------------------------------------------------------------
 
     def retranslateUi(self, FacturaDeCompra):
