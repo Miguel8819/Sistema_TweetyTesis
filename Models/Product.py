@@ -156,12 +156,11 @@ class Product():
             result = cursor.fetchall()
             return result
 
-    def updateStock(self,stock,CodBarras):
+    def updateStock(self,cantidad,codigodebarras):
         with self.conn.cursor() as cursor:
-            sql= """UPDATE product SET stock = %s WHERE CodigoDeBarras = %s"""
-            cursor.execute(sql,(stock,CodBarras))
+            sql = """UPDATE product SET stock = stock + %s WHERE CodigoDeBarras = %s"""
+            cursor.execute(sql,(cantidad,codigodebarras))
             self.conn.commit
-
 
     
     def descontarStock(self,cantidad,codigodebarras):
@@ -172,6 +171,11 @@ class Product():
             cursor.execute(sql,(cantidad,codigodebarras))
             self.conn.commit()
 
+    def updateCostoCompra(self,valor,codigodebarras):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE product SET CostoDeCompra = %s WHERE CodigoDeBarras = %s"""
+            cursor.execute(sql,(valor,codigodebarras))
+            self.conn.commit
 
     def autoCompleteCodProd(self):
         with self.conn.cursor() as cursor:
@@ -203,6 +207,14 @@ class Product():
             cursor.execute(sql,nombre)
             result = cursor.fetchone()
             return result
+        
+    def actualizarNombreProd(self,codBarra):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT producto FROM Product WHERE CodigoDeBarras = %s """
+            cursor.execute(sql,codBarra)
+            result = cursor.fetchone()
+            return result
+        
     def autoComplete(self):
         with self.conn.cursor() as cursor:
             sql ="""SELECT producto FROM product WHERE activo = '1' """
