@@ -298,6 +298,15 @@ class CreateProveedorController():
                 if returnValue == QMessageBox.Ok:
                     
                     self.create_proveedor.tablaProductos.removeRow(self.create_proveedor.tablaProductos.currentRow())
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Exito")
+                    msg.setText("Producto removido de la lista")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("")
+                    x = msg.exec_()
+
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -342,37 +351,54 @@ class CreateProveedorController():
             prod = self.product.AgregarxCod(codProducto)
                     
             if prod:
-                msgBox = QMessageBox()
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setText("¿Desea agregar este producto al proveedor? ")
-                msgBox.setWindowTitle("Confirmacion")
-                msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-                returnValue = msgBox.exec()
-                if returnValue == QMessageBox.Ok:
-                        table2 = self.create_proveedor.tablaProductos
-                        productos2 = self.product.AgregarxCod(codProducto)
+                table2 = self.create_proveedor.tablaProductos
+                repetido = False
+                for  i in range(table2.rowCount()):
+                        # datelle de factura
+                    codProducto1 = table2.item(i,0).text()
+                    if codProducto1 == codProducto:
+                        repetido = True
+                        print(codProducto1)
+                        msg = QMessageBox()
+                        msg.setWindowTitle('¡Error!')
+                        msg.setText("El producto ya existe en la lista.")
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setStandardButtons(QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Ok)
+                        x = msg.exec_()
                         
-                        for row_number, row_data in enumerate(productos2):
-                            table2.insertRow(row_number)
-                            for column_number, data in enumerate(row_data):
-                                table2.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
-                        
-            else:
+
+                if not repetido:   
+                    msgBox = QMessageBox()
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setText("¿Desea agregar este producto al proveedor? ")
+                    msgBox.setWindowTitle("Confirmacion")
+                    msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+                    returnValue = msgBox.exec()
+                    if returnValue == QMessageBox.Ok:
+                            table2 = self.create_proveedor.tablaProductos
+                            productos2 = self.product.AgregarxCod(codProducto)
+                            
+                            for row_number, row_data in enumerate(productos2):
+                                table2.insertRow(row_number)
+                                for column_number, data in enumerate(row_data):
+                                    table2.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                 
+                    msg = QMessageBox()
+                    msg.setWindowTitle('¡Exito!')
+                    msg.setText("Producto agregado a la lista.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
+        else:
                 msg = QMessageBox()
                 msg.setWindowTitle('¡Error!')
-                msg.setText("Seleccione el codProducto y luego presione el boton Agregar.")
+                msg.setText("Seleccione el codProducto para agregar un producto.")
                 msg.setIcon(QMessageBox.Information)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
                 x = msg.exec_()
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle('¡Error!')
-            msg.setText("Seleccione el codProducto para agregar un producto.")
-            msg.setIcon(QMessageBox.Information)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
     
 
 
