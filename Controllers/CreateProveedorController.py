@@ -326,8 +326,6 @@ class CreateProveedorController():
                 self.product.deleteProductxProveedor(nombre)
         self.listProducts()
 
-
-
     def openAgregarProducto(self, Ui_AgregarProducto,Form):
         self.create_proveedor.Form = QtWidgets.QWidget()
         self.create_proveedor.ui = Ui_AgregarProducto()
@@ -358,7 +356,7 @@ class CreateProveedorController():
                     codProducto1 = table2.item(i,0).text()
                     if codProducto1 == codProducto:
                         repetido = True
-                        print(codProducto1)
+                        
                         msg = QMessageBox()
                         msg.setWindowTitle('¡Error!')
                         msg.setText("El producto ya existe en la lista.")
@@ -400,11 +398,6 @@ class CreateProveedorController():
                 msg.setDefaultButton(QMessageBox.Ok)
                 x = msg.exec_()
     
-
-
-    
-
-
     def darBajaProveedor(self,proveedores,nombreProveedor,cuil):
         fechaBaja1= datetime.now()
         fechaBaja= datetime.strftime(fechaBaja1, '%d/%m/%Y %H:%M:%S')
