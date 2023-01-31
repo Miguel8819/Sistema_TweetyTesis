@@ -1715,7 +1715,7 @@ class Ui_venta(object):
 
         self.e = self.Boton_limpiar.clicked.connect(lambda:self.ventaController.limpiar_venta(venta))
 
-        self.f = self.boton_remover.clicked.connect(lambda:self.ventaController.remover(venta,self.input_importe.text()))
+        self.f = self.boton_remover.clicked.connect(lambda:self.ventaController.remover(venta))
        
         self.g = self.Boton_cancelar.clicked.connect(lambda:self.ventaController.cancelar(venta))
  

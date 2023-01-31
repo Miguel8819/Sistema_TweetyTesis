@@ -315,9 +315,10 @@ class ventaController():
                 msg.setInformativeText("Vuelva a intentarlo")
                 x = msg.exec_()    
 
-    def remover (self,Ui_venta,importe):  
-        
-            if importe > '0.0':
+    def remover (self,Ui_venta):  
+            table = self.venta.table_venta
+            if table.currentItem() != None:        
+            
                 msgBox = QMessageBox()
                 msgBox.setIcon(QMessageBox.Information)
                 msgBox.setText("¿Desea quitar el producto de la lista? ")

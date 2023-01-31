@@ -18,6 +18,8 @@ class CreateProveedorController():
         self.product = Product(connection())
         self.usuario= globales.logueado[0]
 
+       
+        
     def createProveedor(self,  nombreProveedor, nombreFactura,nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb):
         if nombreProveedor and nombreFactura and nroCuil and celular:
             fechaAlta1= datetime.now()
@@ -325,7 +327,7 @@ class CreateProveedorController():
         Form.show() 
     
     def verProductos(self):
-        table = self.create_proveedor.tableWidget
+        table = self.create_proveedor.tablaProductos_2
         productos = self.product.productosParaAgregar()
         table.setRowCount(0)
         for row_number, row_data in enumerate(productos):
@@ -334,7 +336,7 @@ class CreateProveedorController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def ingresarProductoaProveedor (self):
-        table = self.create_proveedor.tableWidget
+        table = self.create_proveedor.tablaProductos_2
         if table.currentItem() != None:
             codProducto = table.currentItem().text()        
             prod = self.product.AgregarxCod(codProducto)
@@ -347,14 +349,14 @@ class CreateProveedorController():
                 msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
                 returnValue = msgBox.exec()
                 if returnValue == QMessageBox.Ok:
-                        self.product.insertProductoaProveedor(codProducto) 
-                        msg = QMessageBox()
-                        msg.setWindowTitle('¡Exito!')
-                        msg.setText("¡Producto agregado!.")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        x = msg.exec_()
+                        table2 = self.create_proveedor.tablaProductos
+                        productos2 = self.product.AgregarxCod(codProducto)
+                        
+                        for row_number, row_data in enumerate(productos2):
+                            table2.insertRow(row_number)
+                            for column_number, data in enumerate(row_data):
+                                table2.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                        
             else:
                 msg = QMessageBox()
                 msg.setWindowTitle('¡Error!')
