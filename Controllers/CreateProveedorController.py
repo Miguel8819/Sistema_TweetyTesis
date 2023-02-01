@@ -110,6 +110,7 @@ class CreateProveedorController():
                 self.create_proveedor.show_web.setText(str(result[11]))
                 self.create_proveedor.input_searchNameProv.clear()
                 self.showProductos(nombreProveedor)
+                self.codProveedor= result[0]
                 
             else: 
                     msg = QMessageBox()
@@ -165,6 +166,7 @@ class CreateProveedorController():
                 self.create_proveedor.show_tel.setText(str(result[9]))
                 self.create_proveedor.show_email.setText(str(result[10]))
                 self.create_proveedor.show_web.setText(str(result[11]))
+                self.showProductos2(nroCuit)
 
                 self.create_proveedor.input_searchNameFact.clear()
             else: 
@@ -286,6 +288,16 @@ class CreateProveedorController():
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
+    def showProductos2(self,nroCuit):
+
+        table = self.create_proveedor.tablaProductos
+        productos = self.product.productosDeProveedorXnroCuil(nroCuit)
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
     def quitarProductos(self):
             table = self.create_proveedor.tablaProductos
             if table.currentItem() != None:    
@@ -317,14 +329,7 @@ class CreateProveedorController():
                 msg.setInformativeText("")
                 x = msg.exec_()         
 
-    def deleteProduct(self):
-        table = self.create_proveedor.tablaProductos
-        if table.currentItem() != None:
-            nombre = table.currentItem().text()
-            product = self.product.productosDeProveedorXnombreProv(nombre)
-            if product:
-                self.product.deleteProductxProveedor(nombre)
-        self.listProducts()
+        
 
     def openAgregarProducto(self, Ui_AgregarProducto,Form):
         self.create_proveedor.Form = QtWidgets.QWidget()
@@ -469,6 +474,8 @@ class CreateProveedorController():
                 x = msg.exec_() 
 
     def modificarProveedor(self,nombreProveedor, nombreFactura, nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb ):
+        table2 = self.create_proveedor.tablaProductos
+        proveedor = self.codProveedor
         if nombreProveedor or nroCuil: 
             
             msgBox = QMessageBox()
@@ -480,6 +487,16 @@ class CreateProveedorController():
             if returnValue == QMessageBox.Ok:
                         if nombreProveedor != "" and nombreFactura !="" and calle !="" and numeroCalle != ""  and codPostal != "" and celular != "" and email != "" and pagWeb != "":
                             self.proveedor.UpdateProveedor(nroCuil,nombreProveedor, nombreFactura, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb)
+                            
+                            self.proveedor.deleteProductxProveedor(proveedor)
+                           
+                            for  i in range(table2.rowCount()):
+                                codProducto = table2.item(i,0).text()
+                                precio = table2.item(i,3).text()
+
+                                if codProducto and proveedor and precio:
+                                    self.proveedor.insertProductos(codProducto,proveedor,precio)
+                        
 
                             msg = QMessageBox()
                             msg.setWindowTitle("Confirmado")

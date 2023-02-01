@@ -79,27 +79,7 @@ class Product():
             sql = """UPDATE product SET  producto = %s,categoria = %s,subCategoria = %s,marca = %s,tipoUnidad = %s,UnidadDeMedida = %s,cant_min_stock = %s,PuntoDePedido = %s,CostoDeCompra = %s,PrecioDeVenta = %s WHERE CodigoDeBarras = %s """
             cursor.execute(sql,(producto,categoria,subCategoria,marca, tipoUnidad,unidadMedida,cant_min_stock,PuntoDePedido,CostoDeCompra,PrecioDeVenta,CodigoDeBarras))
             self.conn.commit()
-
-    def deleteProductxProveedor(self,nombreProveedor):
-        with self.conn.cursor() as cursor:
-            sql = """DELETE * 
-            FROM productxproveedores 
-            WHERE nombreProveedor = %s
-            AND 
-            """
-            cursor.execute(sql, nombreProveedor)
-            self.conn.commit()
-    
-    def insertProductxProveedor(self,codProducto,codProveedor,precio):
-        with self.conn.cursor() as cursor:
-            
-            sql = """INSERT INTO productoxproveedor (codProducto,codProveedor,precio) VALUES (%s,%s,%s)
-             WHERE CodigoDeBarras = %s"""
-            cursor.execute(sql, (codProducto,codProveedor,precio))
-            self.conn.commit()
-
-    
-            
+                
     def bajaProducto(self,CodigoDeBarras):
         with self.conn.cursor() as cursor:
             sql = """UPDATE Product SET activo = "0" WHERE CodigoDeBarras = %s"""
@@ -334,8 +314,22 @@ class Product():
             WHERE pd.codProducto = pp.codProducto      
             AND pv.codProveedor = pp.codProveedor
             AND nombreProveedor = %s  
+            order by pd.codProducto
              """
             cursor.execute(sql, nombre)
+            result = cursor.fetchall()
+            return result
+
+    def productosDeProveedorXnroCuil(self,nroCuil):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT pd.codProducto, pd.producto, pd.marca, pp.precio
+            FROM Product pd, Proveedor pv, productoxproveedor pp
+            WHERE pd.codProducto = pp.codProducto      
+            AND pv.codProveedor = pp.codProveedor
+            AND nroCuilCuit = %s  
+            order by pd.codProducto
+             """
+            cursor.execute(sql, nroCuil)
             result = cursor.fetchall()
             return result
 
@@ -360,12 +354,6 @@ class Product():
             result = cursor.fetchall()
             return result
 
-    def insertProductoaProveedor(self,codProducto):
-        with self.conn.cursor() as cursor:
-            sql = """INSERT INTO productoXproveedor (codProducto,'1') VALUES (%s,%s)"""
-            cursor.execute(sql, codProducto)
-            id = cursor.lastrowid
-            self.conn.commit()
-            return id
+    
 
     

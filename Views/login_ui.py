@@ -216,7 +216,7 @@ class Ui_LogIn(object):
          #--------------------Events--------------------------------------
         self.s = self.btn_salir.clicked.connect(lambda:self.login_controller.salir())
         self.l = self.btn_login.clicked.connect(lambda:self.login_controller.logIn(self.input_user.text(), self.input_password.text(), Ui_menuprincipal, LogIn))
-        #--------------------End Events---------------------------------
+        #--------------------End Events--------------------------------- 
 
 
     def retranslateUi(self, LogIn):

@@ -123,3 +123,19 @@ class Proveedor():
             sql = """UPDATE proveedor SET  nombreProveedor = %s,nombreFactura=%s ,calle = %s,numeroCalle = %s,ciudad = %s,codPostal = %s,celular = %s,email = %s,pagWeb = %s WHERE nroCuilCuit = %s """
             cursor.execute(sql,(nombreProveedor,nombreFactura,calle,numeroCalle,ciudad,codPostal,celular,email,pagWeb,nroCuil))
             self.conn.commit() 
+
+    def insertProductos(self,codProducto,codProveedor,precio):
+        with self.conn.cursor() as cursor:
+            sql = """INSERT INTO productoxproveedor (codProducto,codProveedor,precio) VALUES (%s,%s,%s)"""
+            cursor.execute(sql, (codProducto,codProveedor,precio))
+            self.conn.commit()
+
+    def deleteProductxProveedor(self,codProveedor):
+        with self.conn.cursor() as cursor:
+            sql = """DELETE  
+            FROM productoxproveedor
+            WHERE codProveedor = %s
+            
+            """
+            cursor.execute(sql, codProveedor)
+            self.conn.commit()
