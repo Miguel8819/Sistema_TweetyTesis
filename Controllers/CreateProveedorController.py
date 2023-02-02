@@ -167,6 +167,7 @@ class CreateProveedorController():
                 self.create_proveedor.show_email.setText(str(result[10]))
                 self.create_proveedor.show_web.setText(str(result[11]))
                 self.showProductos2(nroCuit)
+                self.codProveedor = result[0]
 
                 self.create_proveedor.input_searchNameFact.clear()
             else: 
@@ -496,6 +497,8 @@ class CreateProveedorController():
 
                                 if codProducto and proveedor and precio:
                                     self.proveedor.insertProductos(codProducto,proveedor,precio)
+        
+            
                         
 
                             msg = QMessageBox()
@@ -551,3 +554,6 @@ class CreateProveedorController():
         if returnValue == QMessageBox.Ok:
 
             Ui_Proveedores.close()
+
+
+    

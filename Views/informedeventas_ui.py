@@ -74,7 +74,7 @@ class Ui_informeDeVentas(object):
 "")
         self.btn_fecha_diaria.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/vector-find-icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_fecha_diaria.setIcon(icon)
         self.btn_fecha_diaria.setObjectName("btn_fecha_diaria")
         self.label_10 = QtWidgets.QLabel(self.tab)

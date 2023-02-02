@@ -962,7 +962,7 @@ class Ui_Proveedores(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
         self.Botonbuscar.setPalette(palette)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Botonbuscar.setIcon(icon)
         self.Botonbuscar.setIconSize(QtCore.QSize(15, 20))
         self.Botonbuscar.setObjectName("Botonbuscar")

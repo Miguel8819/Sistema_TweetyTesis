@@ -157,10 +157,15 @@ class Product():
             cursor.execute(sql,(valor,codigodebarras))
             self.conn.commit()
 
-    def autoCompleteCodProd(self):
+    def autoCompleteCodProd(self,nombre):
         with self.conn.cursor() as cursor:
-            sql ="""SELECT CodigoDeBarras FROM product"""
-            cursor.execute(sql)
+            sql ="""SELECT pr.CodigoDeBarras 
+            FROM product pr, productoxproveedor pv, Proveedor p
+            WHERE pr.codProducto = pv.codProducto      
+            AND pv.codProveedor = p.codProveedor
+            AND nombreProveedor = %s
+            """
+            cursor.execute(sql,nombre)
             result = cursor.fetchall()
             new_list_3 = [i[0] for i in result]
             #print(new_list)  #Test print
@@ -169,10 +174,15 @@ class Product():
             if self.model_1:
                 return self.model_1
 
-    def autoCompleteNameProd(self):
+    def autoCompleteNameProd(self,nombre):
         with self.conn.cursor() as cursor:
-            sql ="""SELECT producto FROM product"""
-            cursor.execute(sql)
+            sql ="""SELECT pr.producto 
+            FROM product pr, productoxproveedor pv, Proveedor p
+            WHERE pr.codProducto = pv.codProducto      
+            AND pv.codProveedor = p.codProveedor
+            AND nombreProveedor = %s
+            """
+            cursor.execute(sql,nombre)
             result = cursor.fetchall()
             new_list_1 = [i[0] for i in result]
             #print(new_list)  #Test print
@@ -181,17 +191,29 @@ class Product():
             if self.model:
                 return self.model
 
-    def actualizarCodBarra(self,nombre):
+    def actualizarCodBarra(self,producto,nombre):
         with self.conn.cursor() as cursor:
-            sql = """SELECT CodigoDeBarras FROM Product WHERE producto = %s """
-            cursor.execute(sql,nombre)
+            sql = """SELECT pr.CodigoDeBarras 
+            FROM Product 
+            WHERE producto = %s
+            AND pr.codProducto = pv.codProducto      
+            AND pv.codProveedor = p.codProveedor
+            AND nombreProveedor = %s
+             """
+            cursor.execute(sql,(producto,nombre))
             result = cursor.fetchone()
             return result
         
-    def actualizarNombreProd(self,codBarra):
+    def actualizarNombreProd(self,codBarra,nombre):
         with self.conn.cursor() as cursor:
-            sql = """SELECT producto FROM Product WHERE CodigoDeBarras = %s """
-            cursor.execute(sql,codBarra)
+            sql = """SELECT pr.producto 
+            FROM Product pr, productoxproveedor pv, Proveedor p
+            WHERE CodigoDeBarras = %s
+            AND pr.codProducto = pv.codProducto      
+            AND pv.codProveedor = p.codProveedor
+            AND nombreProveedor = %s
+             """
+            cursor.execute(sql,(codBarra,nombre))
             result = cursor.fetchone()
             return result
         

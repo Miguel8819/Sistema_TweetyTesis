@@ -37,7 +37,8 @@ class Ui_FacturaDeCompra(object):
 
     def cambiarNombreProd(self):
         codbarra = self.input_codprod.text()
-        nombreProd = self.product.actualizarNombreProd(codbarra)
+        nombre = self.input_provFact.text()
+        nombreProd = self.product.actualizarNombreProd(codbarra,nombre)
         try:
             self.input_nombreProd.setText(str(nombreProd[0]))
         except:
@@ -958,10 +959,11 @@ class Ui_FacturaDeCompra(object):
         self.completer_nameProv.setCaseSensitivity(Qt.CaseInsensitive)
         self.input_provFact.setCompleter(self.completer_nameProv)
     #Auto Complete de cod de barras producto
-        self.completer_codProd = QCompleter(self.product.autoCompleteCodProd())
+        nombre = self.input_provFact.text()
+        self.completer_codProd = QCompleter(self.product.autoCompleteCodProd(nombre))
         self.input_codprod.setCompleter(self.completer_codProd)
     #Auto Complete de Nombre producto
-        self.completer_nameProd = QCompleter(self.product.autoCompleteNameProd())
+        self.completer_nameProd = QCompleter(self.product.autoCompleteNameProd(nombre))
         self.completer_nameProd.setCaseSensitivity(Qt.CaseInsensitive)
         self.input_nombreProd.setCompleter(self.completer_nameProd)
 
