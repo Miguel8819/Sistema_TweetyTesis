@@ -55,7 +55,7 @@ class Ui_menuprincipal(object):
         self.label_7.setGeometry(QtCore.QRect(0, 490, 71, 91))
         self.label_7.setMinimumSize(QtCore.QSize(45, 45))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("/Imagenes/pngfind.com-bird-png-600629.png"))
+        self.label_7.setPixmap(QtGui.QPixmap("Imagenes/pngfind.com-bird-png-600629.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.btn_mantenimiento = QtWidgets.QPushButton(self.frame)

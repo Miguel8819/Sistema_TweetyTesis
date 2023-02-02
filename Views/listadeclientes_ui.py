@@ -76,7 +76,7 @@ class Ui_lista_clientes(object):
         self.label_3 = QtWidgets.QLabel(self.tab)
         self.label_3.setGeometry(QtCore.QRect(30, 10, 91, 81))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("../Imagenes/ok.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap("Imagenes/ok.jpg"))
         self.label_3.setObjectName("label_3")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -124,7 +124,7 @@ class Ui_lista_clientes(object):
         self.label_4 = QtWidgets.QLabel(self.tab_2)
         self.label_4.setGeometry(QtCore.QRect(30, 40, 91, 61))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("../Imagenes/nook.jpg"))
+        self.label_4.setPixmap(QtGui.QPixmap("Imagenes/nook.jpg"))
         self.label_4.setObjectName("label_4")
         self.tabWidget.addTab(self.tab_2, "")
 

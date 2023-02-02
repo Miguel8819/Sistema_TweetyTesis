@@ -350,6 +350,7 @@ class CreateProveedorController():
 
     def ingresarProductoaProveedor (self):
         table = self.create_proveedor.tablaProductos_2
+        
         if table.currentItem() != None:
             codProducto = table.currentItem().text()        
             prod = self.product.AgregarxCod(codProducto)
@@ -476,9 +477,9 @@ class CreateProveedorController():
 
     def modificarProveedor(self,nombreProveedor, nombreFactura, nroCuil, calle, numeroCalle, ciudad, codPostal, celular, email, pagWeb ):
         table2 = self.create_proveedor.tablaProductos
-        proveedor = self.codProveedor
+        
         if nombreProveedor or nroCuil: 
-            
+            proveedor = self.codProveedor
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setText("¿Desea guardar los cambios del proveedor? ")
@@ -524,7 +525,9 @@ class CreateProveedorController():
                             self.create_proveedor.show_tel.clear()
                             self.create_proveedor.show_email.clear()
                             self.create_proveedor.show_web.clear()
-
+                            self.create_proveedor.tablaProductos.setRowCount(0)
+                            self.create_proveedor.tablaProductos_2.setRowCount(0)     
+                            
                         else: 
                             msg = QMessageBox()
                             msg.setWindowTitle("Error")

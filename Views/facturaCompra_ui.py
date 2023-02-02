@@ -278,7 +278,7 @@ class Ui_FacturaDeCompra(object):
         font.setWeight(75)
         self.boton_buscar.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../Users/Maxi/.designer/..Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Imagenes/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_buscar.setIcon(icon)
         self.boton_buscar.setIconSize(QtCore.QSize(15, 20))
         self.boton_buscar.setObjectName("boton_buscar")
