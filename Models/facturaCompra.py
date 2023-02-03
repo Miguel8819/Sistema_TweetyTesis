@@ -27,6 +27,7 @@ class FacturaCompra():
         with self.conn.cursor() as cursor:
             sql = """CREATE TABLE IF NOT EXISTS tablaFacturaCompra
                         (
+                        codTablaFactura INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
                         nroFacturaCompra VARCHAR (20) NOT NULL,
                         codCuilProv INT(12) NOT NULL,
                         fechaIngreso VARCHAR (10) NOT NULL, 
@@ -40,10 +41,10 @@ class FacturaCompra():
             cursor.execute(sql)
             self.conn.commit()
 
-    def insertFactCompra(self, tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal):
+    def insertFactCompra(self, tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,usuario):
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO facturaCompra (tipoDoc, nombreProv, nroFacturaCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal))
+            sql = """INSERT INTO facturaCompra (tipoDoc, nombreProv, nroFacturaCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,codUsuario) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,usuario))
             self.conn.commit()
     
     def insertTabla(self, nroFacturaCompra, codCuilProv, fechaIngreso, codProducto, codBarra, producto, cantidad, precioUnitario, subtotal):
@@ -66,14 +67,14 @@ class FacturaCompra():
 
     def getFactByProv(self, nombreProv):
         with self.conn.cursor() as cursor:
-            sql = """SELECT nroFacturaCompra, nroCuil, nombreProv, fechaEmision, fechaIngreso FROM facturacompra WHERE nombreProv = %s"""
+            sql = """SELECT nroFacturaCompra, nroCuil, nombreProv, fechaEmision, fechaIngreso,codUsuario FROM facturacompra WHERE nombreProv = %s"""
             cursor.execute(sql, (nombreProv))
             result = cursor.fetchall()
             return result
 
     def getFactByNum(self, numFact):
         with self.conn.cursor() as cursor:
-            sql = """SELECT nroFacturaCompra, nroCuil, nombreProv, fechaEmision, fechaIngreso FROM facturacompra WHERE nroFacturaCompra = %s"""
+            sql = """SELECT nroFacturaCompra, nroCuil, nombreProv, fechaEmision, fechaIngreso,codUsuario FROM facturacompra WHERE nroFacturaCompra = %s"""
             cursor.execute(sql, (numFact))
             result = cursor.fetchall()
             return result

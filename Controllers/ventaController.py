@@ -33,7 +33,6 @@ class ventaController():
         self.Facturacion = CabeceraFactura(connection())
         self.cliente= Cliente(connection())
         self.user=User(connection())
-        print(globales.logueado)
         
         self.usuario = globales.logueado    
     

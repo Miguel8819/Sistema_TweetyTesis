@@ -15,7 +15,7 @@ class detalleFacturaCompraController():
 
 
     def buscarFactNombreProv(self, nameProv):
-        table = self.detalle_factCompra.tableWidget
+        table = self.detalle_factCompra.tabla_compra
         facturas = self.factCompra.getFactByProv(nameProv)
         table.setRowCount(0)
         for row_number, row_data in enumerate(facturas):
@@ -24,7 +24,7 @@ class detalleFacturaCompraController():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def buscarFactNumFact(self, numFact):
-        table = self.detalle_factCompra.tableWidget
+        table = self.detalle_factCompra.tabla_compra
         facturas = self.factCompra.getFactByNum(numFact)
         table.setRowCount(0)
         for row_number, row_data in enumerate(facturas):
@@ -34,7 +34,7 @@ class detalleFacturaCompraController():
 
     def openDetalleFactura(self):
         try:
-            table = self.detalle_factCompra.tableWidget
+            table = self.detalle_factCompra.tabla_compra
             nrofact = table.currentItem().text()
         except: 
             msg = QMessageBox()
@@ -68,7 +68,7 @@ class detalleFacturaCompraController():
                     self.detalle_factCompra.input_iva.setText(str(factura[0][10]))
                     self.detalle_factCompra.input_importe.setText(str(factura[0][11]))
 
-                    table_detalle = self.detalle_factCompra.table_venta
+                    table_detalle = self.detalle_factCompra.table_detalleCompra
                     table_detalle.setRowCount(0)
                     for row_number, row_data in enumerate(detalle_factura):
                         table_detalle.insertRow(row_number)

@@ -11,14 +11,14 @@ from PyQt5.QtWidgets import QMessageBox
 from datetime import datetime
 from PyQt5 import QtWidgets
 from locale import currency
-
+from Controllers import globales
 class facturaCompraController():
     def __init__(self, factura_compra):
         self.proveedor = Proveedor(connection())
         self.product = Product(connection())
         self.facturaCompra = FacturaCompra(connection())
         self.factura_compra = factura_compra
-
+        self.usuario = globales.logueado 
    
 
     def buscarProv(self,nameProv):
@@ -165,7 +165,7 @@ class facturaCompraController():
                     msg.setInformativeText("Vuelva a intentarlo")
                     x = msg.exec_() 
                 elif tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
-                    self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal)
+                    self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,self.usuario[0])
                     for i in range(table.rowCount()):
                         CodProducto = table.item(i,0).text()
                         CodigoDeBarras = table.item(i,1).text()
