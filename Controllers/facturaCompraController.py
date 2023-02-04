@@ -12,6 +12,8 @@ from datetime import datetime
 from PyQt5 import QtWidgets
 from locale import currency
 from Controllers import globales
+
+
 class facturaCompraController():
     def __init__(self, factura_compra):
         self.proveedor = Proveedor(connection())
@@ -125,8 +127,10 @@ class facturaCompraController():
                     x = msg.exec_()
 
     def guardar(self, tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, tipoCompra, subtotal, descuento, iva, importeTotal):
+        
         table = self.factura_compra.table_venta
         result = self.facturaCompra.getFactByNum(nroFactCompra)
+        cabecera = 0
         if result:
             msg = QMessageBox()
             msg.setWindowTitle("Error")
@@ -139,6 +143,7 @@ class facturaCompraController():
         else:    
             fechaNow = datetime.now()
             fechaIngreso = datetime.strftime(fechaNow, '%d/%m/%Y %H:%M:%S')
+            
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setText("¿Desea guardar factura de compra?")
@@ -146,6 +151,7 @@ class facturaCompraController():
             msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             returnValue = msgBox.exec()
             if returnValue == QMessageBox.Ok:
+                
                 if self.factura_compra.input_provFact.text() == "":
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
@@ -164,8 +170,18 @@ class facturaCompraController():
                     msg.setDefaultButton(QMessageBox.Ok)
                     msg.setInformativeText("Vuelva a intentarlo")
                     x = msg.exec_() 
-                elif tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
-                    self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,self.usuario[0])
+                elif self.factura_compra.input_nroCuil.text() == "":
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El campo Número de Cuil esta vacio. Luego de ingresar el nombre de proveedor presione el boton Agregar")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_()
+                elif  tipoDoc and nombreProv and nroFactCompra and nroCuil and fechaEmision and fechaIngreso and subtotal and descuento and iva and importeTotal:
+                    
+                    cabecera = self.facturaCompra.insertFactCompra(tipoDoc, nombreProv, nroFactCompra, nroCuil, fechaEmision, fechaIngreso, tipoCompra, subtotal, descuento, iva, importeTotal,self.usuario[0])
                     for i in range(table.rowCount()):
                         CodProducto = table.item(i,0).text()
                         CodigoDeBarras = table.item(i,1).text()
@@ -173,7 +189,8 @@ class facturaCompraController():
                         stock = table.item(i,3).text()
                         precio = table.item(i,4).text()
                         subtotalTabla = table.item(i,5).text()
-                        self.facturaCompra.insertTabla(nroFactCompra, nroCuil, fechaIngreso, CodProducto, CodigoDeBarras, producto, stock, precio, subtotalTabla)
+                        
+                        self.facturaCompra.insertTabla(cabecera,nroFactCompra, nroCuil, fechaIngreso, CodProducto, CodigoDeBarras, producto, stock, precio, subtotalTabla)
                         self.product.updateStock(stock,CodigoDeBarras)
                         self.product.updateCostoCompra(precio,CodigoDeBarras)
 
@@ -195,11 +212,14 @@ class facturaCompraController():
                     self.factura_compra.input_nombreProd.clear()
                     self.factura_compra.input_cantidad.clear()
                     self.factura_compra.input_precio.clear()
-                    self.factura_compra.input_descuento.clear()
+                    descuento= '0'
+                    self.factura_compra.input_descuento.setText(str(descuento))
                     self.factura_compra.input_subtotal.clear()
                     self.factura_compra.input_descuento_2.clear()
                     self.factura_compra.input_iva.clear()
                     self.factura_compra.input_importe.clear()
+               
+
         
 
     def cancelar(self, Ui_FacturaCompra):

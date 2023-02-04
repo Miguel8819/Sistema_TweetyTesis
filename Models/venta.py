@@ -51,7 +51,7 @@ class Venta():
 
     
 
-    
+
 
     def ventasDiarias(self):
         with self.conn.cursor() as cursor:
