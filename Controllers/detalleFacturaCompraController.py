@@ -140,6 +140,89 @@ class detalleFacturaCompraController():
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
 
+    def comprasAnuladas(self):
+        
+        table = self.detalle_factCompra.tabla_compra_2
+        listaAnuladas = self.factCompra.getAnuladas()
+        if listaAnuladas:
+            table.setRowCount(0)
+            for row_number, row_data in enumerate(listaAnuladas):
+                    table.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle('¡Error!')
+            msg.setText("No hay ventas anuladas.")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+
+    def detalleCompraAnulada(self):
+        try:
+            table = self.detalle_factCompra.tabla_compra_2
+            nrofact = table.currentItem().text()
+        except: 
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("No ha seleccionado un numero de factura de la tabla")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_() 
+        else:    
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setText("¿Desea ver detalle de la factura seleccionada?")
+            msgBox.setWindowTitle("Abrir Detalle Factura")
+            msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            returnValue = msgBox.exec()
+            if returnValue == QMessageBox.Ok:
+                
+                detalle_factura = self.factCompra.getDetalleTablaFactura(nrofact)
+                if  detalle_factura:
+                    table_detalle = self.detalle_factCompra.table_detalleCompra_2
+                    table_detalle.setRowCount(0)
+                    for row_number, row_data in enumerate(detalle_factura):
+                        table_detalle.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                            table_detalle.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+    def showMotivoAnulacion(self):
+        table = self.detalle_factCompra.tabla_compra_2
+        if table.currentItem() != None:
+            nroFactura = table.currentItem().text()        
+            self.factCompra.getDetalleTablaFactura(nroFactura)
+            if nroFactura:
+                result = self.factCompra.getFactura(nroFactura)
+                
+                if result:
+                    self.detalle_factCompra.textMotivo_2.setText(str(result[13]))
+                    
+                    self.detalleCompraAnulada()
+                    self.detalle_factCompra.input_subtotal_2.setText(str(result[8]))
+                    self.detalle_factCompra.input_descuento_3.setText(str(result[9]))
+                    self.detalle_factCompra.input_iva_2.setText(str(result[10]))
+                    self.detalle_factCompra.input_importe_2.setText(str(result[11]))
+                else:    
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("Seleccione un nro de Comprobante")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    msg.setInformativeText("Vuelva a intentarlo")
+                    x = msg.exec_()
+        else:    
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Seleccione un nro de Comprobante")
+            msg.setIcon(QMessageBox.Information)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            msg.setInformativeText("Vuelva a intentarlo")
+            x = msg.exec_()
 
 
     def Salir(self,lista_factCompra):

@@ -1635,8 +1635,11 @@ class Ui_detallefacturacompra(object):
 
         self.d = self.btn_anularFactura.clicked.connect(lambda:self.detalleFacturaCompraController.anularFactura(self.textMotivo.toPlainText()))
 
-        self.e = self.boton_salir.clicked.connect(lambda:self.
-        detalleFacturaCompraController.Salir(detallefacturacompra))
+        self.e = self.boton_listarAnuladas.clicked.connect(lambda:self.detalleFacturaCompraController.comprasAnuladas())
+
+        self.f = self.boton_mostrarDetalle.clicked.connect(lambda:self.detalleFacturaCompraController.showMotivoAnulacion())
+
+        self.e = self.boton_salir.clicked.connect(lambda:self.detalleFacturaCompraController.Salir(detallefacturacompra))
         
     #--------------------End Events--------------------------------------------
   

@@ -93,12 +93,27 @@ class FacturaCompra():
             cursor.execute(sql, (numFact))
             result = cursor.fetchall()
             return result
+    def getAnuladas(self):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT nroFacturaCompra, nroCuil, nombreProv, fechaEmision, fechaIngreso,codUsuario FROM facturacompra WHERE 
+            activo = '0'
+            """
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
 
     def getDetalleFactura(self, numFact):
         with self.conn.cursor() as cursor:
             sql = """SELECT * FROM facturacompra WHERE nroFacturaCompra = %s"""
             cursor.execute(sql, (numFact))
             result = cursor.fetchall()
+            return result
+    
+    def getFactura(self, numFact):
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM facturacompra WHERE nroFacturaCompra = %s"""
+            cursor.execute(sql, (numFact))
+            result = cursor.fetchone()
             return result
 
     def getDetalleTablaFactura(self, numFact):
