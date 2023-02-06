@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./-PyQt5-MySQL-CRUD-LogIn",
+        "./Controllers"
+    ]
+}

@@ -1,0 +1,2 @@
+
+logueado = "No logueado"
