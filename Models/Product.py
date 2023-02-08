@@ -153,7 +153,7 @@ class Product():
 
     def updateCostoCompra(self,valor,codigodebarras):
         with self.conn.cursor() as cursor:
-            sql = """UPDATE product SET CostoDeCompra = %s WHERE CodigoDeBarras = %s"""
+            sql = """UPDATE product SET CostoDeCompra = %s, PrecioDeVenta = CostoDeCompra*1.7 WHERE CodigoDeBarras = %s"""
             cursor.execute(sql,(valor,codigodebarras))
             self.conn.commit()
 
